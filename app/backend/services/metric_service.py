@@ -8,7 +8,7 @@ from the AuditLog table.
 import logging
 from datetime import datetime, timedelta
 from typing import Dict, Any
-from sqlalchemy import func
+from sqlalchemy import func, case
 from models.schemas import AuditLog
 import database
 
@@ -36,6 +36,10 @@ class MetricService:
                 "ai_resolution_rate": 0.85,
                 "human_fallback_rate": 0.10,
                 "route_distribution": {"rag": 100, "crm": 30, "advisor": 15, "fallback": 5},
+                "daily_activity": [
+                    {"date": (datetime.utcnow() - timedelta(days=1)).strftime("%Y-%m-%d"), "admin": 12, "guest": 45},
+                    {"date": datetime.utcnow().strftime("%Y-%m-%d"), "admin": 5, "guest": 28}
+                ],
                 "status": "mock_data"
             }
 
@@ -46,7 +50,16 @@ class MetricService:
                 # 1. Total Requests
                 total = session.query(AuditLog).filter(AuditLog.timestamp >= since_date).count()
                 if total == 0:
-                    return {"message": "No data for the selected period", "total_requests": 0}
+                    return {
+                        "period_hours": hours_back,
+                        "total_requests": 0,
+                        "avg_response_time_ms": 0,
+                        "ai_resolution_rate": 0,
+                        "human_fallback_rate": 0,
+                        "route_distribution": {},
+                        "daily_activity": [],
+                        "generated_at": datetime.utcnow().isoformat()
+                    }
 
                 # 2. Average Latency
                 avg_latency = session.query(func.avg(AuditLog.response_time_ms))\
@@ -67,6 +80,20 @@ class MetricService:
                 
                 route_dist = {str(r): count for r, count in routes}
 
+                # 6. Daily Activity Breakdown (Admin vs Guest/Student)
+                daily_results = session.query(
+                    func.date(AuditLog.timestamp).label('day'),
+                    func.sum(case((AuditLog.route == 'admin_internal', 1), else_=0)).label('admin_count'),
+                    func.sum(case((AuditLog.route != 'admin_internal', 1), else_=0)).label('guest_count')
+                ).filter(AuditLog.timestamp >= since_date)\
+                 .group_by(func.date(AuditLog.timestamp))\
+                 .order_by(func.date(AuditLog.timestamp)).all()
+
+                daily_activity = [
+                    {"date": str(row.day), "admin": int(row.admin_count or 0), "guest": int(row.guest_count or 0)}
+                    for row in daily_results
+                ]
+
                 return {
                     "period_hours": hours_back,
                     "total_requests": total,
@@ -74,6 +101,7 @@ class MetricService:
                     "ai_resolution_rate": round(resolved_count / total, 3),
                     "human_fallback_rate": round(fallback_count / total, 3),
                     "route_distribution": route_dist,
+                    "daily_activity": daily_activity,
                     "generated_at": datetime.utcnow().isoformat()
                 }
 

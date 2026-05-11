@@ -5,12 +5,14 @@ import uvicorn
 import os
 import io
 import tempfile
+import time
 import jwt
 import re
 import uuid
 from datetime import datetime, timedelta
 import logging
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
+from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
@@ -23,6 +25,8 @@ from fastapi import UploadFile, File
 from database import init_database, SessionLocal, get_database_info
 from services.pdf_loader import extract_text_from_pdf
 from services.metric_service import MetricService
+from guards.rate_limiter import RateLimiter
+from guards.admin_audit import AdminAuditMiddleware
 
 # Suppress noisy font warnings from pdfminer/pdfplumber
 logging.getLogger("pdfminer").setLevel(logging.ERROR)
@@ -138,6 +142,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Initialize the Orchestrator Pipeline
+pipeline = Pipeline()
+
+# Register the Admin Audit Middleware
+app.add_middleware(AdminAuditMiddleware, pipeline=pipeline)
+
 # Initialize database on startup
 @app.on_event("startup")
 def startup_event():
@@ -154,8 +164,8 @@ def startup_event():
         # Stop the application if the database is unreachable to avoid inconsistent states
         raise SystemExit(1)
 
-# Initialize the Orchestrator Pipeline
-pipeline = Pipeline()
+# Initialize global rate limiter for sensitive endpoints
+metrics_limiter = RateLimiter()
 
 class ChatRequest(BaseModel):
     user_id: Optional[str] = Field("anonymous", alias="userId")
@@ -205,6 +215,12 @@ class ProfileUpdateRequest(BaseModel):
     full_name: Optional[str] = None
     dob: Optional[str] = None
     phone: Optional[str] = None
+    gpa: Optional[float] = None
+    test_scores: Optional[Dict[str, Any]] = None
+    preferred_majors: Optional[List[str]] = None
+
+class EmailLogRequest(BaseModel):
+    user_id: str
 
 class MatchRequest(BaseModel):
     user_id: str
@@ -346,20 +362,101 @@ async def rename_chat_session(
 @app.get("/api/handoff-summary")
 async def get_handoff_summary(user_id: str, current_user: dict = Depends(staff_required)):
     """Retrieve a summary of the student profile and chat context for human handoff."""
-    summary = pipeline.build_human_handoff_summary(user_id)
-    if not summary:
-        raise HTTPException(status_code=404, detail="Không tìm thấy thông tin tóm tắt cho người dùng này")
-    return {"user_id": user_id, "handoff_summary": summary}
+    # Implementation fix: Building the handoff summary directly using CRM and DB services
+    # as a fallback for the missing method in the Pipeline class.
+    profile = pipeline.crm.get_profile(user_id) or {}
+    history = pipeline.db_service.get_history(user_id, limit=6)
+    
+    if not profile and not history:
+        raise HTTPException(status_code=404, detail="Không tìm thấy dữ liệu bàn giao cho học sinh này")
+
+    summary_parts = [
+        f"=== BÁO CÁO BÀN GIAO NHÂN VIÊN TƯ VẤN ===",
+        f"Học sinh: {user_id}",
+        f"Ngày tạo: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC",
+        "\n[1. THÔNG TIN HỒ SƠ]",
+        f"- Họ tên: {profile.get('full_name', 'Chưa cập nhật')}",
+        f"- Số điện thoại: {profile.get('phone', 'N/A')}",
+        f"- GPA: {profile.get('gpa', 'Chưa có')}",
+        f"- IELTS: {(profile.get('test_scores') or {}).get('ielts', 'N/A')}",
+        f"- Ngành quan tâm: {', '.join(profile.get('preferred_majors') or []) if profile.get('preferred_majors') else 'Chưa xác định'}",
+        "\n[2. DIỄN BIẾN HỘI THOẠI GẦN NHẤT]"
+    ]
+
+    if history:
+        # Chronological order for context
+        for msg in reversed(history):
+            role = "Học sinh" if msg['role'] == 'user' else "AI Assistant"
+            content = msg['content'][:300] + ("..." if len(msg['content']) > 300 else "")
+            summary_parts.append(f"\n[{role}]:\n{content}")
+    else:
+        summary_parts.append("\n(Không có lịch sử trò chuyện được ghi lại)")
+
+    return {"user_id": user_id, "handoff_summary": "\n".join(summary_parts)}
 
 @app.get("/api/metrics")
 async def get_metrics(hours: int = 336, current_user: dict = Depends(admin_required)):
     """Retrieve PMF-focused metrics over a requested time window."""
+    # Rate limiting check to prevent abuse of compute-intensive metric aggregation
+    if not metrics_limiter.allow(current_user["email"]):
+        raise HTTPException(
+            status_code=429, 
+            detail="Yêu cầu quá thường xuyên. Vui lòng thử lại sau giây lát."
+        )
+
     try:
         metric_service = MetricService(pipeline.db_service)
         return metric_service.get_pmf_metrics(hours_back=hours)
     except Exception as e:
         logger.error(f"Error fetching metrics: {e}")
         raise HTTPException(status_code=500, detail="Không thể tải dữ liệu thống kê")
+
+@app.get("/api/admin/audit-logs")
+async def get_audit_logs(user_id: Optional[str] = None, only_fallback: bool = False, limit: int = 100, current_user: dict = Depends(staff_required)):
+    """Retrieve the most recent system activity logs for administrative review."""
+    from models.schemas import AuditLog
+    from sqlalchemy import or_
+    try:
+        with SessionLocal() as session:
+            query = session.query(AuditLog)
+            if user_id:
+                query = query.filter(AuditLog.user_id.ilike(f"%{user_id}%"))
+            if only_fallback:
+                query = query.filter(or_(AuditLog.ai_resolved == False, AuditLog.fallback == True))
+            logs = query.order_by(AuditLog.timestamp.desc()).limit(limit).all()
+            return [{
+                "id": log.id,
+                "user_id": log.user_id,
+                "timestamp": log.timestamp.isoformat() if log.timestamp else None,
+                "route": log.route,
+                "input": log.input_data,
+                "output": log.output_data,
+                "latency": log.response_time_ms,
+                "judge_result": log.judge_result,
+                "ai_resolved": log.ai_resolved,
+                "fallback": log.fallback
+            } for log in logs]
+    except Exception as e:
+        logger.error(f"Error fetching audit logs: {e}")
+        raise HTTPException(status_code=500, detail="Không thể tải nhật ký hệ thống")
+
+@app.post("/api/audit/email-sent")
+async def log_email_action(request: EmailLogRequest, current_user: dict = Depends(staff_required)):
+    """Explicitly logs when a counselor/staff initiates an email to a student."""
+    try:
+        pipeline.db_service.save_audit_log(
+            user_id=current_user["email"],
+            input_data=f"STAFF_ACTION: Opened email client for student {request.user_id}",
+            output_data="Action: mailto client triggered",
+            judge_result={"action": "email_initiated", "target_student": request.user_id},
+            route="staff_action",
+            ai_resolved=True,
+            fallback=False
+        )
+        return {"status": "success"}
+    except Exception as e:
+        logger.error(f"Failed to log email action: {e}")
+        raise HTTPException(status_code=500, detail="Lỗi khi ghi nhật ký hoạt động")
 
 @app.post("/api/auth/signup")
 async def signup(request: SignupRequest):
@@ -496,6 +593,10 @@ async def match(request: MatchRequest, current_user: dict = Depends(get_current_
 @app.get("/api/profile/{user_id}")
 async def get_profile(user_id: str, current_user: dict = Depends(get_current_user)):
     """Retrieve the structured student profile as managed by the CRM agent."""
+    # Bảo mật: Cho phép staff xem mọi profile, hoặc user tự xem profile của chính mình
+    if current_user.get("role") not in ["admin", "editor"] and current_user.get("email") != user_id:
+        raise HTTPException(status_code=403, detail="Bạn không có quyền xem hồ sơ này")
+
     profile = pipeline.crm.get_profile(user_id)
     if not profile:
         raise HTTPException(status_code=404, detail="Profile not found")
@@ -504,6 +605,10 @@ async def get_profile(user_id: str, current_user: dict = Depends(get_current_use
 @app.post("/api/profile/{user_id}")
 async def update_profile(user_id: str, request: ProfileUpdateRequest, current_user: dict = Depends(get_current_user)):
     """Update student profile information."""
+    # Bảo mật: Cho phép staff cập nhật mọi profile, hoặc user tự cập nhật profile của chính mình
+    if current_user.get("role") not in ["admin", "editor"] and current_user.get("email") != user_id:
+        raise HTTPException(status_code=403, detail="Bạn không có quyền cập nhật hồ sơ này")
+
     try:
         # Chuyển đổi dữ liệu request thành dict để cập nhật vào DB
         update_data = request.model_dump(exclude_unset=True)

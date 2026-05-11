@@ -87,25 +87,38 @@ class DBService:
         if self.use_mock or not database.get_engine():
             return
             
-        table_name = "chat_sessions"
-        column_name = "title"
-        
         try:
             inspector = inspect(database.get_engine())
-            if table_name not in inspector.get_table_names():
-                return
+            
+            # 1. Migrate chat_sessions (add title)
+            if "chat_sessions" in inspector.get_table_names():
+                session_cols = [col['name'] for col in inspector.get_columns("chat_sessions")]
+                if "title" not in session_cols:
+                    logger.info("Migration: Adding 'title' to 'chat_sessions'...")
+                    with database.get_engine().connect() as conn:
+                        conn.execute(text("ALTER TABLE chat_sessions ADD COLUMN title TEXT DEFAULT 'Cuộc hội thoại mới'"))
+                        conn.commit()
 
-            columns = [col['name'] for col in inspector.get_columns(table_name)]
-            if column_name not in columns:
-                logger.info(f"Migration: Adding column '{column_name}' to table '{table_name}'...")
+            # 2. Migrate audit_logs (add missing PMF/Audit columns)
+            if "audit_logs" in inspector.get_table_names():
+                audit_cols = [col['name'] for col in inspector.get_columns("audit_logs")]
+                new_columns = {
+                    "input_data": "TEXT",
+                    "output_data": "TEXT",
+                    "judge_result": "JSON",
+                    "route": "VARCHAR",
+                    "response_time_ms": "INTEGER",
+                    "ai_resolved": "BOOLEAN DEFAULT TRUE",
+                    "fallback": "BOOLEAN DEFAULT FALSE"
+                }
+                
                 with database.get_engine().connect() as conn:
-                    # PostgreSQL & SQLite compatible syntax
-                    query = text(f"ALTER TABLE {table_name} ADD COLUMN {column_name} TEXT DEFAULT 'Cuộc hội thoại mới'")
-                    conn.execute(query)
+                    for col_name, col_type in new_columns.items():
+                        if col_name not in audit_cols:
+                            logger.info(f"Migration: Adding column '{col_name}' to 'audit_logs'...")
+                            conn.execute(text(f"ALTER TABLE audit_logs ADD COLUMN {col_name} {col_type}"))
                     conn.commit()
-                logger.info("✓ Migration successful.")
-            else:
-                logger.debug(f"Schema for '{table_name}' is already up-to-date.")
+                logger.info("✓ Database migrations completed.")
 
         except Exception as e:
             logger.error(f"Migration failed (non-critical): {e}")
@@ -572,8 +585,8 @@ class DBService:
     def save_audit_log(
         self,
         user_id: str,
-        input_text: str,
-        output_text: str,
+        input_data: str,
+        output_data: str,
         judge_result: Dict[str, Any],
         route: str = None,
         response_time_ms: int = None,
@@ -585,8 +598,8 @@ class DBService:
 
         Args:
             user_id:      Student identifier.
-            input_text:   Sanitised user input.
-            output_text:  Final agent response (post-redaction).
+            input_data:   Sanitised user input or action description.
+            output_data:  Final agent response or result status.
             judge_result: Dict from JudgeAgent.evaluate().
             route:        The classification route (rag/crm/advisor/fallback).
             response_time_ms: Latency of the request.
@@ -601,8 +614,8 @@ class DBService:
             with database.SessionLocal() as session:
                 log_entry = AuditLog(
                     user_id=user_id,
-                    input_text=input_text,
-                    output_text=output_text,
+                    input_data=input_data,
+                    output_data=output_data,
                     judge_result=judge_result,
                     route=route,
                     response_time_ms=response_time_ms,

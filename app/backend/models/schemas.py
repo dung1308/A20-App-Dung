@@ -67,10 +67,13 @@ class AuditLog(Base):
     __tablename__ = "audit_logs"
     id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(String, ForeignKey("users.user_id"), nullable=True)
-    endpoint = Column(String)  # "/api/match", "/api/chat"
-    request_data = Column(JSON, nullable=True)  # Request metadata (no sensitive data)
-    response_status = Column(String)  # "success", "rejected", "error"
-    judge_decision = Column(String, nullable=True)  # Judge agent decision
+    input_data = Column(Text, nullable=True)
+    output_data = Column(Text, nullable=True)
+    judge_result = Column(JSON, nullable=True)
+    route = Column(String, nullable=True)
+    response_time_ms = Column(Integer, nullable=True)
+    ai_resolved = Column(Boolean, default=True)
+    fallback = Column(Boolean, default=False)
     timestamp = Column(DateTime, default=datetime.utcnow)
 
 class SecurityEvent(Base):

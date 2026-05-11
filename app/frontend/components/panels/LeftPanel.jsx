@@ -49,6 +49,18 @@ const LeftPanel = () => {
               <span className="material-symbols-outlined text-[20px]">database</span>
               Database
             </Link>
+            {(role === 'admin' || role === 'editor') && (
+              <Link to="/staff" className="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-inter text-[13px] font-semibold hover:bg-slate-100 rounded-lg transition-colors">
+                <span className="material-symbols-outlined text-[20px]">assignment_ind</span>
+                Staff Dashboard
+              </Link>
+            )}
+            {role === 'admin' && (
+              <Link to="/admin" className="text-slate-500 px-4 py-2 mx-2 flex items-center gap-3 font-inter text-[13px] font-semibold hover:bg-slate-100 rounded-lg transition-colors">
+                <span className="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                Admin Dashboard
+              </Link>
+            )}
           </nav>
         </div>
 
@@ -90,8 +102,16 @@ const LeftPanel = () => {
               {(userId || 'G').substring(0, 2).toUpperCase()}
             </button>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-slate-800 truncate" title={userId}>{userId || 'Guest User'}</p>
-              <p className="text-[10px] text-slate-500">{role === 'admin' ? 'Engineer' : 'Premium Member'}</p>
+              <p className="text-sm font-bold text-slate-800 truncate" title={userId}>{userId || 'Guest'}</p>
+              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">
+                {role === 'admin' 
+                  ? 'Admin User' 
+                  : role === 'editor' 
+                    ? 'Staff User' 
+                    : role === 'user' 
+                      ? 'Student User' 
+                      : 'Guest User'}
+              </p>
             </div>
           </div>
 

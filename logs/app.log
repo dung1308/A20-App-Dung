@@ -71,3 +71,40 @@
 2026-05-09 21:40:20 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=11778ms
 2026-05-09 21:40:20 [-] orchestrator.pipeline ERROR — Audit log failed in run_chat (non-blocking): DBService.save_audit_log() got an unexpected keyword argument 'input_data'
 2026-05-10 23:32:48 [-] agents.crm INFO — CRMAgent.run() — user: test_user
+2026-05-11 08:38:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:38:16 [-] services.rag_service INFO — Initializing RAGService
+2026-05-11 08:38:18 [-] services.rag_service INFO — Re-ingesting all data...
+2026-05-11 08:38:18 [-] services.rag_service INFO — Ingested 0 admission chunks
+2026-05-11 08:38:18 [-] services.rag_service INFO — Ingested 0 FAQ items
+2026-05-11 08:38:18 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:38:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:41:40 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:41:40 [-] services.rag_service INFO — Initializing RAGService
+2026-05-11 08:41:41 [-] services.rag_service INFO — Re-ingesting all data...
+2026-05-11 08:41:41 [-] services.rag_service INFO — Ingested 0 admission chunks
+2026-05-11 08:41:41 [-] services.rag_service INFO — Ingested 0 FAQ items
+2026-05-11 08:41:41 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:41:42 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:43:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:43:08 [-] services.rag_service INFO — Initializing RAGService
+2026-05-11 08:43:08 [-] services.rag_service INFO — Re-ingesting all data...
+2026-05-11 08:43:08 [-] services.rag_service INFO — Ingested 0 admission chunks
+2026-05-11 08:43:08 [-] services.rag_service INFO — Ingested 0 FAQ items
+2026-05-11 08:43:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 08:43:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 09:11:42 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 09:11:42 [-] services.rag_service INFO — Initializing RAGService
+2026-05-11 09:11:43 [-] services.rag_service INFO — Re-ingesting all data...
+2026-05-11 09:11:43 [-] services.rag_service INFO — Ingested 0 admission chunks
+2026-05-11 09:11:43 [-] services.rag_service INFO — Ingested 0 FAQ items
+2026-05-11 09:11:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 09:11:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 09:15:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 09:15:23 [-] services.rag_service INFO — Initializing RAGService
+2026-05-11 09:15:23 [-] services.rag_service INFO — Re-ingesting all data...
+2026-05-11 09:15:23 [-] services.rag_service INFO — Ingested 0 admission chunks
+2026-05-11 09:15:23 [-] services.rag_service INFO — Ingested 0 FAQ items
+2026-05-11 09:15:24 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 09:15:25 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 10:56:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 10:59:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)

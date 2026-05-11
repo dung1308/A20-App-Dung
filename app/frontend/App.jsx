@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import TokenUsagePage from './pages/TokenUsagePage';
 import DatabaseManagementPage from './pages/DatabaseManagementPage';
+import StaffDashboard from './pages/StaffDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import PricingPage from './pages/PricingPage';
 import AuthenticatedLayout from './layouts/AuthenticatedLayout';
@@ -19,6 +20,15 @@ const AdminRoute = ({ children }) => {
   // While auth state is initializing, don't redirect
   if (loading) return null;
   if (!isAuthenticated || role !== 'admin') {
+    return <Navigate to="/dashboard" replace />;
+  }
+  return children;
+};
+
+const StaffRoute = ({ children }) => {
+  const { role, isAuthenticated, loading } = useAuth();
+  if (loading) return null;
+  if (!isAuthenticated || (role !== 'admin' && role !== 'editor')) {
     return <Navigate to="/dashboard" replace />;
   }
   return children;
@@ -65,6 +75,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/system/tokens" element={<TokenUsagePage />} />
+          <Route path="/staff" element={<StaffRoute><StaffDashboard /></StaffRoute>} />
           <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
           <Route path="/system/database" element={<DatabaseManagementPage />} />
         </Route>
