@@ -155,3 +155,26 @@ Thành viên: Nhóm A20-124
 
 #### Học được
 - Việc tách biệt rõ ràng giữa prompt trả về dữ liệu (JSON) và prompt trò chuyện (Text) giúp hệ thống AI hoạt động tin cậy hơn, tránh được các lỗi hiển thị không mong muốn cho người dùng cuối.
+
+### Cập nhật ngày 11/05/2026
+#### Đã làm
+- **Hệ thống Audit & Security**: Triển khai `AdminAuditMiddleware` để tự động ghi lại mọi thao tác của Admin và Staff. Phát triển công cụ CLI `reset_admin.py` để quản lý tài khoản và quyền hạn trực tiếp từ Console (Railway/Terminal).
+- **PMF Metrics**: Hoàn thiện `MetricService` và API `/api/metrics` để tính toán tỷ lệ AI Resolution, Human Fallback, độ trễ hệ thống và biểu đồ hoạt động hàng ngày (Admin vs Guest).
+- **Staff Dashboard**: Xây dựng giao diện cho nhân viên tư vấn với khả năng xem danh sách Fallback, tra cứu bối cảnh học sinh (Handoff Summary) và chỉnh sửa trực tiếp hồ sơ học thuật (GPA, IELTS, Ngành quan tâm).
+- **Admin Dashboard**: Nâng cấp Tab Audit với bộ lọc lỗi/fallback, tìm kiếm theo email và Modal xem chi tiết log (hiển thị JSON Judge Result đẹp mắt).
+- **Độ tin cậy (Resilience)**: Fix các lỗi `NoneType` crash API khi gặp dữ liệu SQL Null và tự động hóa quy trình Migration Schema cho bảng `audit_logs`.
+- **Unit Testing**: Viết bộ test `test_pmf_handoff.py` kiểm tra phân quyền (RBAC) và logic Rate Limiting cho các endpoint nhạy cảm.
+
+#### Khó nhất tuần này
+- Đồng bộ hóa Schema Database: Việc cập nhật bảng `audit_logs` hiện có trên môi trường Production mà không làm mất dữ liệu cũ yêu cầu logic `migrate_db` phải cực kỳ cẩn thận với lệnh `ALTER TABLE`.
+- Xử lý bất đồng bộ state trong React: Đảm bảo dữ liệu tóm tắt học sinh hiển thị chính xác ngay lập tức khi Staff click vào danh sách Nhật ký (tránh lỗi Stale State).
+
+#### AI tool đã dùng
+| Tool | Dùng để làm gì | Kết quả |
+|---|---|---|
+| Gemini Code Assist | Refactor Middleware, viết Unit Test cho PMF và gỡ lỗi logic UI Dashboards | Rút ngắn thời gian phát triển các tính năng quản trị phức tạp và đảm bảo code sạch. |
+
+#### Học được
+- Middleware là công cụ mạnh mẽ để tách biệt logic nghiệp vụ và logic hệ thống (như ghi log hành vi).
+- Trong môi trường thực tế, dữ liệu người dùng thường không đầy đủ; luôn cần sử dụng pattern `(data or {})` để bảo vệ ứng dụng khỏi các lỗi crash không đáng có.
+- Việc hiển thị "Tại sao AI thất bại" (Judge Result) quan trọng hơn việc AI trả lời đúng, vì nó giúp đội ngũ nhân viên biết chính xác chỗ nào cần can thiệp.

@@ -885,3 +885,99 @@ LINE 1: INSERT INTO audit_logs (user_id, input_data, output_data, ju...
 2026-05-11 11:05:16 [-] main ERROR — Error fetching audit logs: 'NoneType' object is not callable
 2026-05-11 11:05:21 [-] guards.rate_limiter INFO — RateLimiter: evicted 1 inactive users.
 2026-05-11 11:05:33 [-] main ERROR — Error fetching audit logs: 'NoneType' object is not callable
+2026-05-11 11:09:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 11:09:30 [-] services.rag_service INFO — Initializing RAGService
+2026-05-11 11:09:31 [-] services.rag_service INFO — Re-ingesting all data...
+2026-05-11 11:09:31 [-] services.rag_service INFO — Ingested 0 admission chunks
+2026-05-11 11:09:31 [-] services.rag_service INFO — Ingested 0 FAQ items
+2026-05-11 11:09:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 11:09:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-11 11:09:32 [-] main INFO — Database initialized on startup
+2026-05-11 11:09:32 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-11 11:18:55 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 55b9ea30-3f46-45d3-8661-25a9c0dc1ec1
+2026-05-11 11:18:55 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 11:18:55 [-] orchestrator.router INFO — Routing message: 'Triển vọng nghề nghiệp...'
+2026-05-11 11:19:00 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 5.25s
+2026-05-11 11:19:00 [-] orchestrator.router INFO — [LLM] Routed to: advisor
+2026-05-11 11:19:00 [-] agents.advisor INFO — AdvisorAgent.run() called
+2026-05-11 11:19:04 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 3.98s
+2026-05-11 11:19:04 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 11:19:06 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.25s
+2026-05-11 11:19:06 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=The response provides helpful and relevant information regarding career prospects and educational programs at VinUniversity. It encourages the user to explore their interests, which is appropriate for a high school student considering university options.
+2026-05-11 11:19:06 [-] orchestrator.pipeline WARNING — Structured advisor parsing failed: Expecting value: line 1 column 1 (char 0)
+2026-05-11 11:19:06 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=11547ms
+2026-05-11 11:19:08 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 55b9ea30-3f46-45d3-8661-25a9c0dc1ec1
+2026-05-11 11:19:08 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 11:19:08 [-] orchestrator.router INFO — Routing message: 'Phân tích hồ sơ...'
+2026-05-11 11:19:10 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.34s
+2026-05-11 11:19:10 [-] orchestrator.router INFO — [LLM] Routed to: crm
+2026-05-11 11:19:10 [-] agents.crm INFO — CRMAgent.run() — user: [EMAIL]
+2026-05-11 11:19:14 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 4.16s
+2026-05-11 11:19:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 11:19:16 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.51s
+2026-05-11 11:19:16 [-] agents.judge INFO — Judge Result: pass=True, score=95, reason=The response provides personalized and constructive analysis of the user's profile, focusing on strengths, interests, and areas for improvement relevant to university admission. It does not contain any harmful content, fabricated information, or personal data leakage. The response is appropriate and helpful for a high school student considering university options.
+2026-05-11 11:19:16 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=crm pass=True latency=8033ms
+2026-05-11 11:19:17 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 55b9ea30-3f46-45d3-8661-25a9c0dc1ec1
+2026-05-11 11:19:17 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 11:19:17 [-] orchestrator.router INFO — Routing message: 'So sánh mức lương...'
+2026-05-11 11:19:18 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 0.88s
+2026-05-11 11:19:18 [-] orchestrator.router INFO — [LLM] Routed to: fallback
+2026-05-11 11:19:19 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 11:19:20 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.29s
+2026-05-11 11:19:20 [-] agents.judge INFO — Judge Result: pass=False, score=20, reason=The response does not address the user's request for a salary comparison and is unrelated to the question.
+2026-05-11 11:19:20 [-] orchestrator.pipeline WARNING — Judge REJECTED response for user [EMAIL] Reason: The response does not address the user's request for a salary comparison and is unrelated to the question.
+2026-05-11 11:19:20 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=fallback pass=False latency=2600ms
+2026-05-11 11:33:49 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: b5f007d9-8f00-418a-8059-a2bebe39ee95
+2026-05-11 11:33:49 [-] guards.rate_limiter INFO — RateLimiter: evicted 1 inactive users.
+2026-05-11 11:33:49 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 11:33:49 [-] orchestrator.router INFO — Routing message: 'Triển vọng nghề nghiệp...'
+2026-05-11 11:33:51 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.10s
+2026-05-11 11:33:51 [-] orchestrator.router INFO — [LLM] Routed to: advisor
+2026-05-11 11:33:51 [-] agents.advisor INFO — AdvisorAgent.run() called
+2026-05-11 11:33:54 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 3.44s
+2026-05-11 11:33:54 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 11:33:57 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 3.01s
+2026-05-11 11:33:57 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=The response is informative and relevant, providing a positive perspective on career prospects associated with various fields of study at VinUniversity. It encourages the user to explore their interests and strengths, which is appropriate for a high school student considering university options.
+2026-05-11 11:33:57 [-] orchestrator.pipeline WARNING — Structured advisor parsing failed: Expecting value: line 1 column 1 (char 0)
+2026-05-11 11:33:57 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=7617ms
+2026-05-11 11:35:17 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 6925f04d-8f9f-4f4a-95bc-544f9a8d1829
+2026-05-11 11:35:17 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 11:35:17 [-] orchestrator.router INFO — Routing message: 'Phân tích hồ sơ...'
+2026-05-11 11:35:19 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.54s
+2026-05-11 11:35:19 [-] orchestrator.router INFO — [LLM] Routed to: crm
+2026-05-11 11:35:19 [-] agents.crm INFO — CRMAgent.run() — user: [EMAIL]
+2026-05-11 11:35:23 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 3.46s
+2026-05-11 11:35:23 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 11:35:25 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.72s
+2026-05-11 11:35:25 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=The response provides a thoughtful analysis based on the user's profile, highlighting interests, strengths, areas for improvement, and working style without any harmful content or inaccuracies. It is suitable for a Vietnamese high school student.
+2026-05-11 11:35:25 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=crm pass=True latency=8751ms
+2026-05-11 11:42:58 [-] guards.rate_limiter INFO — RateLimiter: evicted 1 inactive users.
+2026-05-11 11:43:18 [-] main ERROR — Error fetching audit logs: 'NoneType' object is not callable
+2026-05-11 11:44:45 [-] main ERROR — Error fetching audit logs: 'NoneType' object is not callable
+2026-05-11 11:44:57 [-] main ERROR — Error fetching audit logs: 'NoneType' object is not callable
+2026-05-11 12:16:06 [-] main INFO — Profile updated for user: [EMAIL]
+2026-05-11 12:16:17 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: a27d1c0d-f71d-42fd-8041-1d5868bd06f3
+2026-05-11 12:16:17 [-] guards.rate_limiter INFO — RateLimiter: evicted 1 inactive users.
+2026-05-11 12:16:17 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 12:16:17 [-] orchestrator.router INFO — Routing message: 'Triển vọng nghề nghiệp...'
+2026-05-11 12:16:20 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.61s
+2026-05-11 12:16:20 [-] orchestrator.router INFO — [LLM] Routed to: advisor
+2026-05-11 12:16:20 [-] agents.advisor INFO — AdvisorAgent.run() called
+2026-05-11 12:16:27 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 7.39s
+2026-05-11 12:16:27 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 12:16:33 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 6.07s
+2026-05-11 12:16:33 [-] agents.judge INFO — Judge Result: pass=True, score=95, reason=The response provides helpful and relevant information about career prospects related to VinUniversity, encourages self-exploration for suitable fields of study, and offers support for further questions, all of which are appropriate for a Vietnamese high school student.
+2026-05-11 12:16:33 [-] orchestrator.pipeline WARNING — Structured advisor parsing failed: Expecting value: line 1 column 1 (char 0)
+2026-05-11 12:16:33 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=16119ms
+2026-05-11 12:16:59 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: a27d1c0d-f71d-42fd-8041-1d5868bd06f3
+2026-05-11 12:16:59 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-11 12:16:59 [-] orchestrator.router INFO — Routing message: 'Dựa trên Profile của tôi, tôi nên chọn môn nào...'
+2026-05-11 12:17:02 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.71s
+2026-05-11 12:17:02 [-] orchestrator.router INFO — [LLM] Routed to: advisor
+2026-05-11 12:17:02 [-] agents.advisor INFO — AdvisorAgent.run() called
+2026-05-11 12:17:10 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 8.05s
+2026-05-11 12:17:10 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-11 12:17:14 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 3.53s
+2026-05-11 12:17:14 [-] agents.judge INFO — Judge Result: pass=True, score=95, reason=The response is helpful, encourages self-exploration regarding subject choice, and invites further discussion to tailor suggestions, making it appropriate for a high school student.
+2026-05-11 12:17:14 [-] orchestrator.pipeline WARNING — Structured advisor parsing failed: Expecting value: line 1 column 1 (char 0)
+2026-05-11 12:17:14 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=14319ms
