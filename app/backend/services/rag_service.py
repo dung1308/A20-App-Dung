@@ -31,6 +31,7 @@ from __future__ import annotations
 import re
 import copy
 import time
+from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 from typing import List, Dict, Any, Tuple, Optional
 
@@ -630,6 +631,113 @@ class RAGService:
     # ------------------------------------------------------------------
     # Ingestion
     # ------------------------------------------------------------------
+    def sync_all(self, source_type: str = "internal", params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """Refresh RAG data for a selected source."""
+        params = params or {}
+        force = bool(params.get("force_overwrite"))
+        report = {
+            "source_type": source_type,
+            "force_overwrite": force,
+            "added": 0,
+            "updated": 0,
+            "failed_files": [],
+            "completed_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }
+
+        if USE_MOCK:
+            report["message"] = "Mock mode: ingestion skipped"
+            return report
+
+        try:
+            if source_type == "internal":
+                if force:
+                    try:
+                        self.client.delete_collection("admissions")
+                    except Exception:
+                        pass
+                    try:
+                        self.client.delete_collection("faq")
+                    except Exception:
+                        pass
+                    self.admission_collection = self.client.get_or_create_collection(name="admissions")
+                    self.faq_collection = self.client.get_or_create_collection(name="faq")
+
+                faq_added, faq_updated = self.ingest_faq_folder()
+                admissions_added, admissions_updated = self._ingest_admissions()
+                self.build_bm25_index()
+                report["added"] = faq_added + admissions_added
+                report["updated"] = faq_updated + admissions_updated
+                return report
+
+            if source_type == "external":
+                url = (params.get("url") or "").strip()
+                if not url:
+                    raise ValueError("External ingestion requires params.url")
+                added = self.ingest_external_url(url, force_overwrite=force)
+                report["added"] = added
+                return report
+
+            raise ValueError(f"Unsupported source_type: {source_type}")
+        except Exception as e:
+            logger.error(f"RAG sync_all failed: {e}")
+            report["failed_files"].append({"name": source_type, "type": "rag", "error": str(e)})
+            return report
+
+    def sync_all_streaming(self, source_type: str = "internal", params: Optional[Dict[str, Any]] = None):
+        """Yield coarse-grained progress events for SSE clients."""
+        yield {"progress": 10, "message": "Starting RAG ingestion"}
+        report = self.sync_all(source_type=source_type, params=params or {})
+        yield {"progress": 100, "message": "RAG ingestion completed", "report": report, "done": True}
+
+    def ingest_external_url(self, url: str, force_overwrite: bool = False) -> int:
+        import requests
+        from html.parser import HTMLParser
+
+        class TextExtractor(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.parts = []
+                self.skip = False
+
+            def handle_starttag(self, tag, attrs):
+                if tag in {"script", "style", "noscript"}:
+                    self.skip = True
+
+            def handle_endtag(self, tag):
+                if tag in {"script", "style", "noscript"}:
+                    self.skip = False
+
+            def handle_data(self, data):
+                if not self.skip and data.strip():
+                    self.parts.append(data.strip())
+
+        response = requests.get(url, timeout=15, headers={"User-Agent": "VinUniAdmissionAssistant/1.0"})
+        response.raise_for_status()
+        parser = TextExtractor()
+        parser.feed(response.text)
+        text = " ".join(parser.parts)
+        chunks = chunk_text(text, max_tokens=220)
+        ids, documents, embeddings, metadatas = [], [], [], []
+        safe_id = re.sub(r"[^a-zA-Z0-9._-]", "_", url)[:120]
+
+        for idx, chunk in enumerate(chunks):
+            emb = self.embed_text(chunk)
+            if emb is None:
+                continue
+            ids.append(f"external_{safe_id}_{idx}")
+            documents.append(chunk)
+            embeddings.append(emb)
+            metadatas.append({"type": "external", "source": "web", "url": url})
+
+        if ids:
+            self.admission_collection.upsert(
+                ids=ids,
+                documents=documents,
+                embeddings=embeddings,
+                metadatas=metadatas,
+            )
+        return len(ids)
+
     def ingest_faq_folder(self, folder_path="data/faq"):
         import json
         from pathlib import Path
@@ -757,11 +865,12 @@ class RAGService:
         collection = self.client.get_or_create_collection(name=f"cv_{user_id}")
         chunks = chunk_text(cv_text)
         ids, documents, embeddings = [], [], []
+        stamp = datetime.utcnow().strftime("%Y%m%d%H%M%S%f")
         for i, chunk in enumerate(chunks):
             emb = self.embed_text(chunk)
             if emb is None:
                 continue
-            ids.append(f"{user_id}_{i}")
+            ids.append(f"{user_id}_{stamp}_{i}")
             documents.append(chunk)
             embeddings.append(emb)
         if ids:

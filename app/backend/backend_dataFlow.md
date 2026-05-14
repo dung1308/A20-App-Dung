@@ -31,7 +31,7 @@ Every incoming request to `/api/match` or `/api/chat` passes through:
     - **RAG Agent**: Fetches context from `DEMO_CORPUS` via `RAGService` (Keyword overlap in Mock; Vector search in Production) and generates a grounded response.
     - **Advisor Agent**: Provides personalized chat-based guidance using conversation history.
     - **CRM Agent**: Interacts with `DBService` to fetch or update student profile data.
-3.  **Handoff**: If the route is `fallback` or the response is rejected by safety filters, a **Human Handoff Summary** is generated (Profile + Recent History) and sent via `HUMAN_WEBHOOK` for human intervention.
+3.  **Handoff**: If the route is `fallback` or the response is rejected by safety filters, the audit log is marked with `handoff_status="pending"` so `/staff` can show it as a human fallback job. Staff can accept the job, inspect the student's latest session, and send a human advisor reply into that same chat session.
 
 ---
 

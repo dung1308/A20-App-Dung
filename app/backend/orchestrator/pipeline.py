@@ -122,6 +122,11 @@ class Pipeline:
                 if not cv_signals:
                     if cv_text:
                         cv_signals = self.cv_agent.analyze(cv_text)
+                    else:
+                        active_cv = self.db_service.get_active_cv_document(user_id)
+                        if active_cv:
+                            cv_text = active_cv.get("raw_text")
+                            cv_signals = active_cv.get("cv_signals")
                 
                 route = "advisor"
 
@@ -321,6 +326,12 @@ class Pipeline:
                 status = "rejected"
                 ai_resolved = False
                 fallback = True
+                handoff_status = "pending"
+            elif route == "fallback":
+                status = "fallback"
+                ai_resolved = False
+                fallback = True
+                handoff_status = "pending"
             else:
                 status = "success"
                 ai_resolved = True

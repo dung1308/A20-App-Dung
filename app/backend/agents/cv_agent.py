@@ -11,11 +11,12 @@ class CVAgent:
     structured 'signals' used by the matching engine and RAG services.
     """
 
-    def analyze(self, text: str) -> Dict[str, Any]:
+    def analyze(self, text: str, structured_data: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         Analyzes the extracted CV text and returns structured signals.
         Logs the input text length to assist in verifying parser performance.
         """
+        structured_data = structured_data or {}
         text_length = len(text) if text else 0
         
         # Audit log to verify data flow from the PDF parser
@@ -43,18 +44,19 @@ class CVAgent:
             "Strategic Planning", "Market Research", "Financial Analysis", "Leadership",
             "Communication", "Teamwork", "Problem Solving", "Critical Thinking", "Presentation"
         ]
-        extracted_skills = []
+        extracted_skills = list(dict.fromkeys(structured_data.get("skills") or []))
         # Prioritize skills from the dedicated section, otherwise search globally
         skill_search_text = skills_section if skills_section else text
         for skill in common_skills:
             if re.search(rf"\b{skill}\b", skill_search_text, re.IGNORECASE):
                 extracted_skills.append(skill.replace("\\", ""))  # Remove regex escapes for the result
+        extracted_skills = list(dict.fromkeys(extracted_skills))
         
         # Attempt to find GPA (e.g., GPA: 3.8 or 3.5/4.0)
         # Prioritize GPA from the education section
         gpa_search_text = education_section if education_section else text
         gpa_match = re.search(r"GPA[:\s]*(\d\.\d{1,2}|[0-4](?:\.\d{1,2})?/\d(?:\.\d{1,2})?)", gpa_search_text, re.IGNORECASE)
-        gpa_estimate = None
+        gpa_estimate = structured_data.get("gpa")
         if gpa_match:
             gpa_raw = gpa_match.group(1)
             if '/' in gpa_raw: # Convert X.X/Y.Y to X.X

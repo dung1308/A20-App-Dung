@@ -64,6 +64,22 @@ class Student(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+class CVDocument(Base):
+    """Versioned uploaded CV document and extracted profile data."""
+    __tablename__ = "cv_documents"
+    id = Column(String, primary_key=True)
+    user_id = Column(String, ForeignKey("users.user_id"), nullable=False, index=True)
+    filename = Column(String, nullable=False)
+    file_path = Column(String, nullable=True)
+    raw_text = Column(Text, nullable=True)
+    structured_data = Column(JSON, nullable=True)
+    cv_signals = Column(JSON, nullable=True)
+    version = Column(Integer, default=1)
+    is_active = Column(Boolean, default=False)
+    confirmed_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
 class AuditLog(Base):
     """Compliance trail for all API operations."""
     __tablename__ = "audit_logs"

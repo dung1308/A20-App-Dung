@@ -12,7 +12,7 @@ import CVUpload from '../components/CVUpload/CVUpload';
 const WizardPage = () => {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
-  const { wizardData, setWizardData, setMatchResults, cvText, cvSignals, setCVData } = useStore(); 
+  const { wizardData, setWizardData, setMatchResults, cvText, cvSignals, cvDocumentId, setCVData } = useStore(); 
   const { userId, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const WizardPage = () => {
       <div className="step-container">
         <h2 className="text-2xl font-black text-blue-900 mb-4">Chào mừng bạn!</h2>
         <p className="text-slate-600 mb-8">Để bắt đầu, bạn có thể tải lên CV để AI hiểu rõ hơn về năng lực và kinh nghiệm của bạn.</p>
-        <CVUpload onUploadSuccess={(data) => setCVData(data.cv_text, data.cv_signals)} />
+        <CVUpload onUploadSuccess={(data) => setCVData(data.cv_text, data.cv_signals, data.cv_document_id, data.structured_data)} />
         
         {/* Visual feedback for extracted CV signals */}
         {(cvSignals?.extracted_skills?.length > 0 || cvSignals?.extracted_job_titles?.length > 0) && (
@@ -140,12 +140,14 @@ const WizardPage = () => {
         user_id: userId, 
         answers: wizardData, 
         cv_text: cvText,
-        cv_signals: cvSignals 
+        cv_signals: cvSignals,
+        cv_document_id: cvDocumentId
       });
       setMatchResults(data);
       const email = userId || localStorage.getItem('user_email');
       if (email) {
         localStorage.setItem(`wizard_completed_${email}`, 'true');
+        localStorage.setItem(`latest_report_${email}`, JSON.stringify(data));
       }
       navigate('/dashboard');
       navigate('/report');

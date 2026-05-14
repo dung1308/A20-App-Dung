@@ -11,12 +11,18 @@ const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [cvDocuments, setCvDocuments] = useState([]);
   const [formData, setFormData] = useState({
     full_name: '',
     phone: '',
     gpa: '',
     ielts: '',
-    majors: ''
+    majors: '',
+    summary: '',
+    career_goals: '',
+    skills: '',
+    education: '',
+    experience: ''
   });
 
   const hasWizardAnswers = Boolean(
@@ -36,8 +42,15 @@ const ProfilePage = () => {
         phone: data.phone || '',
         gpa: data.gpa || '',
         ielts: (data.test_scores || {}).ielts || '',
-        majors: (data.preferred_majors || []).join(', ')
+        majors: (data.preferred_majors || []).join(', '),
+        summary: data.summary || '',
+        career_goals: data.career_goals || '',
+        skills: (data.skills || []).join(', '),
+        education: formatProfileList(data.education),
+        experience: formatProfileList(data.experience)
       });
+      const docs = await api.getCVDocuments();
+      setCvDocuments(docs.documents || []);
     } catch (err) {
       toast.error('Không thể tải thông tin hồ sơ.');
     } finally {
@@ -57,7 +70,12 @@ const ProfilePage = () => {
         phone: formData.phone,
         gpa: formData.gpa === '' ? null : parseFloat(formData.gpa),
         test_scores: { ielts: formData.ielts },
-        preferred_majors: formData.majors.split(',').map((m) => m.trim()).filter(Boolean)
+        preferred_majors: splitCsv(formData.majors),
+        summary: formData.summary,
+        career_goals: formData.career_goals,
+        skills: splitCsv(formData.skills),
+        education: splitLines(formData.education),
+        experience: splitLines(formData.experience)
       });
       toast.success('Hồ sơ đã được cập nhật thành công.');
       setIsEditing(false);
@@ -78,7 +96,12 @@ const ProfilePage = () => {
         phone: profile.phone || '',
         gpa: profile.gpa || '',
         ielts: (profile.test_scores || {}).ielts || '',
-        majors: (profile.preferred_majors || []).join(', ')
+        majors: (profile.preferred_majors || []).join(', '),
+        summary: profile.summary || '',
+        career_goals: profile.career_goals || '',
+        skills: (profile.skills || []).join(', '),
+        education: formatProfileList(profile.education),
+        experience: formatProfileList(profile.experience)
       });
     }
   };
@@ -91,6 +114,27 @@ const ProfilePage = () => {
       setTimeout(() => window.URL.revokeObjectURL(url), 60000);
     } catch (err) {
       toast.error('Không thể mở CV. Vui lòng tải lại file PDF.');
+    }
+  };
+
+  const handleConfirmCV = async (documentId) => {
+    try {
+      await api.confirmCV(documentId);
+      toast.success('CV da duoc chon lam phien ban dang su dung.');
+      fetchProfile();
+    } catch (err) {
+      toast.error('Khong the xac nhan CV.');
+    }
+  };
+
+  const handleDeleteCV = async (documentId) => {
+    if (!window.confirm('Delete this CV document?')) return;
+    try {
+      await api.deleteCVDocument(documentId);
+      toast.success('CV document deleted.');
+      fetchProfile();
+    } catch (err) {
+      toast.error('Khong the xoa CV.');
     }
   };
 
@@ -142,6 +186,52 @@ const ProfilePage = () => {
 
       <div className="bg-white border border-slate-200 rounded-3xl shadow-xl shadow-blue-900/5 overflow-hidden">
         <div className="p-8 space-y-8">
+          <section>
+            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">Profile Summary</h3>
+            <div className="space-y-6">
+              <Field label="Summary" editing={isEditing}>
+                {isEditing ? (
+                  <textarea className={`${inputClass} min-h-28 resize-y`} value={formData.summary} onChange={(e) => setFormData({ ...formData, summary: e.target.value })} placeholder="Short profile summary extracted from CV or written by you" />
+                ) : (
+                  <DisplayBlock>{profile?.summary || 'Chua cap nhat'}</DisplayBlock>
+                )}
+              </Field>
+              <Field label="Career goals" editing={isEditing}>
+                {isEditing ? (
+                  <textarea className={`${inputClass} min-h-24 resize-y`} value={formData.career_goals} onChange={(e) => setFormData({ ...formData, career_goals: e.target.value })} placeholder="Career goals, target roles, or study direction" />
+                ) : (
+                  <DisplayBlock>{profile?.career_goals || 'Chua cap nhat'}</DisplayBlock>
+                )}
+              </Field>
+              <Field label="Skills" editing={isEditing}>
+                {isEditing ? (
+                  <input className={inputClass} value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value })} placeholder="Python, Leadership, Research..." />
+                ) : (
+                  <TagList items={profile?.skills || []} empty="Chua co ky nang" />
+                )}
+              </Field>
+            </div>
+          </section>
+
+          <section>
+            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">Education & Experience</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Field label="Education" editing={isEditing}>
+                {isEditing ? (
+                  <textarea className={`${inputClass} min-h-40 resize-y`} value={formData.education} onChange={(e) => setFormData({ ...formData, education: e.target.value })} placeholder="One education entry per line" />
+                ) : (
+                  <BulletList items={profile?.education || []} empty="Chua co hoc van" />
+                )}
+              </Field>
+              <Field label="Experience" editing={isEditing}>
+                {isEditing ? (
+                  <textarea className={`${inputClass} min-h-40 resize-y`} value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} placeholder="One experience entry per line" />
+                ) : (
+                  <BulletList items={profile?.experience || []} empty="Chua co kinh nghiem" />
+                )}
+              </Field>
+            </div>
+          </section>
           <section>
             <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">Thông tin cơ bản</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -230,6 +320,39 @@ const ProfilePage = () => {
                   />
                 </div>
               )}
+
+              {cvDocuments.length > 0 && (
+                <div className="mt-2 border border-slate-200 rounded-xl overflow-hidden">
+                  <div className="px-4 py-3 bg-slate-50 border-b border-slate-100">
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Uploaded CV versions</p>
+                  </div>
+                  <div className="divide-y divide-slate-100">
+                    {cvDocuments.map((doc) => (
+                      <div key={doc.id} className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                        <div>
+                          <p className="text-sm font-bold text-slate-900">{doc.filename}</p>
+                          <p className="text-[10px] text-slate-500 font-black uppercase tracking-tighter">
+                            Version {doc.version} · {doc.created_at ? new Date(doc.created_at).toLocaleString() : '-'}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {doc.is_active && (
+                            <span className="px-2 py-1 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded text-[10px] font-black uppercase">
+                              Active
+                            </span>
+                          )}
+                          <button onClick={() => handleConfirmCV(doc.id)} className="px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-primary uppercase">
+                            Confirm
+                          </button>
+                          <button onClick={() => handleDeleteCV(doc.id)} className="px-3 py-2 bg-red-600 text-white rounded-lg text-[10px] font-black uppercase">
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         </div>
@@ -268,5 +391,46 @@ const DisplayValue = ({ children, icon, muted = false }) => (
     <p className="font-bold text-sm">{children}</p>
   </div>
 );
+
+const DisplayBlock = ({ children }) => (
+  <div className="px-4 py-3 rounded-xl bg-slate-50/50 text-slate-700 border border-transparent text-sm leading-6 whitespace-pre-wrap">
+    {children}
+  </div>
+);
+
+const TagList = ({ items = [], empty }) => {
+  if (!items.length) return <p className="text-slate-400 text-sm italic font-medium px-1">{empty}</p>;
+  return (
+    <div className="flex flex-wrap gap-2 pt-1">
+      {items.map((item) => (
+        <span key={String(item)} className="px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-100 rounded-lg text-[11px] font-black">
+          {String(item)}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const BulletList = ({ items = [], empty }) => {
+  if (!items.length) return <p className="text-slate-400 text-sm italic font-medium px-1">{empty}</p>;
+  return (
+    <ul className="space-y-2">
+      {items.map((item, index) => (
+        <li key={`${String(item)}-${index}`} className="px-4 py-3 bg-slate-50/50 rounded-xl text-sm text-slate-700 leading-6">
+          {typeof item === 'string' ? item : Object.values(item || {}).filter(Boolean).join(' - ')}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const splitCsv = (value) => value.split(',').map((item) => item.trim()).filter(Boolean);
+
+const splitLines = (value) => value.split('\n').map((item) => item.trim()).filter(Boolean);
+
+const formatProfileList = (value) => {
+  if (!Array.isArray(value)) return '';
+  return value.map((item) => (typeof item === 'string' ? item : Object.values(item || {}).filter(Boolean).join(' - '))).filter(Boolean).join('\n');
+};
 
 export default ProfilePage;

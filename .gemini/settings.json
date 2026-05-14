@@ -1,39 +1,63 @@
 {
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "name": "log-session-start",
+            "type": "command",
+            "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool gemini",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
     "BeforeAgent": [
       {
         "hooks": [
           {
             "name": "log-prompt",
             "type": "command",
-            "command": "AI_TOOL_NAME=gemini python3 scripts/log_hook.py",
-            "timeout": 10000
+            "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool gemini",
+            "timeout": 30000
           }
         ]
       }
     ],
-    "AfterModel": [
+    "BeforeTool": [
       {
         "matcher": ".*",
         "hooks": [
           {
-            "name": "log-model",
+            "name": "log-before-tool",
             "type": "command",
-            "command": "AI_TOOL_NAME=gemini python3 scripts/log_hook.py",
-            "timeout": 10000
+            "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool gemini",
+            "timeout": 30000
+          }
+        ]
+      }
+    ],
+    "AfterTool": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "name": "log-after-tool",
+            "type": "command",
+            "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool gemini",
+            "timeout": 30000
           }
         ]
       }
     ],
     "SessionEnd": [
       {
-        "matcher": ".*",
         "hooks": [
           {
             "name": "log-session-end",
             "type": "command",
-            "command": "AI_TOOL_NAME=gemini python3 scripts/log_hook.py",
-            "timeout": 10000
+            "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool gemini",
+            "timeout": 30000
           }
         ]
       }

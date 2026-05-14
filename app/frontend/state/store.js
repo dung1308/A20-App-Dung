@@ -15,6 +15,8 @@ export const useStore = create((set) => ({
   // State for CV Data
   cvText: '',
   cvSignals: null,
+  cvDocumentId: null,
+  cvStructuredData: null,
   
   // Individual setters to support granular updates from components
   setCVText: (text) => set({ cvText: text }),
@@ -24,9 +26,11 @@ export const useStore = create((set) => ({
    * Action to update CV data after successful upload.
    * Maps directly to the response from /api/upload-cv
    */
-  setCVData: (text, signals) => set({ 
+  setCVData: (text, signals, documentId = null, structuredData = null) => set({ 
     cvText: text, 
-    cvSignals: signals 
+    cvSignals: signals,
+    cvDocumentId: documentId,
+    cvStructuredData: structuredData
   }),
 
   // State for Recommendations

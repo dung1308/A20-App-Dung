@@ -29,6 +29,18 @@ VALID_IDS = {
     "finance", "data_science", "liberal_arts", "architecture",
 }
 
+OFFICIAL_MAJOR_LINKS: Dict[str, Dict[str, str]] = {
+    "cs": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "ee": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "me": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "bme": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "ba": {"department": "College of Business and Management", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "finance": {"department": "College of Business and Management", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "data_science": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "liberal_arts": {"department": "College of Arts and Sciences", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "architecture": {"department": "VinUni Admissions", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+}
+
 VINUNI_MAJORS_LOOKUP: Dict[str, Dict] = {
     "cs":           {"name": "Khoa học Máy tính",         "what_students_do": "Sinh viên CS tại VinUni làm việc với AI, xây dựng ứng dụng, nghiên cứu thuật toán và thực tập tại các công ty công nghệ như VNG, KMS, FPT."},
     "ee":           {"name": "Kỹ thuật Điện — Điện tử",   "what_students_do": "Sinh viên EE thiết kế mạch điện, lập trình vi điều khiển, làm dự án IoT và thực tập tại các nhà máy sản xuất điện tử."},
@@ -230,7 +242,12 @@ Câu hỏi của học sinh: {message}
 Hãy hỏi thêm 2-3 thông tin cụ thể để có thể tư vấn tốt hơn."""
             else:
                 # Normal advisor chat
-                prompt = f"{self.system_prompt}{persona_ctx}\n\nLịch sử trò chuyện:\n{hist_ctx}\n\nCâu hỏi: {message}"
+                grounding_rule = (
+                    "\n\nGrounding rule: For admissions, tuition, scholarship, and major requirement claims, "
+                    "prioritize official VinUni sources from admissions.vinuni.edu.vn or vinuni.edu.vn/admission. "
+                    "If official source context is unavailable, label the claim as an AI estimate that should be verified."
+                )
+                prompt = f"{self.system_prompt}{grounding_rule}{persona_ctx}\n\nLịch sử trò chuyện:\n{hist_ctx}\n\nCâu hỏi: {message}"
 
             if not self.llm: return "Hệ thống đang bận. Vui lòng thử lại sau."
             response_text = self.llm.generate(prompt)
@@ -315,6 +332,9 @@ Hãy hỏi thêm 2-3 thông tin cụ thể để có thể tư vấn tốt hơn.
                 "major_name": info["name"],
                 "match_reason": item.get("match_reason", ""),
                 "match_score": item.get("match_score", 0),
-                "what_students_do": info["what_students_do"]
+                "what_students_do": info["what_students_do"],
+                "department": OFFICIAL_MAJOR_LINKS.get(major_id, {}).get("department"),
+                "source_url": OFFICIAL_MAJOR_LINKS.get(major_id, {}).get("source_url"),
+                "verified_source": bool(OFFICIAL_MAJOR_LINKS.get(major_id, {}).get("source_url")),
             })
         return enriched

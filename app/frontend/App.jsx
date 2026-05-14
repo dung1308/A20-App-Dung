@@ -6,6 +6,7 @@ import DashboardPage from './pages/DashboardPage';
 import ConsultantPage from './pages/ConsultantPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
+import ResourcesPage from './pages/ResourcesPage';
 import TokenUsagePage from './pages/TokenUsagePage';
 import DatabaseManagementPage from './pages/DatabaseManagementPage';
 import StaffDashboard from './pages/StaffDashboard';
@@ -82,6 +83,7 @@ function App() {
           <Route path="/consultant" element={<ConsultantPage />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/system/tokens" element={<TokenUsagePage />} />
           <Route path="/staff" element={<StaffRoute><StaffDashboard /></StaffRoute>} />

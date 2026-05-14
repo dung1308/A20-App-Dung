@@ -29,8 +29,9 @@ from utils.logger import get_logger
 from fastapi import UploadFile, File
 import database
 from services.pdf_loader import extract_text_from_pdf
+from services.cv_parser import parse_cv
 from services.metric_service import MetricService
-from config import CORS_ORIGINS
+from config import CORS_ORIGINS, ALLOW_PROMPT_DELETION
 from guards.rate_limiter import RateLimiter
 from guards.admin_audit import AdminAuditMiddleware
 
@@ -273,8 +274,36 @@ class RenameSessionRequest(BaseModel):
 class HandoffActionRequest(BaseModel):
     status: str # 'accepted' or 'busy'
 
+class HandoffReplyRequest(BaseModel):
+    message: str = Field(..., min_length=1, max_length=5000)
+
 class RagConfigRequest(BaseModel):
     interval_hours: int
+
+class IngestRequest(BaseModel):
+    source_type: str = Field("internal", pattern="^(internal|external)$")
+    params: Dict[str, Any] = Field(default_factory=dict)
+
+class PromptCreateRequest(BaseModel):
+    agent_name: str
+    version: str
+    content: str
+
+class PromptCompareRequest(BaseModel):
+    agent_name: str
+    version_a: str
+    version_b: str
+    test_input: Optional[str] = ""
+
+class PromptSelectRequest(BaseModel):
+    agent_name: str
+    version: str
+
+class PromptResponse(BaseModel):
+    agent_name: str
+    version: str
+    content: str
+    created_at: Optional[datetime] = None
 
 class GoogleLoginRequest(BaseModel):
     token: str
@@ -286,6 +315,14 @@ class ProfileUpdateRequest(BaseModel):
     gpa: Optional[float] = None
     test_scores: Optional[Dict[str, Any]] = None
     preferred_majors: Optional[List[str]] = None
+    summary: Optional[str] = None
+    career_goals: Optional[str] = None
+    skills: Optional[List[str]] = None
+    education: Optional[List[Any]] = None
+    experience: Optional[List[Any]] = None
+
+class CVConfirmRequest(BaseModel):
+    structured_data: Optional[Dict[str, Any]] = None
 
 class EmailLogRequest(BaseModel):
     user_id: str
@@ -315,6 +352,7 @@ class MatchRequest(BaseModel):
     answers: Dict[str, Any]
     cv_text: Optional[str] = None
     cv_signals: Optional[Dict[str, Any]] = None
+    cv_document_id: Optional[str] = None
 
 @app.get("/health")
 async def health_check():
@@ -378,7 +416,7 @@ async def get_session_messages(session_id: str, current_user: dict = Depends(get
         raise HTTPException(status_code=404, detail="Phiên hội thoại không tồn tại")
 
     # 2. Security check
-    is_admin = current_user.get("role") == "admin"
+    is_admin = current_user.get("role") in ["admin", "editor"]
     is_owner = current_user.get("email") == session["user_id"]
     
     if not is_admin and not is_owner:
@@ -436,6 +474,18 @@ async def delete_chat_session(session_id: str, current_user: dict = Depends(get_
 
     pipeline.db_service.delete_session(session_id)
     return {"status": "success", "message": f"Đã xóa phiên hội thoại {session_id} thành công"}
+
+@app.delete("/api/chat/messages/{message_id}")
+async def delete_chat_message(message_id: int, current_user: dict = Depends(get_current_user)):
+    """Delete one chat message from a session history."""
+    deleted = pipeline.db_service.delete_message(
+        message_id=message_id,
+        requester_email=current_user["email"],
+        requester_role=current_user.get("role") or "user",
+    )
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Message not found or not permitted")
+    return {"status": "success", "message_id": message_id}
 
 @app.patch("/api/chat/sessions/{session_id}/rename")
 async def rename_chat_session(
@@ -651,21 +701,31 @@ async def get_audit_logs(
         raise HTTPException(status_code=500, detail="Không thể tải nhật ký hệ thống")
 
 @app.get("/api/admin/pending-handoffs")
-async def get_pending_handoffs(current_user: dict = Depends(admin_required)):
+async def get_pending_handoffs(current_user: dict = Depends(staff_required)):
     """Lấy danh sách các yêu cầu đang chờ người tư vấn chấp nhận."""
-    from models.schemas import AuditLog
+    from models.schemas import AuditLog, ChatSession
     try:
         with database.SessionLocal() as session:
             logs = session.query(AuditLog).filter(
                 AuditLog.handoff_status == 'pending'
             ).order_by(AuditLog.timestamp.desc()).all()
-            
+            latest_sessions = {}
+            for log in logs:
+                if log.user_id and log.user_id not in latest_sessions:
+                    chat_session = session.query(ChatSession)\
+                        .filter(ChatSession.user_id == log.user_id)\
+                        .order_by(ChatSession.created_at.desc())\
+                        .first()
+                    latest_sessions[log.user_id] = chat_session.id if chat_session else None
+
             return [{
                 "trace_id": log.trace_id,
                 "user_id": log.user_id,
+                "session_id": latest_sessions.get(log.user_id),
                 "input": log.input_data,
                 "escalation_level": log.escalation_level,
                 "escalation_reason": log.escalation_reason,
+                "handoff_status": log.handoff_status,
                 "timestamp": log.timestamp.isoformat() if log.timestamp else None
             } for log in logs]
     except Exception as e:
@@ -673,9 +733,9 @@ async def get_pending_handoffs(current_user: dict = Depends(admin_required)):
         return []
 
 @app.post("/api/admin/handoff/{trace_id}")
-async def handle_handoff(trace_id: str, request: HandoffActionRequest, current_user: dict = Depends(admin_required)):
+async def handle_handoff(trace_id: str, request: HandoffActionRequest, current_user: dict = Depends(staff_required)):
     """Chấp nhận hoặc từ chối yêu cầu tư vấn dựa trên trace_id."""
-    from models.schemas import AuditLog
+    from models.schemas import AuditLog, ChatSession
     try:
         with database.SessionLocal() as session:
             log = session.query(AuditLog).filter(AuditLog.trace_id == trace_id).first()
@@ -683,12 +743,79 @@ async def handle_handoff(trace_id: str, request: HandoffActionRequest, current_u
                 raise HTTPException(status_code=404, detail="Không tìm thấy yêu cầu")
             
             log.handoff_status = request.status
+            chat_session = session.query(ChatSession)\
+                .filter(ChatSession.user_id == log.user_id)\
+                .order_by(ChatSession.created_at.desc())\
+                .first()
             session.commit()
-            return {"status": "success"}
+            return {
+                "status": "success",
+                "handoff_status": request.status,
+                "trace_id": trace_id,
+                "user_id": log.user_id,
+                "session_id": chat_session.id if chat_session else None,
+            }
     except HTTPException: raise
     except Exception as e:
         logger.error(f"Error updating handoff status: {e}")
         raise HTTPException(status_code=500, detail="Lỗi khi cập nhật trạng thái")
+
+@app.post("/api/admin/handoff/{trace_id}/message")
+async def send_handoff_reply(trace_id: str, request: HandoffReplyRequest, current_user: dict = Depends(staff_required)):
+    """Persist a human staff reply into the student's latest chat session."""
+    from models.schemas import AuditLog, ChatSession
+    try:
+        with database.SessionLocal() as session:
+            log = session.query(AuditLog).filter(AuditLog.trace_id == trace_id).first()
+            if not log:
+                raise HTTPException(status_code=404, detail="KhÃ´ng tÃ¬m tháº¥y yÃªu cáº§u")
+            chat_session = session.query(ChatSession)\
+                .filter(ChatSession.user_id == log.user_id)\
+                .order_by(ChatSession.created_at.desc())\
+                .first()
+            if not chat_session:
+                raise HTTPException(status_code=404, detail="KhÃ´ng tÃ¬m tháº¥y phiÃªn chat cá»§a há»c sinh")
+            target_user_id = log.user_id
+            target_session_id = chat_session.id
+            log.handoff_status = "accepted"
+            session.commit()
+
+        content = f"ChuyÃªn viÃªn tÆ° váº¥n ({current_user['email']}): {request.message.strip()}"
+        pipeline.db_service.save_message(
+            user_id=target_user_id,
+            role="assistant",
+            content=content,
+            agent_type="human_staff",
+            session_id=target_session_id,
+            sources=[],
+        )
+        pipeline.db_service.save_audit_log(
+            user_id=current_user["email"],
+            input_data=f"HUMAN_HANDOFF_REPLY: {trace_id}",
+            output_data=content,
+            judge_result={"action": "human_handoff_reply", "target_user": target_user_id, "trace_id": trace_id},
+            route="human_staff",
+            ai_resolved=False,
+            fallback=False,
+            handoff_status="accepted",
+        )
+        return {
+            "status": "success",
+            "trace_id": trace_id,
+            "user_id": target_user_id,
+            "session_id": target_session_id,
+            "message": {
+                "role": "assistant",
+                "content": content,
+                "agent_type": "human_staff",
+                "timestamp": datetime.utcnow().isoformat(),
+            },
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error sending handoff reply: {e}")
+        raise HTTPException(status_code=500, detail="KhÃ´ng thá»ƒ gá»­i pháº£n há»“i tÆ° váº¥n")
 
 @app.post("/api/audit/email-sent")
 async def log_email_action(request: EmailLogRequest, current_user: dict = Depends(staff_required)):
@@ -831,8 +958,16 @@ async def match(request: MatchRequest, current_user: dict = Depends(get_current_
     # Security hardening: Use the authenticated user's ID from the token
     authenticated_user_id = current_user["email"]
 
+    cv_text = request.cv_text
+    cv_signals = request.cv_signals
+    if request.cv_document_id and not (cv_text and cv_signals):
+        cv_doc = pipeline.db_service.get_cv_document(authenticated_user_id, request.cv_document_id)
+        if cv_doc:
+            cv_text = cv_text or cv_doc.get("raw_text")
+            cv_signals = cv_signals or cv_doc.get("cv_signals")
+
     # 1. Generate the major matching results via Advisor Agent
-    results = pipeline.run_match(authenticated_user_id, request.answers, request.cv_text, request.cv_signals)
+    results = pipeline.run_match(authenticated_user_id, request.answers, cv_text, cv_signals)
     
     # 2. Persist to SQL DB for CRM Agent and Profile Page
     try:
@@ -920,6 +1055,97 @@ async def get_db_status(admin: dict = Depends(admin_required)):
         "accessed_by": admin["email"]
     }
 
+@app.get("/api/system/token-usage")
+async def get_token_usage(
+    hours: int = 168,
+    user_id: Optional[str] = None,
+    route: Optional[str] = None,
+    current_user: dict = Depends(get_current_user),
+):
+    """Return token usage estimates and request frequency from audit logs."""
+    requester_role = current_user.get("role")
+    if requester_role not in {"admin", "editor"}:
+        user_id = current_user["email"]
+
+    since = datetime.utcnow() - timedelta(hours=max(1, min(hours, 24 * 90)))
+    try:
+        from models.schemas import AuditLog
+        with database.SessionLocal() as session:
+            query = session.query(AuditLog).filter(AuditLog.timestamp >= since)
+            if user_id:
+                query = query.filter(AuditLog.user_id == user_id)
+            if route:
+                query = query.filter(AuditLog.route == route)
+            logs = query.order_by(AuditLog.timestamp.desc()).limit(1000).all()
+
+        totals = {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "estimated_cost": 0.0,
+            "request_count": len(logs),
+        }
+        daily = defaultdict(lambda: {"date": "", "requests": 0, "tokens": 0})
+        routes = defaultdict(lambda: {"route": "", "requests": 0, "tokens": 0})
+        users = defaultdict(lambda: {"user_id": "", "requests": 0, "tokens": 0})
+        rows = []
+
+        for log in logs:
+            prompt_tokens = getattr(log, "input_tokens", None)
+            completion_tokens = getattr(log, "output_tokens", None)
+            cost = getattr(log, "cost", None)
+            if prompt_tokens is None:
+                prompt_tokens = _estimate_text_tokens(log.input_text or log.input_data)
+            if completion_tokens is None:
+                completion_tokens = _estimate_text_tokens(log.output_text or log.output_data)
+            total_tokens = int(prompt_tokens or 0) + int(completion_tokens or 0)
+            estimated_cost = float(cost or 0)
+            day_key = log.timestamp.date().isoformat() if log.timestamp else "unknown"
+            route_key = log.route or "unknown"
+            user_key = log.user_id or "anonymous"
+
+            totals["prompt_tokens"] += int(prompt_tokens or 0)
+            totals["completion_tokens"] += int(completion_tokens or 0)
+            totals["total_tokens"] += total_tokens
+            totals["estimated_cost"] += estimated_cost
+
+            daily[day_key]["date"] = day_key
+            daily[day_key]["requests"] += 1
+            daily[day_key]["tokens"] += total_tokens
+            routes[route_key]["route"] = route_key
+            routes[route_key]["requests"] += 1
+            routes[route_key]["tokens"] += total_tokens
+            users[user_key]["user_id"] = user_key
+            users[user_key]["requests"] += 1
+            users[user_key]["tokens"] += total_tokens
+
+            if len(rows) < 100:
+                rows.append({
+                    "id": log.id,
+                    "user_id": user_key,
+                    "route": route_key,
+                    "prompt_tokens": int(prompt_tokens or 0),
+                    "completion_tokens": int(completion_tokens or 0),
+                    "total_tokens": total_tokens,
+                    "cost": round(estimated_cost, 6),
+                    "timestamp": log.timestamp.isoformat() if log.timestamp else None,
+                })
+
+        totals["estimated_cost"] = round(totals["estimated_cost"], 6)
+        return {
+            "status": "success",
+            "filters": {"hours": hours, "user_id": user_id, "route": route},
+            "totals": totals,
+            "daily": sorted(daily.values(), key=lambda item: item["date"]),
+            "routes": sorted(routes.values(), key=lambda item: item["tokens"], reverse=True),
+            "users": sorted(users.values(), key=lambda item: item["tokens"], reverse=True)[:25],
+            "rows": rows,
+            "is_estimated": True,
+        }
+    except Exception as e:
+        logger.error(f"Token usage query failed: {e}")
+        raise HTTPException(status_code=500, detail="Could not load token usage")
+
 def _validate_admin_role(role: str) -> str:
     if role not in {"admin", "editor", "user"}:
         raise HTTPException(status_code=400, detail="Role khÃ´ng há»£p lá»‡. Chá»‰ há»— trá»£ admin, editor, user.")
@@ -930,6 +1156,32 @@ def _normalize_permission(permission: str) -> str:
     if not permission:
         raise HTTPException(status_code=400, detail="Permission khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng.")
     return permission
+
+def _estimate_text_tokens(value: Optional[str]) -> int:
+    """Approximate tokens for audit rows when provider token counters are absent."""
+    if not value:
+        return 0
+    return max(1, int(len(str(value)) / 4))
+
+def _apply_prompt_selection(agent_name: str, content: str) -> List[str]:
+    """Apply selected prompt content to known in-memory agents for this process."""
+    applied = []
+    normalized = (agent_name or "").strip().lower()
+    targets = {
+        "advisor": [("advisor", "system_prompt")],
+        "advisor_match": [("advisor", "match_prompt")],
+        "match": [("advisor", "match_prompt")],
+        "rag": [("rag", "system_prompt"), ("rag", "prompt")],
+        "router": [("router", "system_prompt")],
+        "judge": [("judge", "system_prompt")],
+    }
+
+    for component_name, attr_name in targets.get(normalized, []):
+        component = getattr(pipeline, component_name, None)
+        if component is not None and hasattr(component, attr_name):
+            setattr(component, attr_name, content)
+            applied.append(f"{component_name}.{attr_name}")
+    return applied
 
 @app.get("/api/admin/users")
 async def list_admin_users(admin: dict = Depends(admin_required)):
@@ -1004,13 +1256,127 @@ async def update_admin_user_blacklist(user_id: str, request: AdminBlacklistReque
     pipeline.db_service.upsert_student_profile(user_id, {"blacklisted": request.blacklisted})
     return {"status": "success", "user_id": user_id, "blacklisted": request.blacklisted}
 
+@app.get("/api/admin/prompts", response_model=Dict[str, Any])
+async def list_admin_prompts(admin: dict = Depends(admin_required)):
+    """List all prompt versions available to agents."""
+    prompts = pipeline.db_service.get_all_prompts()
+    grouped = defaultdict(list)
+    for prompt in prompts:
+        grouped[prompt["agent_name"]].append(prompt["version"])
+    return {
+        "status": "success",
+        "count": len(prompts),
+        "prompts": prompts,
+        "agents": [{"agent_name": name, "versions": versions} for name, versions in grouped.items()],
+    }
+
+@app.post("/api/admin/prompts", response_model=Dict[str, Any])
+async def create_admin_prompt(request: PromptCreateRequest, admin: dict = Depends(admin_required)):
+    """Create or update a specific agent prompt version."""
+    agent_name = request.agent_name.strip()
+    version = request.version.strip()
+    content = request.content.strip()
+    if not agent_name or not version or not content:
+        raise HTTPException(status_code=400, detail="agent_name, version, and content are required")
+    if not pipeline.db_service.save_prompt_to_db(agent_name, version, content):
+        raise HTTPException(status_code=500, detail="Could not save prompt version")
+    pipeline.db_service.save_audit_log(
+        user_id=admin["email"],
+        input_data=f"ADMIN_PROMPT_ACTION: saved {agent_name}/{version}",
+        output_data="prompt saved",
+        judge_result={"action": "prompt_save", "agent_name": agent_name, "version": version},
+        route="admin_internal",
+        ai_resolved=True,
+        fallback=False,
+    )
+    return {"status": "success", "message": "Prompt version saved"}
+
+@app.post("/api/admin/prompts/compare", response_model=Dict[str, Any])
+async def compare_admin_prompts(request: PromptCompareRequest, admin: dict = Depends(admin_required)):
+    """Compare two prompt versions with the same test input."""
+    agent_name = request.agent_name.strip()
+    version_a = request.version_a.strip()
+    version_b = request.version_b.strip()
+    prompt_a = pipeline.db_service.get_prompt_from_db(agent_name, version_a)
+    prompt_b = pipeline.db_service.get_prompt_from_db(agent_name, version_b)
+    if not prompt_a or not prompt_b:
+        raise HTTPException(status_code=404, detail="Prompt version not found")
+
+    test_input = (request.test_input or "").strip()
+    rendered_a = f"{prompt_a}\n\nUser input:\n{test_input}" if test_input else prompt_a
+    rendered_b = f"{prompt_b}\n\nUser input:\n{test_input}" if test_input else prompt_b
+    return {
+        "status": "success",
+        "agent_name": agent_name,
+        "version_a": version_a,
+        "version_b": version_b,
+        "output_a": rendered_a,
+        "output_b": rendered_b,
+        "comparison": {
+            "same": prompt_a == prompt_b,
+            "length_a": len(prompt_a),
+            "length_b": len(prompt_b),
+            "delta": len(prompt_b) - len(prompt_a),
+        },
+    }
+
+@app.post("/api/admin/prompts/select", response_model=Dict[str, Any])
+async def select_admin_prompt(request: PromptSelectRequest, admin: dict = Depends(admin_required)):
+    """Select a prompt version for immediate runtime use and persist it as selected."""
+    agent_name = request.agent_name.strip()
+    version = request.version.strip()
+    content = pipeline.db_service.get_prompt_from_db(agent_name, version)
+    if not content:
+        raise HTTPException(status_code=404, detail="Prompt version not found")
+
+    pipeline.db_service.save_prompt_to_db(agent_name, "selected", content)
+    applied_targets = _apply_prompt_selection(agent_name, content)
+    pipeline.db_service.save_audit_log(
+        user_id=admin["email"],
+        input_data=f"ADMIN_PROMPT_ACTION: selected {agent_name}/{version}",
+        output_data=f"applied={applied_targets}",
+        judge_result={"action": "prompt_select", "agent_name": agent_name, "version": version},
+        route="admin_internal",
+        ai_resolved=True,
+        fallback=False,
+    )
+    return {
+        "status": "success",
+        "message": "Prompt version selected",
+        "agent_name": agent_name,
+        "version": version,
+        "selected_alias": "selected",
+        "applied_targets": applied_targets,
+    }
+
+@app.delete("/api/admin/prompts/{agent_name}/{version}")
+async def delete_admin_prompt(agent_name: str, version: str, admin: dict = Depends(admin_required)):
+    """Delete one prompt version after env-gated hard confirmation from the UI."""
+    if not ALLOW_PROMPT_DELETION:
+        raise HTTPException(status_code=403, detail="Prompt deletion is disabled. Set ALLOW_PROMPT_DELETION=true to enable it.")
+    if version == "latest":
+        raise HTTPException(status_code=400, detail="The latest prompt alias cannot be deleted directly.")
+    deleted = pipeline.db_service.delete_prompt_version(agent_name, version)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Prompt version not found")
+    pipeline.db_service.save_audit_log(
+        user_id=admin["email"],
+        input_data=f"ADMIN_PROMPT_ACTION: deleted {agent_name}/{version}",
+        output_data="prompt deleted",
+        judge_result={"action": "prompt_delete", "agent_name": agent_name, "version": version},
+        route="admin_internal",
+        ai_resolved=True,
+        fallback=False,
+    )
+    return {"status": "success", "message": "Prompt version deleted"}
+
 @app.post("/api/admin/rag-sync")
 async def manual_rag_sync(admin: dict = Depends(admin_required)):
     """Admin-only endpoint to manually trigger RAG data ingestion/sync."""
     try:
         logger.info(f"Manual RAG sync triggered by admin: {admin['email']}")
         # Call the sync method on the RAG service via the pipeline
-        sync_report = pipeline.rag.rag_service.sync_all()
+        sync_report = pipeline.rag.rag_service.sync_all(source_type="internal", params={})
         logger.info(f"Manual RAG sync report: {sync_report}")
         return {"status": "success", "message": "RAG data synchronization completed successfully.", "report": sync_report}
     except Exception as e:
@@ -1071,10 +1437,22 @@ async def get_rag_status(admin: dict = Depends(admin_required)):
         raise HTTPException(status_code=500, detail="Không thể lấy trạng thái hệ thống tri thức")
 
 @app.post("/api/admin/rag/ingest")
-async def rag_ingest_alias(admin: dict = Depends(admin_required)):
-    """Alias for rag-sync to match frontend endpoint naming."""
+async def rag_ingest_alias(request: IngestRequest, admin: dict = Depends(admin_required)):
+    """Parameterized RAG ingestion for local corpus or a specific external URL."""
     try:
-        report = pipeline.rag.rag_service.sync_all()
+        report = pipeline.rag.rag_service.sync_all(
+            source_type=request.source_type,
+            params=request.params or {},
+        )
+        pipeline.db_service.save_audit_log(
+            user_id=admin["email"],
+            input_data=f"ADMIN_RAG_ACTION: ingest {request.source_type}",
+            output_data=json.dumps(report, default=str),
+            judge_result={"action": "rag_ingest", "source_type": request.source_type, "params": request.params},
+            route="admin_internal",
+            ai_resolved=True,
+            fallback=False,
+        )
         return {"status": "success", "report": report}
     except Exception as e:
         logger.error(f"RAG ingest failed: {e}")
@@ -1112,6 +1490,25 @@ async def download_profile_cv(user_id: str, current_user: dict = Depends(get_cur
     filename = profile.get("cv_filename") or "vinuni_cv.pdf"
     return FileResponse(saved_path, media_type="application/pdf", filename=filename)
 
+@app.get("/api/profile/me/cv-documents")
+async def list_my_cv_documents(current_user: dict = Depends(get_current_user)):
+    docs = pipeline.db_service.list_cv_documents(current_user["email"])
+    return {"status": "success", "documents": docs}
+
+@app.post("/api/profile/me/cv-documents/{document_id}/confirm")
+async def confirm_my_cv_document(document_id: str, request: CVConfirmRequest, current_user: dict = Depends(get_current_user)):
+    doc = pipeline.db_service.confirm_cv_document(current_user["email"], document_id, request.structured_data)
+    if not doc:
+        raise HTTPException(status_code=404, detail="CV document not found")
+    return {"status": "success", "document": doc}
+
+@app.delete("/api/profile/me/cv-documents/{document_id}")
+async def delete_my_cv_document(document_id: str, current_user: dict = Depends(get_current_user)):
+    deleted = pipeline.db_service.delete_cv_document(current_user["email"], document_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="CV document not found")
+    return {"status": "success", "document_id": document_id}
+
 @app.post("/api/upload-cv")
 async def upload_cv(file: UploadFile = File(...), current_user: dict = Depends(get_current_user)):
     """Upload and index a PDF CV."""
@@ -1132,21 +1529,32 @@ async def upload_cv(file: UploadFile = File(...), current_user: dict = Depends(g
 
         try:
             text = extract_text_from_pdf(tmp_path)
+            structured_data = parse_cv(text)
             
             # EXTRACT CV SIGNALS: Extract structured attributes (majors, confidence, GPA)
             # to provide immediate feedback to the student and aid prompt context.
             cv_signals = {}
             if hasattr(pipeline, 'cv_agent') and pipeline.cv_agent:
-                cv_signals = pipeline.cv_agent.analyze(text)
+                cv_signals = pipeline.cv_agent.analyze(text, structured_data)
 
             pipeline.rag.rag_service.ingest_cv(sanitize_id(user_id), text)
             with open(saved_path, "wb") as saved_file:
                 saved_file.write(content)
+            cv_document = pipeline.db_service.create_cv_document(
+                user_id=user_id,
+                filename=file.filename,
+                file_path=saved_path,
+                raw_text=text,
+                structured_data=structured_data,
+                cv_signals=cv_signals,
+            )
             pipeline.db_service.upsert_student_profile(user_id, {
                 "cv_filename": file.filename,
                 "cv_url": f"/api/profile/{user_id}/cv",
                 "cv_uploaded_at": datetime.utcnow().isoformat(),
-                "cv_signals": cv_signals
+                "cv_signals": cv_signals,
+                "active_cv_document_id": cv_document["id"],
+                "cv_structured_data": structured_data,
             })
         except Exception as e:
             logger.error(f"Failed to process PDF: {e}")
@@ -1156,6 +1564,9 @@ async def upload_cv(file: UploadFile = File(...), current_user: dict = Depends(g
             "status": "CV indexed successfully", 
             "filename": file.filename,
             "cv_url": f"/api/profile/{user_id}/cv",
+            "cv_document_id": cv_document["id"],
+            "structured_data": structured_data,
+            "parse_metadata": structured_data.get("parse_metadata", {}),
             "cv_signals": cv_signals,
             "cv_text": text
         }

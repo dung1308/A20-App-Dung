@@ -1,72 +1,75 @@
-"""
-services/cv_parser.py
---------------------
-Responsibility: Extract structured JSON from CV text using LLM.
-"""
-
 import re
-import json
-import logging
-from typing import Optional
-from services.llm_client import LLMClient
-from models.cv_schema import CVData
-from utils.logger import get_logger
-from guards.output_guard import PII_PATTERNS
-from guards.input_guard import INJECTION_PATTERNS
+from typing import Any, Dict, List
 
-logger = get_logger(__name__)
 
-MAX_CV_CHARS = 12000  # Approx 3-4 pages of text
-
-PARSE_PROMPT = """
-Extract structured information from the following CV text. 
-Respond ONLY with a JSON object matching this structure:
-{
-  "summary": "string",
-  "education": [{"institution": "string", "degree": "string"}],
-  "experience": [{"role": "string", "description": "string"}],
-  "skills": ["string"],
-  "projects": [{"name": "string", "description": "string"}],
-  "achievements": ["string"]
+SECTION_HEADERS = {
+    "summary": r"(SUMMARY|PROFILE|T[OÓ]M T[AẮ]T|GI[ỚO]I THI[EỆ]U)",
+    "career_goals": r"(CAREER OBJECTIVE|OBJECTIVE|M[UỤ]C TI[EÊ]U NGH[EỀ] NGHI[EỆ]P)",
+    "skills": r"(SKILLS|K[YỸ] N[AĂ]NG|K[IĨ] N[AĂ]NG)",
+    "education": r"(EDUCATION|H[OỌ]C V[AẤ]N|GI[AÁ]O D[UỤ]C)",
+    "experience": r"(EXPERIENCE|WORK EXPERIENCE|KINH NGHI[EỆ]M|KINH NGHI[EỆ]M L[AÀ]M VI[EỆ]C)",
+    "projects": r"(PROJECTS|D[UỰ] [AÁ]N)",
+    "certifications": r"(CERTIFICATIONS|CH[UỨ]NG CH[IỈ])",
+    "achievements": r"(ACHIEVEMENTS|AWARDS|TH[AÀ]NH T[IÍ]CH|GI[AẢ]I TH[ƯU][ỞO]NG)",
+    "languages": r"(LANGUAGES|NG[OÔ]N NG[ƯỮ])",
 }
-If information is missing, use empty lists or null.
 
-CV Text:
-"""
+
+def _extract_section(text: str, header_regex: str) -> str:
+    headers = "|".join(SECTION_HEADERS.values())
+    match = re.search(
+        rf"^\s*(?:{header_regex})\s*:?\s*$\n(.*?)(?=^\s*(?:{headers})\s*:?\s*$|\Z)",
+        text or "",
+        re.IGNORECASE | re.MULTILINE | re.DOTALL,
+    )
+    return match.group(1).strip() if match else ""
+
+
+def _split_items(value: str) -> List[str]:
+    if not value:
+        return []
+    parts = re.split(r"[\n;,•]+", value)
+    return [part.strip(" -\t") for part in parts if part.strip(" -\t")]
+
+
+def parse_cv(text: str) -> Dict[str, Any]:
+    """Deterministic fallback parser for structured CV profile fields."""
+    text = text or ""
+    personal_info: Dict[str, Any] = {}
+    email_match = re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", text)
+    phone_match = re.search(r"(\+?\d[\d\s().-]{7,}\d)", text)
+    gpa_match = re.search(r"\bGPA[:\s]*(\d(?:\.\d{1,2})?)(?:\s*/\s*\d(?:\.\d{1,2})?)?", text, re.IGNORECASE)
+    if email_match:
+        personal_info["email"] = email_match.group(0)
+    if phone_match:
+        personal_info["phone"] = phone_match.group(1).strip()
+
+    structured = {
+        "personal_info": personal_info,
+        "summary": _extract_section(text, SECTION_HEADERS["summary"]),
+        "career_goals": _extract_section(text, SECTION_HEADERS["career_goals"]),
+        "skills": _split_items(_extract_section(text, SECTION_HEADERS["skills"])),
+        "education": _split_items(_extract_section(text, SECTION_HEADERS["education"])),
+        "experience": _split_items(_extract_section(text, SECTION_HEADERS["experience"])),
+        "projects": _split_items(_extract_section(text, SECTION_HEADERS["projects"])),
+        "certifications": _split_items(_extract_section(text, SECTION_HEADERS["certifications"])),
+        "achievements": _split_items(_extract_section(text, SECTION_HEADERS["achievements"])),
+        "languages": _split_items(_extract_section(text, SECTION_HEADERS["languages"])),
+        "parse_metadata": {
+            "method": "fallback",
+            "warnings": [] if len(text.strip()) >= 200 else ["low_text_extraction"],
+        },
+    }
+    if gpa_match:
+        structured["gpa"] = float(gpa_match.group(1))
+    return structured
+
 
 class CVParser:
-    def __init__(self):
-        self.llm = LLMClient()
+    """Compatibility wrapper for callers that expect a CVParser class."""
 
-    def parse(self, text: str) -> Optional[CVData]:
-        """Convert raw CV text into structured CVData."""
-        if not text or len(text) > MAX_CV_CHARS:
-            logger.warning(f"CV rejected: size issues (len={len(text) if text else 0})")
-            return None
+    def parse(self, text: str) -> Dict[str, Any]:
+        return parse_cv(text)
 
-        # Security: Detect prompt injection attempts in CV text
-        for pattern in INJECTION_PATTERNS:
-            if re.search(pattern, text, re.IGNORECASE):
-                logger.warning("CV rejected: potential injection detected in content")
-                return None
-
-        # Privacy: Redact PII before sending to LLM
-        sanitized_text = text
-        for pattern, replacement in PII_PATTERNS:
-            sanitized_text = re.sub(pattern, replacement, sanitized_text, flags=re.IGNORECASE)
-
-        try:
-            prompt = PARSE_PROMPT + sanitized_text
-            clean_text = self.llm.generate(prompt)
-            
-            if clean_text == "I don't know":
-                return None
-
-            if "```json" in clean_text:
-                clean_text = clean_text.split("```json")[1].split("```")[0].strip()
-            
-            data = json.loads(clean_text)
-            return CVData(**data)
-        except Exception as e:
-            logger.error(f"CVParser failed: {e}")
-            return None
+    def run(self, text: str) -> Dict[str, Any]:
+        return parse_cv(text)

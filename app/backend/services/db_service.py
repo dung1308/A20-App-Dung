@@ -20,7 +20,7 @@ from sqlalchemy import text, func, inspect
 import hashlib
 import secrets
 from config import USE_MOCK
-from models.schemas import User, ChatMessage, ChatSession, Major, Student, AuditLog, SecurityEvent
+from models.schemas import User, ChatMessage, ChatSession, Major, Student, AuditLog, SecurityEvent, CVDocument
 from utils.logger import get_logger, get_trace_id
 import database
 
@@ -227,6 +227,7 @@ class DBService:
                 
             history = [
                 {
+                    "id": m.get("id"),
                     "role": m["role"], 
                     "content": m["content"], 
                     "agent_type": m.get("agent_type"),
@@ -250,6 +251,7 @@ class DBService:
             
             history = [
                 {
+                    "id": m.id,
                     "role": m.role, 
                     "content": m.content, 
                     "agent_type": m.agent_type,
@@ -342,6 +344,25 @@ class DBService:
             session.query(ChatSession).filter(ChatSession.id == session_id).delete()
             session.commit()
             logger.info(f"DBService: Deleted session {session_id} and its messages")
+
+    def delete_message(self, message_id: int, requester_email: str, requester_role: str) -> bool:
+        """Delete a chat message if the requester owns it or is staff."""
+        if self.use_mock:
+            return True
+
+        if database.SessionLocal is None:
+            logger.error("DBService.delete_message failed: database.SessionLocal is not initialized")
+            return False
+
+        with database.SessionLocal() as session:
+            message = session.query(ChatMessage).filter(ChatMessage.id == message_id).first()
+            if not message:
+                return False
+            if requester_role not in {"admin", "editor"} and message.user_id != requester_email:
+                return False
+            session.delete(message)
+            session.commit()
+            return True
 
     def update_session_title(self, session_id: str, title: str) -> bool:
         """
@@ -438,17 +459,22 @@ class DBService:
 
             with database.SessionLocal() as session:
                 users = session.query(User).all()
-                return [
-                    {
+                result = []
+                for u in users:
+                    student = session.query(Student).filter(Student.user_id == u.user_id).first()
+                    profile_data = student.profile_data if student and student.profile_data else {}
+                    result.append({
                         "user_id": u.user_id,
                         "email": u.email,
                         "full_name": u.full_name,
                         "role": u.role,
                         "permissions": u.permissions or [],
                         "blacklisted": bool(getattr(u, "blacklisted", False)),
+                        "cv_filename": profile_data.get("cv_filename"),
+                        "cv_uploaded_at": profile_data.get("cv_uploaded_at"),
                         "created_at": u.created_at.isoformat() if u.created_at else None
-                    } for u in users
-                ]
+                    })
+                return result
         except Exception as e:
             logger.error(f"DBService.get_all_users failed: {e}")
             return []
@@ -606,6 +632,171 @@ class DBService:
                 session.add(new_user)
                 session.commit()
                 logger.info(f"DBService: Created new user record for {user_id}")
+
+    # ------------------------------------------------------------------
+    # CV documents
+    # ------------------------------------------------------------------
+
+    def create_cv_document(
+        self,
+        user_id: str,
+        filename: str,
+        file_path: str,
+        raw_text: str,
+        structured_data: Dict[str, Any],
+        cv_signals: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        """Persist an uploaded CV version and extracted data."""
+        if self.use_mock:
+            doc_id = secrets.token_hex(12)
+            return {
+                "id": doc_id,
+                "user_id": user_id,
+                "filename": filename,
+                "raw_text": raw_text,
+                "structured_data": structured_data,
+                "cv_signals": cv_signals,
+                "version": 1,
+                "is_active": False,
+                "created_at": datetime.utcnow().isoformat(),
+            }
+
+        with database.SessionLocal() as session:
+            existing_user = session.query(User).filter(
+                (User.user_id == user_id) | (func.lower(User.email) == func.lower(user_id))
+            ).first()
+            if not existing_user:
+                existing_user = User(user_id=user_id, email=user_id if "@" in user_id else None)
+                session.add(existing_user)
+                session.flush()
+            resolved_user_id = existing_user.user_id
+            version = (session.query(func.max(CVDocument.version)).filter(CVDocument.user_id == resolved_user_id).scalar() or 0) + 1
+            doc = CVDocument(
+                id=str(secrets.token_hex(16)),
+                user_id=resolved_user_id,
+                filename=filename,
+                file_path=file_path,
+                raw_text=raw_text,
+                structured_data=structured_data or {},
+                cv_signals=cv_signals or {},
+                version=version,
+                is_active=False,
+            )
+            session.add(doc)
+            session.commit()
+            return self._cv_document_to_dict(doc)
+
+    def list_cv_documents(self, user_id: str) -> List[Dict[str, Any]]:
+        if self.use_mock or database.SessionLocal is None:
+            return []
+        with database.SessionLocal() as session:
+            resolved_user_id = self._resolve_user_id(session, user_id)
+            docs = session.query(CVDocument).filter(CVDocument.user_id == resolved_user_id).order_by(CVDocument.created_at.desc()).all()
+            return [self._cv_document_to_dict(doc, include_text=False) for doc in docs]
+
+    def get_cv_document(self, user_id: str, document_id: str) -> Optional[Dict[str, Any]]:
+        if self.use_mock or database.SessionLocal is None:
+            return None
+        with database.SessionLocal() as session:
+            resolved_user_id = self._resolve_user_id(session, user_id)
+            doc = session.query(CVDocument).filter(CVDocument.user_id == resolved_user_id, CVDocument.id == document_id).first()
+            return self._cv_document_to_dict(doc) if doc else None
+
+    def get_active_cv_document(self, user_id: str) -> Optional[Dict[str, Any]]:
+        if self.use_mock or database.SessionLocal is None:
+            return None
+        with database.SessionLocal() as session:
+            resolved_user_id = self._resolve_user_id(session, user_id)
+            doc = session.query(CVDocument)\
+                .filter(CVDocument.user_id == resolved_user_id, CVDocument.is_active == True)\
+                .order_by(CVDocument.confirmed_at.desc().nullslast(), CVDocument.created_at.desc())\
+                .first()
+            return self._cv_document_to_dict(doc) if doc else None
+
+    def confirm_cv_document(self, user_id: str, document_id: str, structured_data: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
+        if self.use_mock or database.SessionLocal is None:
+            return None
+        with database.SessionLocal() as session:
+            resolved_user_id = self._resolve_user_id(session, user_id)
+            doc = session.query(CVDocument).filter(CVDocument.user_id == resolved_user_id, CVDocument.id == document_id).first()
+            if not doc:
+                return None
+            if structured_data is not None:
+                doc.structured_data = structured_data
+            session.query(CVDocument).filter(CVDocument.user_id == resolved_user_id).update({"is_active": False})
+            doc.is_active = True
+            doc.confirmed_at = datetime.utcnow()
+            doc.updated_at = datetime.utcnow()
+            session.commit()
+
+            self.merge_profile_from_cv(user_id, doc.structured_data or {}, doc.cv_signals or {}, doc.id, doc.filename)
+            return self._cv_document_to_dict(doc)
+
+    def delete_cv_document(self, user_id: str, document_id: str) -> bool:
+        if self.use_mock or database.SessionLocal is None:
+            return False
+        with database.SessionLocal() as session:
+            resolved_user_id = self._resolve_user_id(session, user_id)
+            doc = session.query(CVDocument).filter(CVDocument.user_id == resolved_user_id, CVDocument.id == document_id).first()
+            if not doc:
+                return False
+            session.delete(doc)
+            session.commit()
+            return True
+
+    def merge_profile_from_cv(
+        self,
+        user_id: str,
+        structured_data: Dict[str, Any],
+        cv_signals: Dict[str, Any],
+        document_id: str,
+        filename: str,
+    ) -> None:
+        """Merge non-empty CV fields into the profile without erasing useful data."""
+        personal = structured_data.get("personal_info") or {}
+        profile_update: Dict[str, Any] = {
+            "active_cv_document_id": document_id,
+            "cv_filename": filename,
+            "cv_signals": cv_signals or {},
+            "cv_structured_data": structured_data or {},
+            "cv_uploaded_at": datetime.utcnow().isoformat(),
+        }
+        for source_key, target_key in [("name", "full_name"), ("full_name", "full_name"), ("phone", "phone")]:
+            value = personal.get(source_key)
+            if value:
+                profile_update[target_key] = value
+        for key in ["summary", "career_goals", "skills", "languages", "certifications", "achievements", "education", "experience", "projects"]:
+            value = structured_data.get(key)
+            if value:
+                profile_update[key] = value
+        gpa = cv_signals.get("gpa_estimate")
+        if gpa is not None:
+            profile_update["gpa"] = gpa
+        self.upsert_student_profile(user_id, profile_update)
+
+    def _cv_document_to_dict(self, doc: CVDocument, include_text: bool = True) -> Dict[str, Any]:
+        data = {
+            "id": doc.id,
+            "user_id": doc.user_id,
+            "filename": doc.filename,
+            "version": doc.version,
+            "is_active": bool(doc.is_active),
+            "confirmed_at": doc.confirmed_at.isoformat() if doc.confirmed_at else None,
+            "created_at": doc.created_at.isoformat() if doc.created_at else None,
+            "updated_at": doc.updated_at.isoformat() if doc.updated_at else None,
+            "structured_data": doc.structured_data or {},
+            "cv_signals": doc.cv_signals or {},
+        }
+        if include_text:
+            data["raw_text"] = doc.raw_text or ""
+            data["file_path"] = doc.file_path
+        return data
+
+    def _resolve_user_id(self, session, user_id: str) -> str:
+        user = session.query(User).filter(
+            (User.user_id == user_id) | (func.lower(User.email) == func.lower(user_id))
+        ).first()
+        return user.user_id if user else user_id
 
     # ------------------------------------------------------------------
     # Audit logging
@@ -774,6 +965,34 @@ class DBService:
     # Prompt management
     # ------------------------------------------------------------------
 
+    def get_all_prompts(self) -> List[Dict[str, Any]]:
+        """Return all prompt versions ordered for admin review."""
+        if self.use_mock:
+            return []
+
+        if database.SessionLocal is None:
+            return []
+
+        try:
+            with database.SessionLocal() as session:
+                rows = session.execute(text("""
+                    SELECT agent_name, version, content, created_at
+                    FROM prompts
+                    ORDER BY agent_name ASC, created_at DESC
+                """)).fetchall()
+                return [
+                    {
+                        "agent_name": row[0],
+                        "version": row[1],
+                        "content": row[2],
+                        "created_at": row[3].isoformat() if hasattr(row[3], "isoformat") else row[3],
+                    }
+                    for row in rows
+                ]
+        except Exception as e:
+            logger.error(f"DBService.get_all_prompts failed: {e}")
+            return []
+
     def get_prompt_from_db(self, agent_name: str, version: str = "latest") -> Optional[str]:
         """Lấy prompt từ database."""
         if self.use_mock:
@@ -816,4 +1035,24 @@ class DBService:
                 return True
         except Exception as e:
             logger.error(f"DBService.save_prompt_to_db failed: {e}")
+            return False
+
+    def delete_prompt_version(self, agent_name: str, version: str) -> bool:
+        """Delete one prompt version. The synthetic 'latest' alias is protected."""
+        if self.use_mock:
+            return True
+
+        if version == "latest" or database.SessionLocal is None:
+            return False
+
+        try:
+            with database.SessionLocal() as session:
+                result = session.execute(
+                    text("DELETE FROM prompts WHERE agent_name = :name AND version = :version"),
+                    {"name": agent_name, "version": version},
+                )
+                session.commit()
+                return result.rowcount > 0
+        except Exception as e:
+            logger.error(f"DBService.delete_prompt_version failed: {e}")
             return False

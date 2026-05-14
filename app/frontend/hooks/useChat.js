@@ -34,31 +34,41 @@ export const useChat = (userId, sessionId, onSessionUpdate) => {
   // Retrieve CV signals from the global store to provide context to the LLM
   const { cvSignals } = useStore();
 
-  // Load history when session changes or on mount
-  useEffect(() => {
-    const loadHistory = async () => {
-      if (!sessionId || sessionId === 'new') {
-        setMessages([]);
-        return;
+  const loadHistory = useCallback(async () => {
+    if (!sessionId || sessionId === 'new') {
+      setMessages([]);
+      return;
+    }
+    try {
+      const res = await api.getSessionMessages(sessionId);
+      if (res.status === 'success') {
+        setMessages(res.messages);
       }
-      try {
-        const res = await api.getSessionMessages(sessionId);
-        if (res.status === 'success') {
-          setMessages(res.messages);
-        }
-      } catch (err) {
-        console.error("Failed to load history:", err);
-      }
-    };
-    loadHistory();
+    } catch (err) {
+      console.error("Failed to load history:", err);
+    }
   }, [sessionId]);
 
-  const sendMessage = useCallback(async (text) => {
+  // Load history when session changes or on mount
+  useEffect(() => {
+    loadHistory();
+  }, [loadHistory]);
+
+  // Poll so human staff replies appear in the student's active chat.
+  useEffect(() => {
+    if (!sessionId || sessionId === 'new' || loading) return undefined;
+    const interval = setInterval(loadHistory, 5000);
+    return () => clearInterval(interval);
+  }, [sessionId, loading, loadHistory]);
+
+  const sendMessage = useCallback(async (text, options = {}) => {
     if (!text.trim()) return;
+    const contextText = options.contextText?.trim();
 
     const userMsg = { 
       role: 'user', 
       content: text, 
+      contextLabel: contextText ? options.contextLabel || 'PDF context attached' : null,
       timestamp: new Date().toISOString() 
     };
     
@@ -69,11 +79,15 @@ export const useChat = (userId, sessionId, onSessionUpdate) => {
     setAbortController(controller);
 
     try {
+      const outboundText = contextText
+        ? `[Context from uploaded PDF for this turn only]\n${contextText}\n\n[Student message]\n${text}`
+        : text;
+      const historyForRequest = options.historyOverride || messages;
       const payload = {
         userId,
         sessionId,
-        text,
-        history: messages.map(m => ({ role: m.role, content: m.content })),
+        text: outboundText,
+        history: historyForRequest.map(m => ({ role: m.role, content: m.content })),
         persona_summary: cvSignals?.persona_summary
       };
 
@@ -125,7 +139,34 @@ export const useChat = (userId, sessionId, onSessionUpdate) => {
       setLoading(false);
       setAbortController(null);
     }
-  }, [userId, sessionId, messages, onSessionUpdate]);
+  }, [userId, sessionId, messages, onSessionUpdate, cvSignals?.persona_summary]);
+
+  const deleteMessage = useCallback(async (index) => {
+    const target = messages[index];
+    if (!target) return;
+    setMessages(prev => prev.filter((_, i) => i !== index));
+    if (!target.id) return;
+    try {
+      await api.deleteChatMessage(target.id);
+    } catch (err) {
+      console.error("Delete message failed:", err);
+    }
+  }, [messages]);
+
+  const editUserMessage = useCallback(async (index, nextText) => {
+    const target = messages[index];
+    if (!target || target.role !== 'user' || !nextText.trim()) return;
+    const removedMessages = messages.slice(index).filter((message) => message.id);
+    setMessages(prev => prev.slice(0, index));
+    for (const message of removedMessages) {
+      try {
+        await api.deleteChatMessage(message.id);
+      } catch (err) {
+        console.error("Delete branched message failed:", err);
+      }
+    }
+    sendMessage(nextText.trim(), { historyOverride: messages.slice(0, index) });
+  }, [messages, sendMessage]);
 
   const stopGenerating = () => {
     if (abortController) {
@@ -133,5 +174,5 @@ export const useChat = (userId, sessionId, onSessionUpdate) => {
     }
   };
 
-  return { messages, setMessages, sendMessage, stopGenerating, loading };
+  return { messages, setMessages, sendMessage, deleteMessage, editUserMessage, stopGenerating, loading };
 };

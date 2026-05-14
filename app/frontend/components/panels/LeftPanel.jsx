@@ -6,6 +6,7 @@ import {
     MessageSquare, 
     FileText, 
     User, 
+    BookOpen,
     ShieldCheck, 
     Users,
     BarChart3,
@@ -123,6 +124,10 @@ const LeftPanel = () => {
                         <NavLink to="/profile" className={navItemClass}>
                             <User size={20} />
                             <span>Hồ sơ cá nhân</span>
+                        </NavLink>
+                        <NavLink to="/resources" className={navItemClass}>
+                            <BookOpen size={20} />
+                            <span>Tai nguyen</span>
                         </NavLink>
                     </div>
                 </div>

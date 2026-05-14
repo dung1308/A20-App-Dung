@@ -3,12 +3,22 @@
   "hooks": {
     "beforeSubmitPrompt": [
       {
-        "command": "AI_TOOL_NAME=cursor python3 scripts/log_hook.py"
+        "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool cursor"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool cursor"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool cursor"
       }
     ],
     "stop": [
       {
-        "command": "AI_TOOL_NAME=cursor python3 scripts/log_hook.py"
+        "command": "python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py --tool cursor"
       }
     ]
   }

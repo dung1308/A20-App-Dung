@@ -23,6 +23,10 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [copiedIndex, setCopiedIndex] = useState(null);
+  const [showAttachMenu, setShowAttachMenu] = useState(false);
+  const [uploadingPdf, setUploadingPdf] = useState(false);
+  const [pendingPdfContext, setPendingPdfContext] = useState(null);
+  const fileInputRef = useRef(null);
   const viewerRole = localStorage.getItem('user_role');
   const canSeeDebugMeta = viewerRole === 'admin' || viewerRole === 'editor';
   
@@ -33,7 +37,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
   const effectiveUserId = userId || localStorage.getItem('user_email') || DEFAULT_USER;
   const hasWizardCompleted = localStorage.getItem(`wizard_completed_${effectiveUserId}`) === 'true';
   
-  const { messages, sendMessage, stopGenerating, loading } = useChat(effectiveUserId, sessionId, onSessionUpdate);
+  const { messages, sendMessage, deleteMessage, editUserMessage, stopGenerating, loading } = useChat(effectiveUserId, sessionId, onSessionUpdate);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -46,8 +50,13 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
 
   const handleSend = () => {
     if (!input.trim() || loading) return;
-    sendMessage(input);
+    sendMessage(input, pendingPdfContext ? {
+      contextText: pendingPdfContext.text,
+      contextLabel: `PDF attached: ${pendingPdfContext.filename}`
+    } : {});
     setInput('');
+    setPendingPdfContext(null);
+    setShowAttachMenu(false);
   };
 
   const handleKeyPress = (e) => {
@@ -84,6 +93,40 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
     }, 2000);
   };
 
+  const handlePdfSelected = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+      toast.error('Only PDF files can be attached.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    setUploadingPdf(true);
+    try {
+      const result = await api.uploadCV(formData);
+      setPendingPdfContext({
+        filename: result.filename || file.name,
+        text: result.cv_text || '',
+        signals: result.cv_signals || {}
+      });
+      toast.success('PDF context attached for your next message.');
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Could not process PDF.');
+    } finally {
+      setUploadingPdf(false);
+      setShowAttachMenu(false);
+    }
+  };
+
+  const handleEditMessage = (index, currentText) => {
+    const nextText = window.prompt('Edit your message and regenerate the response:', currentText);
+    if (nextText === null || nextText.trim() === currentText.trim()) return;
+    editUserMessage(index, nextText);
+  };
+
   const handleRequestHandoff = async () => {
     try {
       // Triggers the creation of a handoff summary for human advisors
@@ -98,7 +141,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
   };
 
   return (
-    <div className="flex flex-col h-[500px] bg-slate-50 rounded-2xl overflow-hidden border border-slate-200">
+    <div className="flex flex-col h-[min(680px,calc(100vh-8rem))] min-h-[420px] bg-slate-50 rounded-2xl overflow-hidden border border-slate-200">
       {IS_DEMO_MODE && (
         <div className="bg-amber-50 text-amber-800 text-[10px] text-center py-1 font-bold uppercase tracking-wider border-b border-amber-100">
           Demo Mode: Phản hồi được mô phỏng
@@ -149,6 +192,12 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
               >
                 {m.content}
               </ReactMarkdown>
+              {m.contextLabel && (
+                <div className="mt-2 inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/10 text-[10px] font-bold uppercase tracking-wider">
+                  <span className="material-symbols-outlined text-[14px]">picture_as_pdf</span>
+                  {m.contextLabel}
+                </div>
+              )}
 
               {canSeeDebugMeta && m.role === 'assistant' && (m.intent || m.status) && (
                 <div className="mt-3 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-wider">
@@ -169,12 +218,25 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
                     <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-slate-800">
                       <div className="flex justify-between items-start mb-1">
                         <h4 className="font-bold text-[#003466]">{major.major_name}</h4>
-                        <span className="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
-                          {major.match_score}% Match
-                        </span>
+                        <div className="flex flex-col items-end gap-1">
+                          <span className="text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
+                            {major.match_score}% Match
+                          </span>
+                          {major.verified_source && (
+                            <span className="text-[9px] font-black bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-100">
+                              Verified Info
+                            </span>
+                          )}
+                        </div>
                       </div>
+                      {major.department && <p className="text-[11px] text-slate-500 mb-2">{major.department}</p>}
                       <p className="text-xs italic mb-2">"{major.match_reason}"</p>
                       <p className="text-[11px] opacity-70 leading-snug">{major.what_students_do}</p>
+                      {major.source_url && (
+                        <a href={major.source_url} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-[10px] font-black uppercase tracking-widest text-blue-700 hover:underline">
+                          View Details
+                        </a>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -209,6 +271,22 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
                     </span>
                   </button>
                 )}
+                {m.role === 'user' && (
+                  <button
+                    onClick={() => handleEditMessage(i, m.content)}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 rounded hover:bg-slate-200 text-slate-400 hover:text-[#003466]"
+                    title="Edit message"
+                  >
+                    <span className="material-symbols-outlined text-[14px]">edit</span>
+                  </button>
+                )}
+                <button
+                  onClick={() => deleteMessage(i)}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 rounded hover:bg-red-50 text-slate-400 hover:text-red-600"
+                  title="Delete message"
+                >
+                  <span className="material-symbols-outlined text-[14px]">delete</span>
+                </button>
               </div>
             )}
           </div>
@@ -242,9 +320,41 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
 
       {/* Input Section */}
       <div className="p-3 bg-white border-t border-slate-200">
+        {pendingPdfContext && (
+          <div className="mb-2 flex items-center justify-between gap-2 px-3 py-2 bg-blue-50 border border-blue-100 rounded-xl">
+            <span className="text-xs font-bold text-blue-800 truncate">
+              PDF attached for next message: {pendingPdfContext.filename}
+            </span>
+            <button onClick={() => setPendingPdfContext(null)} className="text-blue-700 hover:text-red-600">
+              <span className="material-symbols-outlined text-[18px]">close</span>
+            </button>
+          </div>
+        )}
         <div className="relative flex items-center gap-2">
+          <input ref={fileInputRef} type="file" accept=".pdf,application/pdf" className="hidden" onChange={handlePdfSelected} />
+          <div className="relative">
+            <button
+              onClick={() => setShowAttachMenu(!showAttachMenu)}
+              disabled={loading || uploadingPdf}
+              className="w-11 h-11 bg-white border border-slate-200 text-[#003466] rounded-xl flex items-center justify-center hover:bg-slate-50 disabled:opacity-40"
+              title="Add context"
+            >
+              <span className="material-symbols-outlined text-[22px]">{uploadingPdf ? 'hourglass_top' : 'add'}</span>
+            </button>
+            {showAttachMenu && (
+              <div className="absolute bottom-12 left-0 w-44 bg-white border border-slate-200 rounded-xl shadow-xl p-2 z-20">
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-full flex items-center gap-2 px-3 py-3 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-50"
+                >
+                  <span className="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                  Add PDF
+                </button>
+              </div>
+            )}
+          </div>
           <input 
-            className="flex-1 pl-4 pr-12 py-3 bg-slate-100 border-transparent focus:border-[#003466] focus:bg-white focus:ring-4 focus:ring-[#003466]/5 rounded-xl transition-all outline-none text-sm"
+            className="flex-1 min-h-[44px] pl-4 pr-12 py-3 bg-slate-100 border-transparent focus:border-[#003466] focus:bg-white focus:ring-4 focus:ring-[#003466]/5 rounded-xl transition-all outline-none text-sm"
             placeholder="Hỏi thêm về ngành học, sự nghiệp..." 
             type="text"
             value={input}
@@ -255,7 +365,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate }) => {
           <button 
             onClick={handleSend} 
             disabled={!input.trim() || loading}
-            className="absolute right-2 w-9 h-9 bg-[#003466] text-white rounded-lg flex items-center justify-center shadow-lg shadow-blue-900/20 active:scale-95 transition-all disabled:opacity-30"
+            className="absolute right-2 w-10 h-10 bg-[#003466] text-white rounded-lg flex items-center justify-center shadow-lg shadow-blue-900/20 active:scale-95 transition-all disabled:opacity-30"
           >
             <span className="material-symbols-outlined text-[20px]">send</span>
           </button>

@@ -3,15 +3,15 @@
     "UserPromptSubmit": [
       {
         "type": "command",
-        "command": "AI_TOOL_NAME=copilot python3 ~/scripts/log_hook.py",
+        "command": "AI_TOOL_NAME=copilot python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py",
         "timeout": 10
       }
     ],
-    "Stop": [
+    "SessionStart": [
       {
         "type": "command",
-        "command": "AI_TOOL_NAME=copilot python3 ~/scripts/log_hook.py",
-        "timeout": 10
+        "command": "AI_TOOL_NAME=copilot python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py",
+        "timeout": 5
       }
     ]
   }

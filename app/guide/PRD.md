@@ -212,3 +212,59 @@ Test: A/B giữa report lý thuyết vs. thực tế, đo tỷ lệ click đăng
 - Dashboard tư vấn viên (Later)
 - Tích hợp lịch hẹn thật
 - Refine / re-run session (Later)
+
+## Update Notes - System Tokens, Database, Resources
+
+### System / Tokens
+
+- Add a `/system/tokens` dashboard for checking LLM token usage.
+- Filters: time window, user email, and AI route/tool.
+- Show summary cards for total tokens, prompt tokens, completion tokens, and request count.
+- Add a frequency graph so admins/staff can see request volume and token usage over time.
+- Use audit logs as the default source. If provider token counters are not stored yet, estimate tokens from input/output text length and label the data as estimated.
+
+### System / Database - Prompt Versioning
+
+- Extend `/system/database` beyond user management with prompt versioning controls.
+- Admin can update or create a prompt with `agent_name`, version number/name, and prompt content.
+- Admin can compare two prompt versions with the same test input and inspect the rendered output side by side.
+- Admin can select a prompt version for immediate runtime use where the active backend agent supports live prompt replacement.
+- Persist the selected prompt content under a `selected` alias so the chosen version is visible in PostgreSQL.
+
+### Tai nguyen
+
+- Add a `Tai nguyen` page for students.
+- The page explains when to use Wizard, Profile/CV PDF, AI Consultant, and Report.
+- Add a sidebar entry so students can find the usage docs without needing staff/admin access.
+
+### Report
+
+- Report should recover the latest generated result after page refresh for the logged-in user.
+- Show a summary header with number of recommended majors, average match score, and verified-source count.
+- Keep the Top 3 major cards focused on fit rationale, student experience, match score, and official source status.
+- Add clear next actions: update Profile/CV, rerun Wizard, ask AI follow-up questions, or request human consultation.
+
+### Staff / Human Fallback
+
+- When AI fallback or safety escalation happens, create a pending handoff job for staff.
+- `/staff` must show pending fallback jobs for both admin and editor roles.
+- Staff can inspect the fallback question, handoff summary, and the student's latest chat session.
+- Admin/editor can accept a job or mark it busy.
+- After accepting, staff can send a human reply that is saved into the student's chat session as a human advisor message.
+- Student chat should refresh periodically so human advisor replies appear without requiring a page reload.
+
+### CV Extraction, OCR, and Profile Merge
+
+- CV upload is a first-class profile feature, not only a one-time Wizard attachment.
+- The backend should extract embedded PDF text first, then fall back to OCR when text is missing or too short.
+- OCR must support English and Vietnamese CVs and be configurable through extraction settings such as minimum text length, OCR page limit, language list, render scale, and Tesseract command path.
+- CV parsing should fail soft: if LLM parsing times out or returns weak output, local fallback extraction still returns useful structured data.
+- Structured CV data should include personal info, summary, career goals, skills, GPA or GPA estimate, education, experience, projects, certifications, achievements, languages, and parsing metadata.
+- CV signal extraction should use both raw text and structured data to produce skills, job titles, suggested majors, major explanations, GPA estimate, and persona summary.
+- Upload response should return `cv_text`, `structured_data`, `cv_signals`, extraction metadata, and `cv_document_id`.
+- Users should review and edit extracted fields before confirming them into Profile.
+- Confirming a CV should merge only non-empty extracted fields so useful existing profile data is not overwritten by empty arrays or blank strings.
+- Profile should show uploaded CV document versions and allow users to view, confirm, and delete CV documents.
+- Wizard should keep `cv_document_id` and structured CV data, then pass them into `/api/match` so recommendations can use the selected CV.
+- If `/api/match` does not receive CV text/signals directly, the backend should use the active confirmed CV/profile context when available.
+- RAG retrieval should include the user's active CV collection when a `user_id` is available, using safe collection names and non-colliding document IDs for repeated uploads.

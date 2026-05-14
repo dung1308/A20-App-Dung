@@ -24,9 +24,9 @@ const AuthenticatedLayout = () => {
       {/* Shared Sidebar */}
       <LeftPanel />
 
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Shared Top Header */}
-        <header className="h-16 px-8 flex items-center justify-between bg-white border-b border-slate-200 flex-shrink-0">
+        <header className="h-16 pl-16 pr-4 md:px-8 flex items-center justify-between bg-white border-b border-slate-200 flex-shrink-0">
           <div className="flex items-center gap-4">
             <h1 className="text-xl font-black text-[#003466] hidden md:block">VinUni Admission</h1>
           </div>
@@ -49,9 +49,9 @@ const AuthenticatedLayout = () => {
         </header>
 
         {/* Main Content Area - Outlet renders the child route component */}
-        <div className="flex-1 flex flex-col overflow-hidden relative">
+        <main className="flex-1 flex flex-col min-h-0 overflow-y-auto overflow-x-hidden relative [-webkit-overflow-scrolling:touch]">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );

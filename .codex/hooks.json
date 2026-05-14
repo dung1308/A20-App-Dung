@@ -1,26 +1,19 @@
 {
   "version": "1.0",
   "hooks": {
-    "UserPromptSubmit": [
+    "on_prompt": [
       {
-        "hooks": [
-          {
-            "name": "log-prompt",
-            "command": "AI_TOOL_NAME=codex python3 ${workspaceFolder}/scripts/log_hook.py",
-            "timeout": 10
-          }
-        ]
+        "name": "log-codex-prompt",
+        "command": "AI_TOOL_NAME=codex python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py",
+        "timeout": 5,
+        "include_context": true
       }
     ],
-    "Stop": [
+    "on_response": [
       {
-        "hooks": [
-          {
-            "name": "log-stop",
-            "command": "AI_TOOL_NAME=codex python3 scripts/log_hook.py",
-            "timeout": 10
-          }
-        ]
+        "name": "log-codex-response",
+        "command": "AI_TOOL_NAME=codex python E:/VinUNI_thuc_chien_project/A20-App-Dung/scripts/log_hook.py",
+        "timeout": 5
       }
     ]
   }

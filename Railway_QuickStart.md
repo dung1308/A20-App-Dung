@@ -109,6 +109,14 @@ USER_DAILY_BUDGET_USD=0.50
 LLM_INPUT_COST_PER_1K=0.00015
 LLM_OUTPUT_COST_PER_1K=0.00060
 MAX_SINGLE_PROMPT_TOKENS=2000
+
+# CV PDF extraction and OCR fallback
+MIN_PDF_TEXT_CHARS=500
+MAX_OCR_PAGES=5
+OCR_LANGUAGES=eng+vie
+OCR_RENDER_SCALE=2.0
+# Only set this if Railway cannot find tesseract automatically.
+# TESSERACT_CMD=/usr/bin/tesseract
 ```
 
 Notes:
@@ -122,6 +130,7 @@ Notes:
   CORS_ORIGINS=https://vinuni-frontend.up.railway.app,https://your-custom-domain.com
   ```
 - `USE_MOCK=False` is required for real OpenAI and PostgreSQL behavior. Use `USE_MOCK=True` only for demo/testing.
+- CV OCR requires the backend image to install `tesseract-ocr`, `tesseract-ocr-eng`, and `tesseract-ocr-vie`. The checked-in `app/backend/Dockerfile` installs these packages; keep the backend root directory set to `app/backend` so Railway uses that Dockerfile when Docker deployment is enabled.
 
 ## 4. Configure the Frontend Service
 1. In the Railway dashboard, click **+ Add Service** -> **GitHub Repo** and select the same repository again.
@@ -201,3 +210,4 @@ uvicorn main:app --host 0.0.0.0 --port $PORT
 - **Database Protocol**: If you get a `NoSuchModuleError`, ensure `database.py` is replacing `postgres://` with `postgresql://` as Railway provides the shorter string by default.
 - **CORS Errors**: Ensure your frontend public URL is included in the backend `CORS_ORIGINS` variable.
 - **Permissions**: If `pgcrypto` fails to enable, ignore the warning as long as the tables are created. Your database user usually has sufficient privileges on Railway.
+- **OCR unavailable**: If scanned CVs return little or no text, confirm the backend deploy used `app/backend/Dockerfile`, the Tesseract packages installed successfully, and `OCR_LANGUAGES=eng+vie`. If logs show `tesseract not found`, set `TESSERACT_CMD=/usr/bin/tesseract`.

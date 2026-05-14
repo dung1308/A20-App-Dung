@@ -3,10 +3,12 @@ import { useStore } from '../../state/store';
 import api from '../../services/api';
 
 const CVUpload = ({ onUploadSuccess }) => {
-  const { setCVSignals, setCVText, cvSignals } = useStore();
+  const { setCVSignals, setCVText, setCVData, cvSignals } = useStore();
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [uploadResult, setUploadResult] = useState(null);
+  const [reviewJson, setReviewJson] = useState('');
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -34,6 +36,9 @@ const CVUpload = ({ onUploadSuccess }) => {
       const data = await api.uploadCV(formData);
       setCVSignals(data.cv_signals);
       setCVText(data.cv_text || '');
+      setCVData(data.cv_text || '', data.cv_signals, data.cv_document_id, data.structured_data || null);
+      setUploadResult(data);
+      setReviewJson(JSON.stringify(data.structured_data || {}, null, 2));
       setStatus('success');
       if (onUploadSuccess) onUploadSuccess(data);
     } catch (error) {
@@ -47,7 +52,22 @@ const CVUpload = ({ onUploadSuccess }) => {
     setCVSignals(null);
     setCVText('');
     setFile(null);
+    setUploadResult(null);
+    setReviewJson('');
     setStatus('idle');
+  };
+
+  const handleConfirm = async () => {
+    if (!uploadResult?.cv_document_id) return;
+    try {
+      const structuredData = reviewJson ? JSON.parse(reviewJson) : uploadResult.structured_data;
+      await api.confirmCV(uploadResult.cv_document_id, structuredData);
+      setCVData(uploadResult.cv_text || '', uploadResult.cv_signals, uploadResult.cv_document_id, structuredData);
+      setStatus('confirmed');
+      if (onUploadSuccess) onUploadSuccess({ ...uploadResult, structured_data: structuredData });
+    } catch (error) {
+      setErrorMsg(error instanceof SyntaxError ? 'Structured CV JSON khong hop le.' : 'Khong the xac nhan CV vao Profile.');
+    }
   };
 
   return (
@@ -81,6 +101,31 @@ const CVUpload = ({ onUploadSuccess }) => {
 
       {errorMsg && <p className="mt-3 text-xs text-red-600 font-medium">{errorMsg}</p>}
       {cvSignals && <p className="mt-3 text-xs text-green-700 font-medium">CV đang được sử dụng để tối ưu kết quả.</p>}
+      {uploadResult?.structured_data && (
+        <div className="mt-5 bg-white border border-blue-100 rounded-xl p-4">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <div>
+              <p className="text-sm font-black text-blue-900">Review extracted CV data</p>
+              <p className="text-xs text-slate-500">Edit this structured data before confirming it into Profile.</p>
+            </div>
+            <span className="px-2 py-1 bg-amber-50 text-amber-700 border border-amber-100 rounded text-[10px] font-black uppercase">
+              {uploadResult.parse_metadata?.method || 'fallback'}
+            </span>
+          </div>
+          <textarea
+            className="w-full min-h-56 p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-700 outline-none focus:ring-2 focus:ring-blue-900/10"
+            value={reviewJson}
+            onChange={(event) => setReviewJson(event.target.value)}
+          />
+          <button
+            onClick={handleConfirm}
+            className="mt-3 px-4 py-2.5 bg-blue-900 text-white rounded-lg text-xs font-black uppercase tracking-widest disabled:opacity-50"
+            disabled={status === 'confirmed'}
+          >
+            {status === 'confirmed' ? 'Confirmed in Profile' : 'Confirm into Profile'}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

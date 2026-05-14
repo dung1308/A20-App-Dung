@@ -3587,3 +3587,150 @@ Thông tin này sẽ giúp mình đưa ra những so sánh phù hợp hơn cho b
 2026-05-14 10:14:58 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=fallback pass=False latency=29347ms
 2026-05-14 10:14:58 [-] main INFO — Chat response {'response': 'Tôi xin lỗi, nhưng tôi không thể trả lời câu hỏi này vì lý do an toàn. Bạn có câu hỏi nào khác về VinUni không?', 'intent': 'fallback', 'status': 'rejected', 'major': None, 'sources': [], 'sessionId': '197151d0-db40-45b6-8e97-85c42722288d', 'sessionTitle': None, 'escalation_level': 'NONE'}
 2026-05-14 10:21:40 [-] guards.rate_limiter INFO — RateLimiter: evicted 1 inactive users.
+2026-05-14 14:53:21 [-] main INFO — Database initialized at module level.
+2026-05-14 14:53:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:53:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:53:22 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 14:53:24 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 14:53:24 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 14:53:25 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:53:26 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:53:26 [-] main INFO — Running background task synchronization...
+2026-05-14 14:53:26 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 14:53:26 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 14:58:19 [-] main INFO — Database initialized at module level.
+2026-05-14 14:58:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:58:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:58:19 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 14:58:20 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 14:58:20 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 14:58:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:58:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:58:22 [-] main INFO — Running background task synchronization...
+2026-05-14 14:58:22 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 14:58:22 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 14:59:06 [-] main INFO — Database initialized at module level.
+2026-05-14 14:59:07 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:07 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:07 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 14:59:08 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 14:59:08 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 14:59:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:09 [-] main INFO — Running background task synchronization...
+2026-05-14 14:59:09 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 14:59:09 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 14:59:29 [-] main INFO — Database initialized at module level.
+2026-05-14 14:59:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:30 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 14:59:30 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 14:59:30 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 14:59:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:32 [-] main INFO — Running background task synchronization...
+2026-05-14 14:59:32 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 14:59:32 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 14:59:49 [-] main INFO — Database initialized at module level.
+2026-05-14 14:59:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:51 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 14:59:51 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 14:59:51 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 14:59:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 14:59:53 [-] main INFO — Running background task synchronization...
+2026-05-14 14:59:53 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 14:59:53 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:07:34 [-] orchestrator.pipeline INFO — run_match for user: [EMAIL]
+2026-05-14 15:07:34 [-] agents.advisor INFO — AdvisorAgent.match_majors() called
+2026-05-14 15:07:43 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 9.17s
+2026-05-14 15:07:43 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-14 15:07:45 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.73s
+2026-05-14 15:07:45 [-] agents.judge INFO — Judge Result: pass=True, score=100, reason=The response provides relevant suggestions for majors based on the user's interests and strengths, includes accurate details of the majors, and cites official sources for further information. It avoids harmful content or guarantees, making it appropriate for a Vietnamese high school student.
+2026-05-14 15:07:45 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=10921ms
+2026-05-14 15:07:45 [-] main INFO — Student profile persisted to SQL for: [EMAIL]
+2026-05-14 15:07:45 [-] services.rag_service INFO — Ingesting CV for user admin_vinuni.edu.vn
+2026-05-14 15:07:46 [-] main INFO — Wizard answers indexed for user context: [EMAIL]
+2026-05-14 15:11:23 [-] main INFO — Database initialized at module level.
+2026-05-14 15:11:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:11:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:11:23 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:11:24 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:11:24 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:11:25 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:11:26 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:11:26 [-] main INFO — Running background task synchronization...
+2026-05-14 15:11:26 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:11:26 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:12:06 [-] main INFO — Database initialized at module level.
+2026-05-14 15:12:07 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:07 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:07 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:12:07 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:12:07 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:12:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:09 [-] main INFO — Running background task synchronization...
+2026-05-14 15:12:09 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:12:09 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:12:56 [-] main INFO — Database initialized at module level.
+2026-05-14 15:12:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:56 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:12:57 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:12:57 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:12:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:12:58 [-] main INFO — Running background task synchronization...
+2026-05-14 15:12:58 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:12:58 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:13:30 [-] main INFO — Database initialized at module level.
+2026-05-14 15:13:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:13:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:13:31 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:13:32 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:13:32 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:13:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:13:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:13:33 [-] main INFO — Running background task synchronization...
+2026-05-14 15:13:33 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:13:33 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:15:02 [-] main INFO — Database initialized at module level.
+2026-05-14 15:15:03 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:15:03 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:15:03 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:15:04 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:15:04 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:15:04 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:15:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:15:05 [-] main INFO — Running background task synchronization...
+2026-05-14 15:15:05 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:15:05 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:16:19 [-] main INFO — Database initialized at module level.
+2026-05-14 15:16:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:16:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:16:20 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:16:20 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:16:20 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:16:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:16:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:16:22 [-] main INFO — Running background task synchronization...
+2026-05-14 15:16:22 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:16:22 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:38:02 [-] main INFO — Database initialized at module level.
+2026-05-14 15:38:04 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:38:04 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:38:04 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 15:38:05 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:38:05 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:38:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:38:07 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 15:38:07 [-] main INFO — Running background task synchronization...
+2026-05-14 15:38:07 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 15:38:07 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 15:38:51 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 15:38:51 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 15:48:08 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 2758 characters.
+2026-05-14 15:48:08 [-] services.rag_service INFO — Ingesting CV for user admin_vinuni.edu.vn
+2026-05-14 15:48:19 [-] main INFO — Profile updated for user: [EMAIL]

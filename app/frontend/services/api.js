@@ -132,6 +132,9 @@ const api = {
   
   deleteSession: (sessionId) => 
     apiClient.delete(`/api/chat/sessions/${sessionId}`).then(res => res.data),
+
+  deleteChatMessage: (messageId) =>
+    apiClient.delete(`/api/chat/messages/${messageId}`).then(res => res.data),
   
   downloadHistory: (sessionId) => 
     apiClient.get(`/api/chat/sessions/${sessionId}/download`, { responseType: 'blob' }),
@@ -154,6 +157,15 @@ const api = {
 
   downloadCV: (userId) => 
     apiClient.get(`/api/profile/${userId}/cv`, { responseType: 'blob' }),
+
+  getCVDocuments: () =>
+    apiClient.get('/api/profile/me/cv-documents').then(res => res.data),
+
+  confirmCV: (documentId, structuredData) =>
+    apiClient.post(`/api/profile/me/cv-documents/${documentId}/confirm`, { structured_data: structuredData }).then(res => res.data),
+
+  deleteCVDocument: (documentId) =>
+    apiClient.delete(`/api/profile/me/cv-documents/${documentId}`).then(res => res.data),
 
   // Metrics and Human Handoff (PMF Scorecard Support)
   /**
@@ -183,6 +195,9 @@ const api = {
   updateHandoffStatus: (traceId, status) =>
     apiClient.post(`/api/admin/handoff/${traceId}`, { status }).then(res => res.data),
 
+  sendHandoffReply: (traceId, message) =>
+    apiClient.post(`/api/admin/handoff/${traceId}/message`, { message }).then(res => res.data),
+
   logEmailSent: (userId) =>
     apiClient.post('/api/audit/email-sent', { user_id: userId }).then(res => res.data),
 
@@ -191,6 +206,8 @@ const api = {
 
   // Database & System Health
   getDbStatus: () => apiClient.get('/api/system/db-status').then(res => res.data),
+  getTokenUsage: (params = {}) =>
+    apiClient.get('/api/system/token-usage', { params }).then(res => res.data),
   getAdminUsers: () => apiClient.get('/api/admin/users').then(res => res.data),
   createAdminUser: (payload) => apiClient.post('/api/admin/users', payload).then(res => res.data),
   updateAdminUserRole: (userId, role) =>
@@ -201,12 +218,19 @@ const api = {
     apiClient.post(`/api/admin/users/${encodeURIComponent(userId)}/permissions/revoke`, { permission }).then(res => res.data),
   updateAdminUserBlacklist: (userId, blacklisted) =>
     apiClient.patch(`/api/admin/users/${encodeURIComponent(userId)}/blacklist`, { blacklisted }).then(res => res.data),
+  getAdminPrompts: () => apiClient.get('/api/admin/prompts').then(res => res.data),
+  createAdminPrompt: (payload) => apiClient.post('/api/admin/prompts', payload).then(res => res.data),
+  compareAdminPrompts: (payload) => apiClient.post('/api/admin/prompts/compare', payload).then(res => res.data),
+  selectAdminPrompt: (payload) => apiClient.post('/api/admin/prompts/select', payload).then(res => res.data),
+  deleteAdminPrompt: (agentName, version) =>
+    apiClient.delete(`/api/admin/prompts/${encodeURIComponent(agentName)}/${encodeURIComponent(version)}`).then(res => res.data),
 
   // RAG Admin
   getRagStatus: () => apiClient.get('/api/admin/rag/status').then(res => res.data),
 
   updateRagConfig: (intervalHours) =>
     apiClient.post('/api/admin/rag/config', { interval_hours: intervalHours }).then(res => res.data),
+  ingestRag: (payload) => apiClient.post('/api/admin/rag/ingest', payload).then(res => res.data),
 
   getRagIngestStreamUrl: () => `${API_BASE_URL}/api/admin/rag/ingest/stream`,
 

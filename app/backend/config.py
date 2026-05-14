@@ -26,6 +26,7 @@ OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
 DATABASE_URL: str = os.getenv("DATABASE_URL", "") # Initialize as empty string, actual value from get_database_url
 PROMPT_VERSION: str = os.getenv("PROMPT_VERSION", "v2")
+ALLOW_PROMPT_DELETION: bool = os.getenv("ALLOW_PROMPT_DELETION", "false").lower() == "true"
 USE_MOCK: bool = os.getenv("USE_MOCK", "True").lower() == "true"
 REDIS_URL: str | None = os.getenv("REDIS_URL")
 HUMAN_WEBHOOK: str = os.getenv("HUMAN_WEBHOOK", "http://localhost:9000/handoff")

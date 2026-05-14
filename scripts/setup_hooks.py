@@ -34,11 +34,12 @@ def main() -> None:
     hook_dir.mkdir(parents=True, exist_ok=True)
     hook_file = hook_dir / "pre-push"
 
+    python_exe = sys.executable.replace("\\", "/")
     # Git on Windows uses sh.exe (from Git Bash) to run hook scripts,
     # so we write a POSIX shell script but use 'python' (not 'python3')
-    hook_content = """#!/bin/sh
+    hook_content = f"""#!/bin/sh
 # Submit AI logs to grading server before push
-python scripts/submit_log.py
+"{python_exe}" "{repo_root.as_posix()}/scripts/submit_log.py"
 exit 0  # Never block push
 """
 
@@ -52,6 +53,8 @@ exit 0  # Never block push
 
     print("[ai-log] Git pre-push hook installed.")
     print("[ai-log] Setup complete. Configure AI_LOG_SERVER in your .env file.")
+    log_hook_path = (repo_root / "scripts" / "log_hook.py").as_posix()
+    print(f"[ai-log] To enable logging, set your AI tool's hook to: python \"{log_hook_path}\"")
 
 
 if __name__ == "__main__":

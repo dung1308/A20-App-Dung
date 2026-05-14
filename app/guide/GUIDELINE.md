@@ -60,6 +60,18 @@ Quy tắc:
 - [ ] "Bắt đầu lại" ở trang report — reset toàn bộ wizard, về bước 1
 - [ ] Nút "Đăng ký tư vấn chuyên sâu" — CTA rõ ràng ở cuối report (link mock)
 
+## CV Extraction / Profile Update
+
+- CV upload must return raw extracted text, structured CV data, CV signals, extraction metadata, and a `cv_document_id`.
+- PDF extraction should use embedded text first and OCR fallback when text is missing or too short.
+- CV review should let the user inspect and edit extracted fields before confirming into Profile.
+- Profile must preserve existing useful data when CV extraction returns empty fields.
+- Profile should list uploaded CV versions and support view/confirm/delete actions.
+- Wizard should pass `cv_document_id` and structured CV context into match requests when available.
+- Chat/RAG should use active confirmed CV/profile context for user-specific answers.
+- Backend implementation files: `services/pdf_loader.py`, `services/cv_parser.py`, `agents/cv_agent.py`, `models/schemas.py`, `services/db_service.py`, `main.py`, `services/rag_service.py`.
+- Frontend implementation files: `components/CVUpload/CVUpload.jsx`, `pages/ProfilePage.jsx`, `pages/WizardPage.jsx`, `services/api.js`, `state/store.js`.
+
 ### R — Recovery (khi AI sai / mạng lỗi / input thiếu)
 
 - [ ] **Fallback UX:** Nếu AI trả về `fallback: true` → không hiện Top 3 giả → hiện message fallback + CTA đăng ký tư vấn (xem `PRD §Fallback UX`)

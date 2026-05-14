@@ -11,6 +11,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 VN_TZ = timezone(timedelta(hours=7))
+MAX_LOG_SIZE_MB = 10
 
 
 def git(cmd):
@@ -28,14 +29,19 @@ def detect_tool(data: dict) -> str:
     # Heuristics
     if "transcript_path" in data:
         return "codex"
-    if data.get("hook_event_name", "").startswith(("Before", "After", "Session", "Pre", "Notification")):
+    # Heuristic for 'co_pilot': assuming it has a unique identifier like 'co_pilot_id'
+    if "co_pilot_id" in data:
+        return "co_pilot"
+    if data.get("hook_event_name", "").lower().startswith("co_pilot"):
+        return "co_pilot"
+    
+    event_name = data.get("hook_event_name", "").lower()
+    if event_name.startswith(("before", "after", "session", "pre", "notification")):
         return "gemini"
-    if data.get("hook_event_name", "")[0:1].islower():
-        # camelCase event names → Cursor or Copilot
-        if "workspace_roots" in data:
-            return "cursor"
-        if "toolName" in data:
-            return "copilot"
+    if "workspace_roots" in data:
+        return "cursor"
+    if "toolName" in data:
+        return "copilot"
     if "hook_event_name" in data:
         return "claude"
     return "unknown"
@@ -78,7 +84,7 @@ def normalize(data: dict, tool: str) -> dict | None:
         })
 
     elif tool == "gemini":
-        if event == "BeforeAgent":
+        if event == "beforeagent":
             prompt = data.get("prompt", "")[:1000]
             base.update({"prompt": prompt})
         else:
@@ -101,10 +107,12 @@ def normalize(data: dict, tool: str) -> dict | None:
             base.update({"prompt": prompt, "response_summary": answer})
 
     elif tool == "codex":
+        # Codex thường trả về prompt trực tiếp hoặc trong object request
+        prompt_content = data.get("prompt") or data.get("request", {}).get("prompt", "")
         base.update({
-            "prompt": data.get("prompt", "")[:1000],
-            "turn_id": data.get("turn_id", ""),
-            "transcript_path": data.get("transcript_path", ""),
+            "prompt": prompt_content[:1000],
+            "turn_id": data.get("turn_id", "n/a"),
+            "transcript_path": data.get("transcript_path", "n/a")
         })
 
     elif tool == "cursor":
@@ -118,6 +126,15 @@ def normalize(data: dict, tool: str) -> dict | None:
             "prompt": data.get("prompt", "")[:1000],
             "tool_name": data.get("toolName", ""),
             "tool_args": data.get("toolArgs"),
+        })
+
+    elif tool == "co_pilot":
+        # Check for multiple possible prompt fields common in AI hooks
+        prompt = data.get("prompt") or data.get("input") or data.get("text") or ""
+        base.update({
+            "prompt": str(prompt)[:1000],
+            "co_pilot_id": data.get("co_pilot_id", ""),
+            # Add other relevant 'co_pilot' specific fields here if known
         })
 
     # Skip empty/noise events
@@ -142,9 +159,24 @@ def main():
     if not entry:
         sys.exit(0)
 
-    log_dir = Path(os.environ.get("AI_LOG_DIR", ".ai-log"))
+    # Ensure we log to the repository root regardless of where the script is called
+    git_root = git("git rev-parse --show-toplevel")
+    # This script is at scripts/log_hook.py, so the project root is the parent directory
+    project_fallback = Path(__file__).parent.parent.absolute()
+
+    base_path = Path(git_root) if git_root else project_fallback
+    log_dir = base_path / os.environ.get("AI_LOG_DIR", ".ai-log")
+
     log_dir.mkdir(exist_ok=True)
     log_file = log_dir / "session.jsonl"
+
+    # Log Rotation: Prevent disk space exhaustion
+    if log_file.exists() and log_file.stat().st_size > MAX_LOG_SIZE_MB * 1024 * 1024:
+        backup_file = log_file.with_suffix(".jsonl.bak")
+        try:
+            log_file.replace(backup_file)
+        except Exception:
+            pass # Avoid crashing if file is locked
 
     with open(log_file, "a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
