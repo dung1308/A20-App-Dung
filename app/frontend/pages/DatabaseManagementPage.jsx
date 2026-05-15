@@ -8,11 +8,11 @@ const PERMISSION_OPTIONS = ['system:all', 'db:manage', 'tokens:view', 'profile:e
 const KNOWN_PROMPT_AGENTS = [
   { value: 'advisor', label: 'Advisor - general student chat' },
   { value: 'advisor_match', label: 'Advisor Match - Wizard Top 3 matching' },
+  { value: 'crm', label: 'CRM - profile-aware student chat' },
   { value: 'rag', label: 'RAG - grounded admissions answers' },
   { value: 'router', label: 'Router - classify chat intent' },
-  { value: 'judge', label: 'Judge - safety and quality review' },
-  { value: 'cv_parser', label: 'CV Parser - structured CV extraction' },
-  { value: 'cv_agent', label: 'CV Agent - CV signal extraction' }
+  { value: 'judge_safety', label: 'Judge Safety - response safety gate' },
+  { value: 'judge_gold', label: 'Judge Gold - golden-answer evaluation' }
 ];
 
 const DatabaseManagementPage = () => {
@@ -32,6 +32,7 @@ const DatabaseManagementPage = () => {
   });
   const [permissionDraft, setPermissionDraft] = useState({});
   const [promptModalOpen, setPromptModalOpen] = useState(false);
+  const [promptPreview, setPromptPreview] = useState(null);
   const [newPrompt, setNewPrompt] = useState({ agent_name: '', version: '', content: '' });
   const [comparePrompt, setComparePrompt] = useState({ agent_name: '', version_a: '', version_b: '', test_input: '' });
   const [compareResult, setCompareResult] = useState(null);
@@ -449,7 +450,16 @@ const DatabaseManagementPage = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 text-xs text-slate-500">{formatDate(prompt.created_at)}</td>
-                    <td className="px-6 py-4 text-xs text-slate-500 max-w-md truncate">{prompt.content}</td>
+                    <td className="px-6 py-4 text-xs text-slate-500 max-w-md">
+                      <button
+                        type="button"
+                        onClick={() => setPromptPreview(prompt)}
+                        className="block w-full truncate text-left hover:text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary/20 rounded"
+                        title="Open full prompt preview"
+                      >
+                        {prompt.content || 'No content'}
+                      </button>
+                    </td>
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => handleSelectPrompt(prompt)}
@@ -742,6 +752,53 @@ const DatabaseManagementPage = () => {
                   Save Prompt
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {promptPreview && (
+        <div className="fixed inset-0 z-50 bg-slate-900/50 flex items-center justify-center p-4">
+          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[88vh]">
+            <div className="p-6 border-b border-slate-100 flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h3 className="text-lg font-black text-slate-800">Prompt Preview</h3>
+                <p className="text-xs text-slate-500 mt-1 truncate">
+                  {promptPreview.agent_name} / {promptPreview.version} · {formatDate(promptPreview.created_at)}
+                </p>
+              </div>
+              <button
+                onClick={() => setPromptPreview(null)}
+                className="px-3 py-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg text-sm font-bold"
+              >
+                Close
+              </button>
+            </div>
+            <div className="p-6 overflow-y-auto">
+              <pre className="whitespace-pre-wrap break-words rounded-xl border border-slate-200 bg-slate-950 p-5 text-xs leading-6 text-slate-100 font-mono">
+                {promptPreview.content || 'No prompt content.'}
+              </pre>
+            </div>
+            <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-2">
+              <button
+                onClick={() => {
+                  setNewPrompt({
+                    agent_name: promptPreview.agent_name,
+                    version: promptPreview.version,
+                    content: promptPreview.content || ''
+                  });
+                  setPromptPreview(null);
+                }}
+                className="px-4 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50"
+              >
+                Load for edit
+              </button>
+              <button
+                onClick={() => setPromptPreview(null)}
+                className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest"
+              >
+                Done
+              </button>
             </div>
           </div>
         </div>

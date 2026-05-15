@@ -12,6 +12,7 @@ from agents.advisor import MATCH_SYSTEM_PROMPT, ADVISOR_CHAT_SYSTEM_PROMPT
 from agents.crm import CRM_SYSTEM_PROMPT
 from agents.judge import JUDGE_SYSTEM_PROMPT
 from agents.judgeGold import GOLDEN_JUDGE_SYSTEM_PROMPT
+from orchestrator.router import ROUTER_SYSTEM_PROMPT
 
 # Prompt cho RAG (được trích xuất từ agents/rag.py)
 RAG_SYSTEM_PROMPT = (
@@ -39,6 +40,7 @@ def seed_prompts(version: str = "v1"):
         "advisor": ADVISOR_CHAT_SYSTEM_PROMPT,
         "crm": CRM_SYSTEM_PROMPT,
         "rag": RAG_SYSTEM_PROMPT,
+        "router": ROUTER_SYSTEM_PROMPT,
         "judge_safety": JUDGE_SYSTEM_PROMPT,
         "judge_gold": GOLDEN_JUDGE_SYSTEM_PROMPT
     }
@@ -54,6 +56,7 @@ def seed_prompts(version: str = "v1"):
             "advisor": "advisor_v2.txt",
             "advisor_match": "advisor_match_v2.txt",
             "rag": "rag_v2.txt",
+            "router": "router_v2.txt",
             "judge_safety": "judge_safety_v2.txt",
             "judge_gold": "judge_gold_v2.txt",
             "crm": "crm_v2.txt"

@@ -1644,9 +1644,12 @@ def _apply_prompt_selection(agent_name: str, content: str) -> List[str]:
         "advisor": [("advisor", "system_prompt")],
         "advisor_match": [("advisor", "match_prompt")],
         "match": [("advisor", "match_prompt")],
-        "rag": [("rag", "system_prompt"), ("rag", "prompt")],
+        "crm": [("crm", "system_prompt")],
+        "rag": [("rag", "system_prompt")],
         "router": [("router", "system_prompt")],
         "judge": [("judge", "system_prompt")],
+        "judge_safety": [("judge", "system_prompt")],
+        "judge_gold": [("judge_gold", "system_prompt")],
     }
 
     for component_name, attr_name in targets.get(normalized, []):

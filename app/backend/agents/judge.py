@@ -14,8 +14,9 @@ import json
 import logging
 from typing import Dict, Any
 
-from config import USE_MOCK
+from config import USE_MOCK, PROMPT_VERSION
 from services.llm_client import LLMClient
+from services.prompt_service import PromptService
 from utils.logger import get_logger
 from guards.escalation_detector import EscalationDetector
 
@@ -50,8 +51,10 @@ class JudgeAgent:
     Implements fail-safe: any error → reject (pass: False).
     """
 
-    def __init__(self):
+    def __init__(self, prompt_version: str = PROMPT_VERSION):
         self.llm = None if USE_MOCK else LLMClient()
+        self.prompt_service = PromptService()
+        self.system_prompt = self.prompt_service.get_prompt("judge_safety", prompt_version) or JUDGE_SYSTEM_PROMPT
         self.escalation_detector = EscalationDetector()
 
     def evaluate(self, input_text: str, output_text: str) -> Dict[str, Any]:
@@ -197,7 +200,7 @@ class JudgeAgent:
         the context budget and avoid avoidable cost.
         """
         return (
-            f"{JUDGE_SYSTEM_PROMPT}\n\n"
+            f"{self.system_prompt}\n\n"
             f"User input:\n{input_text[:2000]}\n\n"
             f"AI response:\n{output_text[:2000]}"
         )

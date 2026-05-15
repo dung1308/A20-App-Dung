@@ -13,9 +13,10 @@ Typical triggers (router → "crm"):
 import logging
 from typing import Optional, Dict, Any
 
-from config import USE_MOCK
+from config import USE_MOCK, PROMPT_VERSION
 from services.db_service import DBService
 from services.llm_client import LLMClient
+from services.prompt_service import PromptService
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -33,8 +34,10 @@ class CRMAgent:
     Fetches student profile from PostgreSQL and answers profile-related questions.
     """
 
-    def __init__(self):
+    def __init__(self, prompt_version: str = PROMPT_VERSION):
         self.llm = None if USE_MOCK else LLMClient()
+        self.prompt_service = PromptService()
+        self.system_prompt = self.prompt_service.get_prompt("crm", prompt_version) or CRM_SYSTEM_PROMPT
         # TODO: Inject DBService dependency for easier testing
         self.db = DBService()
 
@@ -126,4 +129,4 @@ class CRMAgent:
                 for t in history[-5:]
             ])
 
-        return f"{CRM_SYSTEM_PROMPT}\n\nHồ sơ học sinh:\n{formatted}{hist_ctx}\n\nCâu hỏi: {question}"
+        return f"{self.system_prompt}\n\nHồ sơ học sinh:\n{formatted}{hist_ctx}\n\nCâu hỏi: {question}"

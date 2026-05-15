@@ -16,8 +16,9 @@ import re
 import unicodedata
 from typing import List, Dict, Any
 
-from config import USE_MOCK
+from config import USE_MOCK, PROMPT_VERSION
 from services.llm_client import LLMClient
+from services.prompt_service import PromptService
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -41,6 +42,8 @@ class LLMRouter:
     def __init__(self):
         # ✅ Do NOT load model in MOCK mode
         self.llm = None if USE_MOCK else LLMClient()
+        self.prompt_service = PromptService()
+        self.system_prompt = self.prompt_service.get_prompt("router", PROMPT_VERSION) or ROUTER_SYSTEM_PROMPT
 
     # ------------------------------------------------------------------
     # Public API
@@ -269,7 +272,7 @@ class LLMRouter:
                 history_text += f"{role}: {turn['content']}\n"
 
         return (
-            f"{ROUTER_SYSTEM_PROMPT}\n\n"
+            f"{self.system_prompt}\n\n"
             f"Conversation:\n{history_text}\n"
             f"User message: {message}"
         )

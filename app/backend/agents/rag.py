@@ -14,8 +14,9 @@ Features:
 import re
 from typing import List, Dict, Any, Optional
 
-from config import get_openai_model, USE_MOCK
+from config import get_openai_model, USE_MOCK, PROMPT_VERSION
 from services.rag_service import RAGService
+from services.prompt_service import PromptService
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -44,9 +45,11 @@ Quy tắc:
 
 class RAGAgent:
 
-    def __init__(self):
+    def __init__(self, prompt_version: str = PROMPT_VERSION):
 
         self.rag_service = RAGService()
+        self.prompt_service = PromptService()
+        self.system_prompt = self.prompt_service.get_prompt("rag", prompt_version) or RAG_SYSTEM_PROMPT
 
         self.model = None if USE_MOCK else get_openai_model()
 
@@ -463,7 +466,7 @@ với hồ sơ và mối quan tâm của người học.
 """
 
         prompt = f"""
-{RAG_SYSTEM_PROMPT}
+{self.system_prompt}
 
 {persona_block}
 
