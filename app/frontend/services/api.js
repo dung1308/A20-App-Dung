@@ -237,6 +237,8 @@ const api = {
   getTokenUsage: (params = {}) =>
     apiClient.get('/api/system/token-usage', { params }).then(res => res.data),
   getAdminSystemHealth: () => apiClient.get('/api/admin/system/health').then(res => res.data),
+  seedAdminTable: (target, version = 'v2') =>
+    apiClient.post(`/api/admin/seed/${encodeURIComponent(target)}`, null, { params: { version } }).then(res => res.data),
   getAdminUsers: () => apiClient.get('/api/admin/users').then(res => res.data),
   createAdminUser: (payload) => apiClient.post('/api/admin/users', payload).then(res => res.data),
   updateAdminUserRole: (userId, role) =>

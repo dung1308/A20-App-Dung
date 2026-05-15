@@ -1659,6 +1659,150 @@ def _apply_prompt_selection(agent_name: str, content: str) -> List[str]:
             applied.append(f"{component_name}.{attr_name}")
     return applied
 
+def _seed_major_rows() -> Dict[str, Any]:
+    from models.schemas import Major
+    from utils.seed_majors import MAJORS_DATA
+
+    if database.SessionLocal is None:
+        raise HTTPException(status_code=503, detail="Database is not available")
+
+    added = 0
+    updated = 0
+    with database.SessionLocal() as session:
+        for entry in MAJORS_DATA:
+            major = session.query(Major).filter(Major.id == entry["id"]).first()
+            if major:
+                major.name = entry["name"]
+                major.description = entry["description"]
+                updated += 1
+            else:
+                session.add(Major(**entry))
+                added += 1
+        session.commit()
+        total = session.query(Major).count()
+    return {"table": "majors", "added": added, "updated": updated, "total": total}
+
+def _seed_admissions_rows() -> Dict[str, Any]:
+    from models.schemas import AdmissionsData, Major
+
+    if database.SessionLocal is None:
+        raise HTTPException(status_code=503, detail="Database is not available")
+
+    _seed_major_rows()
+    sample_data = [
+        {
+            "major_id": "cs",
+            "requirements": "GPA >= 3.5, IELTS >= 6.5, Math score >= 8.0",
+            "description": "Computer Science requires strong math foundations and programming readiness.",
+        },
+        {
+            "major_id": "ee",
+            "requirements": "GPA >= 3.2, IELTS >= 6.0, Physics/Math score >= 7.5",
+            "description": "Electrical and Computer Engineering fits students interested in circuits, embedded systems, and computing.",
+        },
+        {
+            "major_id": "me",
+            "requirements": "GPA >= 3.2, IELTS >= 6.0, Math/Physics score >= 7.5",
+            "description": "Mechanical Engineering fits students interested in design, robotics, and manufacturing.",
+        },
+        {
+            "major_id": "bme",
+            "requirements": "GPA >= 3.5, IELTS >= 6.5, Biology/Math score >= 8.0",
+            "description": "Biomedical Engineering combines medicine, life sciences, and engineering.",
+        },
+        {
+            "major_id": "ba",
+            "requirements": "GPA >= 3.0, IELTS >= 6.5, Essay score >= 8.0",
+            "description": "Business Administration develops leadership, strategy, and management capability.",
+        },
+        {
+            "major_id": "finance",
+            "requirements": "GPA >= 3.2, IELTS >= 6.5, Math score >= 7.5",
+            "description": "Finance focuses on markets, analysis, investment, and financial decision making.",
+        },
+        {
+            "major_id": "data_science",
+            "requirements": "GPA >= 3.5, IELTS >= 6.5, Math/Statistics score >= 8.0",
+            "description": "Data Science uses statistics, AI, and computation to solve data-rich problems.",
+        },
+        {
+            "major_id": "liberal_arts",
+            "requirements": "GPA >= 3.0, IELTS >= 7.0, Essay score >= 8.5",
+            "description": "Liberal Arts develops critical thinking, research, communication, and social analysis.",
+        },
+        {
+            "major_id": "architecture",
+            "requirements": "GPA >= 3.2, IELTS >= 6.5, Portfolio required",
+            "description": "Architecture requires design creativity, spatial thinking, and portfolio preparation.",
+        },
+    ]
+
+    added = 0
+    skipped = 0
+    with database.SessionLocal() as session:
+        valid_major_ids = {row[0] for row in session.query(Major.id).all()}
+        for entry in sample_data:
+            if entry["major_id"] not in valid_major_ids:
+                skipped += 1
+                continue
+            exists = session.query(AdmissionsData).filter(
+                AdmissionsData.major_id == entry["major_id"],
+                AdmissionsData.requirements == entry["requirements"],
+            ).first()
+            if exists:
+                skipped += 1
+                continue
+            session.add(AdmissionsData(**entry))
+            added += 1
+        session.commit()
+        total = session.query(AdmissionsData).count()
+    return {"table": "admissions_data", "added": added, "skipped": skipped, "total": total}
+
+def _seed_prompt_rows(version: str = "v2") -> Dict[str, Any]:
+    from services.seed_prompts import seed_prompts
+
+    before = len(pipeline.db_service.get_all_prompts())
+    seed_prompts(version)
+    after = len(pipeline.db_service.get_all_prompts())
+    return {"table": "prompts", "version": version, "before": before, "after": after, "added_or_updated": after - before}
+
+@app.post("/api/admin/seed/{target}", response_model=Dict[str, Any])
+async def seed_admin_table(target: str, version: str = "v2", admin: dict = Depends(admin_required)):
+    """Admin-only utility to populate setup tables from the UI."""
+    normalized = (target or "").strip().lower()
+    try:
+        if normalized == "majors":
+            result = _seed_major_rows()
+        elif normalized == "admissions_data":
+            result = _seed_admissions_rows()
+        elif normalized == "prompts":
+            result = _seed_prompt_rows(version)
+        elif normalized == "all":
+            result = {
+                "majors": _seed_major_rows(),
+                "admissions_data": _seed_admissions_rows(),
+                "prompts": _seed_prompt_rows(version),
+                "security_events": "Security events are generated automatically by guardrails/rate limits, not seeded.",
+            }
+        else:
+            raise HTTPException(status_code=400, detail="Supported targets: majors, admissions_data, prompts, all")
+
+        pipeline.db_service.save_audit_log(
+            user_id=admin["email"],
+            input_data=f"ADMIN_SEED_ACTION: {normalized}",
+            output_data=json.dumps(result, default=str),
+            judge_result={"action": "seed_table", "target": normalized},
+            route="admin_internal",
+            ai_resolved=True,
+            fallback=False,
+        )
+        return {"status": "success", "result": result}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Admin seed failed for {normalized}: {e}")
+        raise HTTPException(status_code=500, detail=f"Could not seed {normalized}")
+
 def _profile_readiness(profile: Dict[str, Any], cv_documents: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
     cv_documents = cv_documents or []
     required_fields = ["summary", "career_goals", "skills", "education", "experience"]

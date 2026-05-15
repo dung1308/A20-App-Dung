@@ -22,6 +22,7 @@ const DatabaseManagementPage = () => {
   const [health, setHealth] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [seeding, setSeeding] = useState('');
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
   const [newUser, setNewUser] = useState({
@@ -254,6 +255,19 @@ const DatabaseManagementPage = () => {
     }
   };
 
+  const handleSeedTable = async (target) => {
+    setSeeding(target);
+    try {
+      const result = await api.seedAdminTable(target, 'v2');
+      toast.success(`Seeded ${target}.`);
+      loadData();
+    } catch (err) {
+      toast.error(err.response?.data?.detail || `Could not seed ${target}.`);
+    } finally {
+      setSeeding('');
+    }
+  };
+
   if (loading) return <LoadingSpinner fullPage />;
 
   return (
@@ -303,6 +317,47 @@ const DatabaseManagementPage = () => {
             </div>
           </section>
         )}
+
+        <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+          <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Seed Empty Setup Tables</h2>
+              <p className="text-xs text-slate-500 mt-1">Use this with an admin account when PostgreSQL tables are empty after a fresh setup.</p>
+            </div>
+            <button
+              onClick={() => handleSeedTable('all')}
+              disabled={Boolean(seeding)}
+              className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50"
+            >
+              {seeding === 'all' ? 'Seeding...' : 'Seed all'}
+            </button>
+          </div>
+          <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <SeedActionCard
+              title="majors"
+              detail="Official major names used by the advisor and wizard."
+              loading={seeding === 'majors'}
+              onClick={() => handleSeedTable('majors')}
+            />
+            <SeedActionCard
+              title="admissions_data"
+              detail="Baseline SQL admission requirements linked to majors."
+              loading={seeding === 'admissions_data'}
+              onClick={() => handleSeedTable('admissions_data')}
+            />
+            <SeedActionCard
+              title="prompts"
+              detail="Versioned v2 prompts for advisor, RAG, CRM, router, and judges."
+              loading={seeding === 'prompts'}
+              onClick={() => handleSeedTable('prompts')}
+            />
+            <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50">
+              <p className="text-xs font-black text-slate-800 uppercase tracking-widest">security_events</p>
+              <p className="text-xs text-slate-500 mt-2 leading-5">Audit table. It fills automatically when guardrails, input checks, or rate limits trigger.</p>
+              <span className="inline-block mt-4 px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-slate-500 uppercase">No seed needed</span>
+            </div>
+          </div>
+        </section>
 
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100">
@@ -824,6 +879,21 @@ const StatusCard = ({ label, value, tone = 'slate' }) => {
     </div>
   );
 };
+
+const SeedActionCard = ({ title, detail, loading, onClick }) => (
+  <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50">
+    <p className="text-xs font-black text-slate-800 uppercase tracking-widest">{title}</p>
+    <p className="text-xs text-slate-500 mt-2 leading-5">{detail}</p>
+    <button
+      type="button"
+      disabled={loading}
+      onClick={onClick}
+      className="mt-4 px-3 py-2 bg-white border border-slate-200 text-primary rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 disabled:opacity-50"
+    >
+      {loading ? 'Seeding...' : 'Seed'}
+    </button>
+  </div>
+);
 
 const PromptPreview = ({ title, value }) => (
   <div className="border border-slate-200 rounded-xl overflow-hidden">
