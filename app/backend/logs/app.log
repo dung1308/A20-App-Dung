@@ -4189,3 +4189,14 @@ Nếu bạn không chắc chắn về ngành học phù hợp với mình, mình
 2026-05-14 21:37:48 [-] main INFO — Running background task synchronization...
 2026-05-14 21:37:48 [-] services.db_service INFO — ✓ Database migrations completed.
 2026-05-14 21:37:48 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-14 21:48:36 [-] main INFO — Database initialized at module level.
+2026-05-14 21:48:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 21:48:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 21:48:37 [-] services.rag_service INFO — Initializing RAGService
+2026-05-14 21:48:38 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-14 21:48:38 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-14 21:48:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 21:48:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-14 21:48:39 [-] main INFO — Running background task synchronization...
+2026-05-14 21:48:39 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-14 21:48:39 [-] main INFO — Background sync thread started. Interval: 24h

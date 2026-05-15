@@ -1,6 +1,17 @@
 # Railway Deployment Guide
 
-This guide explains how to deploy the VinUni Admission Assistant backend and its PostgreSQL database to Railway.
+This guide explains how to deploy the VinUni Admission Assistant backend, frontend, and PostgreSQL database to Railway.
+
+## Deployment Readiness Check
+
+Checked on 15/05/2026:
+
+- `docker-compose.yml` is suitable for local multi-container testing, but should not be treated as the production Railway topology. On Railway, deploy separate services: PostgreSQL, backend, and frontend.
+- `app/backend/Dockerfile` is Railway-ready. It installs backend dependencies plus Tesseract OCR packages, and starts Uvicorn on `${PORT:-8000}` so Railway can inject its dynamic public port.
+- `app/frontend/Dockerfile` is Railway-ready. It builds the Vite app with `npm run build` and serves the generated `dist/` folder on `${PORT:-3000}`.
+- Both Docker build contexts include `.dockerignore` files to keep local logs, uploads, caches, `node_modules`, and previous build output out of Railway image builds.
+- `DATABASE_URL=postgresql://...@db:5432/...` is local Docker Compose only. Railway production must use `${{Postgres.DATABASE_URL}}`.
+- `VITE_*` variables are embedded into the frontend bundle at build time. After changing `VITE_API_URL` or `VITE_GOOGLE_CLIENT_ID` in Railway, redeploy the frontend service.
 
 ## 0. Local Docker Compose Setup
 
@@ -47,6 +58,13 @@ Then open:
 
 Security note: never commit a real `.env`. If an API key is pasted into chat, GitHub, or logs, rotate it in the provider dashboard before using it again.
 
+Important Railway distinction:
+- Do not deploy this repository to Railway as one Docker Compose service.
+- Create separate Railway services instead:
+  - PostgreSQL service from Railway's database template.
+  - Backend service with root directory `app/backend`.
+  - Frontend service with root directory `app/frontend`.
+
 ## 1. Create a Railway Project
 1. Log in to [Railway.app](https://railway.app/).
 2. Click **New Project** and select **Deploy from GitHub repo**.
@@ -61,9 +79,10 @@ Security note: never commit a real `.env`. If an API key is pasted into chat, Gi
 ## 3. Configure the Backend Service
 1. Click on your **Backend Service** (the one deployed from GitHub).
 2. Go to the **Settings** tab and ensure the **Root Directory** is set to `app/backend` (or wherever your `main.py` resides).
-3. Go to the **Variables** tab.
-4. Click **New Variable** -> **Reference Variable** and select the `DATABASE_URL` from your Postgres service.
-5. Add the following environment variables manually.
+3. Ensure Railway uses `app/backend/Dockerfile`. If needed, set `RAILWAY_DOCKERFILE_PATH=Dockerfile` on the backend service because the root directory is already `app/backend`.
+4. Go to the **Variables** tab.
+5. Click **New Variable** -> **Reference Variable** and select the `DATABASE_URL` from your Postgres service.
+6. Add the following environment variables manually.
 
 ### Backend variables to send to Railway
 
@@ -123,6 +142,7 @@ Notes:
 - `DATABASE_URL` should be a Railway reference variable from the Postgres service. Do not paste a local SQLite URL in production.
 - Do not add local Docker-only database variables (`POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`) to the backend service unless you are also managing your own Postgres container. Railway's Postgres service provides `DATABASE_URL`.
 - Do not use `@db:5432` on Railway. The `db` hostname only exists inside local Docker Compose.
+- The backend Dockerfile listens on `${PORT:-8000}`. You do not need to set `PORT` manually unless you intentionally want a fixed port.
 - `SECRET_KEY` signs JWTs. Changing it invalidates existing logins.
 - `GOOGLE_CLIENT_ID` is used by the backend to verify Google login tokens.
 - `CORS_ORIGINS` is a comma-separated list. Include the Railway frontend public URL and any custom domain, for example:
@@ -136,7 +156,8 @@ Notes:
 1. In the Railway dashboard, click **+ Add Service** -> **GitHub Repo** and select the same repository again.
 2. Click on this new service and go to the **Settings** tab.
 3. Set the **Root Directory** to `app/frontend`.
-4. Go to the **Variables** tab and add the frontend variables.
+4. Ensure Railway uses `app/frontend/Dockerfile`. If needed, set `RAILWAY_DOCKERFILE_PATH=Dockerfile` on the frontend service because the root directory is already `app/frontend`.
+5. Go to the **Variables** tab and add the frontend variables.
 
 ### Frontend variables to send to Railway
 
@@ -157,10 +178,8 @@ Notes:
 - `VITE_API_URL` must be the **Public URL** of your Backend Service, for example `https://backend-production-xxx.up.railway.app`.
 - Do **not** use the `.railway.internal` URL for `VITE_API_URL`. The frontend runs in the user's browser, so it must use the public internet address.
 - `VITE_GOOGLE_CLIENT_ID` should match the same Google OAuth client configured for the backend as `GOOGLE_CLIENT_ID`.
-5. (Optional) If Railway doesn't auto-detect the build, set the **Start Command** to:
-   ```bash
-   npm run dev -- --host 0.0.0.0 --port $PORT
-   ```
+- The frontend Dockerfile runs `npm run build`, then serves `dist/` on `${PORT:-3000}`. Do not use `npm run dev` for production Railway deploys.
+- Because this is a Vite app, `VITE_API_URL` and `VITE_GOOGLE_CLIENT_ID` must be available when Railway builds the image. Redeploy the frontend after editing these variables.
 
 ## 4.1 Google OAuth Settings
 
@@ -194,10 +213,18 @@ railway run python app/backend/db_init.py --seed
 ```
 
 ## 6. Deployment Commands
-Railway usually detects the `start` command for FastAPI (Uvicorn). If not, set the **Start Command** in the service settings:
+The checked-in Dockerfiles already define the start commands. Usually no manual Railway start command is required.
+
+Backend command, if you need to override it:
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port $PORT
+```
+
+Frontend command, if you need to override it:
+
+```bash
+serve -s dist -l tcp://0.0.0.0:$PORT
 ```
 
 ## 7. Verification

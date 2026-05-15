@@ -282,3 +282,26 @@ Thành viên: Nhóm A20-124
 #### Verification
 - Backend touched files da pass `py_compile` bang `.venv`.
 - Frontend da pass `npm run build`; van con warning chunk size lon cua Vite.
+
+---
+
+### Cap nhat bo sung ngay 15/05/2026 - Railway Docker readiness
+
+#### Da hoan thanh
+- Kiem tra `docker-compose.yml`, `app/backend/Dockerfile`, va `app/frontend/Dockerfile` theo mo hinh deploy Railway.
+- Xac nhan `docker-compose.yml` phu hop cho local dev/test, nhung Railway nen tach thanh 3 service rieng: PostgreSQL, backend, frontend.
+- Cap nhat backend Dockerfile de Uvicorn lang nghe `${PORT:-8000}`, phu hop voi dynamic port cua Railway.
+- Cap nhat frontend Dockerfile de build Vite production bundle va serve thu muc `dist/` tren `${PORT:-3000}` thay vi chay Vite dev server.
+- Them `.dockerignore` cho backend/frontend de tranh dua logs, uploads, cache, `node_modules`, va build output vao image context.
+- Cap nhat `Railway_QuickStart.md` voi phan Deployment Readiness Check, canh bao `DATABASE_URL @db` chi dung local Compose, va ghi chu `VITE_*` duoc embed luc build.
+
+#### Ket luan deploy
+- Backend co the deploy len Railway bang Dockerfile trong `app/backend`, voi Railway Postgres `DATABASE_URL` va cac bien production can thiet.
+- Frontend co the deploy len Railway bang Dockerfile trong `app/frontend`, nhung can redeploy sau khi thay doi `VITE_API_URL` hoac `VITE_GOOGLE_CLIENT_ID`.
+- Khong nen deploy ca repo nhu mot Docker Compose stack tren Railway; dung split services de phu hop voi Railway.
+
+#### Verification
+- `git diff --check` pass.
+- `npm run build` trong `app/frontend` pass; van con warning chunk size lon cua Vite.
+- Da thu `docker build` backend nhung khong verify duoc vi Docker daemon tren may local khong chay.
+- Cac file duoc cap nhat: `app/backend/Dockerfile`, `app/backend/.dockerignore`, `app/frontend/Dockerfile`, `app/frontend/.dockerignore`, `Railway_QuickStart.md`, `JOURNAL.md`.
