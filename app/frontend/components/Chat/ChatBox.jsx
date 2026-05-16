@@ -11,6 +11,8 @@ import { useLanguage } from '../../context/LanguageContext';
 // For demo purposes, this is hardcoded. 
 const IS_DEMO_MODE = import.meta.env.VITE_USE_MOCK === 'true';
 const DEFAULT_USER = "admin@vinuni.edu.vn";
+const HANDOFF_DISMISS_KEY = 'dismissed_handoff_traces';
+const STAFF_HANDOFF_DISMISS_MS = 10 * 60 * 1000;
 const FALLBACK_LABELS = {
   rate_limit: 'Rate limit',
   judge_rejected: 'Judge rejected',
@@ -31,10 +33,11 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
   const [uploadingPdf, setUploadingPdf] = useState(false);
   const [pendingPdfContext, setPendingPdfContext] = useState(null);
   const [handoffStatus, setHandoffStatus] = useState(null);
-  const dismissedHandoffTraces = useRef(new Set(JSON.parse(localStorage.getItem('dismissed_handoff_traces') || '[]')));
+  const dismissedHandoffTraces = useRef(readDismissedHandoffTraces());
   const fileInputRef = useRef(null);
   const viewerRole = localStorage.getItem('user_role');
   const canSeeDebugMeta = viewerRole === 'admin' || viewerRole === 'editor';
+  const isStaffViewer = viewerRole === 'admin' || viewerRole === 'editor';
   
   /**
    * We use the passed userId (prop) or fall back to the logged-in email.
@@ -57,7 +60,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
   useEffect(() => {
     const latestHandoff = [...messages].reverse().find((message) => message.traceId && message.handoffStatus);
     if (latestHandoff) {
-      if (dismissedHandoffTraces.current.has(latestHandoff.traceId)) return;
+      if (isHandoffDismissed(dismissedHandoffTraces.current, latestHandoff.traceId)) return;
       setHandoffStatus({
         trace_id: latestHandoff.traceId,
         handoff_status: latestHandoff.handoffStatus,
@@ -154,8 +157,10 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
         message: 'Student clicked request human counselor from ChatBox.'
       });
       const traceId = result.traceId || result.trace_id;
-      if (traceId) dismissedHandoffTraces.current.delete(traceId);
-      localStorage.setItem('dismissed_handoff_traces', JSON.stringify([...dismissedHandoffTraces.current]));
+      if (traceId) {
+        delete dismissedHandoffTraces.current[traceId];
+        saveDismissedHandoffTraces(dismissedHandoffTraces.current);
+      }
       toast.success(text.handoffSuccess, {
         duration: 5000,
       });
@@ -178,7 +183,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
         if (mounted) {
           const nextHandoff = data.handoff || null;
           const nextTrace = nextHandoff?.trace_id || nextHandoff?.traceId;
-          setHandoffStatus(nextTrace && dismissedHandoffTraces.current.has(nextTrace) ? null : nextHandoff);
+          setHandoffStatus(nextTrace && isHandoffDismissed(dismissedHandoffTraces.current, nextTrace) ? null : nextHandoff);
         }
       } catch {
         if (mounted) setHandoffStatus(null);
@@ -192,11 +197,19 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
     };
   }, []);
 
-  const closeHandoffPopup = () => {
+  const closeHandoffPopup = async () => {
     const traceId = handoffStatus?.trace_id || handoffStatus?.traceId;
     if (traceId) {
-      dismissedHandoffTraces.current.add(traceId);
-      localStorage.setItem('dismissed_handoff_traces', JSON.stringify([...dismissedHandoffTraces.current]));
+      dismissedHandoffTraces.current[traceId] = isStaffViewer ? Date.now() + STAFF_HANDOFF_DISMISS_MS : 'forever';
+      saveDismissedHandoffTraces(dismissedHandoffTraces.current);
+      if (!isStaffViewer) {
+        try {
+          await api.cancelHandoff(traceId);
+        } catch (error) {
+          console.error('Could not cancel handoff:', error);
+          toast.error(text.cancelHandoffError);
+        }
+      }
     }
     setHandoffStatus(null);
   };
@@ -518,6 +531,7 @@ const viText = {
   handoffRequested: 'Học sinh đã yêu cầu gặp tư vấn viên.',
   handoffSuccess: 'Yêu cầu đã được gửi. Chuyên viên sẽ sớm liên hệ với bạn.',
   handoffError: 'Không thể gửi yêu cầu hỗ trợ lúc này. Vui lòng thử lại sau.',
+  cancelHandoffError: 'Không thể hủy yêu cầu tư vấn lúc này.',
   needMoreInfo: 'Cần thêm thông tin',
   handoffStatus: 'Yêu cầu tư vấn',
   reason: 'Lý do',
@@ -527,9 +541,36 @@ const enText = {
   handoffRequested: 'Student requested a human counselor.',
   handoffSuccess: 'Your request has been sent. A counsellor will contact you soon.',
   handoffError: 'Could not send the support request right now. Please try again later.',
+  cancelHandoffError: 'Could not cancel the support request right now.',
   needMoreInfo: 'More information needed',
   handoffStatus: 'Human request',
   reason: 'Reason',
+};
+
+const readDismissedHandoffTraces = () => {
+  try {
+    const value = JSON.parse(localStorage.getItem(HANDOFF_DISMISS_KEY) || '{}');
+    if (Array.isArray(value)) {
+      return Object.fromEntries(value.map((traceId) => [traceId, Date.now() + STAFF_HANDOFF_DISMISS_MS]));
+    }
+    return value && typeof value === 'object' ? value : {};
+  } catch {
+    return {};
+  }
+};
+
+const saveDismissedHandoffTraces = (dismissedTraces) => {
+  localStorage.setItem(HANDOFF_DISMISS_KEY, JSON.stringify(dismissedTraces));
+};
+
+const isHandoffDismissed = (dismissedTraces, traceId) => {
+  const dismissUntil = dismissedTraces?.[traceId];
+  if (!dismissUntil) return false;
+  if (dismissUntil === 'forever') return true;
+  if (Number(dismissUntil) > Date.now()) return true;
+  delete dismissedTraces[traceId];
+  saveDismissedHandoffTraces(dismissedTraces);
+  return false;
 };
 
 const fallbackReasonLabel = (reason, language) => {

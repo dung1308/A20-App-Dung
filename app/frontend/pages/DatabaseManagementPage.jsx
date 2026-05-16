@@ -76,6 +76,15 @@ const DatabaseManagementPage = () => {
     });
   }, [prompts, text]);
 
+  const getHealthLabel = (badge) => text.healthBadgeLabels?.[badge.id] || badge.label;
+  const getHealthStatus = (statusValue) => text.healthStatusLabels?.[statusValue] || statusValue;
+  const getHealthDetail = (badge) => {
+    if (badge.id === 'rag_ingest') {
+      return text.scheduledRagIngest?.(health?.rag?.sync_interval_hours) || badge.detail;
+    }
+    return badge.detail;
+  };
+
   const selectedAgentVersions = useMemo(() => (
     prompts
       .filter((prompt) => prompt.agent_name === comparePrompt.agent_name)
@@ -300,9 +309,9 @@ const DatabaseManagementPage = () => {
         {status && (
           <section className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <StatusCard label="Trạng thái" value={status.status === 'connected' ? 'Đã kết nối' : 'Mất kết nối'} tone={status.status === 'connected' ? 'green' : 'red'} />
-            <StatusCard label="Database" value={`${status.database} (${status.type})`} />
-            <StatusCard label="Users" value={status.user_counts?.total || 0} />
-            <StatusCard label="Blacklisted" value={status.user_counts?.blacklisted || 0} tone="red" />
+            <StatusCard label={text.databaseLabel} value={`${status.database} (${status.type})`} />
+            <StatusCard label={text.usersLabel} value={status.user_counts?.total || 0} />
+            <StatusCard label={text.blacklistedLabel} value={status.user_counts?.blacklisted || 0} tone="red" />
           </section>
         )}
 
@@ -320,11 +329,11 @@ const DatabaseManagementPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
               {health.badges.map((badge) => (
                 <div key={badge.id} className="border border-slate-100 rounded-xl p-4 bg-slate-50">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{badge.label}</p>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{getHealthLabel(badge)}</p>
                   <p className={`mt-1 text-sm font-black ${badge.status === 'warning' ? 'text-amber-600' : badge.status === 'error' ? 'text-red-600' : 'text-emerald-600'}`}>
-                    {badge.status}
+                    {getHealthStatus(badge.status)}
                   </p>
-                  <p className="text-xs text-slate-500 mt-1 truncate">{String(badge.detail ?? '-')}</p>
+                  <p className="text-xs text-slate-500 mt-1 truncate">{String(getHealthDetail(badge) ?? '-')}</p>
                 </div>
               ))}
             </div>
@@ -347,7 +356,7 @@ const DatabaseManagementPage = () => {
           </div>
           <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
             <SeedActionCard
-              title="majors"
+              title={text.seedMajorsTitle}
               detail={text.seedMajorsBody}
               loading={seeding === 'majors'}
               onClick={() => handleSeedTable('majors')}
@@ -355,7 +364,7 @@ const DatabaseManagementPage = () => {
               actionLabel={text.seed}
             />
             <SeedActionCard
-              title="admissions_data"
+              title={text.seedAdmissionsTitle}
               detail={text.seedAdmissionsBody}
               loading={seeding === 'admissions_data'}
               onClick={() => handleSeedTable('admissions_data')}
@@ -363,7 +372,7 @@ const DatabaseManagementPage = () => {
               actionLabel={text.seed}
             />
             <SeedActionCard
-              title="prompts"
+              title={text.seedPromptsTitle}
               detail={text.seedPromptsBody}
               loading={seeding === 'prompts'}
               onClick={() => handleSeedTable('prompts')}
@@ -371,7 +380,7 @@ const DatabaseManagementPage = () => {
               actionLabel={text.seed}
             />
             <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50">
-              <p className="text-xs font-black text-slate-800 uppercase tracking-widest">security_events</p>
+              <p className="text-xs font-black text-slate-800 uppercase tracking-widest">{text.securityEventsTitle}</p>
               <p className="text-xs text-slate-500 mt-2 leading-5">{text.securityEventsBody}</p>
               <span className="inline-block mt-4 px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-slate-500 uppercase">{text.noSeedNeeded}</span>
             </div>
@@ -381,7 +390,7 @@ const DatabaseManagementPage = () => {
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100">
             <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.addAdminEditor}</h2>
-            <p className="text-xs text-slate-500 mt-1">Tạo user trực tiếp trong PostgreSQL. Role có thể đổi lại trong bảng bên dưới.</p>
+            <p className="text-xs text-slate-500 mt-1">{text.addAdminEditorBody}</p>
           </div>
           <div className="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
             <input className={inputClass} placeholder="Email" value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} />
@@ -413,12 +422,12 @@ const DatabaseManagementPage = () => {
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-50 text-slate-500 font-bold uppercase text-[10px] tracking-widest">
                 <tr>
-                  <th className="px-6 py-4">User</th>
-                  <th className="px-6 py-4">Role</th>
-                  <th className="px-6 py-4">Permissions</th>
-                  <th className="px-6 py-4">Grant / Revoke</th>
+                  <th className="px-6 py-4">{text.userColumn}</th>
+                  <th className="px-6 py-4">{text.roleColumn}</th>
+                  <th className="px-6 py-4">{text.permissionsColumn}</th>
+                  <th className="px-6 py-4">{text.grantRevokeColumn}</th>
                   <th className="px-6 py-4">CV</th>
-                  <th className="px-6 py-4 text-right">Blacklist</th>
+                  <th className="px-6 py-4 text-right">{text.blacklistColumn}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -430,7 +439,7 @@ const DatabaseManagementPage = () => {
                     <tr key={userId} className={user.blacklisted ? 'bg-red-50/40' : ''}>
                       <td className="px-6 py-4">
                         <p className="font-bold text-slate-800">{user.email || user.user_id}</p>
-                        <p className="text-xs text-slate-400">{user.full_name || 'No display name'}</p>
+                        <p className="text-xs text-slate-400">{user.full_name || text.noDisplayName}</p>
                       </td>
                       <td className="px-6 py-4">
                         <select className={`${inputClass} min-w-28`} value={user.role || 'user'} onChange={(e) => handleRoleChange(userId, e.target.value)}>
@@ -444,7 +453,7 @@ const DatabaseManagementPage = () => {
                               <span key={permission} className="px-2 py-1 bg-blue-50 text-blue-700 border border-blue-100 rounded text-[10px] font-bold">{permission}</span>
                             ))
                           ) : (
-                            <span className="text-xs text-slate-400 italic">No custom permissions</span>
+                            <span className="text-xs text-slate-400 italic">{text.noCustomPermissions}</span>
                           )}
                         </div>
                       </td>
@@ -453,8 +462,8 @@ const DatabaseManagementPage = () => {
                           <select className={inputClass} value={selectedPermission} onChange={(e) => setPermissionDraft({ ...permissionDraft, [userId]: e.target.value })}>
                             {PERMISSION_OPTIONS.map((permission) => <option key={permission} value={permission}>{permission}</option>)}
                           </select>
-                          <button onClick={() => handlePermission(userId, 'grant', selectedPermission)} className="px-3 py-2 bg-emerald-600 text-white rounded-lg text-[10px] font-black uppercase">Grant</button>
-                          <button onClick={() => handlePermission(userId, 'revoke', selectedPermission)} className="px-3 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-[10px] font-black uppercase">Revoke</button>
+                          <button onClick={() => handlePermission(userId, 'grant', selectedPermission)} className="px-3 py-2 bg-emerald-600 text-white rounded-lg text-[10px] font-black uppercase">{text.grant}</button>
+                          <button onClick={() => handlePermission(userId, 'revoke', selectedPermission)} className="px-3 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-[10px] font-black uppercase">{text.revoke}</button>
                         </div>
                       </td>
                       <td className="px-6 py-4">
@@ -463,10 +472,10 @@ const DatabaseManagementPage = () => {
                             onClick={() => handleOpenCv(userId)}
                             className="px-3 py-2 bg-white border border-slate-200 text-primary rounded-lg text-[10px] font-black uppercase hover:bg-slate-50"
                           >
-                            View CV
+                            {text.viewCv}
                           </button>
                         ) : (
-                          <span className="text-xs text-slate-400 italic">No CV</span>
+                          <span className="text-xs text-slate-400 italic">{text.noCv}</span>
                         )}
                       </td>
                       <td className="px-6 py-4 text-right">
@@ -478,7 +487,7 @@ const DatabaseManagementPage = () => {
                               : 'bg-red-600 text-white border border-red-600'
                           }`}
                         >
-                          {user.blacklisted ? 'Unblacklist' : 'Blacklist'}
+                          {user.blacklisted ? text.unblacklist : text.blacklist}
                         </button>
                       </td>
                     </tr>
@@ -981,6 +990,42 @@ const viText = {
   agentJudgeGold: 'Đánh giá mẫu chuẩn - kiểm tra chất lượng câu trả lời',
 };
 
+Object.assign(viText, {
+  databaseLabel: 'Cơ sở dữ liệu',
+  usersLabel: 'Người dùng',
+  blacklistedLabel: 'Đã chặn',
+  seedMajorsTitle: 'Ngành học',
+  seedAdmissionsTitle: 'Dữ liệu tuyển sinh',
+  seedPromptsTitle: 'Prompt',
+  securityEventsTitle: 'Sự kiện bảo mật',
+  userColumn: 'Người dùng',
+  roleColumn: 'Vai trò',
+  permissionsColumn: 'Quyền',
+  grantRevokeColumn: 'Cấp / Thu hồi',
+  blacklistColumn: 'Chặn',
+  noDisplayName: 'Chưa có tên hiển thị',
+  noCustomPermissions: 'Chưa có quyền tùy chỉnh',
+  grant: 'Cấp quyền',
+  revoke: 'Thu hồi',
+  viewCv: 'Xem CV',
+  noCv: 'Chưa có CV',
+  blacklist: 'Chặn',
+  unblacklist: 'Bỏ chặn',
+  healthBadgeLabels: {
+    database: 'Cơ sở dữ liệu',
+    tokens: 'Token 24h',
+    prompt_versions: 'Phiên bản prompt',
+    handoffs: 'Yêu cầu tư vấn chờ xử lý',
+    rag_ingest: 'Nạp RAG',
+  },
+  healthStatusLabels: {
+    ok: 'Ổn định',
+    warning: 'Cảnh báo',
+    error: 'Lỗi',
+  },
+  scheduledRagIngest: (hours) => `Nạp RAG định kỳ mỗi ${hours || 24} giờ`,
+});
+
 const enText = {
   title: 'Data Management',
   subtitle: 'Check database connectivity and manage system accounts.',
@@ -1076,6 +1121,42 @@ const enText = {
   agentJudgeSafety: 'Judge Safety - response safety gate',
   agentJudgeGold: 'Judge Gold - golden-answer evaluation',
 };
+
+Object.assign(enText, {
+  databaseLabel: 'Database',
+  usersLabel: 'Users',
+  blacklistedLabel: 'Blacklisted',
+  seedMajorsTitle: 'Majors',
+  seedAdmissionsTitle: 'Admissions data',
+  seedPromptsTitle: 'Prompts',
+  securityEventsTitle: 'Security events',
+  userColumn: 'User',
+  roleColumn: 'Role',
+  permissionsColumn: 'Permissions',
+  grantRevokeColumn: 'Grant / Revoke',
+  blacklistColumn: 'Blacklist',
+  noDisplayName: 'No display name',
+  noCustomPermissions: 'No custom permissions',
+  grant: 'Grant',
+  revoke: 'Revoke',
+  viewCv: 'View CV',
+  noCv: 'No CV',
+  blacklist: 'Blacklist',
+  unblacklist: 'Unblacklist',
+  healthBadgeLabels: {
+    database: 'Database',
+    tokens: 'Tokens 24h',
+    prompt_versions: 'Prompt versions',
+    handoffs: 'Pending handoffs',
+    rag_ingest: 'RAG ingest',
+  },
+  healthStatusLabels: {
+    ok: 'ok',
+    warning: 'warning',
+    error: 'error',
+  },
+  scheduledRagIngest: (hours) => `Periodic RAG ingest every ${hours || 24} hours`,
+});
 
 const formatDate = (value) => {
   if (!value) return '-';

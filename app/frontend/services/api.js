@@ -189,6 +189,9 @@ const api = {
   requestHandoff: (payload = {}) =>
     apiClient.post('/api/handoff-request', payload).then(res => normalizeChatResponse(res.data)),
 
+  cancelHandoff: (traceId) =>
+    apiClient.post(`/api/handoff/${encodeURIComponent(traceId)}/cancel`).then(res => res.data),
+
   getHandoffMessages: (traceId) =>
     apiClient.get(`/api/handoff/${encodeURIComponent(traceId)}/messages`).then(res => res.data),
 
