@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useStore } from '../state/store';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 import MajorCard from '../components/Report/MajorCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ChatBox from '../components/Chat/ChatBox';
@@ -11,6 +12,8 @@ import api from '../services/api';
 const reportStorageKey = (userId) => `latest_report_${userId}`;
 
 const ReportPage = () => {
+  const { language } = useLanguage();
+  const text = language === 'vi' ? viText : enText;
   const { matchResults, setMatchResults } = useStore();
   const { userId, isAuthenticated } = useAuth();
   const [showChat, setShowChat] = useState(false);
@@ -41,9 +44,9 @@ const ReportPage = () => {
   const handleConsultationClick = async () => {
     try {
       await api.logConsultationClick('report');
-      toast.success('Da ghi nhan nhu cau tu van. Chuyen vien se co du lieu de ho tro ban.');
+      toast.success(text.consultationLogged);
     } catch (err) {
-      toast.error('Khong the ghi nhan yeu cau tu van luc nay.');
+      toast.error(text.consultationError);
     }
   };
 
@@ -59,31 +62,22 @@ const ReportPage = () => {
       selected_signals: major.match_breakdown?.matched_signals || [],
     });
     setShowChat(true);
-    toast.success(`Chat will use ${major.major_name} as context.`);
+    toast.success(language === 'vi' ? `Chat sẽ dùng ngành ${major.major_name} làm ngữ cảnh.` : `Chat will use ${major.major_name} as context.`);
   };
 
   if (!isAuthenticated || !userId) {
-    return (
-      <div className="p-8 text-red-500 text-center">
-        Ban can dang nhap de xem bao cao.
-      </div>
-    );
+    return <div className="p-8 text-center text-red-500">{text.loginRequired}</div>;
   }
 
   if (!matchResults) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-8">
-        <div className="max-w-xl w-full bg-white border border-slate-200 rounded-2xl shadow-sm p-8 text-center">
-          <LoadingSpinner size="lg" className="mb-4" timeoutMessage="Neu ban chua lam Wizard, hay bat dau khao sat de tao report." />
-          <h1 className="text-2xl font-black text-primary">Chua co report</h1>
-          <p className="text-slate-500 text-sm mt-2">
-            Report duoc tao sau khi ban hoan thanh Wizard va, neu co, tai len CV PDF.
-          </p>
-          <Link
-            to="/wizard"
-            className="inline-flex mt-6 px-5 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest"
-          >
-            Bat dau Wizard
+      <div className="flex min-h-screen items-center justify-center bg-slate-50 p-8">
+        <div className="w-full max-w-xl rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+          <LoadingSpinner size="lg" className="mb-4" timeoutMessage={text.spinnerTimeout} />
+          <h1 className="text-2xl font-black text-primary">{text.noReport}</h1>
+          <p className="mt-2 text-sm text-slate-500">{text.noReportBody}</p>
+          <Link to="/wizard" className="mt-6 inline-flex rounded-xl bg-primary px-5 py-3 text-xs font-black uppercase tracking-widest text-white">
+            {text.startWizard}
           </Link>
         </div>
       </div>
@@ -91,38 +85,36 @@ const ReportPage = () => {
   }
 
   return (
-    <div className="p-8 h-full overflow-y-auto bg-slate-50/50">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <header className="bg-[#003466] text-white p-8 rounded-2xl border border-[#0b477f] shadow-xl shadow-blue-900/20">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+    <div className="h-full overflow-y-auto bg-slate-50/50 p-8">
+      <div className="mx-auto max-w-7xl space-y-6">
+        <header className="rounded-2xl border border-[#0b477f] bg-[#003466] p-8 text-white shadow-xl shadow-blue-900/20">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div>
-              <p className="text-xs font-black uppercase tracking-widest text-blue-100">VinUni Major Match</p>
-              <h1 className="text-3xl font-black mt-2 text-white">Bao cao goi y nganh hoc</h1>
-              <p className="text-blue-50 text-sm mt-3 max-w-3xl leading-6">
-                {matchResults.disclaimer || 'Ket qua do AI phan tich dua tren cau tra loi Wizard va CV neu ban da tai len.'}
+              <p className="text-xs font-black uppercase tracking-widest text-blue-100">{text.eyebrow}</p>
+              <h1 className="mt-2 text-3xl font-black text-white">{text.title}</h1>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-blue-50">
+                {matchResults.disclaimer || text.defaultDisclaimer}
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-3 min-w-full lg:min-w-[420px]">
-              <SummaryCard label="Top majors" value={topMajors.length} />
-              <SummaryCard label="Avg match" value={`${reportStats.avgScore}%`} />
-              <SummaryCard label="Verified" value={`${reportStats.verified}/${topMajors.length || 0}`} />
+            <div className="grid min-w-full grid-cols-3 gap-3 lg:min-w-[420px]">
+              <SummaryCard label={text.topMajors} value={topMajors.length} />
+              <SummaryCard label={text.avgMatch} value={`${reportStats.avgScore}%`} />
+              <SummaryCard label={text.verified} value={`${reportStats.verified}/${topMajors.length || 0}`} />
             </div>
           </div>
         </header>
 
-        <section className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
+        <section className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
           <main className="space-y-6">
             {matchResults.fallback && (
-              <div className="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
-                <p className="text-amber-800 font-black">AI chua du tin hieu de ket luan chac chan.</p>
-                <p className="text-amber-700 text-sm mt-1">
-                  {matchResults.fallback_card?.reason || 'Hay bo sung Profile/CV hoac dang ky tu van de chuyen vien xem boi canh day du hon.'}
-                </p>
+              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+                <p className="font-black text-amber-800">{text.notEnoughSignals}</p>
+                <p className="mt-1 text-sm text-amber-700">{friendlyFallbackReason(matchResults.fallback_card?.reason, language) || text.fallbackBody}</p>
                 {(matchResults.recovery_actions || []).length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {matchResults.recovery_actions.map((action) => (
-                      <span key={action.id} className="px-3 py-1.5 bg-white border border-amber-100 rounded-lg text-[10px] font-black uppercase tracking-wider text-amber-700">
-                        {action.label}
+                      <span key={action.id} className="rounded-lg border border-amber-100 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-amber-700">
+                        {friendlyActionLabel(action.label || action.id, language)}
                       </span>
                     ))}
                   </div>
@@ -130,26 +122,21 @@ const ReportPage = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {topMajors.map((major) => (
                 <MajorCard key={major.major_id || major.major_name} major={major} onAsk={handleAskMajor} />
               ))}
             </div>
 
-            <section className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               {!showChat ? (
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
+                <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
                   <div>
-                    <h2 className="text-lg font-black text-slate-900">Can lam ro them?</h2>
-                    <p className="text-sm text-slate-500 mt-1">
-                      Hoi AI ve diem match, dieu kien tuyen sinh, hoc bong, hoac lo trinh nghe nghiep cua tung nganh.
-                    </p>
+                    <h2 className="text-lg font-black text-slate-900">{text.needClarify}</h2>
+                    <p className="mt-1 text-sm text-slate-500">{text.needClarifyBody}</p>
                   </div>
-                  <button
-                    className="px-5 py-3 bg-[#fed65b] text-[#745c00] rounded-xl text-xs font-black uppercase tracking-widest"
-                    onClick={() => setShowChat(true)}
-                  >
-                    Hoi them cau hoi
+                  <button className="rounded-xl bg-[#fed65b] px-5 py-3 text-xs font-black uppercase tracking-widest text-[#745c00]" onClick={() => setShowChat(true)}>
+                    {text.askMore}
                   </button>
                 </div>
               ) : (
@@ -159,29 +146,13 @@ const ReportPage = () => {
           </main>
 
           <aside className="space-y-4">
-            <ActionCard
-              title="Cap nhat Profile"
-              body="Bo sung GPA, diem thi, nganh yeu thich va xem lai CV PDF da tai len."
-              action="Mo Profile"
-              href="/profile"
-            />
-            <ActionCard
-              title="Lam lai Wizard"
-              body="Dung khi ban muon thay doi cau tra loi hoac thu mot huong nganh khac."
-              action="Chay lai Wizard"
-              href="/wizard"
-              onClick={handleRestart}
-            />
-            <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
-              <h2 className="text-sm font-black text-slate-900 uppercase tracking-wider">Tu van chuyen sau</h2>
-              <p className="text-sm text-slate-500 mt-2 leading-6">
-                Gui tin hieu cho staff neu ban can nguoi that kiem tra ho so va giai thich ket qua.
-              </p>
-              <button
-                onClick={handleConsultationClick}
-                className="mt-4 w-full px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest"
-              >
-                Dang ky tu van
+            <ActionCard title={text.updateProfile} body={text.updateProfileBody} action={text.openProfile} href="/profile" />
+            <ActionCard title={text.rerunWizard} body={text.rerunWizardBody} action={text.runWizardAgain} href="/wizard" onClick={handleRestart} />
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <h2 className="text-sm font-black uppercase tracking-wider text-slate-900">{text.deepConsulting}</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-500">{text.deepConsultingBody}</p>
+              <button onClick={handleConsultationClick} className="mt-4 w-full rounded-xl bg-primary px-4 py-3 text-xs font-black uppercase tracking-widest text-white">
+                {text.registerConsulting}
               </button>
             </div>
           </aside>
@@ -192,24 +163,102 @@ const ReportPage = () => {
 };
 
 const SummaryCard = ({ label, value }) => (
-  <div className="bg-white border border-blue-100 rounded-xl p-4 shadow-sm">
+  <div className="rounded-xl border border-blue-100 bg-white p-4 shadow-sm">
     <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">{label}</p>
-    <p className="text-2xl font-black mt-1 text-[#003466]">{value}</p>
+    <p className="mt-1 text-2xl font-black text-[#003466]">{value}</p>
   </div>
 );
 
 const ActionCard = ({ title, body, action, href, onClick }) => (
-  <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-5">
-    <h2 className="text-sm font-black text-slate-900 uppercase tracking-wider">{title}</h2>
-    <p className="text-sm text-slate-500 mt-2 leading-6">{body}</p>
-    <Link
-      to={href}
-      onClick={onClick}
-      className="inline-flex mt-4 px-4 py-2.5 bg-white border border-slate-200 text-primary rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50"
-    >
+  <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+    <h2 className="text-sm font-black uppercase tracking-wider text-slate-900">{title}</h2>
+    <p className="mt-2 text-sm leading-6 text-slate-500">{body}</p>
+    <Link to={href} onClick={onClick} className="mt-4 inline-flex rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-black uppercase tracking-widest text-primary hover:bg-slate-50">
       {action}
     </Link>
   </div>
 );
 
+const viText = {
+  consultationLogged: 'Đã ghi nhận nhu cầu tư vấn. Chuyên viên sẽ có dữ liệu để hỗ trợ bạn.',
+  consultationError: 'Không thể ghi nhận yêu cầu tư vấn lúc này.',
+  loginRequired: 'Bạn cần đăng nhập để xem báo cáo.',
+  spinnerTimeout: 'Nếu bạn chưa làm Wizard, hãy bắt đầu khảo sát để tạo báo cáo.',
+  noReport: 'Chưa có báo cáo',
+  noReportBody: 'Báo cáo được tạo sau khi bạn hoàn thành Wizard và, nếu có, tải lên CV PDF.',
+  startWizard: 'Bắt đầu Wizard',
+  eyebrow: 'Gợi ý ngành VinUni',
+  title: 'Báo cáo gợi ý ngành học',
+  defaultDisclaimer: 'Kết quả do AI phân tích dựa trên câu trả lời Wizard và CV nếu bạn đã tải lên.',
+  topMajors: 'Ngành nổi bật',
+  avgMatch: 'Độ phù hợp TB',
+  verified: 'Đã xác minh',
+  notEnoughSignals: 'AI chưa đủ tín hiệu để kết luận chắc chắn.',
+  fallbackBody: 'Hãy bổ sung hồ sơ/CV hoặc đăng ký tư vấn để chuyên viên xem bối cảnh đầy đủ hơn.',
+  needClarify: 'Cần làm rõ thêm?',
+  needClarifyBody: 'Hỏi AI về điểm phù hợp, điều kiện tuyển sinh, học bổng hoặc lộ trình nghề nghiệp của từng ngành.',
+  askMore: 'Hỏi thêm câu hỏi',
+  updateProfile: 'Cập nhật hồ sơ',
+  updateProfileBody: 'Bổ sung GPA, điểm thi, ngành yêu thích và xem lại CV PDF đã tải lên.',
+  openProfile: 'Mở hồ sơ',
+  rerunWizard: 'Làm lại Wizard',
+  rerunWizardBody: 'Dùng khi bạn muốn thay đổi câu trả lời hoặc thử một hướng ngành khác.',
+  runWizardAgain: 'Chạy lại Wizard',
+  deepConsulting: 'Tư vấn chuyên sâu',
+  deepConsultingBody: 'Gửi tín hiệu cho tư vấn viên nếu bạn cần người thật kiểm tra hồ sơ và giải thích kết quả.',
+  registerConsulting: 'Đăng ký tư vấn',
+};
+
+const enText = {
+  consultationLogged: 'Consultation request recorded. Staff will have context to support you.',
+  consultationError: 'Could not record the consultation request right now.',
+  loginRequired: 'You need to sign in to view the report.',
+  spinnerTimeout: 'If you have not completed the Wizard, start the survey to generate a report.',
+  noReport: 'No report yet',
+  noReportBody: 'The report is created after you complete the Wizard and, optionally, upload a PDF CV.',
+  startWizard: 'Start Wizard',
+  eyebrow: 'VinUni Major Match',
+  title: 'Major Recommendation Report',
+  defaultDisclaimer: 'AI analyzed your Wizard answers and CV if you uploaded one.',
+  topMajors: 'Top majors',
+  avgMatch: 'Avg match',
+  verified: 'Verified',
+  notEnoughSignals: 'AI does not have enough signals for a confident conclusion.',
+  fallbackBody: 'Add profile/CV details or request counselling so staff can review the full context.',
+  needClarify: 'Need more clarity?',
+  needClarifyBody: 'Ask AI about match reasons, admission requirements, scholarships, or career paths for each major.',
+  askMore: 'Ask another question',
+  updateProfile: 'Update Profile',
+  updateProfileBody: 'Add GPA, test scores, preferred majors, and review your uploaded PDF CV.',
+  openProfile: 'Open Profile',
+  rerunWizard: 'Rerun Wizard',
+  rerunWizardBody: 'Use this when you want to change answers or try another academic direction.',
+  runWizardAgain: 'Run Wizard Again',
+  deepConsulting: 'Deep Consulting',
+  deepConsultingBody: 'Ask staff to review your profile and explain the result when you need a human check.',
+  registerConsulting: 'Register for consulting',
+};
+
 export default ReportPage;
+
+const friendlyFallbackReason = (value, language) => {
+  const text = String(value || '').trim();
+  if (!text) return '';
+  if (text.startsWith('{') || text.startsWith('[') || text.includes('trace_id') || text.includes('reason_code')) {
+    return language === 'vi'
+      ? 'AI chưa có đủ thông tin chắc chắn để kết luận. Bạn có thể bổ sung hồ sơ, tải CV hoặc yêu cầu tư vấn viên hỗ trợ.'
+      : 'AI does not have enough reliable information yet. You can complete your profile, upload a CV, or ask a human counsellor for help.';
+  }
+  return text;
+};
+
+const friendlyActionLabel = (value, language) => {
+  const key = String(value || '').trim().toLowerCase();
+  const labels = {
+    open_wizard: { vi: 'Mở Wizard', en: 'Open Wizard' },
+    edit_profile: { vi: 'Cập nhật hồ sơ', en: 'Edit profile' },
+    request_human_fallback: { vi: 'Gặp tư vấn viên', en: 'Ask a counsellor' },
+    'complete profile fields': { vi: 'Hoàn thiện thông tin hồ sơ', en: 'Complete profile fields' },
+  };
+  return labels[key]?.[language] || value;
+};

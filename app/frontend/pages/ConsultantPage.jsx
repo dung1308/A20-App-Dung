@@ -8,6 +8,7 @@ import api from '../services/api';
 import ErrorBoundary from '../components/ErrorBoundary';
 import SourceList from '../components/Chat/SourceList';
 import HumanCounsellorPopup from '../components/Chat/HumanCounsellorPopup';
+import { useLanguage } from '../context/LanguageContext';
 
 const majorNameMap = {
   'cs': 'Khoa học Máy tính',
@@ -35,6 +36,8 @@ const ConsultantPage = () => {
   const { matchResults } = useStore();
   const navigate = useNavigate();
   const { userId, isAuthenticated, role } = useAuth(); // Moved up to ensure userId is available
+  const { language } = useLanguage();
+  const text = language === 'vi' ? viText : enText;
   const canSeeDebugMeta = role === 'admin' || role === 'editor';
   const hasWizardCompleted = userId ? localStorage.getItem(`wizard_completed_${userId}`) === 'true' : false;
   const [currentSessionId, setCurrentSessionId] = useState('new');
@@ -74,6 +77,7 @@ const ConsultantPage = () => {
   const [input, setInput] = useState('');
   const [selectedMajor, setSelectedMajor] = useState(null);
   const [handoffStatus, setHandoffStatus] = useState(null);
+  const dismissedHandoffTraces = useRef(new Set(JSON.parse(localStorage.getItem('dismissed_handoff_traces') || '[]')));
   const scrollRef = useRef(null);
 
   // Initialize chat with top results if they exist
@@ -140,34 +144,42 @@ const ConsultantPage = () => {
         session_id: currentSessionId,
         message: 'Student clicked Xin người tư vấn from Consultant quick actions.'
       });
+      const traceId = result.traceId || result.trace_id;
+      if (traceId) dismissedHandoffTraces.current.delete(traceId);
+      localStorage.setItem('dismissed_handoff_traces', JSON.stringify([...dismissedHandoffTraces.current]));
       setHandoffStatus({
-        trace_id: result.traceId || result.trace_id,
+        trace_id: traceId,
         handoff_status: result.handoffStatus || result.handoff_status || 'pending',
-        reason: result.fallbackCard?.reason || 'Student requested a human counselor.'
+        reason: result.fallbackCard?.reason || text.handoffRequested
       });
-      toast.success('Đã gửi yêu cầu tới người tư vấn.');
+      toast.success(text.handoffSuccess);
     } catch (error) {
-      toast.error(error.response?.data?.detail || 'Không thể gửi yêu cầu tư vấn lúc này.');
+      toast.error(error.response?.data?.detail || text.handoffError);
     }
   };
 
   useEffect(() => {
     const latestHandoff = [...messages].reverse().find((message) => message.traceId && message.handoffStatus);
     if (latestHandoff) {
+      if (dismissedHandoffTraces.current.has(latestHandoff.traceId)) return;
       setHandoffStatus({
         trace_id: latestHandoff.traceId,
         handoff_status: latestHandoff.handoffStatus,
-        reason: latestHandoff.fallbackCard?.reason || 'Student requested a human counselor.'
+        reason: latestHandoff.fallbackCard?.reason || text.handoffRequested
       });
     }
-  }, [messages]);
+  }, [messages, text.handoffRequested]);
 
   useEffect(() => {
     let mounted = true;
     const loadHandoffStatus = async () => {
       try {
         const data = await api.getHandoffStatus();
-        if (mounted) setHandoffStatus(data.handoff || null);
+        if (mounted) {
+          const nextHandoff = data.handoff || null;
+          const nextTrace = nextHandoff?.trace_id || nextHandoff?.traceId;
+          setHandoffStatus(nextTrace && dismissedHandoffTraces.current.has(nextTrace) ? null : nextHandoff);
+        }
       } catch {
         if (mounted) setHandoffStatus(null);
       }
@@ -180,13 +192,22 @@ const ConsultantPage = () => {
     };
   }, []);
 
+  const closeHandoffPopup = () => {
+    const traceId = handoffStatus?.trace_id || handoffStatus?.traceId;
+    if (traceId) {
+      dismissedHandoffTraces.current.add(traceId);
+      localStorage.setItem('dismissed_handoff_traces', JSON.stringify([...dismissedHandoffTraces.current]));
+    }
+    setHandoffStatus(null);
+  };
+
   return (
     <ErrorBoundary>
       <div className="flex h-full w-full overflow-hidden bg-[#f8f9ff] font-inter text-[#0d1c2e]">
       {/* Sidebar for Chat Sessions */}
       <aside className="w-80 bg-white border-r border-slate-200 flex flex-col hidden md:flex">
         <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-          <span className="font-bold text-blue-900 tracking-tight">Lịch sử tư vấn</span>
+          <span className="font-bold text-blue-900 tracking-tight">{text.historyTitle}</span>
           <button 
             onClick={() => { setCurrentSessionId('new'); setMessages([]); }}
             className="p-2 hover:bg-slate-50 rounded-lg text-blue-600 transition-colors"
@@ -454,11 +475,25 @@ const ConsultantPage = () => {
         </div>
       )}
       {handoffStatus?.trace_id && (
-        <HumanCounsellorPopup handoff={handoffStatus} onClose={() => setHandoffStatus(null)} />
+        <HumanCounsellorPopup handoff={handoffStatus} onClose={closeHandoffPopup} />
       )}
     </div>
     </ErrorBoundary>
   );
+};
+
+const viText = {
+  handoffRequested: 'Học sinh đã yêu cầu gặp tư vấn viên.',
+  handoffSuccess: 'Đã gửi yêu cầu tới tư vấn viên.',
+  handoffError: 'Không thể gửi yêu cầu tư vấn lúc này.',
+  historyTitle: 'Lịch sử tư vấn',
+};
+
+const enText = {
+  handoffRequested: 'Student requested a human counselor.',
+  handoffSuccess: 'Request sent to the human counsellor.',
+  handoffError: 'Could not send the counselling request right now.',
+  historyTitle: 'Consultation history',
 };
 
 export default ConsultantPage;

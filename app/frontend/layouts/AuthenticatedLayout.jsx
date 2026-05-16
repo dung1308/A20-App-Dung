@@ -3,10 +3,12 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { ChevronDown, LogOut, User } from 'lucide-react';
 import LeftPanel from '../components/panels/LeftPanel';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const AuthenticatedLayout = () => {
   const navigate = useNavigate();
   const { userId, userName, userAvatar, logout } = useAuth();
+  const { language, toggleLanguage, t } = useLanguage();
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const userEmail = userId || localStorage.getItem('user_email') || 'User';
@@ -36,17 +38,26 @@ const AuthenticatedLayout = () => {
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <header className="h-16 pl-16 pr-4 md:px-8 flex items-center justify-between bg-white border-b border-slate-200 flex-shrink-0">
           <div className="flex items-center gap-4">
-            <h1 className="text-xl font-black text-[#003466] hidden md:block">VinUni Admission</h1>
+            <h1 className="text-xl font-black text-[#003466] hidden md:block">{t('appTitle')}</h1>
           </div>
 
-          <div ref={menuRef} className="relative flex items-center">
+          <div ref={menuRef} className="relative flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black uppercase tracking-widest text-[#003466] shadow-sm hover:bg-slate-50"
+              title={t('languageToggleTitle')}
+              aria-label={t('languageToggleTitle')}
+            >
+              {language === 'vi' ? 'Eng' : 'Việt'}
+            </button>
             <button
               type="button"
               onClick={() => setIsAccountMenuOpen((open) => !open)}
               className="flex items-center gap-2 rounded-full px-1.5 py-1 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#003466]/20 transition-colors"
               aria-haspopup="menu"
               aria-expanded={isAccountMenuOpen}
-              title="Account menu"
+              title={t('accountMenu')}
             >
               <span className="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-[#003466] font-bold text-sm border border-blue-100 shadow-sm overflow-hidden">
                 {userAvatar ? (
@@ -76,7 +87,7 @@ const AuthenticatedLayout = () => {
                   role="menuitem"
                 >
                   <User size={17} aria-hidden="true" />
-                  <span>Profile</span>
+                  <span>{t('profile')}</span>
                 </button>
 
                 <button
@@ -86,7 +97,7 @@ const AuthenticatedLayout = () => {
                   role="menuitem"
                 >
                   <LogOut size={17} aria-hidden="true" />
-                  <span>Sign out</span>
+                  <span>{t('signOut')}</span>
                 </button>
               </div>
             )}

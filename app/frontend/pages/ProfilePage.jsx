@@ -4,10 +4,13 @@ import { toast } from 'react-hot-toast';
 import CVUpload from '../components/CVUpload/CVUpload';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const { userAvatar, updateUserAvatar } = useAuth();
+  const { language } = useLanguage();
+  const text = language === 'vi' ? viText : enText;
   const profileImageInputRef = useRef(null);
   const userEmail = localStorage.getItem('user_email');
   const [profile, setProfile] = useState(null);
@@ -119,20 +122,20 @@ const ProfilePage = () => {
 
     if (!file) return;
     if (!file.type.startsWith('image/')) {
-      toast.error('Please choose an image file.');
+      toast.error(text.chooseImage);
       return;
     }
     if (file.size > 2 * 1024 * 1024) {
-      toast.error('Profile image must be under 2MB.');
+      toast.error(text.imageTooLarge);
       return;
     }
 
     const reader = new FileReader();
     reader.onload = () => {
       updateUserAvatar(reader.result);
-      toast.success('Profile image updated.');
+      toast.success(text.imageUpdated);
     };
-    reader.onerror = () => toast.error('Could not read this image.');
+    reader.onerror = () => toast.error(text.imageReadError);
     reader.readAsDataURL(file);
   };
 
@@ -150,10 +153,10 @@ const ProfilePage = () => {
   const handleConfirmCV = async (documentId) => {
     try {
       await api.confirmCV(documentId);
-      toast.success('CV da duoc chon lam phien ban dang su dung.');
+      toast.success(text.cvActivated);
       fetchProfile();
     } catch (err) {
-      toast.error('Khong the xac nhan CV.');
+      toast.error(text.cvConfirmError);
     }
   };
 
@@ -162,18 +165,18 @@ const ProfilePage = () => {
       const data = await api.getCVMergePreview(documentId);
       setMergePreview(data.preview || null);
     } catch (err) {
-      toast.error('Khong the xem truoc merge CV.');
+      toast.error(text.cvPreviewError);
     }
   };
 
   const handleDeleteCV = async (documentId) => {
-    if (!window.confirm('Delete this CV document?')) return;
+    if (!window.confirm(text.deleteCvConfirm)) return;
     try {
       await api.deleteCVDocument(documentId);
-      toast.success('CV document deleted.');
+      toast.success(text.cvDeleted);
       fetchProfile();
     } catch (err) {
-      toast.error('Khong the xoa CV.');
+      toast.error(text.cvDeleteError);
     }
   };
 
@@ -198,8 +201,8 @@ const ProfilePage = () => {
             )}
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-black text-slate-900">Profile image</p>
-            <p className="text-xs text-slate-500 mt-1">Upload a square image under 2MB. It will also appear in the upper bar.</p>
+            <p className="text-sm font-black text-slate-900">{text.profileImage}</p>
+            <p className="text-xs text-slate-500 mt-1">{text.profileImageHelp}</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -209,18 +212,18 @@ const ProfilePage = () => {
             className="px-5 py-3 bg-[#003466] text-white border border-[#003466] rounded-xl text-xs font-black uppercase tracking-widest shadow-sm shadow-blue-900/20 hover:bg-[#0b477f] active:scale-95 transition-all flex items-center justify-center gap-2"
           >
             <span className="material-symbols-outlined text-[18px]">upload</span>
-            Upload profile image
+            {text.uploadProfileImage}
           </button>
           {userAvatar && (
             <button
               type="button"
               onClick={() => {
                 updateUserAvatar('');
-                toast.success('Profile image removed.');
+                toast.success(text.imageRemoved);
               }}
               className="px-5 py-3 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50 active:scale-95 transition-all"
             >
-              Remove
+              {text.remove}
             </button>
           )}
         </div>
@@ -272,9 +275,9 @@ const ProfilePage = () => {
         <div className="bg-white border border-slate-200 rounded-2xl p-5 mb-8 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-black text-slate-900">Profile readiness</p>
+              <p className="text-sm font-black text-slate-900">{text.profileReadiness}</p>
               <p className="text-xs text-slate-500 mt-1">
-                {Math.round((readiness.completion_ratio || 0) * 100)}% complete for better AI recommendations.
+                {Math.round((readiness.completion_ratio || 0) * 100)}% {text.readinessSuffix}
               </p>
             </div>
             <div className="w-full md:w-64 h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -292,7 +295,7 @@ const ProfilePage = () => {
                   }}
                   className="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-700"
                 >
-                  {action.label}
+                  {translateActionLabel(action.label, language)}
                 </button>
               ))}
             </div>
@@ -303,47 +306,47 @@ const ProfilePage = () => {
       <div className="bg-white border border-slate-200 rounded-3xl shadow-xl shadow-blue-900/5 overflow-hidden">
         <div className="p-8 space-y-8">
           <section>
-            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">Profile Summary</h3>
+            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">{text.profileSummary}</h3>
             <div className="space-y-6">
-              <Field label="Summary" editing={isEditing}>
+              <Field label={text.summary} editing={isEditing}>
                 {isEditing ? (
-                  <textarea className={`${inputClass} min-h-28 resize-y`} value={formData.summary} onChange={(e) => setFormData({ ...formData, summary: e.target.value })} placeholder="Short profile summary extracted from CV or written by you" />
+                  <textarea className={`${inputClass} min-h-28 resize-y`} value={formData.summary} onChange={(e) => setFormData({ ...formData, summary: e.target.value })} placeholder={text.summaryPlaceholder} />
                 ) : (
-                  <DisplayBlock>{profile?.summary || 'Chua cap nhat'}</DisplayBlock>
+                  <DisplayBlock>{profile?.summary || text.notUpdated}</DisplayBlock>
                 )}
               </Field>
-              <Field label="Career goals" editing={isEditing}>
+              <Field label={text.careerGoals} editing={isEditing}>
                 {isEditing ? (
-                  <textarea className={`${inputClass} min-h-24 resize-y`} value={formData.career_goals} onChange={(e) => setFormData({ ...formData, career_goals: e.target.value })} placeholder="Career goals, target roles, or study direction" />
+                  <textarea className={`${inputClass} min-h-24 resize-y`} value={formData.career_goals} onChange={(e) => setFormData({ ...formData, career_goals: e.target.value })} placeholder={text.careerGoalsPlaceholder} />
                 ) : (
-                  <DisplayBlock>{profile?.career_goals || 'Chua cap nhat'}</DisplayBlock>
+                  <DisplayBlock>{profile?.career_goals || text.notUpdated}</DisplayBlock>
                 )}
               </Field>
-              <Field label="Skills" editing={isEditing}>
+              <Field label={text.skills} editing={isEditing}>
                 {isEditing ? (
                   <input className={inputClass} value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value })} placeholder="Python, Leadership, Research..." />
                 ) : (
-                  <TagList items={profile?.skills || []} empty="Chua co ky nang" />
+                  <TagList items={profile?.skills || []} empty={text.noSkills} />
                 )}
               </Field>
             </div>
           </section>
 
           <section>
-            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">Education & Experience</h3>
+            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-50 pb-2">{text.educationExperience}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Field label="Education" editing={isEditing}>
+              <Field label={text.education} editing={isEditing}>
                 {isEditing ? (
-                  <textarea className={`${inputClass} min-h-40 resize-y`} value={formData.education} onChange={(e) => setFormData({ ...formData, education: e.target.value })} placeholder="One education entry per line" />
+                  <textarea className={`${inputClass} min-h-40 resize-y`} value={formData.education} onChange={(e) => setFormData({ ...formData, education: e.target.value })} placeholder={text.educationPlaceholder} />
                 ) : (
-                  <BulletList items={profile?.education || []} empty="Chua co hoc van" />
+                  <BulletList items={profile?.education || []} empty={text.noEducation} />
                 )}
               </Field>
-              <Field label="Experience" editing={isEditing}>
+              <Field label={text.experience} editing={isEditing}>
                 {isEditing ? (
-                  <textarea className={`${inputClass} min-h-40 resize-y`} value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} placeholder="One experience entry per line" />
+                  <textarea className={`${inputClass} min-h-40 resize-y`} value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} placeholder={text.experiencePlaceholder} />
                 ) : (
-                  <BulletList items={profile?.experience || []} empty="Chua co kinh nghiem" />
+                  <BulletList items={profile?.experience || []} empty={text.noExperience} />
                 )}
               </Field>
             </div>
@@ -440,7 +443,7 @@ const ProfilePage = () => {
               {cvDocuments.length > 0 && (
                 <div className="mt-2 border border-slate-200 rounded-xl overflow-hidden">
                   <div className="px-4 py-3 bg-slate-50 border-b border-slate-100">
-                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Uploaded CV versions</p>
+                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{text.uploadedCvVersions}</p>
                   </div>
                   <div className="divide-y divide-slate-100">
                     {cvDocuments.map((doc) => (
@@ -454,17 +457,17 @@ const ProfilePage = () => {
                         <div className="flex items-center gap-2">
                           {doc.is_active && (
                             <span className="px-2 py-1 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded text-[10px] font-black uppercase">
-                              Active
+                              {text.active}
                             </span>
                           )}
                           <button onClick={() => handleConfirmCV(doc.id)} className="px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-primary uppercase">
-                            Confirm
+                            {text.confirm}
                           </button>
                           <button onClick={() => handlePreviewCV(doc.id)} className="px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-slate-600 uppercase">
-                            Preview merge
+                            {text.previewMerge}
                           </button>
                           <button onClick={() => handleDeleteCV(doc.id)} className="px-3 py-2 bg-red-600 text-white rounded-lg text-[10px] font-black uppercase">
-                            Delete
+                            {text.delete}
                           </button>
                         </div>
                       </div>
@@ -521,6 +524,86 @@ const ProfilePage = () => {
 };
 
 const inputClass = 'w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-primary/5 focus:border-primary transition-all text-sm font-medium';
+
+const viText = {
+  chooseImage: 'Vui lòng chọn file hình ảnh.',
+  imageTooLarge: 'Ảnh hồ sơ phải nhỏ hơn 2MB.',
+  imageUpdated: 'Đã cập nhật ảnh hồ sơ.',
+  imageReadError: 'Không thể đọc ảnh này.',
+  imageRemoved: 'Đã xóa ảnh hồ sơ.',
+  cvActivated: 'CV đã được chọn làm phiên bản đang sử dụng.',
+  cvConfirmError: 'Không thể xác nhận CV.',
+  cvPreviewError: 'Không thể xem trước phần gộp CV.',
+  deleteCvConfirm: 'Bạn có chắc muốn xóa CV này?',
+  cvDeleted: 'Đã xóa CV.',
+  cvDeleteError: 'Không thể xóa CV.',
+  profileImage: 'Ảnh hồ sơ',
+  profileImageHelp: 'Tải ảnh vuông dưới 2MB. Ảnh cũng sẽ xuất hiện ở thanh trên.',
+  uploadProfileImage: 'Tải ảnh hồ sơ',
+  remove: 'Xóa',
+  profileReadiness: 'Mức hoàn thiện hồ sơ',
+  readinessSuffix: 'hoàn thiện để AI gợi ý tốt hơn.',
+  profileSummary: 'Tóm tắt hồ sơ',
+  summary: 'Tóm tắt',
+  summaryPlaceholder: 'Tóm tắt ngắn về hồ sơ, lấy từ CV hoặc do bạn viết',
+  notUpdated: 'Chưa cập nhật',
+  careerGoals: 'Mục tiêu nghề nghiệp',
+  careerGoalsPlaceholder: 'Mục tiêu nghề nghiệp, vai trò mong muốn hoặc định hướng học tập',
+  skills: 'Kỹ năng',
+  noSkills: 'Chưa có kỹ năng',
+  educationExperience: 'Học vấn và kinh nghiệm',
+  education: 'Học vấn',
+  educationPlaceholder: 'Mỗi dòng là một mục học vấn',
+  noEducation: 'Chưa có học vấn',
+  experience: 'Kinh nghiệm',
+  experiencePlaceholder: 'Mỗi dòng là một mục kinh nghiệm',
+  noExperience: 'Chưa có kinh nghiệm',
+  uploadedCvVersions: 'Các phiên bản CV đã tải lên',
+  active: 'Đang dùng',
+  confirm: 'Xác nhận',
+  previewMerge: 'Xem gộp CV',
+  delete: 'Xóa',
+};
+
+const enText = {
+  chooseImage: 'Please choose an image file.',
+  imageTooLarge: 'Profile image must be under 2MB.',
+  imageUpdated: 'Profile image updated.',
+  imageReadError: 'Could not read this image.',
+  imageRemoved: 'Profile image removed.',
+  cvActivated: 'CV selected as the active version.',
+  cvConfirmError: 'Could not confirm CV.',
+  cvPreviewError: 'Could not preview CV merge.',
+  deleteCvConfirm: 'Delete this CV document?',
+  cvDeleted: 'CV document deleted.',
+  cvDeleteError: 'Could not delete CV.',
+  profileImage: 'Profile image',
+  profileImageHelp: 'Upload a square image under 2MB. It will also appear in the upper bar.',
+  uploadProfileImage: 'Upload profile image',
+  remove: 'Remove',
+  profileReadiness: 'Profile readiness',
+  readinessSuffix: 'complete for better AI recommendations.',
+  profileSummary: 'Profile Summary',
+  summary: 'Summary',
+  summaryPlaceholder: 'Short profile summary extracted from CV or written by you',
+  notUpdated: 'Not updated',
+  careerGoals: 'Career goals',
+  careerGoalsPlaceholder: 'Career goals, target roles, or study direction',
+  skills: 'Skills',
+  noSkills: 'No skills yet',
+  educationExperience: 'Education & Experience',
+  education: 'Education',
+  educationPlaceholder: 'One education entry per line',
+  noEducation: 'No education yet',
+  experience: 'Experience',
+  experiencePlaceholder: 'One experience entry per line',
+  noExperience: 'No experience yet',
+  uploadedCvVersions: 'Uploaded CV versions',
+  active: 'Active',
+  confirm: 'Confirm',
+  previewMerge: 'Preview merge',
+  delete: 'Delete',
+};
 
 const Field = ({ label, children }) => (
   <div className="flex flex-col gap-2">
@@ -582,6 +665,17 @@ const formatValue = (value) => {
   if (Array.isArray(value)) return value.map((item) => (typeof item === 'string' ? item : JSON.stringify(item))).join('; ');
   if (typeof value === 'object') return JSON.stringify(value);
   return String(value);
+};
+
+const translateActionLabel = (label, language) => {
+  const normalized = String(label || '').trim().toLowerCase();
+  const dictionary = {
+    'complete profile fields': { vi: 'Hoàn thiện thông tin hồ sơ', en: 'Complete profile fields' },
+    'open wizard': { vi: 'Mở Wizard', en: 'Open Wizard' },
+    'edit profile': { vi: 'Chỉnh sửa hồ sơ', en: 'Edit profile' },
+    'upload cv': { vi: 'Tải CV lên', en: 'Upload CV' },
+  };
+  return dictionary[normalized]?.[language] || label;
 };
 
 export default ProfilePage;

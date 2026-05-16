@@ -2,20 +2,25 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import api from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
+import Pagination from '../components/Pagination';
+import { useLanguage } from '../context/LanguageContext';
 
+const PAGE_SIZE = 10;
 const ROLE_OPTIONS = ['admin', 'editor', 'user'];
 const PERMISSION_OPTIONS = ['system:all', 'db:manage', 'tokens:view', 'profile:edit', 'match:run'];
 const KNOWN_PROMPT_AGENTS = [
-  { value: 'advisor', label: 'Advisor - general student chat' },
-  { value: 'advisor_match', label: 'Advisor Match - Wizard Top 3 matching' },
-  { value: 'crm', label: 'CRM - profile-aware student chat' },
-  { value: 'rag', label: 'RAG - grounded admissions answers' },
-  { value: 'router', label: 'Router - classify chat intent' },
-  { value: 'judge_safety', label: 'Judge Safety - response safety gate' },
-  { value: 'judge_gold', label: 'Judge Gold - golden-answer evaluation' }
+  { value: 'advisor', labelKey: 'agentAdvisor', label: 'Advisor - general student chat' },
+  { value: 'advisor_match', labelKey: 'agentAdvisorMatch', label: 'Advisor Match - Wizard Top 3 matching' },
+  { value: 'crm', labelKey: 'agentCrm', label: 'CRM - profile-aware student chat' },
+  { value: 'rag', labelKey: 'agentRag', label: 'RAG - grounded admissions answers' },
+  { value: 'router', labelKey: 'agentRouter', label: 'Router - classify chat intent' },
+  { value: 'judge_safety', labelKey: 'agentJudgeSafety', label: 'Judge Safety - response safety gate' },
+  { value: 'judge_gold', labelKey: 'agentJudgeGold', label: 'Judge Gold - golden-answer evaluation' }
 ];
 
 const DatabaseManagementPage = () => {
+  const { language } = useLanguage();
+  const text = language === 'vi' ? viText : enText;
   const [status, setStatus] = useState(null);
   const [users, setUsers] = useState([]);
   const [prompts, setPrompts] = useState([]);
@@ -43,6 +48,8 @@ const DatabaseManagementPage = () => {
   const [forceOverwrite, setForceOverwrite] = useState(false);
   const [ingesting, setIngesting] = useState(false);
   const [ingestReport, setIngestReport] = useState(null);
+  const [usersPage, setUsersPage] = useState(1);
+  const [promptsPage, setPromptsPage] = useState(1);
 
   const filteredUsers = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -53,15 +60,21 @@ const DatabaseManagementPage = () => {
         .some((value) => String(value).toLowerCase().includes(q))
     );
   }, [search, users]);
+  const pagedUsers = filteredUsers.slice((usersPage - 1) * PAGE_SIZE, usersPage * PAGE_SIZE);
+  const pagedPrompts = prompts.slice((promptsPage - 1) * PAGE_SIZE, promptsPage * PAGE_SIZE);
+
+  useEffect(() => {
+    setUsersPage(1);
+  }, [search]);
 
   const promptAgentOptions = useMemo(() => {
     const known = KNOWN_PROMPT_AGENTS.map((agent) => agent.value);
     const existing = prompts.map((prompt) => prompt.agent_name).filter(Boolean);
     return Array.from(new Set([...known, ...existing])).map((agentName) => {
       const knownAgent = KNOWN_PROMPT_AGENTS.find((agent) => agent.value === agentName);
-      return { value: agentName, label: knownAgent?.label || agentName };
+      return { value: agentName, label: knownAgent?.labelKey ? text[knownAgent.labelKey] : knownAgent?.label || agentName };
     });
-  }, [prompts]);
+  }, [prompts, text]);
 
   const selectedAgentVersions = useMemo(() => (
     prompts
@@ -247,9 +260,9 @@ const DatabaseManagementPage = () => {
       };
       const result = await api.ingestRag(payload);
       setIngestReport(result.report || null);
-      toast.success('RAG ingestion completed.');
+      toast.success(text.ragIngestSuccess);
     } catch (err) {
-      toast.error(err.response?.data?.detail || 'Could not run RAG ingestion.');
+      toast.error(err.response?.data?.detail || text.ragIngestError);
     } finally {
       setIngesting(false);
     }
@@ -259,7 +272,7 @@ const DatabaseManagementPage = () => {
     setSeeding(target);
     try {
       const result = await api.seedAdminTable(target, 'v2');
-      toast.success(`Seeded ${target}.`);
+      toast.success(`${text.seeded} ${target}.`);
       loadData();
     } catch (err) {
       toast.error(err.response?.data?.detail || `Could not seed ${target}.`);
@@ -274,8 +287,8 @@ const DatabaseManagementPage = () => {
     <div className="p-8 h-full overflow-y-auto">
       <div className="max-w-7xl mx-auto space-y-8">
         <header className="border-b-4 border-primary pb-4">
-          <h1 className="text-3xl font-black text-primary tracking-tight">System / PostgreSQL Database</h1>
-          <p className="text-slate-500 font-medium mt-1">Kiểm tra kết nối database và quản trị tài khoản hệ thống.</p>
+          <h1 className="text-3xl font-black text-primary tracking-tight">{text.title}</h1>
+          <p className="text-slate-500 font-medium mt-1">{text.subtitle}</p>
         </header>
 
         {error && (
@@ -297,11 +310,11 @@ const DatabaseManagementPage = () => {
           <section className="bg-white border border-slate-200 rounded-2xl shadow-sm p-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
               <div>
-                <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Operational health</h2>
-                <p className="text-xs text-slate-500 mt-1">Backend badges for tokens, prompts, handoffs, database, and RAG ingest.</p>
+                <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.operationalHealth}</h2>
+                <p className="text-xs text-slate-500 mt-1">{text.operationalHealthBody}</p>
               </div>
               <button onClick={loadData} className="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-black uppercase tracking-widest text-primary">
-                Refresh
+                {text.refresh}
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
@@ -321,47 +334,53 @@ const DatabaseManagementPage = () => {
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Seed Empty Setup Tables</h2>
-              <p className="text-xs text-slate-500 mt-1">Use this with an admin account when PostgreSQL tables are empty after a fresh setup.</p>
+              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.seedTables}</h2>
+              <p className="text-xs text-slate-500 mt-1">{text.seedTablesBody}</p>
             </div>
             <button
               onClick={() => handleSeedTable('all')}
               disabled={Boolean(seeding)}
               className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50"
             >
-              {seeding === 'all' ? 'Seeding...' : 'Seed all'}
+              {seeding === 'all' ? text.seeding : text.seedAll}
             </button>
           </div>
           <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
             <SeedActionCard
               title="majors"
-              detail="Official major names used by the advisor and wizard."
+              detail={text.seedMajorsBody}
               loading={seeding === 'majors'}
               onClick={() => handleSeedTable('majors')}
+              loadingLabel={text.seeding}
+              actionLabel={text.seed}
             />
             <SeedActionCard
               title="admissions_data"
-              detail="Baseline SQL admission requirements linked to majors."
+              detail={text.seedAdmissionsBody}
               loading={seeding === 'admissions_data'}
               onClick={() => handleSeedTable('admissions_data')}
+              loadingLabel={text.seeding}
+              actionLabel={text.seed}
             />
             <SeedActionCard
               title="prompts"
-              detail="Versioned v2 prompts for advisor, RAG, CRM, router, and judges."
+              detail={text.seedPromptsBody}
               loading={seeding === 'prompts'}
               onClick={() => handleSeedTable('prompts')}
+              loadingLabel={text.seeding}
+              actionLabel={text.seed}
             />
             <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50">
               <p className="text-xs font-black text-slate-800 uppercase tracking-widest">security_events</p>
-              <p className="text-xs text-slate-500 mt-2 leading-5">Audit table. It fills automatically when guardrails, input checks, or rate limits trigger.</p>
-              <span className="inline-block mt-4 px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-slate-500 uppercase">No seed needed</span>
+              <p className="text-xs text-slate-500 mt-2 leading-5">{text.securityEventsBody}</p>
+              <span className="inline-block mt-4 px-3 py-2 bg-white border border-slate-200 rounded-lg text-[10px] font-black text-slate-500 uppercase">{text.noSeedNeeded}</span>
             </div>
           </div>
         </section>
 
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100">
-            <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Thêm Admin / Editor</h2>
+            <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.addAdminEditor}</h2>
             <p className="text-xs text-slate-500 mt-1">Tạo user trực tiếp trong PostgreSQL. Role có thể đổi lại trong bảng bên dưới.</p>
           </div>
           <div className="p-6 grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -372,8 +391,8 @@ const DatabaseManagementPage = () => {
               {ROLE_OPTIONS.map((role) => <option key={role} value={role}>{role}</option>)}
             </select>
             <div className="flex gap-2">
-              <button disabled={saving} onClick={() => handleCreateUser('admin')} className="flex-1 px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50">Add admin</button>
-              <button disabled={saving} onClick={() => handleCreateUser('editor')} className="flex-1 px-4 py-3 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50">Add editor</button>
+              <button disabled={saving} onClick={() => handleCreateUser('admin')} className="flex-1 px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50">{text.addAdmin}</button>
+              <button disabled={saving} onClick={() => handleCreateUser('editor')} className="flex-1 px-4 py-3 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50">{text.addEditor}</button>
             </div>
           </div>
         </section>
@@ -381,12 +400,12 @@ const DatabaseManagementPage = () => {
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Users trong PostgreSQL</h2>
-              <p className="text-xs text-slate-500 mt-1">Grant/revoke permission, đổi role, hoặc blacklist user.</p>
+              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.usersTitle}</h2>
+              <p className="text-xs text-slate-500 mt-1">{text.usersSubtitle}</p>
             </div>
             <div className="flex gap-2">
-              <input className={`${inputClass} w-72`} placeholder="Tìm email, tên, role..." value={search} onChange={(e) => setSearch(e.target.value)} />
-              <button onClick={loadData} className="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-black uppercase tracking-widest text-primary hover:bg-slate-50">Refresh</button>
+              <input className={`${inputClass} w-72`} placeholder={text.searchUsers} value={search} onChange={(e) => setSearch(e.target.value)} />
+              <button onClick={loadData} className="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-black uppercase tracking-widest text-primary hover:bg-slate-50">{text.refresh}</button>
             </div>
           </div>
 
@@ -403,7 +422,7 @@ const DatabaseManagementPage = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {filteredUsers.map((user) => {
+                {pagedUsers.map((user) => {
                   const userId = user.email || user.user_id;
                   const selectedPermission = permissionDraft[userId] || PERMISSION_OPTIONS[0];
 
@@ -468,19 +487,20 @@ const DatabaseManagementPage = () => {
               </tbody>
             </table>
           </div>
+          <Pagination page={usersPage} totalItems={filteredUsers.length} pageSize={PAGE_SIZE} onPageChange={setUsersPage} />
         </section>
 
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Prompt Configuration</h2>
-              <p className="text-xs text-slate-500 mt-1">Version-controlled prompts for each backend agent.</p>
+              <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.promptConfig}</h2>
+              <p className="text-xs text-slate-500 mt-1">{text.promptConfigBody}</p>
             </div>
             <button
               onClick={() => setPromptModalOpen(true)}
               className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest"
             >
-              New Prompt
+              {text.newPrompt}
             </button>
           </div>
 
@@ -488,15 +508,15 @@ const DatabaseManagementPage = () => {
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-50 text-slate-500 font-bold uppercase text-[10px] tracking-widest">
                 <tr>
-                  <th className="px-6 py-4">Agent Name</th>
-                  <th className="px-6 py-4">Version</th>
-                  <th className="px-6 py-4">Created At</th>
-                  <th className="px-6 py-4">Preview</th>
-                  <th className="px-6 py-4 text-right">Actions</th>
+                  <th className="px-6 py-4">{text.agentName}</th>
+                  <th className="px-6 py-4">{text.version}</th>
+                  <th className="px-6 py-4">{text.createdAt}</th>
+                  <th className="px-6 py-4">{text.preview}</th>
+                  <th className="px-6 py-4 text-right">{text.actions}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {prompts.length > 0 ? prompts.map((prompt) => (
+                {prompts.length > 0 ? pagedPrompts.map((prompt) => (
                   <tr key={`${prompt.agent_name}-${prompt.version}`}>
                     <td className="px-6 py-4 font-bold text-slate-800">{prompt.agent_name}</td>
                     <td className="px-6 py-4">
@@ -510,9 +530,9 @@ const DatabaseManagementPage = () => {
                         type="button"
                         onClick={() => setPromptPreview(prompt)}
                         className="block w-full truncate text-left hover:text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary/20 rounded"
-                        title="Open full prompt preview"
+                        title={text.openPromptPreview}
                       >
-                        {prompt.content || 'No content'}
+                        {prompt.content || text.noContent}
                       </button>
                     </td>
                     <td className="px-6 py-4 text-right">
@@ -520,46 +540,47 @@ const DatabaseManagementPage = () => {
                         onClick={() => handleSelectPrompt(prompt)}
                         className="mr-2 px-3 py-2 bg-primary text-white rounded-lg text-[10px] font-black uppercase"
                       >
-                        Select
+                        {text.select}
                       </button>
                       <button
                         onClick={() => handleDeletePrompt(prompt)}
                         className="px-3 py-2 bg-red-600 text-white rounded-lg text-[10px] font-black uppercase"
                       >
-                        Delete
+                        {text.delete}
                       </button>
                     </td>
                   </tr>
                 )) : (
                   <tr>
                     <td className="px-6 py-8 text-center text-sm text-slate-400" colSpan={5}>
-                      No prompt versions found.
+                      {text.noPromptVersions}
                     </td>
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
+          <Pagination page={promptsPage} totalItems={prompts.length} pageSize={PAGE_SIZE} onPageChange={setPromptsPage} />
         </section>
 
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100">
-            <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">Prompt Versioning</h2>
-            <p className="text-xs text-slate-500 mt-1">Update prompt versions by number/name, compare rendered outputs, then select the version for use.</p>
+            <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.promptVersioning}</h2>
+            <p className="text-xs text-slate-500 mt-1">{text.promptVersioningBody}</p>
           </div>
           <div className="p-6 space-y-5">
             <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 space-y-4">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div>
-                  <h3 className="text-xs font-black text-slate-800 uppercase tracking-widest">Add / Update Prompt</h3>
-                  <p className="text-xs text-slate-500 mt-1">Choose an agent, enter a version number/name, then save the prompt content.</p>
+                  <h3 className="text-xs font-black text-slate-800 uppercase tracking-widest">{text.addUpdatePrompt}</h3>
+                  <p className="text-xs text-slate-500 mt-1">{text.addUpdatePromptBody}</p>
                 </div>
                 <button
                   onClick={handleCreatePrompt}
                   disabled={saving}
                   className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50"
                 >
-                  Save Prompt Version
+                  {text.savePromptVersion}
                 </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -568,14 +589,14 @@ const DatabaseManagementPage = () => {
                   value={newPrompt.agent_name}
                   onChange={(e) => setNewPrompt({ ...newPrompt, agent_name: e.target.value })}
                 >
-                  <option value="">Choose agent</option>
+                  <option value="">{text.chooseAgent}</option>
                   {promptAgentOptions.map((agent) => (
                     <option key={agent.value} value={agent.value}>{agent.label}</option>
                   ))}
                 </select>
                 <input
                   className={inputClass}
-                  placeholder="Version number/name, e.g. 1 or v3"
+                  placeholder={text.versionPlaceholder}
                   value={newPrompt.version}
                   onChange={(e) => {
                     setNewPrompt({ ...newPrompt, version: e.target.value });
@@ -590,7 +611,7 @@ const DatabaseManagementPage = () => {
                   }}
                   disabled={!newPrompt.agent_name}
                 >
-                  <option value="">Load existing version</option>
+                  <option value="">{text.loadExistingVersion}</option>
                   {prompts.filter((prompt) => prompt.agent_name === newPrompt.agent_name).map((prompt) => (
                     <option key={prompt.version} value={prompt.version}>{prompt.version}</option>
                   ))}
@@ -598,7 +619,7 @@ const DatabaseManagementPage = () => {
               </div>
               <textarea
                 className={`${inputClass} w-full min-h-52 resize-y font-mono`}
-                placeholder="Prompt content"
+                placeholder={text.promptContent}
                 value={newPrompt.content}
                 onChange={(e) => setNewPrompt({ ...newPrompt, content: e.target.value })}
               />
@@ -606,7 +627,7 @@ const DatabaseManagementPage = () => {
                 {KNOWN_PROMPT_AGENTS.map((agent) => (
                   <div key={agent.value} className="bg-white border border-slate-100 rounded-xl p-3">
                     <p className="text-xs font-black text-slate-800">{agent.value}</p>
-                    <p className="text-[11px] text-slate-500 mt-1">{agent.label}</p>
+                    <p className="text-[11px] text-slate-500 mt-1">{text[agent.labelKey] || agent.label}</p>
                   </div>
                 ))}
               </div>
@@ -618,7 +639,7 @@ const DatabaseManagementPage = () => {
                 value={comparePrompt.agent_name}
                 onChange={(e) => setComparePrompt({ agent_name: e.target.value, version_a: '', version_b: '', test_input: comparePrompt.test_input })}
               >
-                <option value="">Choose agent to compare</option>
+                <option value="">{text.chooseAgentCompare}</option>
                 {promptAgentOptions.map((agent) => (
                   <option key={agent.value} value={agent.value}>{agent.label}</option>
                 ))}
@@ -629,7 +650,7 @@ const DatabaseManagementPage = () => {
                 onChange={(e) => setComparePrompt({ ...comparePrompt, version_a: e.target.value })}
                 disabled={!comparePrompt.agent_name}
               >
-                <option value="">Version A</option>
+                <option value="">{text.versionA}</option>
                 {selectedAgentVersions.map((version) => <option key={version} value={version}>{version}</option>)}
               </select>
               <select
@@ -638,19 +659,19 @@ const DatabaseManagementPage = () => {
                 onChange={(e) => setComparePrompt({ ...comparePrompt, version_b: e.target.value })}
                 disabled={!comparePrompt.agent_name}
               >
-                <option value="">Version B</option>
+                <option value="">{text.versionB}</option>
                 {selectedAgentVersions.map((version) => <option key={version} value={version}>{version}</option>)}
               </select>
               <button
                 onClick={handleComparePrompts}
                 className="px-4 py-3 bg-slate-900 text-white rounded-xl text-xs font-black uppercase tracking-widest"
               >
-                Compare
+                {text.compare}
               </button>
             </div>
             <textarea
               className={`${inputClass} w-full min-h-24 resize-y`}
-              placeholder="Test input for comparing prompt output preview"
+              placeholder={text.compareInputPlaceholder}
               value={comparePrompt.test_input}
               onChange={(e) => setComparePrompt({ ...comparePrompt, test_input: e.target.value })}
             />
@@ -660,13 +681,13 @@ const DatabaseManagementPage = () => {
                 <PromptPreview title={`${compareResult.agent_name} / ${compareResult.version_a}`} value={compareResult.output_a} />
                 <PromptPreview title={`${compareResult.agent_name} / ${compareResult.version_b}`} value={compareResult.output_b} />
                 <div className="lg:col-span-2 bg-slate-50 border border-slate-100 rounded-xl p-4 text-xs text-slate-600">
-                  Same content: <strong>{compareResult.comparison?.same ? 'Yes' : 'No'}</strong>
+                  {text.sameContent}: <strong>{compareResult.comparison?.same ? text.yes : text.no}</strong>
                   <span className="mx-3">|</span>
-                  Length A: <strong>{compareResult.comparison?.length_a}</strong>
+                  {text.lengthA}: <strong>{compareResult.comparison?.length_a}</strong>
                   <span className="mx-3">|</span>
-                  Length B: <strong>{compareResult.comparison?.length_b}</strong>
+                  {text.lengthB}: <strong>{compareResult.comparison?.length_b}</strong>
                   <span className="mx-3">|</span>
-                  Delta: <strong>{compareResult.comparison?.delta}</strong>
+                  {text.delta}: <strong>{compareResult.comparison?.delta}</strong>
                 </div>
               </div>
             )}
@@ -675,8 +696,8 @@ const DatabaseManagementPage = () => {
 
         <section className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-100">
-            <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">RAG Ingestion Controls</h2>
-            <p className="text-xs text-slate-500 mt-1">Choose the source to ingest instead of running a global sync.</p>
+            <h2 className="text-sm font-black text-slate-800 uppercase tracking-wider">{text.ragControls}</h2>
+            <p className="text-xs text-slate-500 mt-1">{text.ragControlsBody}</p>
           </div>
           <div className="p-6 space-y-5">
             <div className="inline-flex rounded-xl border border-slate-200 bg-slate-50 p-1">
@@ -684,20 +705,20 @@ const DatabaseManagementPage = () => {
                 onClick={() => setIngestMode('internal')}
                 className={`px-4 py-2 rounded-lg text-xs font-black uppercase tracking-widest ${ingestMode === 'internal' ? 'bg-white text-primary shadow-sm' : 'text-slate-500'}`}
               >
-                Internal
+                {text.internalSource}
               </button>
               <button
                 onClick={() => setIngestMode('external')}
                 className={`px-4 py-2 rounded-lg text-xs font-black uppercase tracking-widest ${ingestMode === 'external' ? 'bg-white text-primary shadow-sm' : 'text-slate-500'}`}
               >
-                External
+                {text.externalSource}
               </button>
             </div>
 
             {ingestMode === 'internal' ? (
               <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4">
-                <p className="text-sm font-bold text-slate-800">Sync School Handbook (Local PDF)</p>
-                <p className="text-xs text-slate-500 mt-1">Reads the configured local corpus folders and updates embeddings.</p>
+                <p className="text-sm font-bold text-slate-800">{text.syncHandbook}</p>
+                <p className="text-xs text-slate-500 mt-1">{text.syncHandbookBody}</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -708,7 +729,7 @@ const DatabaseManagementPage = () => {
                   onChange={(e) => setIngestUrl(e.target.value)}
                 />
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Source verification</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">{text.sourceVerification}</p>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <label className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-all ${externalSourceType === 'official' ? 'border-emerald-200 bg-white shadow-sm' : 'border-slate-200 bg-slate-50'}`}>
                       <input
@@ -720,8 +741,8 @@ const DatabaseManagementPage = () => {
                         className="mt-0.5 h-4 w-4 border-slate-300 text-emerald-600 focus:ring-emerald-200"
                       />
                       <span>
-                        <span className="block text-sm font-black text-slate-800">Official</span>
-                        <span className="mt-1 block text-xs leading-5 text-slate-500">Use for VinUni-owned domains or verified university pages.</span>
+                        <span className="block text-sm font-black text-slate-800">{text.officialSource}</span>
+                        <span className="mt-1 block text-xs leading-5 text-slate-500">{text.officialSourceBody}</span>
                       </span>
                     </label>
                     <label className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-all ${externalSourceType === 'unofficial' ? 'border-amber-200 bg-white shadow-sm' : 'border-slate-200 bg-slate-50'}`}>
@@ -734,8 +755,8 @@ const DatabaseManagementPage = () => {
                         className="mt-0.5 h-4 w-4 border-slate-300 text-amber-600 focus:ring-amber-200"
                       />
                       <span>
-                        <span className="block text-sm font-black text-slate-800">Unofficial</span>
-                        <span className="mt-1 block text-xs leading-5 text-slate-500">Use for third-party references that should not be treated as verified policy.</span>
+                        <span className="block text-sm font-black text-slate-800">{text.unofficialSource}</span>
+                        <span className="mt-1 block text-xs leading-5 text-slate-500">{text.unofficialSourceBody}</span>
                       </span>
                     </label>
                   </div>
@@ -750,7 +771,7 @@ const DatabaseManagementPage = () => {
                 checked={forceOverwrite}
                 onChange={(e) => setForceOverwrite(e.target.checked)}
               />
-              Force Overwrite
+              {text.forceOverwrite}
             </label>
 
             <div className="flex flex-col md:flex-row md:items-center gap-3">
@@ -759,11 +780,11 @@ const DatabaseManagementPage = () => {
                 disabled={ingesting}
                 className="w-fit px-5 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50"
               >
-                {ingesting ? 'Running...' : ingestMode === 'internal' ? 'Sync School Handbook' : 'Crawl Web Source'}
+                {ingesting ? text.running : ingestMode === 'internal' ? text.syncSchoolHandbookButton : text.crawlWebSource}
               </button>
               {ingestReport && (
                 <p className="text-xs text-slate-500">
-                  Added {ingestReport.added || 0}, updated {ingestReport.updated || 0}, failed {ingestReport.failed_files?.length || 0}.
+                  {text.added} {ingestReport.added || 0}, {text.updated} {ingestReport.updated || 0}, {text.failed} {ingestReport.failed_files?.length || 0}.
                 </p>
               )}
             </div>
@@ -776,35 +797,35 @@ const DatabaseManagementPage = () => {
           <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
             <div className="p-6 border-b border-slate-100 flex items-start justify-between">
               <div>
-                <h3 className="text-lg font-black text-slate-800">New Prompt Version</h3>
-                <p className="text-xs text-slate-500 mt-1">Saving an existing agent/version replaces that version content.</p>
+                <h3 className="text-lg font-black text-slate-800">{text.newPromptVersion}</h3>
+                <p className="text-xs text-slate-500 mt-1">{text.newPromptVersionBody}</p>
               </div>
               <button onClick={() => setPromptModalOpen(false)} className="px-3 py-2 text-slate-500 hover:text-slate-800">
-                Close
+                {text.close}
               </button>
             </div>
             <div className="p-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <select className={inputClass} value={newPrompt.agent_name} onChange={(e) => setNewPrompt({ ...newPrompt, agent_name: e.target.value })}>
-                  <option value="">Choose agent</option>
+                  <option value="">{text.chooseAgent}</option>
                   {promptAgentOptions.map((agent) => (
                     <option key={agent.value} value={agent.value}>{agent.label}</option>
                   ))}
                 </select>
-                <input className={inputClass} placeholder="Version, e.g. v3" value={newPrompt.version} onChange={(e) => setNewPrompt({ ...newPrompt, version: e.target.value })} />
+                <input className={inputClass} placeholder={text.versionShortPlaceholder} value={newPrompt.version} onChange={(e) => setNewPrompt({ ...newPrompt, version: e.target.value })} />
               </div>
               <textarea
                 className={`${inputClass} w-full min-h-64 resize-y`}
-                placeholder="Prompt content"
+                placeholder={text.promptContent}
                 value={newPrompt.content}
                 onChange={(e) => setNewPrompt({ ...newPrompt, content: e.target.value })}
               />
               <div className="flex justify-end gap-2">
                 <button onClick={() => setPromptModalOpen(false)} className="px-4 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50">
-                  Cancel
+                  {text.cancel}
                 </button>
                 <button disabled={saving} onClick={handleCreatePrompt} className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest disabled:opacity-50">
-                  Save Prompt
+                  {text.savePrompt}
                 </button>
               </div>
             </div>
@@ -817,7 +838,7 @@ const DatabaseManagementPage = () => {
           <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[88vh]">
             <div className="p-6 border-b border-slate-100 flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <h3 className="text-lg font-black text-slate-800">Prompt Preview</h3>
+                <h3 className="text-lg font-black text-slate-800">{text.promptPreview}</h3>
                 <p className="text-xs text-slate-500 mt-1 truncate">
                   {promptPreview.agent_name} / {promptPreview.version} · {formatDate(promptPreview.created_at)}
                 </p>
@@ -826,12 +847,12 @@ const DatabaseManagementPage = () => {
                 onClick={() => setPromptPreview(null)}
                 className="px-3 py-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg text-sm font-bold"
               >
-                Close
+                {text.close}
               </button>
             </div>
             <div className="p-6 overflow-y-auto">
               <pre className="whitespace-pre-wrap break-words rounded-xl border border-slate-200 bg-slate-950 p-5 text-xs leading-6 text-slate-100 font-mono">
-                {promptPreview.content || 'No prompt content.'}
+                {promptPreview.content || text.noPromptContent}
               </pre>
             </div>
             <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-2">
@@ -846,13 +867,13 @@ const DatabaseManagementPage = () => {
                 }}
                 className="px-4 py-3 bg-white border border-slate-200 text-slate-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-slate-50"
               >
-                Load for edit
+                {text.loadForEdit}
               </button>
               <button
                 onClick={() => setPromptPreview(null)}
                 className="px-4 py-3 bg-primary text-white rounded-xl text-xs font-black uppercase tracking-widest"
               >
-                Done
+                {text.done}
               </button>
             </div>
           </div>
@@ -863,6 +884,198 @@ const DatabaseManagementPage = () => {
 };
 
 const inputClass = 'px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 outline-none focus:ring-2 focus:ring-primary/20';
+
+const viText = {
+  title: 'Quản trị dữ liệu',
+  subtitle: 'Kiểm tra kết nối cơ sở dữ liệu và quản trị tài khoản hệ thống.',
+  operationalHealth: 'Tình trạng vận hành',
+  operationalHealthBody: 'Các chỉ báo backend cho token, prompt, yêu cầu tư vấn, cơ sở dữ liệu và nạp RAG.',
+  seedTables: 'Khởi tạo bảng dữ liệu trống',
+  seedTablesBody: 'Dùng với tài khoản admin khi các bảng PostgreSQL còn trống sau khi thiết lập mới.',
+  seeding: 'Đang khởi tạo...',
+  seedAll: 'Khởi tạo tất cả',
+  seed: 'Khởi tạo',
+  seeded: 'Đã khởi tạo',
+  seedMajorsBody: 'Tên ngành chính thức dùng cho cố vấn AI và Wizard.',
+  seedAdmissionsBody: 'Điều kiện tuyển sinh nền trong SQL, liên kết với từng ngành.',
+  seedPromptsBody: 'Prompt v2 có phiên bản cho cố vấn, truy xuất tri thức, CRM, điều hướng và kiểm duyệt.',
+  securityEventsBody: 'Bảng nhật ký kiểm toán. Bảng này tự ghi dữ liệu khi guardrail, kiểm tra đầu vào hoặc giới hạn tần suất được kích hoạt.',
+  noSeedNeeded: 'Không cần khởi tạo',
+  addAdminEditor: 'Thêm Admin / Biên tập viên',
+  addAdminEditorBody: 'Tạo người dùng trực tiếp trong PostgreSQL. Vai trò có thể đổi lại trong bảng bên dưới.',
+  addAdmin: 'Thêm admin',
+  addEditor: 'Thêm biên tập viên',
+  usersTitle: 'Người dùng trong PostgreSQL',
+  usersSubtitle: 'Cấp hoặc thu hồi quyền, đổi vai trò, hoặc chặn tài khoản.',
+  searchUsers: 'Tìm email, tên, vai trò...',
+  refresh: 'Làm mới',
+  promptConfig: 'Cấu hình prompt',
+  promptConfigBody: 'Các prompt có quản lý phiên bản cho từng agent backend.',
+  newPrompt: 'Prompt mới',
+  promptVersioning: 'Phiên bản prompt',
+  promptVersioningBody: 'Cập nhật phiên bản prompt theo số/tên, so sánh kết quả hiển thị rồi chọn phiên bản sử dụng.',
+  ragControls: 'Nạp dữ liệu tri thức',
+  ragControlsBody: 'Chọn nguồn cần nạp để cập nhật kho tri thức dùng cho câu trả lời tuyển sinh.',
+  agentName: 'Tên agent',
+  version: 'Phiên bản',
+  createdAt: 'Ngày tạo',
+  preview: 'Xem trước',
+  actions: 'Thao tác',
+  openPromptPreview: 'Mở toàn bộ prompt',
+  noContent: 'Chưa có nội dung',
+  select: 'Chọn',
+  delete: 'Xóa',
+  noPromptVersions: 'Chưa có phiên bản prompt nào.',
+  addUpdatePrompt: 'Thêm / Cập nhật prompt',
+  addUpdatePromptBody: 'Chọn agent, nhập tên hoặc số phiên bản, rồi lưu nội dung prompt.',
+  savePromptVersion: 'Lưu phiên bản prompt',
+  chooseAgent: 'Chọn agent',
+  versionPlaceholder: 'Tên hoặc số phiên bản, ví dụ 1 hoặc v3',
+  loadExistingVersion: 'Tải phiên bản đã có',
+  promptContent: 'Nội dung prompt',
+  chooseAgentCompare: 'Chọn agent để so sánh',
+  versionA: 'Phiên bản A',
+  versionB: 'Phiên bản B',
+  compare: 'So sánh',
+  compareInputPlaceholder: 'Dữ liệu thử để so sánh bản xem trước của prompt',
+  sameContent: 'Nội dung giống nhau',
+  yes: 'Có',
+  no: 'Không',
+  lengthA: 'Độ dài A',
+  lengthB: 'Độ dài B',
+  delta: 'Chênh lệch',
+  internalSource: 'Nguồn nội bộ',
+  externalSource: 'Nguồn bên ngoài',
+  syncHandbook: 'Đồng bộ sổ tay trường (PDF nội bộ)',
+  syncHandbookBody: 'Đọc các thư mục dữ liệu nội bộ đã cấu hình và cập nhật embedding.',
+  sourceVerification: 'Xác minh nguồn',
+  officialSource: 'Nguồn chính thức',
+  officialSourceBody: 'Dùng cho tên miền VinUni hoặc trang đại học đã được xác minh.',
+  unofficialSource: 'Nguồn tham khảo',
+  unofficialSourceBody: 'Dùng cho nguồn bên thứ ba, không xem như chính sách tuyển sinh đã xác minh.',
+  forceOverwrite: 'Ghi đè dữ liệu cũ',
+  running: 'Đang chạy...',
+  syncSchoolHandbookButton: 'Đồng bộ sổ tay trường',
+  crawlWebSource: 'Quét nguồn web',
+  added: 'Đã thêm',
+  updated: 'đã cập nhật',
+  failed: 'lỗi',
+  ragIngestSuccess: 'Đã nạp dữ liệu tri thức thành công.',
+  ragIngestError: 'Không thể chạy nạp dữ liệu tri thức.',
+  newPromptVersion: 'Phiên bản prompt mới',
+  newPromptVersionBody: 'Lưu vào agent/phiên bản đã có sẽ thay thế nội dung phiên bản đó.',
+  close: 'Đóng',
+  versionShortPlaceholder: 'Phiên bản, ví dụ v3',
+  cancel: 'Hủy',
+  savePrompt: 'Lưu prompt',
+  promptPreview: 'Xem trước prompt',
+  noPromptContent: 'Chưa có nội dung prompt.',
+  loadForEdit: 'Tải để chỉnh sửa',
+  done: 'Xong',
+  agentAdvisor: 'Cố vấn - chat chung với học sinh',
+  agentAdvisorMatch: 'Ghép ngành - Top 3 ngành từ Wizard',
+  agentCrm: 'CRM - chat theo hồ sơ học sinh',
+  agentRag: 'Truy xuất tri thức - trả lời tuyển sinh có nguồn',
+  agentRouter: 'Điều hướng - phân loại mục đích chat',
+  agentJudgeSafety: 'Kiểm duyệt an toàn - chặn phản hồi rủi ro',
+  agentJudgeGold: 'Đánh giá mẫu chuẩn - kiểm tra chất lượng câu trả lời',
+};
+
+const enText = {
+  title: 'Data Management',
+  subtitle: 'Check database connectivity and manage system accounts.',
+  operationalHealth: 'Operational health',
+  operationalHealthBody: 'Backend badges for tokens, prompts, handoffs, database, and RAG ingest.',
+  seedTables: 'Seed Empty Setup Tables',
+  seedTablesBody: 'Use this with an admin account when PostgreSQL tables are empty after a fresh setup.',
+  seeding: 'Seeding...',
+  seedAll: 'Seed all',
+  seed: 'Seed',
+  seeded: 'Seeded',
+  seedMajorsBody: 'Official major names used by the advisor and wizard.',
+  seedAdmissionsBody: 'Baseline SQL admission requirements linked to majors.',
+  seedPromptsBody: 'Versioned v2 prompts for advisor, RAG, CRM, router, and judges.',
+  securityEventsBody: 'Audit table. It fills automatically when guardrails, input checks, or rate limits trigger.',
+  noSeedNeeded: 'No seed needed',
+  addAdminEditor: 'Add Admin / Editor',
+  addAdminEditorBody: 'Create users directly in PostgreSQL. Roles can be changed in the table below.',
+  addAdmin: 'Add admin',
+  addEditor: 'Add editor',
+  usersTitle: 'Users in PostgreSQL',
+  usersSubtitle: 'Grant or revoke permissions, change roles, or blacklist accounts.',
+  searchUsers: 'Search email, name, role...',
+  refresh: 'Refresh',
+  promptConfig: 'Prompt Configuration',
+  promptConfigBody: 'Version-controlled prompts for each backend agent.',
+  newPrompt: 'New Prompt',
+  promptVersioning: 'Prompt Versioning',
+  promptVersioningBody: 'Update prompt versions by number/name, compare rendered outputs, then select the version for use.',
+  ragControls: 'RAG Ingestion Controls',
+  ragControlsBody: 'Choose the source to ingest instead of running a global sync.',
+  agentName: 'Agent Name',
+  version: 'Version',
+  createdAt: 'Created At',
+  preview: 'Preview',
+  actions: 'Actions',
+  openPromptPreview: 'Open full prompt preview',
+  noContent: 'No content',
+  select: 'Select',
+  delete: 'Delete',
+  noPromptVersions: 'No prompt versions found.',
+  addUpdatePrompt: 'Add / Update Prompt',
+  addUpdatePromptBody: 'Choose an agent, enter a version number/name, then save the prompt content.',
+  savePromptVersion: 'Save Prompt Version',
+  chooseAgent: 'Choose agent',
+  versionPlaceholder: 'Version number/name, e.g. 1 or v3',
+  loadExistingVersion: 'Load existing version',
+  promptContent: 'Prompt content',
+  chooseAgentCompare: 'Choose agent to compare',
+  versionA: 'Version A',
+  versionB: 'Version B',
+  compare: 'Compare',
+  compareInputPlaceholder: 'Test input for comparing prompt output preview',
+  sameContent: 'Same content',
+  yes: 'Yes',
+  no: 'No',
+  lengthA: 'Length A',
+  lengthB: 'Length B',
+  delta: 'Delta',
+  internalSource: 'Internal',
+  externalSource: 'External',
+  syncHandbook: 'Sync School Handbook (Local PDF)',
+  syncHandbookBody: 'Reads the configured local corpus folders and updates embeddings.',
+  sourceVerification: 'Source verification',
+  officialSource: 'Official',
+  officialSourceBody: 'Use for VinUni-owned domains or verified university pages.',
+  unofficialSource: 'Unofficial',
+  unofficialSourceBody: 'Use for third-party references that should not be treated as verified policy.',
+  forceOverwrite: 'Force Overwrite',
+  running: 'Running...',
+  syncSchoolHandbookButton: 'Sync School Handbook',
+  crawlWebSource: 'Crawl Web Source',
+  added: 'Added',
+  updated: 'updated',
+  failed: 'failed',
+  ragIngestSuccess: 'RAG ingestion completed.',
+  ragIngestError: 'Could not run RAG ingestion.',
+  newPromptVersion: 'New Prompt Version',
+  newPromptVersionBody: 'Saving an existing agent/version replaces that version content.',
+  close: 'Close',
+  versionShortPlaceholder: 'Version, e.g. v3',
+  cancel: 'Cancel',
+  savePrompt: 'Save Prompt',
+  promptPreview: 'Prompt Preview',
+  noPromptContent: 'No prompt content.',
+  loadForEdit: 'Load for edit',
+  done: 'Done',
+  agentAdvisor: 'Advisor - general student chat',
+  agentAdvisorMatch: 'Advisor Match - Wizard Top 3 matching',
+  agentCrm: 'CRM - profile-aware student chat',
+  agentRag: 'RAG - grounded admissions answers',
+  agentRouter: 'Router - classify chat intent',
+  agentJudgeSafety: 'Judge Safety - response safety gate',
+  agentJudgeGold: 'Judge Gold - golden-answer evaluation',
+};
 
 const formatDate = (value) => {
   if (!value) return '-';
@@ -880,7 +1093,7 @@ const StatusCard = ({ label, value, tone = 'slate' }) => {
   );
 };
 
-const SeedActionCard = ({ title, detail, loading, onClick }) => (
+const SeedActionCard = ({ title, detail, loading, onClick, loadingLabel = 'Seeding...', actionLabel = 'Seed' }) => (
   <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50">
     <p className="text-xs font-black text-slate-800 uppercase tracking-widest">{title}</p>
     <p className="text-xs text-slate-500 mt-2 leading-5">{detail}</p>
@@ -890,7 +1103,7 @@ const SeedActionCard = ({ title, detail, loading, onClick }) => (
       onClick={onClick}
       className="mt-4 px-3 py-2 bg-white border border-slate-200 text-primary rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 disabled:opacity-50"
     >
-      {loading ? 'Seeding...' : 'Seed'}
+      {loading ? loadingLabel : actionLabel}
     </button>
   </div>
 );

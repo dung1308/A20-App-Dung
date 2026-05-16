@@ -15,6 +15,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import PricingPage from './pages/PricingPage';
 import AuthenticatedLayout from './layouts/AuthenticatedLayout';
 import { AuthProvider, useAuth } from './context/AuthContext'; // Import AuthProvider and useAuth hook
+import { LanguageProvider } from './context/LanguageContext';
 import { Toaster } from 'react-hot-toast';
 
 const AdminRoute = ({ children }) => {
@@ -71,8 +72,9 @@ function App() {
             },
           },
         }} />
-      <AuthProvider>
-        <Routes>
+      <LanguageProvider>
+        <AuthProvider>
+          <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin-signup" element={<AdminSignupPage />} />
@@ -92,8 +94,9 @@ function App() {
           <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
           <Route path="/system/database" element={<AdminRoute><DatabaseManagementPage /></AdminRoute>} />
         </Route>
-        </Routes>
-      </AuthProvider>
+          </Routes>
+        </AuthProvider>
+      </LanguageProvider>
     </div>
   );
 }

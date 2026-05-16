@@ -6,6 +6,7 @@ import { useChat } from '../../hooks/useChat';
 import api from '../../services/api';
 import SourceList from './SourceList';
 import HumanCounsellorPopup from './HumanCounsellorPopup';
+import { useLanguage } from '../../context/LanguageContext';
 
 // For demo purposes, this is hardcoded. 
 const IS_DEMO_MODE = import.meta.env.VITE_USE_MOCK === 'true';
@@ -22,12 +23,15 @@ const FALLBACK_LABELS = {
 
 const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
+  const text = language === 'vi' ? viText : enText;
   const [input, setInput] = useState('');
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [showAttachMenu, setShowAttachMenu] = useState(false);
   const [uploadingPdf, setUploadingPdf] = useState(false);
   const [pendingPdfContext, setPendingPdfContext] = useState(null);
   const [handoffStatus, setHandoffStatus] = useState(null);
+  const dismissedHandoffTraces = useRef(new Set(JSON.parse(localStorage.getItem('dismissed_handoff_traces') || '[]')));
   const fileInputRef = useRef(null);
   const viewerRole = localStorage.getItem('user_role');
   const canSeeDebugMeta = viewerRole === 'admin' || viewerRole === 'editor';
@@ -53,13 +57,14 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
   useEffect(() => {
     const latestHandoff = [...messages].reverse().find((message) => message.traceId && message.handoffStatus);
     if (latestHandoff) {
+      if (dismissedHandoffTraces.current.has(latestHandoff.traceId)) return;
       setHandoffStatus({
         trace_id: latestHandoff.traceId,
         handoff_status: latestHandoff.handoffStatus,
-        reason: latestHandoff.fallbackCard?.reason || 'Student requested a human counselor.'
+        reason: latestHandoff.fallbackCard?.reason || text.handoffRequested
       });
     }
-  }, [messages]);
+  }, [messages, text.handoffRequested]);
 
   const handleSend = () => {
     if (!input.trim() || loading) return;
@@ -148,17 +153,20 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
         session_id: sessionId,
         message: 'Student clicked request human counselor from ChatBox.'
       });
-      toast.success("Yêu cầu đã được gửi! Chuyên viên sẽ sớm liên hệ với bạn qua email.", {
+      const traceId = result.traceId || result.trace_id;
+      if (traceId) dismissedHandoffTraces.current.delete(traceId);
+      localStorage.setItem('dismissed_handoff_traces', JSON.stringify([...dismissedHandoffTraces.current]));
+      toast.success(text.handoffSuccess, {
         duration: 5000,
       });
       setHandoffStatus({
-        trace_id: result.traceId || result.trace_id,
+        trace_id: traceId,
         handoff_status: 'pending',
-        reason: result.fallbackCard?.reason || 'Student requested a human counselor.'
+        reason: result.fallbackCard?.reason || text.handoffRequested
       });
     } catch (error) {
       console.error("Handoff request failed:", error);
-      toast.error("Không thể gửi yêu cầu hỗ trợ lúc này. Vui lòng thử lại sau.");
+      toast.error(text.handoffError);
     }
   };
 
@@ -167,7 +175,11 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
     const loadHandoffStatus = async () => {
       try {
         const data = await api.getHandoffStatus();
-        if (mounted) setHandoffStatus(data.handoff || null);
+        if (mounted) {
+          const nextHandoff = data.handoff || null;
+          const nextTrace = nextHandoff?.trace_id || nextHandoff?.traceId;
+          setHandoffStatus(nextTrace && dismissedHandoffTraces.current.has(nextTrace) ? null : nextHandoff);
+        }
       } catch {
         if (mounted) setHandoffStatus(null);
       }
@@ -179,6 +191,15 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
       clearInterval(interval);
     };
   }, []);
+
+  const closeHandoffPopup = () => {
+    const traceId = handoffStatus?.trace_id || handoffStatus?.traceId;
+    if (traceId) {
+      dismissedHandoffTraces.current.add(traceId);
+      localStorage.setItem('dismissed_handoff_traces', JSON.stringify([...dismissedHandoffTraces.current]));
+    }
+    setHandoffStatus(null);
+  };
 
   return (
     <>
@@ -206,7 +227,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
       {handoffStatus && (
         <div className="px-4 py-3 bg-amber-50 border-b border-amber-100 text-xs text-amber-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <p className="font-black uppercase tracking-wider">Human fallback: {handoffStatus.handoff_status}</p>
+            <p className="font-black uppercase tracking-wider">{text.handoffStatus}: {handoffStatus.handoff_status}</p>
             <p className="mt-0.5">{handoffStatus.reason || 'A staff member can review this session if needed.'}</p>
           </div>
           {handoffStatus.latest_staff_message && (
@@ -256,7 +277,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
                 <div className="mt-3 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-wider">
                   {m.intent && <span className="px-2 py-1 rounded bg-blue-50 text-blue-700 border border-blue-100">Intent: {m.intent}</span>}
                   {m.status && <span className="px-2 py-1 rounded bg-slate-50 text-slate-500 border border-slate-100">Status: {m.status}</span>}
-                  {m.fallbackReason && <span className="px-2 py-1 rounded bg-amber-50 text-amber-700 border border-amber-100">Reason: {FALLBACK_LABELS[m.fallbackReason] || m.fallbackReason}</span>}
+                  {m.fallbackReason && <span className="px-2 py-1 rounded bg-amber-50 text-amber-700 border border-amber-100">{text.reason}: {fallbackReasonLabel(m.fallbackReason, language)}</span>}
                 </div>
               )}
 
@@ -266,8 +287,8 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
 
               {m.role === 'assistant' && m.fallbackCard && (
                 <div className="mt-3 rounded-xl border border-amber-100 bg-amber-50 p-3 text-xs text-amber-800">
-                  <p className="font-black uppercase tracking-wider">{m.fallbackCard.reason_code || 'Fallback'}</p>
-                  <p className="mt-1 leading-5">{m.fallbackCard.reason}</p>
+                  <p className="font-black uppercase tracking-wider">{text.needMoreInfo}</p>
+                  <p className="mt-1 leading-5">{friendlyFallbackReason(m.fallbackCard.reason, language)}</p>
                   {(m.recoveryActions || []).length > 0 && (
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       {m.recoveryActions.map((action) => (
@@ -282,7 +303,7 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
                           }}
                           className="px-2 py-1 bg-white border border-amber-100 rounded-lg text-[10px] font-black uppercase tracking-wider"
                         >
-                          {action.label}
+                          {friendlyActionLabel(action.label || action.id, language)}
                         </button>
                       ))}
                     </div>
@@ -486,9 +507,63 @@ const ChatBox = ({ userId, sessionId, onSessionUpdate, initialContext = null }) 
       </div>
     </div>
     {handoffStatus?.trace_id && (
-      <HumanCounsellorPopup handoff={handoffStatus} onClose={() => setHandoffStatus(null)} />
+      <HumanCounsellorPopup handoff={handoffStatus} onClose={closeHandoffPopup} />
     )}
     </>
   );
 };
 export default ChatBox;
+
+const viText = {
+  handoffRequested: 'Học sinh đã yêu cầu gặp tư vấn viên.',
+  handoffSuccess: 'Yêu cầu đã được gửi. Chuyên viên sẽ sớm liên hệ với bạn.',
+  handoffError: 'Không thể gửi yêu cầu hỗ trợ lúc này. Vui lòng thử lại sau.',
+  needMoreInfo: 'Cần thêm thông tin',
+  handoffStatus: 'Yêu cầu tư vấn',
+  reason: 'Lý do',
+};
+
+const enText = {
+  handoffRequested: 'Student requested a human counselor.',
+  handoffSuccess: 'Your request has been sent. A counsellor will contact you soon.',
+  handoffError: 'Could not send the support request right now. Please try again later.',
+  needMoreInfo: 'More information needed',
+  handoffStatus: 'Human request',
+  reason: 'Reason',
+};
+
+const fallbackReasonLabel = (reason, language) => {
+  const labels = {
+    rate_limit: { vi: 'Gửi quá nhanh', en: 'Rate limit' },
+    judge_rejected: { vi: 'Cần kiểm tra an toàn', en: 'Safety check needed' },
+    missing_profile: { vi: 'Thiếu thông tin hồ sơ', en: 'Missing profile' },
+    backend_fallback: { vi: 'Cần thêm thông tin', en: 'Backend fallback' },
+    guardrail_blocked: { vi: 'Bị chặn bởi kiểm tra an toàn', en: 'Guardrail blocked' },
+    model_or_network_error: { vi: 'Lỗi kết nối hoặc mô hình', en: 'Model/network error' },
+    cancelled: { vi: 'Đã hủy', en: 'Cancelled' },
+  };
+  return labels[reason]?.[language] || FALLBACK_LABELS[reason] || reason;
+};
+
+const friendlyFallbackReason = (value, language) => {
+  const text = String(value || '').trim();
+  const fallback = language === 'vi'
+    ? 'AI chưa có đủ thông tin chắc chắn để trả lời. Bạn có thể bổ sung hồ sơ, mở Wizard hoặc yêu cầu tư vấn viên hỗ trợ.'
+    : 'AI does not have enough reliable information to answer yet. You can complete your profile, open the Wizard, or ask a counsellor for help.';
+  if (!text || text.startsWith('{') || text.startsWith('[') || text.includes('"') || text.includes('trace_id') || text.includes('reason_code')) {
+    return fallback;
+  }
+  return text;
+};
+
+const friendlyActionLabel = (value, language) => {
+  const key = String(value || '').trim().toLowerCase();
+  const labels = {
+    open_wizard: { vi: 'Mở Wizard', en: 'Open Wizard' },
+    edit_profile: { vi: 'Cập nhật hồ sơ', en: 'Edit profile' },
+    open_resources: { vi: 'Xem tài nguyên', en: 'Open resources' },
+    request_human_fallback: { vi: 'Gặp tư vấn viên', en: 'Ask a counsellor' },
+    'complete profile fields': { vi: 'Hoàn thiện thông tin hồ sơ', en: 'Complete profile fields' },
+  };
+  return labels[key]?.[language] || value;
+};

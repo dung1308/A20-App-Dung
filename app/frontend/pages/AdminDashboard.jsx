@@ -5,6 +5,7 @@ import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, 
   BarChart, Bar, XAxis, YAxis, CartesianGrid 
 } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 // Helper to generate pagination range
 const getPaginationRange = (currentPage, totalPages, delta = 2) => {
@@ -35,6 +36,8 @@ const getPaginationRange = (currentPage, totalPages, delta = 2) => {
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
 const AdminDashboard = () => {
+  const { language } = useLanguage();
+  const text = language === 'vi' ? viText : enText;
   const [metrics, setMetrics] = useState(null);
   const [adminBoard, setAdminBoard] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -245,21 +248,21 @@ const AdminDashboard = () => {
       <header className="border-b-4 border-primary pb-4 mb-8">
         <div className="flex justify-between items-end">
           <div>
-            <h2 className="text-3xl font-black text-primary m-0 tracking-tight">Admin Intelligence</h2>
-            <p className="text-slate-500 font-medium mt-1">Hệ thống giám sát hiệu năng AI và tính tuân thủ.</p>
+            <h2 className="text-3xl font-black text-primary m-0 tracking-tight">{text.title}</h2>
+            <p className="text-slate-500 font-medium mt-1">{text.subtitle}</p>
           </div>
           <div className="flex gap-4 items-center">
-            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Khoảng thời gian:</span>
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{text.timeWindow}</span>
             <select 
               className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm font-medium text-slate-600 outline-none focus:ring-2 focus:ring-primary/20"
               value={timeWindow}
               onChange={(e) => setTimeWindow(Number(e.target.value))}
             >
-              <option value={1}>1 Giờ qua</option>
-              <option value={24}>24 Giờ qua</option>
-              <option value={168}>7 Ngày qua</option>
-              <option value={336}>14 Ngày qua</option>
-              <option value={720}>30 Ngày qua</option>
+              <option value={1}>{text.lastHour}</option>
+              <option value={24}>{text.last24h}</option>
+              <option value={168}>{text.last7d}</option>
+              <option value={336}>{text.last14d}</option>
+              <option value={720}>{text.last30d}</option>
             </select>
           </div>
         </div>
@@ -271,25 +274,25 @@ const AdminDashboard = () => {
           onClick={() => setActiveTab('board')}
           className={`px-6 py-4 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'board' ? 'text-primary border-b-2 border-primary bg-primary/5' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
         >
-          Admin Board
+          {text.adminBoard}
         </button>
         <button 
           onClick={() => setActiveTab('metrics')}
           className={`px-6 py-4 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'metrics' ? 'text-primary border-b-2 border-primary bg-primary/5' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
         >
-          Chỉ số PMF
+          {text.pmfMetrics}
         </button>
         <button 
           onClick={() => setActiveTab('audit')}
           className={`px-6 py-4 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'audit' ? 'text-primary border-b-2 border-primary bg-primary/5' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
         >
-          Nhật ký Hoạt động (Audit)
+          {text.auditLog}
         </button>
         <button 
           onClick={() => setActiveTab('rag')}
           className={`px-6 py-4 text-sm font-black uppercase tracking-widest transition-all ${activeTab === 'rag' ? 'text-primary border-b-2 border-primary bg-primary/5' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50'}`}
         >
-          Quản trị RAG
+          {text.ragAdmin}
         </button>
       </div>
 
@@ -1050,5 +1053,35 @@ const HealthCheck = ({ label, status }) => (
     </span>
   </div>
 );
+
+const viText = {
+  title: 'Trung tâm quản trị',
+  subtitle: 'Hệ thống giám sát hiệu năng AI và tính tuân thủ.',
+  timeWindow: 'Khoảng thời gian:',
+  lastHour: '1 giờ qua',
+  last24h: '24 giờ qua',
+  last7d: '7 ngày qua',
+  last14d: '14 ngày qua',
+  last30d: '30 ngày qua',
+  adminBoard: 'Bảng quản trị',
+  pmfMetrics: 'Chỉ số PMF',
+  auditLog: 'Nhật ký hoạt động',
+  ragAdmin: 'Quản trị RAG',
+};
+
+const enText = {
+  title: 'Admin Intelligence',
+  subtitle: 'Monitor AI performance and compliance.',
+  timeWindow: 'Time window:',
+  lastHour: 'Last hour',
+  last24h: 'Last 24 hours',
+  last7d: 'Last 7 days',
+  last14d: 'Last 14 days',
+  last30d: 'Last 30 days',
+  adminBoard: 'Admin Board',
+  pmfMetrics: 'PMF Metrics',
+  auditLog: 'Audit Log',
+  ragAdmin: 'RAG Admin',
+};
 
 export default AdminDashboard;
