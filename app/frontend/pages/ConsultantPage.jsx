@@ -32,8 +32,18 @@ const fallbackLabels = {
   cancelled: 'Cancelled',
 };
 
+const ACTIVE_HANDOFF_STATUSES = new Set(['pending', 'accepted', 'busy']);
+
+const isTrackableHandoff = (handoff) =>
+  Boolean(
+    handoff?.trace_id &&
+    ACTIVE_HANDOFF_STATUSES.has(String(handoff.handoff_status || '').toLowerCase())
+  );
+
+const reportStorageKey = (userId) => `latest_report_${userId}`;
+
 const ConsultantPage = () => {
-  const { matchResults } = useStore();
+  const { matchResults, setMatchResults } = useStore();
   const navigate = useNavigate();
   const { userId, isAuthenticated, role } = useAuth(); // Moved up to ensure userId is available
   const { language } = useLanguage();
@@ -79,6 +89,18 @@ const ConsultantPage = () => {
   const [handoffStatus, setHandoffStatus] = useState(null);
   const dismissedHandoffTraces = useRef(new Set(JSON.parse(localStorage.getItem('dismissed_handoff_traces') || '[]')));
   const scrollRef = useRef(null);
+
+  // Restore recommendation context after a refresh or direct entry to /consultant.
+  useEffect(() => {
+    if (matchResults || !userId) return;
+    const savedReport = localStorage.getItem(reportStorageKey(userId));
+    if (!savedReport) return;
+    try {
+      setMatchResults(JSON.parse(savedReport));
+    } catch {
+      localStorage.removeItem(reportStorageKey(userId));
+    }
+  }, [matchResults, setMatchResults, userId]);
 
   // Initialize chat with top results if they exist
   useEffect(() => {
@@ -170,27 +192,26 @@ const ConsultantPage = () => {
     }
   }, [messages, text.handoffRequested]);
 
-  useEffect(() => {
-    let mounted = true;
-    const loadHandoffStatus = async () => {
-      try {
-        const data = await api.getHandoffStatus();
-        if (mounted) {
-          const nextHandoff = data.handoff || null;
-          const nextTrace = nextHandoff?.trace_id || nextHandoff?.traceId;
-          setHandoffStatus(nextTrace && dismissedHandoffTraces.current.has(nextTrace) ? null : nextHandoff);
-        }
-      } catch {
-        if (mounted) setHandoffStatus(null);
-      }
-    };
-    loadHandoffStatus();
-    const interval = setInterval(loadHandoffStatus, 10000);
-    return () => {
-      mounted = false;
-      clearInterval(interval);
-    };
+  const loadHandoffStatus = useCallback(async () => {
+    try {
+      const data = await api.getHandoffStatus();
+      const nextHandoff = data.handoff || null;
+      const nextTrace = nextHandoff?.trace_id || nextHandoff?.traceId;
+      setHandoffStatus(nextTrace && dismissedHandoffTraces.current.has(nextTrace) ? null : nextHandoff);
+    } catch {
+      setHandoffStatus(null);
+    }
   }, []);
+
+  useEffect(() => {
+    loadHandoffStatus();
+  }, [loadHandoffStatus]);
+
+  useEffect(() => {
+    if (!isTrackableHandoff(handoffStatus)) return undefined;
+    const interval = setInterval(loadHandoffStatus, 10000);
+    return () => clearInterval(interval);
+  }, [handoffStatus, loadHandoffStatus]);
 
   const closeHandoffPopup = () => {
     const traceId = handoffStatus?.trace_id || handoffStatus?.traceId;
@@ -279,6 +300,25 @@ const ConsultantPage = () => {
                   className="px-5 py-3 bg-[#003466] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:shadow-lg active:scale-95 transition-all shrink-0"
                 >
                   Mở Wizard
+                </button>
+              </div>
+            )}
+            {messages.length === 0 && hasWizardCompleted && !matchResults && (
+              <div className="bg-white border border-blue-100 rounded-2xl p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-700 border border-blue-100">
+                    <span className="material-symbols-outlined">forum</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-black text-blue-900">{text.readyToChat}</p>
+                    <p className="text-xs text-slate-500 mt-1">{text.readyToChatBody}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => navigate('/report')}
+                  className="px-5 py-3 bg-[#003466] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:shadow-lg active:scale-95 transition-all shrink-0"
+                >
+                  {text.openReport}
                 </button>
               </div>
             )}
@@ -487,6 +527,9 @@ const viText = {
   handoffSuccess: 'Đã gửi yêu cầu tới tư vấn viên.',
   handoffError: 'Không thể gửi yêu cầu tư vấn lúc này.',
   historyTitle: 'Lịch sử tư vấn',
+  readyToChat: 'Bạn đã sẵn sàng để hỏi thêm',
+  readyToChatBody: 'Bạn có thể hỏi Mentor về ngành học, hồ sơ hoặc mở lại báo cáo gợi ý gần nhất.',
+  openReport: 'Mở báo cáo',
 };
 
 const enText = {
@@ -494,6 +537,9 @@ const enText = {
   handoffSuccess: 'Request sent to the human counsellor.',
   handoffError: 'Could not send the counselling request right now.',
   historyTitle: 'Consultation history',
+  readyToChat: 'You are ready to ask follow-up questions',
+  readyToChatBody: 'Ask Mentor about majors or your profile, or reopen your latest recommendation report.',
+  openReport: 'Open report',
 };
 
 export default ConsultantPage;

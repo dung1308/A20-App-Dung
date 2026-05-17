@@ -100,19 +100,29 @@ def _ensure_user_columns(db_engine) -> None:
     logger.info("Users schema updated with column: blacklisted")
 
 def _ensure_admissions_data_columns(db_engine) -> None:
-    """Add admissions-data columns used by report enrichment on older DBs."""
+    """Add admissions-data columns used by report enrichment and major detail pages on older DBs."""
     inspector = inspect(db_engine)
     if "admissions_data" not in inspector.get_table_names():
         return
 
     existing = {column["name"] for column in inspector.get_columns("admissions_data")}
-    if "official_url" in existing:
-        return
-
     with db_engine.connect() as conn:
-        conn.execute(text("ALTER TABLE admissions_data ADD COLUMN official_url TEXT"))
+        additions = {
+            "official_url": "TEXT",
+            "school_or_college": "VARCHAR",
+            "degree_name": "VARCHAR",
+            "source_file": "VARCHAR",
+            "raw_sections": "JSON",
+            "updated_at": "TIMESTAMP",
+        }
+        added = []
+        for name, sql_type in additions.items():
+            if name not in existing:
+                conn.execute(text(f"ALTER TABLE admissions_data ADD COLUMN {name} {sql_type}"))
+                added.append(name)
         conn.commit()
-    logger.info("Admissions data schema updated with column: official_url")
+    if added:
+        logger.info(f"Admissions data schema updated with columns: {', '.join(added)}")
 
 
 def init_database() -> None:

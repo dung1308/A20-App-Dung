@@ -13,6 +13,7 @@ import DatabaseManagementPage from './pages/DatabaseManagementPage';
 import StaffDashboard from './pages/StaffDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import PricingPage from './pages/PricingPage';
+import MajorDetailPage from './pages/MajorDetailPage';
 import AuthenticatedLayout from './layouts/AuthenticatedLayout';
 import { AuthProvider, useAuth } from './context/AuthContext'; // Import AuthProvider and useAuth hook
 import { LanguageProvider } from './context/LanguageContext';
@@ -86,6 +87,7 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/consultant" element={<ConsultantPage />} />
           <Route path="/report" element={<ReportPage />} />
+          <Route path="/majors/:majorId" element={<MajorDetailPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/pricing" element={<PricingPage />} />

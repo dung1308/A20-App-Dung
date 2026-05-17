@@ -1,9 +1,15 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const repoRoot = resolve(__dirname, '../..')
 
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+  const env = loadEnv(mode, repoRoot, '');
   const allowedHosts = [
+    'a20-app-124.up.railway.app',
     env.RAILWAY_PUBLIC_DOMAIN,
     ...(env.VITE_ALLOWED_HOSTS || '')
       .split(',')
@@ -12,6 +18,7 @@ export default defineConfig(({ mode }) => {
   ].filter(Boolean);
 
   return {
+    envDir: repoRoot,
     plugins: [react()],
     server: {
       host: true,

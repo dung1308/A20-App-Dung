@@ -531,3 +531,50 @@ LINE 2:                     INSERT INTO prompts (agent_name, version...
 2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
 2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
 2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=Grounded and cautious
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: cs
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: ee
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: me
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: bme
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: ba
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: finance
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: economics
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: psychology
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: multimedia_communication
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: hospitality_management
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: data_science
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: liberal_arts
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Seeded major: architecture
+2026-05-17 13:38:34 [-] utils.seed_majors INFO — Majors seeded successfully.
+2026-05-17 13:38:46 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-17 13:46:08 [-] utils.seed_majors INFO — Seeded major: economics
+2026-05-17 13:46:10 [-] utils.seed_majors INFO — Seeded major: psychology
+2026-05-17 13:46:11 [-] utils.seed_majors INFO — Seeded major: multimedia_communication
+2026-05-17 13:46:13 [-] utils.seed_majors INFO — Seeded major: hospitality_management
+2026-05-17 13:46:17 [-] utils.seed_majors INFO — Majors seeded successfully.
+2026-05-17 13:52:40 [-] utils.seed_majors INFO — Seeded major: cs
+2026-05-17 13:52:42 [-] utils.seed_majors INFO — Seeded major: ee
+2026-05-17 13:52:44 [-] utils.seed_majors INFO — Seeded major: me
+2026-05-17 13:52:46 [-] utils.seed_majors INFO — Seeded major: bme
+2026-05-17 13:52:48 [-] utils.seed_majors INFO — Seeded major: ba
+2026-05-17 13:52:49 [-] utils.seed_majors INFO — Seeded major: finance
+2026-05-17 13:52:51 [-] utils.seed_majors INFO — Seeded major: economics
+2026-05-17 13:52:53 [-] utils.seed_majors INFO — Seeded major: psychology
+2026-05-17 13:52:55 [-] utils.seed_majors INFO — Seeded major: multimedia_communication
+2026-05-17 13:52:57 [-] utils.seed_majors INFO — Seeded major: hospitality_management
+2026-05-17 13:52:58 [-] utils.seed_majors INFO — Seeded major: data_science
+2026-05-17 13:53:00 [-] utils.seed_majors INFO — Seeded major: liberal_arts
+2026-05-17 13:53:02 [-] utils.seed_majors INFO — Seeded major: architecture
+2026-05-17 13:53:04 [-] utils.seed_majors INFO — Majors seeded successfully.
+2026-05-17 14:25:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 14:37:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 14:38:04 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-17 14:39:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 14:39:17 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-17 14:39:19 [-] services.prompt_service INFO — Successfully saved advisor_match version v2 to DB.
+2026-05-17 14:39:22 [-] services.prompt_service INFO — Successfully saved advisor version v2 to DB.
+2026-05-17 14:39:24 [-] services.prompt_service INFO — Successfully saved crm version v2 to DB.
+2026-05-17 14:39:27 [-] services.prompt_service INFO — Successfully saved rag version v2 to DB.
+2026-05-17 14:39:29 [-] services.prompt_service INFO — Successfully saved router version v2 to DB.
+2026-05-17 14:39:32 [-] services.prompt_service INFO — Successfully saved judge_safety version v2 to DB.
+2026-05-17 14:39:34 [-] services.prompt_service INFO — Successfully saved judge_gold version v2 to DB.
+2026-05-17 20:12:40 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)

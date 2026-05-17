@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 
 const MajorCard = ({ major, onAsk }) => {
@@ -93,11 +94,20 @@ const MajorCard = ({ major, onAsk }) => {
           )}
         </div>
 
-        {onAsk && (
-          <button type="button" onClick={() => onAsk(major)} className="w-full rounded-xl bg-slate-900 px-4 py-2.5 text-[11px] font-black uppercase tracking-widest text-white">
-            {text.askMajor}
-          </button>
-        )}
+        <div className="grid gap-2 sm:grid-cols-2">
+          <Link
+            to={`/majors/${major.major_id}`}
+            state={{ matchContext: major }}
+            className="w-full rounded-xl border border-blue-100 bg-blue-50 px-4 py-2.5 text-center text-[11px] font-black uppercase tracking-widest text-blue-800 transition hover:bg-blue-100"
+          >
+            {text.viewDetails}
+          </Link>
+          {onAsk && (
+            <button type="button" onClick={() => onAsk(major)} className="w-full rounded-xl bg-slate-900 px-4 py-2.5 text-[11px] font-black uppercase tracking-widest text-white">
+              {text.askMajor}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -130,6 +140,7 @@ const enText = {
   source: 'source',
   sourceVinuni: 'Source: admissions.vinuni.edu.vn',
   aiEstimate: 'AI estimate - verify with official sources',
+  viewDetails: 'View details',
   askMajor: 'Ask about this major',
 };
 

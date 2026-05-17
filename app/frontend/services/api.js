@@ -180,6 +180,9 @@ const api = {
   getProfileOverview: () =>
     apiClient.get('/api/profile/me/overview').then(res => res.data),
 
+  getMajorDetail: (majorId) =>
+    apiClient.get(`/api/majors/${encodeURIComponent(majorId)}`).then(res => res.data),
+
   getCVMergePreview: (documentId) =>
     apiClient.get(`/api/profile/me/cv-documents/${documentId}/merge-preview`).then(res => res.data),
 

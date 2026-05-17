@@ -19,11 +19,6 @@ logger = get_logger(__name__)
 
 MAJORS_DATA = [
     {
-        "id": "cs", 
-        "name": "Khoa học Máy tính", 
-        "description": "Sinh viên CS tại VinUni làm việc với AI, xây dựng ứng dụng, nghiên cứu thuật toán và thực tập tại các công ty công nghệ như VNG, KMS, FPT."
-    },
-    {
         "id": "ee", 
         "name": "Kỹ thuật Điện & Máy tính", 
         "description": "Sinh viên ECE học nền tảng kỹ thuật điện, kỹ thuật máy tính, lập trình, mạch điện, hệ thống nhúng, IoT, vi điện tử, viễn thông và các công nghệ năng lượng."
@@ -32,11 +27,6 @@ MAJORS_DATA = [
         "id": "me", 
         "name": "Kỹ thuật Cơ khí", 
         "description": "Sinh viên ME làm với CAD/CAM, in 3D, robotics và thực tập tại các nhà máy hoặc công ty sản xuất."
-    },
-    {
-        "id": "bme", 
-        "name": "Kỹ thuật Y sinh", 
-        "description": "Sinh viên BME thiết kế thiết bị y tế, nghiên cứu cùng bệnh viện, có thể học tiếp y khoa hoặc làm trong ngành dược."
     },
     {
         "id": "ba", 
@@ -49,19 +39,29 @@ MAJORS_DATA = [
         "description": "Sinh viên Finance học mô hình tài chính, phân tích cổ phiếu, thực tập tại ngân hàng, quỹ đầu tư."
     },
     {
+        "id": "economics",
+        "name": "Kinh tế",
+        "description": "Sinh viên Kinh tế học về thị trường, thể chế, đổi mới sáng tạo và phân tích chính sách."
+    },
+    {
+        "id": "psychology",
+        "name": "Tâm lý học",
+        "description": "Sinh viên Tâm lý học nghiên cứu hành vi con người, giáo dục và ứng dụng trong tổ chức."
+    },
+    {
+        "id": "multimedia_communication",
+        "name": "Truyền thông Đa phương tiện",
+        "description": "Sinh viên Truyền thông Đa phương tiện học truyền thông số, quan hệ công chúng và sản xuất nội dung."
+    },
+    {
+        "id": "hospitality_management",
+        "name": "Quản trị Khách sạn",
+        "description": "Sinh viên Quản trị Khách sạn học vận hành dịch vụ, trải nghiệm khách hàng và quản lý khách sạn."
+    },
+    {
         "id": "data_science", 
         "name": "Khoa học Dữ liệu", 
         "description": "Sinh viên Data Science làm Python, SQL, xây model dự đoán và thực tập tại các công ty dữ liệu, fintech."
-    },
-    {
-        "id": "liberal_arts", 
-        "name": "Khoa học Xã hội & Nhân văn", 
-        "description": "Sinh viên CAS viết nghiên cứu, tranh luận, phân tích xã hội — hướng đến luật, báo chí, chính sách công."
-    },
-    {
-        "id": "architecture", 
-        "name": "Kiến trúc", 
-        "description": "Sinh viên Kiến trúc làm đồ án thiết kế, học AutoCAD/Revit, thực tập tại công ty kiến trúc."
     },
 ]
 

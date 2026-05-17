@@ -32,6 +32,26 @@ class AdmissionsData(Base):
     requirements = Column(Text, nullable=True)
     description = Column(Text, nullable=True)
     official_url = Column(Text, nullable=True)
+    school_or_college = Column(String, nullable=True)
+    degree_name = Column(String, nullable=True)
+    source_file = Column(String, nullable=True)
+    raw_sections = Column(JSON, nullable=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class MajorContentSection(Base):
+    """Stores ordered, source-backed content sections for a major detail page."""
+    __tablename__ = "major_content_sections"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    major_id = Column(String, ForeignKey("majors.id"), nullable=False, index=True)
+    section_index = Column(Integer, nullable=False)
+    title = Column(Text, nullable=True)
+    paragraphs = Column(JSON, nullable=True)
+    list_items = Column(JSON, nullable=True)
+    links = Column(JSON, nullable=True)
+    images = Column(JSON, nullable=True)
+    tables = Column(JSON, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 class ChatMessage(Base):
     """Stores individual chat messages in the conversation history."""

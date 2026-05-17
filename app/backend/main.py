@@ -1,5 +1,12 @@
+from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv()  # This must be called before importing pipeline or database
+
+# Load backend-local settings first, then fill missing shared settings from repo root.
+# This keeps local runs stable regardless of where uvicorn is launched from.
+BACKEND_DIR = Path(__file__).resolve().parent
+REPO_ROOT = BACKEND_DIR.parent.parent
+load_dotenv(BACKEND_DIR / ".env")
+load_dotenv(REPO_ROOT / ".env")
 
 import uvicorn
 import os
@@ -1184,6 +1191,10 @@ async def login(request: LoginRequest):
 async def google_auth(request: GoogleLoginRequest):
     """Verify Google ID Token and return application session."""
     try:
+        if not GOOGLE_CLIENT_ID or GOOGLE_CLIENT_ID.startswith("YOUR_GOOGLE_CLIENT_ID"):
+            logger.error("GOOGLE_CLIENT_ID is not configured")
+            raise HTTPException(status_code=500, detail="Google login is not configured.")
+
         # Verify the token against Google's servers
         id_info = id_token.verify_oauth2_token(
             request.token, 
@@ -1198,9 +1209,23 @@ async def google_auth(request: GoogleLoginRequest):
         
         if not email:
             raise HTTPException(status_code=400, detail="Token không chứa email")
+        if not id_info.get("email_verified"):
+            raise HTTPException(status_code=400, detail="Email Google chưa được xác minh")
 
         # Fetch existing user to include persisted permissions
         user = pipeline.db_service.get_student_profile(email)
+        if not user:
+            # Persist first-time Google users so later profile/CV/match writes
+            # point at a real owner row instead of a transient auth session.
+            pipeline.db_service.upsert_student_profile(
+                email,
+                {
+                    "email": email,
+                    "full_name": full_name,
+                    "role": "user",
+                },
+            )
+            user = pipeline.db_service.get_student_profile(email)
         if user and user.get("blacklisted"):
             raise HTTPException(status_code=403, detail="TÃ i khoáº£n nÃ y Ä‘Ã£ bá»‹ khá»‘a trong há»‡ thá»‘ng.")
         db_permissions = user.get("permissions") or [] if user else []
@@ -1832,6 +1857,14 @@ async def seed_admin_table(target: str, version: str = "v2", admin: dict = Depen
     except Exception as e:
         logger.error(f"Admin seed failed for {normalized}: {e}")
         raise HTTPException(status_code=500, detail=f"Could not seed {normalized}")
+
+@app.get("/api/majors/{major_id}", response_model=Dict[str, Any])
+async def get_major_detail(major_id: str, current_user: dict = Depends(get_current_user)):
+    """Return detailed, source-backed information for a VinUni major."""
+    detail = pipeline.db_service.get_major_detail(major_id)
+    if not detail:
+        raise HTTPException(status_code=404, detail="Major not found")
+    return detail
 
 def _profile_readiness(profile: Dict[str, Any], cv_documents: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
     cv_documents = cv_documents or []

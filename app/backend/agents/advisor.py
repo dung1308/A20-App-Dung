@@ -25,20 +25,21 @@ logger = get_logger(__name__)
 
 # The only valid major IDs. Any AI output outside this set is rejected.
 VALID_IDS = {
-    "cs", "ee", "me", "bme", "ba",
-    "finance", "data_science", "liberal_arts", "architecture",
+    "ee", "me", "ba", "finance", "data_science",
+    "economics", "psychology", "multimedia_communication", "hospitality_management",
 }
 
+
 OFFICIAL_MAJOR_LINKS: Dict[str, Dict[str, str]] = {
-    "cs": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
     "ee": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
     "me": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
-    "bme": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
     "ba": {"department": "College of Business and Management", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
     "finance": {"department": "College of Business and Management", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
     "data_science": {"department": "College of Engineering and Computer Science", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
-    "liberal_arts": {"department": "College of Arts and Sciences", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
-    "architecture": {"department": "VinUni Admissions", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "economics": {"department": "College of Arts and Sciences", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "psychology": {"department": "College of Arts and Sciences", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "multimedia_communication": {"department": "College of Arts and Sciences", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
+    "hospitality_management": {"department": "College of Business and Management", "source_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/"},
 }
 
 CANONICAL_MAJOR_NAMES = {
@@ -50,22 +51,22 @@ CANONICAL_MAJOR_DESCRIPTIONS = {
 }
 
 VINUNI_MAJORS_LOOKUP: Dict[str, Dict] = {
-    "cs":           {"name": "Khoa học Máy tính",         "what_students_do": "Sinh viên CS tại VinUni làm việc với AI, xây dựng ứng dụng, nghiên cứu thuật toán và thực tập tại các công ty công nghệ như VNG, KMS, FPT."},
-    "ee":           {"name": "Kỹ thuật Điện & Máy tính",   "what_students_do": "Sinh viên ECE học nền tảng kỹ thuật điện, kỹ thuật máy tính, lập trình, mạch điện, hệ thống nhúng, IoT, vi điện tử, viễn thông và các công nghệ năng lượng."},
-    "me":           {"name": "Kỹ thuật Cơ khí",           "what_students_do": "Sinh viên ME làm với CAD/CAM, in 3D, robotics và thực tập tại các nhà máy hoặc công ty sản xuất."},
-    "bme":          {"name": "Kỹ thuật Y sinh",            "what_students_do": "Sinh viên BME thiết kế thiết bị y tế, nghiên cứu cùng bệnh viện, có thể học tiếp y khoa hoặc làm trong ngành dược."},
-    "ba":           {"name": "Quản trị Kinh doanh",        "what_students_do": "Sinh viên BA làm case study thực tế, tham gia cuộc thi khởi nghiệp, thực tập tại công ty lớn hoặc startup."},
-    "finance":      {"name": "Tài chính",                  "what_students_do": "Sinh viên Finance học mô hình tài chính, phân tích cổ phiếu, thực tập tại ngân hàng, quỹ đầu tư."},
-    "data_science": {"name": "Khoa học Dữ liệu",           "what_students_do": "Sinh viên Data Science làm Python, SQL, xây model dự đoán và thực tập tại các công ty dữ liệu, fintech."},
-    "liberal_arts": {"name": "Khoa học Xã hội & Nhân văn", "what_students_do": "Sinh viên CAS viết nghiên cứu, tranh luận, phân tích xã hội — hướng đến luật, báo chí, chính sách công."},
-    "architecture": {"name": "Kiến trúc",                  "what_students_do": "Sinh viên Kiến trúc làm đồ án thiết kế, học AutoCAD/Revit, thực tập tại công ty kiến trúc."},
+    "ee": {"name": "K? thu?t ?i?n & M?y t?nh", "what_students_do": "Sinh vi?n ECE h?c n?n t?ng k? thu?t ?i?n, k? thu?t m?y t?nh, l?p tr?nh, m?ch ?i?n, h? th?ng nh?ng, IoT, vi ?i?n t?, vi?n th?ng v? c?c c?ng ngh? n?ng l??ng."},
+    "me": {"name": "K? thu?t C? kh?", "what_students_do": "Sinh vi?n ME l?m v?i CAD/CAM, in 3D, robotics v? th?c t?p t?i c?c nh? m?y ho?c c?ng ty s?n xu?t."},
+    "ba": {"name": "Qu?n tr? Kinh doanh", "what_students_do": "Sinh vi?n BA l?m case study th?c t?, tham gia cu?c thi kh?i nghi?p, th?c t?p t?i c?ng ty l?n ho?c startup."},
+    "finance": {"name": "T?i ch?nh", "what_students_do": "Sinh vi?n Finance h?c m? h?nh t?i ch?nh, ph?n t?ch c? phi?u, th?c t?p t?i ng?n h?ng, qu? ??u t?."},
+    "data_science": {"name": "Khoa h?c D? li?u", "what_students_do": "Sinh vi?n Data Science l?m Python, SQL, x?y model d? ?o?n v? th?c t?p t?i c?c c?ng ty d? li?u, fintech."},
+    "economics": {"name": "Kinh t?", "what_students_do": "Sinh vi?n Kinh t? h?c v? th? tr??ng, th? ch?, ??i m?i s?ng t?o v? ph?n t?ch ch?nh s?ch."},
+    "psychology": {"name": "T?m l? h?c", "what_students_do": "Sinh vi?n T?m l? h?c nghi?n c?u h?nh vi con ng??i, gi?o d?c v? ?ng d?ng trong t? ch?c."},
+    "multimedia_communication": {"name": "Truy?n th?ng ?a ph??ng ti?n", "what_students_do": "Sinh vi?n h?c truy?n th?ng s?, quan h? c?ng ch?ng v? s?n xu?t n?i dung."},
+    "hospitality_management": {"name": "Qu?n tr? Kh?ch s?n", "what_students_do": "Sinh vi?n h?c v?n h?nh d?ch v?, tr?i nghi?m kh?ch h?ng v? qu?n l? kh?ch s?n."},
 }
 
 MATCH_SYSTEM_PROMPT = """
 Bạn là AI tư vấn tuyển sinh VinUni. Phân tích câu trả lời học sinh và chọn đúng 3 ngành phù hợp nhất.
 
 Ngành hợp lệ (chỉ dùng các id này):
-cs, ee, me, bme, ba, finance, data_science, liberal_arts, architecture
+ee, me, ba, finance, data_science, economics, psychology, multimedia_communication, hospitality_management
 
 Yêu cầu:
 1. Trả về JSON thuần — không markdown, không giải thích ngoài JSON.

@@ -80,9 +80,9 @@ class MockGenerativeModel:
         
         # Detect agent-specific intents for structured JSON responses
         if "top3" in prompt: # AdvisorAgent
-            text = '{"top3": [{"major_id": "cs", "match_reason": "Dựa trên sở thích công nghệ và logic của bạn.", "match_score": 95}], "fallback": false}'
+            text = '{"top3": [{"major_id": "data_science", "match_reason": "Dựa trên sở thích công nghệ và logic của bạn.", "match_score": 95}], "fallback": false}'
         elif "suggested_majors" in prompt: # CVAgent
-            text = '{"suggested_majors": ["cs", "ba"], "confidence": 0.9, "evidence": ["Hồ sơ có thế mạnh về lập trình."], "gpa_estimate": 3.9, "ielts_estimate": 8.5, "extracted_job_titles": ["Senior Product Manager"], "extracted_skills": ["Product Management"], "referrer_titles": ["Technical Lead", "QC Lead"], "persona_summary": "Ứng viên Senior Product Manager với thành tích học tập xuất sắc (GPA 3.9, IELTS 8.5).", "analysis_metadata": {"length": 1000}}'
+            text = '{"suggested_majors": ["data_science", "ba"], "confidence": 0.9, "evidence": ["Hồ sơ có thế mạnh về lập trình."], "gpa_estimate": 3.9, "ielts_estimate": 8.5, "extracted_job_titles": ["Senior Product Manager"], "extracted_skills": ["Product Management"], "referrer_titles": ["Technical Lead", "QC Lead"], "persona_summary": "Ứng viên Senior Product Manager với thành tích học tập xuất sắc (GPA 3.9, IELTS 8.5).", "analysis_metadata": {"length": 1000}}'
         elif "pass" in prompt: # JudgeAgent
             text = '{"pass": true, "reason": "Nội dung an toàn và phù hợp.", "score": 100}'
         elif "personal_info" in prompt and "career_goals" in prompt and "CV TEXT" in prompt: # CVParser

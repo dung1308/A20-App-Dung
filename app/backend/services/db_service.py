@@ -20,7 +20,7 @@ from sqlalchemy import text, func, inspect
 import hashlib
 import secrets
 from config import USE_MOCK
-from models.schemas import User, ChatMessage, ChatSession, Major, Student, AuditLog, SecurityEvent, CVDocument, HandoffMessage, AdmissionsData
+from models.schemas import User, ChatMessage, ChatSession, Major, Student, AuditLog, SecurityEvent, CVDocument, HandoffMessage, AdmissionsData, MajorContentSection
 from utils.logger import get_logger, get_trace_id
 import database
 
@@ -1069,12 +1069,57 @@ class DBService:
                         "requirements": row.requirements,
                         "description": row.description,
                         "official_url": row.official_url,
+                        "school_or_college": row.school_or_college,
+                        "degree_name": row.degree_name,
                     }
                     for row in rows
                 }
         except Exception as e:
             logger.error(f"Failed to fetch admissions data from DB: {e}")
             return {}
+
+    def get_major_detail(self, major_id: str) -> Optional[Dict[str, Any]]:
+        """Fetch a source-backed major profile and its ordered sections."""
+        if self.use_mock or database.SessionLocal is None:
+            return None
+
+        try:
+            with database.SessionLocal() as session:
+                major = session.query(Major).filter(Major.id == major_id).first()
+                admissions = session.query(AdmissionsData).filter(AdmissionsData.major_id == major_id).first()
+                if not major:
+                    return None
+                sections = (
+                    session.query(MajorContentSection)
+                    .filter(MajorContentSection.major_id == major_id)
+                    .order_by(MajorContentSection.section_index.asc())
+                    .all()
+                )
+                return {
+                    "major_id": major.id,
+                    "major_name": major.name,
+                    "school_or_college": admissions.school_or_college if admissions else None,
+                    "degree_name": admissions.degree_name if admissions else None,
+                    "overview": admissions.description if admissions and admissions.description else major.description,
+                    "admission_requirements": admissions.requirements if admissions else None,
+                    "official_url": admissions.official_url if admissions else None,
+                    "source_file": admissions.source_file if admissions else None,
+                    "sections": [
+                        {
+                            "section_index": section.section_index,
+                            "title": section.title,
+                            "paragraphs": section.paragraphs or [],
+                            "list_items": section.list_items or [],
+                            "links": section.links or [],
+                            "images": section.images or [],
+                            "tables": section.tables or [],
+                        }
+                        for section in sections
+                    ],
+                }
+        except Exception as e:
+            logger.error(f"Failed to fetch major detail for {major_id}: {e}")
+            return None
 
     # ------------------------------------------------------------------
     # Prompt management
