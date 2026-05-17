@@ -85,8 +85,8 @@ class MockGenerativeModel:
             text = '{"suggested_majors": ["cs", "ba"], "confidence": 0.9, "evidence": ["Hồ sơ có thế mạnh về lập trình."], "gpa_estimate": 3.9, "ielts_estimate": 8.5, "extracted_job_titles": ["Senior Product Manager"], "extracted_skills": ["Product Management"], "referrer_titles": ["Technical Lead", "QC Lead"], "persona_summary": "Ứng viên Senior Product Manager với thành tích học tập xuất sắc (GPA 3.9, IELTS 8.5).", "analysis_metadata": {"length": 1000}}'
         elif "pass" in prompt: # JudgeAgent
             text = '{"pass": true, "reason": "Nội dung an toàn và phù hợp.", "score": 100}'
-        elif "summary" in prompt and "education" in prompt: # CVParser
-            text = '{"summary": "Sinh viên tiềm năng.", "education": [], "experience": [], "skills": ["Python", "AI"], "projects": [], "achievements": []}'
+        elif "personal_info" in prompt and "career_goals" in prompt and "CV TEXT" in prompt: # CVParser
+            text = '{"personal_info": {"email": "", "phone": ""}, "summary": "Sinh viên tiềm năng.", "career_goals": "Phát triển trong lĩnh vực AI.", "education": [], "experience": [], "skills": ["Python", "AI"], "projects": [], "certifications": [], "achievements": [], "languages": [], "gpa": null, "ielts": null}'
         elif "intent" in prompt: # LLMRouter.classify_intent
             text = '{"intent": "INFO_QUERY", "confidence": 1.0}'
         elif "rag, crm, advisor, fallback" in prompt: # LLMRouter.route

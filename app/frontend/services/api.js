@@ -177,6 +177,9 @@ const api = {
   getProfileReadiness: () =>
     apiClient.get('/api/profile/me/readiness').then(res => res.data),
 
+  getProfileOverview: () =>
+    apiClient.get('/api/profile/me/overview').then(res => res.data),
+
   getCVMergePreview: (documentId) =>
     apiClient.get(`/api/profile/me/cv-documents/${documentId}/merge-preview`).then(res => res.data),
 

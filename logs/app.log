@@ -413,3 +413,121 @@ LINE 2:                     INSERT INTO prompts (agent_name, version...
 2026-05-13 16:37:11 [-] services.prompt_service INFO — Successfully saved rag version v2 to DB.
 2026-05-13 16:37:11 [-] services.prompt_service INFO — Successfully saved judge_safety version v2 to DB.
 2026-05-13 16:37:11 [-] services.prompt_service INFO — Successfully saved judge_gold version v2 to DB.
+2026-05-16 08:43:38 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 116 characters.
+2026-05-16 08:46:10 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 116 characters.
+2026-05-16 08:54:34 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 116 characters.
+2026-05-16 09:00:33 [-] services.cv_parser WARNING — LLM CV parsing failed; using fallback parser: No JSON object found in CV parser response
+2026-05-16 09:00:33 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 116 characters.
+2026-05-16 09:09:15 [-] services.cv_parser WARNING — LLM CV parsing failed; using fallback parser: No JSON object found in CV parser response
+2026-05-16 09:09:16 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 116 characters.
+2026-05-16 09:09:16 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 46 characters.
+2026-05-16 09:10:27 [-] services.cv_parser WARNING — LLM CV parsing failed; using fallback parser: No JSON object found in CV parser response
+2026-05-16 09:10:27 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 116 characters.
+2026-05-16 09:10:27 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 46 characters.
+2026-05-16 09:37:14 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: session-1
+2026-05-16 09:37:14 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:37:14 [-] orchestrator.pipeline WARNING — Judge REJECTED response for user [EMAIL] Reason: unsupported numeric claim
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=States specific numbers (fees, scores) or dates without citing an official source or providing a disclaimer
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=16, reason=Confirms user assumptions without official evidence
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=20, reason=Gives direct personal advice on life choices, which is out-of-scope for an admissions chatbot.
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=15, reason=States specific numbers (fees, scores) or dates without citing an official source or providing a disclaimer
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=States specific numbers (fees, scores) or dates without citing an official source or providing a disclaimer
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=Includes fabricated admission statistics or requirements presented as facts
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=5, reason=Leaks personal data (email, phone numbers)
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=Makes guarantees (e.g., "chắc chắn đậu", "chắc chắn có học bổng")
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=Makes guarantees (e.g., "chắc chắn đậu", "chắc chắn có học bổng")
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=True, score=95, reason=Looks safe
+2026-05-16 09:37:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:14 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:37:14 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:37:14 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=Grounded and cautious
+2026-05-16 09:46:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=True, score=95, reason=Grounded in stored student profile evidence
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: session-1
+2026-05-16 09:48:02 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:48:02 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: session-1
+2026-05-16 09:48:02 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:48:02 [-] orchestrator.pipeline WARNING — Judge REJECTED response for user [EMAIL] Reason: unsupported numeric claim
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=States specific numbers (fees, scores) or dates without citing an official source or providing a disclaimer
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=16, reason=Confirms user assumptions without official evidence
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=20, reason=Gives direct personal advice on life choices, which is out-of-scope for an admissions chatbot.
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=15, reason=States specific numbers (fees, scores) or dates without citing an official source or providing a disclaimer
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=States specific numbers (fees, scores) or dates without citing an official source or providing a disclaimer
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=Includes fabricated admission statistics or requirements presented as facts
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=5, reason=Leaks personal data (email, phone numbers)
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=Makes guarantees (e.g., "chắc chắn đậu", "chắc chắn có học bổng")
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=False, score=10, reason=Makes guarantees (e.g., "chắc chắn đậu", "chắc chắn có học bổng")
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=True, score=95, reason=Looks safe
+2026-05-16 09:48:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:02 [-] services.prompt_service ERROR — No prompt found for judge_safety (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\judge_safety_v1.txt
+2026-05-16 09:48:02 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:48:02 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=Grounded and cautious

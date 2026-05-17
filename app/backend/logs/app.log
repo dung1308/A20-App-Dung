@@ -4200,3 +4200,1208 @@ Nếu bạn không chắc chắn về ngành học phù hợp với mình, mình
 2026-05-14 21:48:39 [-] main INFO — Running background task synchronization...
 2026-05-14 21:48:39 [-] services.db_service INFO — ✓ Database migrations completed.
 2026-05-14 21:48:39 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 15:27:22 [-] __main__ INFO — Database initialized at module level.
+2026-05-15 15:27:22 [-] services.db_service INFO — DBService initialised in MOCK mode (in-memory)
+2026-05-15 15:27:22 [-] services.db_service INFO — DBService initialised in MOCK mode (in-memory)
+2026-05-15 15:27:22 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:27:22 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:27:22 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:33:37 [-] __main__ INFO — Database initialized at module level.
+2026-05-15 15:33:37 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:33:37 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:33:37 [-] services.prompt_service ERROR — Error loading prompt for advisor: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:33:37 [-] services.prompt_service ERROR — Error loading prompt for advisor_match: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor_match', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:33:37 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:33:38 [-] services.rag_service INFO — FAQ collection empty -> ingesting
+2026-05-15 15:34:03 [-] services.rag_service INFO — Admissions collection empty -> ingesting
+2026-05-15 15:34:07 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:34:07 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:34:07 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:07 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:07 [-] main INFO — Database initialized at module level.
+2026-05-15 15:34:07 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:07 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:07 [-] services.prompt_service ERROR — Error loading prompt for advisor: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:34:08 [-] services.prompt_service ERROR — Error loading prompt for advisor_match: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor_match', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:34:08 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:34:08 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:34:08 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:34:08 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:08 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:24 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-15 15:34:24 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:24 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:24 [-] services.prompt_service ERROR — Error loading prompt for advisor: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:34:24 [-] services.prompt_service ERROR — Error loading prompt for advisor_match: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor_match', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:34:24 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:34:27 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:34:27 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:34:27 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:27 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:30 [-] main INFO — Database initialized at module level.
+2026-05-15 15:34:30 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:30 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:30 [-] services.prompt_service ERROR — Error loading prompt for advisor: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:34:30 [-] services.prompt_service ERROR — Error loading prompt for advisor_match: (sqlite3.OperationalError) no such table: prompts
+[SQL: SELECT content FROM prompts WHERE agent_name = ? AND version = ?]
+[parameters: ('advisor_match', 'v2')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-15 15:34:30 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:34:30 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:34:30 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:34:30 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:31 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:34:31 [-] main INFO — Running background task synchronization...
+2026-05-15 15:34:31 [-] services.db_service INFO — Migration: Creating 'prompts' table...
+2026-05-15 15:34:31 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 15:34:31 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 15:36:04 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-15 15:36:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:05 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:36:05 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:36:05 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:36:07 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:36:07 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:36:07 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:07 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:08 [-] main INFO — Database initialized at module level.
+2026-05-15 15:36:08 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:08 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:08 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:36:08 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:36:08 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:36:08 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:36:08 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:36:08 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:08 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:36:08 [-] main INFO — Running background task synchronization...
+2026-05-15 15:36:08 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 15:36:08 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 15:49:53 [-] __main__ INFO — Database initialized at module level.
+2026-05-15 15:49:54 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:54 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:54 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:49:54 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:49:54 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:49:54 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:49:54 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:49:54 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:54 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:55 [-] main INFO — Database initialized at module level.
+2026-05-15 15:49:55 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:55 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:55 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:49:55 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:49:55 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:49:55 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:49:55 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:49:55 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:49:55 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:04 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-15 15:50:04 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:04 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:04 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:50:04 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:50:04 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:50:05 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:50:05 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:50:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:05 [-] main INFO — Database initialized at module level.
+2026-05-15 15:50:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:05 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:50:05 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:50:05 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:50:05 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:50:06 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:50:06 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:06 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:50:06 [-] main INFO — Running background task synchronization...
+2026-05-15 15:50:06 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 15:50:06 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 15:53:04 [-] __main__ INFO — Database initialized at module level.
+2026-05-15 15:53:04 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:04 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:04 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:53:04 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:53:04 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:53:05 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:53:05 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:53:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:05 [-] main INFO — Database initialized at module level.
+2026-05-15 15:53:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:05 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:53:05 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:53:05 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:53:05 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:53:05 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:53:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:05 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:21 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-15 15:53:21 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:21 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:21 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:53:21 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:53:21 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:53:22 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:53:23 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:53:23 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:23 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:23 [-] main INFO — Database initialized at module level.
+2026-05-15 15:53:23 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:23 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:23 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 15:53:23 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 15:53:23 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 15:53:24 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 15:53:24 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 15:53:24 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:24 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 15:53:24 [-] main INFO — Running background task synchronization...
+2026-05-15 15:53:24 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 15:53:24 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 16:01:40 [-] __main__ INFO — Database initialized at module level.
+2026-05-15 16:01:40 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:40 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:40 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:01:40 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:01:40 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:01:41 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:01:41 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:01:41 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:41 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:41 [-] main INFO — Database initialized at module level.
+2026-05-15 16:01:41 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:41 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:41 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:01:41 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:01:41 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:01:42 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:01:42 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:01:42 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:01:42 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:01 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-15 16:02:01 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:01 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:01 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:02:01 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:02:01 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:02:02 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:02:02 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:02:03 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:03 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:03 [-] main INFO — Database initialized at module level.
+2026-05-15 16:02:03 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:03 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:03 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:02:03 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:02:03 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:02:04 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:02:04 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:02:04 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:04 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:02:04 [-] main INFO — Running background task synchronization...
+2026-05-15 16:02:04 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 16:02:04 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 16:03:35 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-15 16:03:35 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:35 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:35 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:03:35 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:03:35 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:03:36 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:03:36 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:03:36 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:36 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:36 [-] main INFO — Database initialized at module level.
+2026-05-15 16:03:36 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:36 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:36 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:03:36 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:03:36 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:03:37 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:03:37 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:03:37 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:37 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:03:37 [-] main INFO — Running background task synchronization...
+2026-05-15 16:03:37 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 16:03:37 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 16:09:17 [-] main INFO — Database initialized at module level.
+2026-05-15 16:09:17 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:17 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:17 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:09:17 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:09:17 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:09:18 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:09:18 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:09:18 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:18 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:23 [-] main INFO — Database initialized at module level.
+2026-05-15 16:09:23 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:23 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:23 [-] services.prompt_service ERROR — No prompt found for advisor (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_v1.txt
+2026-05-15 16:09:23 [-] services.prompt_service ERROR — No prompt found for advisor_match (version: v2). Checked DB and local path: D:\AI_IN_ACTION\PROD\A20-App-Dung\app\backend\prompts\advisor_match_v1.txt
+2026-05-15 16:09:23 [-] services.rag_service INFO — Initializing RAGService
+2026-05-15 16:09:24 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-15 16:09:24 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-15 16:09:24 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:24 [-] services.db_service INFO — DBService initialised for SQLite (SessionLocal accessed dynamically)
+2026-05-15 16:09:24 [-] main INFO — Running background task synchronization...
+2026-05-15 16:09:24 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-15 16:09:24 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-15 16:10:55 [-] services.db_service WARNING — DBService.authenticate_user: User not found for email [EMAIL]
+2026-05-15 16:11:01 [-] services.db_service WARNING — DBService.authenticate_user: User not found for email [EMAIL]
+2026-05-15 16:11:17 [-] services.db_service WARNING — DBService.authenticate_user: User not found for email [EMAIL]
+2026-05-15 16:18:31 [-] services.db_service WARNING — DBService.authenticate_user: User not found for email [EMAIL]
+2026-05-15 16:18:40 [-] services.db_service WARNING — DBService.authenticate_user: User not found for email [EMAIL]
+2026-05-16 08:17:27 [-] __main__ CRITICAL — CRITICAL: Failed to initialize database: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: FATAL:  role "vinuser2" does not exist
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-05-16 08:19:09 [-] __main__ INFO — Database initialized at module level.
+2026-05-16 08:19:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:13 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:19:13 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:19:13 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:19:13 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:33 [-] main INFO — Database initialized at module level.
+2026-05-16 08:19:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:37 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:19:37 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:19:37 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:19:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:19:41 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:05 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:20:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:08 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:20:09 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:20:09 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:20:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:12 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:29 [-] main INFO — Database initialized at module level.
+2026-05-16 08:20:29 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:32 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:20:33 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:20:33 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:20:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:20:36 [-] main INFO — Running background task synchronization...
+2026-05-16 08:20:39 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:20:39 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:21:44 [-] services.db_service WARNING — DBService.authenticate_user: Password mismatch for user: [EMAIL]
+2026-05-16 08:22:04 [-] services.db_service WARNING — DBService.authenticate_user: Password mismatch for user: [EMAIL]
+2026-05-16 08:26:51 [-] __main__ INFO — Database initialized at module level.
+2026-05-16 08:26:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:55 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:26:56 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:26:56 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:26:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:26:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:16 [-] main INFO — Database initialized at module level.
+2026-05-16 08:27:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:19 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:27:19 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:27:19 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:27:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:46 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:27:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:50 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:27:50 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:27:50 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:27:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:27:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:10 [-] main INFO — Database initialized at module level.
+2026-05-16 08:28:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:13 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:28:13 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:28:13 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:28:13 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:28:17 [-] main INFO — Running background task synchronization...
+2026-05-16 08:28:20 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:28:20 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:29:34 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:29:35 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 08:33:09 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:33:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:12 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:33:13 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:33:13 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:33:13 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:32 [-] main INFO — Database initialized at module level.
+2026-05-16 08:33:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:35 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:33:35 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:33:35 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:33:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:33:38 [-] main INFO — Running background task synchronization...
+2026-05-16 08:33:41 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:33:41 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:33:54 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:34:05 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:34:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:09 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:34:09 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:34:09 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:34:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:12 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:29 [-] main INFO — Database initialized at module level.
+2026-05-16 08:34:29 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:32 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:34:32 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:34:32 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:34:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:34:36 [-] main INFO — Running background task synchronization...
+2026-05-16 08:34:39 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:34:39 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:35:23 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:35:23 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 08:41:32 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:41:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:35 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:41:36 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:41:36 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:41:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:55 [-] main INFO — Database initialized at module level.
+2026-05-16 08:41:55 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:41:58 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:41:59 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:41:59 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:41:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:42:00 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:42:01 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:42:01 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:42:01 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:42:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:42:02 [-] main INFO — Running background task synchronization...
+2026-05-16 08:42:05 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:42:05 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:42:19 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:43:38 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:43:52 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:43:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:43:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:43:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:43:56 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:43:56 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:43:57 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:43:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:43:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:43:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:43:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:00 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:14 [-] main INFO — Database initialized at module level.
+2026-05-16 08:44:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:18 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:44:18 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:44:18 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:44:18 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:44:21 [-] main INFO — Running background task synchronization...
+2026-05-16 08:44:24 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:44:24 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:47:36 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:47:36 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 08:49:35 [-] orchestrator.pipeline INFO — run_match for user: [EMAIL]
+2026-05-16 08:49:35 [-] agents.advisor INFO — AdvisorAgent.match_majors() called
+2026-05-16 08:49:44 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 8.77s
+2026-05-16 08:49:45 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 08:49:46 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.57s
+2026-05-16 08:49:46 [-] agents.judge INFO — Judge Result: pass=False, score=30, reason=Response contains references to specific major experiences and skills (e.g., using Machine Learning and Data Analysis) that may not align with the user's stated strengths and dislikes, presenting potential inaccuracies and leading to confusion.
+2026-05-16 08:49:46 [-] orchestrator.pipeline WARNING — Judge rejected match result for [EMAIL]
+2026-05-16 08:49:46 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=False latency=11321ms
+2026-05-16 08:49:49 [-] main INFO — Student profile persisted to SQL for: [EMAIL]
+2026-05-16 08:49:49 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 08:49:50 [-] main INFO — Wizard answers indexed for user context: [EMAIL]
+2026-05-16 08:54:42 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 08:54:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:46 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:54:46 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:54:46 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:54:46 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:54:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:05 [-] main INFO — Database initialized at module level.
+2026-05-16 08:55:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:08 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 08:55:08 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 08:55:08 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 08:55:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 08:55:11 [-] main INFO — Running background task synchronization...
+2026-05-16 08:55:14 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 08:55:14 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 08:56:48 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 08:56:48 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 09:00:36 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:00:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:39 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:00:40 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:00:40 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:00:40 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:41 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:42 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:42 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:58 [-] main INFO — Database initialized at module level.
+2026-05-16 09:00:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:00:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:01:01 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:01:02 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:01:02 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:01:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:01:03 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:01:04 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:01:04 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:01:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:01:05 [-] main INFO — Running background task synchronization...
+2026-05-16 09:01:08 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:01:08 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:02:34 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 09:02:34 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 09:09:23 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:09:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:24 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:24 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:26 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:09:27 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:09:27 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:09:27 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:28 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:29 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:29 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:30 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:38 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 09:09:46 [-] main INFO — Database initialized at module level.
+2026-05-16 09:09:46 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:49 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:09:49 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:09:49 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:09:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:09:52 [-] main INFO — Running background task synchronization...
+2026-05-16 09:09:55 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:09:55 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:10:37 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:10:37 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:41 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:10:41 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:10:41 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:10:41 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:42 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:10:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:00 [-] main INFO — Database initialized at module level.
+2026-05-16 09:11:00 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:04 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:11:04 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:11:04 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:11:04 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:07 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:11:07 [-] main INFO — Running background task synchronization...
+2026-05-16 09:11:09 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:11:09 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:13:05 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 09:13:05 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 09:14:30 [-] main INFO — Profile updated for user: [EMAIL]
+2026-05-16 09:16:53 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 468438ea-5391-4dba-9443-05c00a23b3f6
+2026-05-16 09:16:55 [-] services.db_service INFO — save_message args = Phân tích hồ sơ
+2026-05-16 09:16:55 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:16:55 [-] orchestrator.router INFO — Routing message: 'Phân tích hồ sơ...'
+2026-05-16 09:16:56 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.33s
+2026-05-16 09:16:56 [-] orchestrator.router INFO — [LLM] Routed to: crm
+2026-05-16 09:16:56 [-] agents.crm INFO — CRMAgent.run() — user: [EMAIL]
+2026-05-16 09:17:08 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 9.73s
+2026-05-16 09:17:08 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:17:10 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.33s
+2026-05-16 09:17:10 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=The response offers a positive analysis of the user's profile based on the provided details, highlighting relevant academic background, experiences, skills, and potential future study paths. It does not contain harmful content, guarantees, or fabricated information. It is helpful and appropriate for a Vietnamese high school student considering university admissions.
+2026-05-16 09:17:11 [-] services.db_service INFO — save_message args = Chào bạn Zenggg! Dựa trên hồ sơ của bạn, mình có thể thấy bạn là một ứng viên rất tiềm năng cho các chương trình tại VinUni, đặc biệt là trong lĩnh vực trí tuệ nhân tạo và phát triển phần mềm.
+
+### Phân tích hồ sơ của bạn:
+1. **Trình độ học vấn**:
+   - Bạn đang theo học cử nhân ngành Trí tuệ nhân tạo tại FPT University (2022 - 2025) và hiện tại tham gia chương trình phát triển tài năng thực hành AI tại VinUni (2025 - nay). Điều này cho thấy bạn đã có nền tảng kiến thức vững chắc về AI và đang trong quá trình mở rộng học hỏi.
+
+2. **Kinh nghiệm**:
+   - Kinh nghiệm thực tập tại FPT Software với vai trò Java Backend Intern là một điểm cộng lớn. Bạn đã phát triển ứng dụng Java và làm việc trên các tính năng backend, cho thấy bạn có khả năng lập trình và làm việc mạch lạc trong môi trường công việc thực tế.
+
+3. **Kỹ năng**:
+   - Bạn sở hữu bộ kỹ năng rất đa dạng, bao gồm Python, Java, JavaScript, SQL, và nhiều công nghệ khác liên quan đến AI, phân tích dữ liệu, và phát triển phần mềm. Điều này cho thấy bạn có thể đóng góp và phát triển trong nhiều dự án khác nhau.
+
+4. **Dự án và chứng chỉ**:
+   - Bạn đã tham gia vào nhiều dự án phát triển AI thực tế, như HOSPITAL FEEDBACK ASSISTANT và ONLINE CHILDREN PROTECTION SYSTEM. Những trải nghiệm này không chỉ giúp bạn phát triển kỹ năng mà còn làm phong phú thêm hồ sơ của bạn.
+   - Các chứng chỉ từ Coursera cũng chứng tỏ bạn luôn nỗ lực nâng cao kiến thức và kỹ năng trong lĩnh vực AI.
+
+5. **Khả năng ngôn ngữ**:
+   - Bạn có điểm IELTS 6.0, cho thấy bạn có khả năng sử dụng tiếng Anh đủ để giao tiếp trong môi trường học tập quốc tế.
+
+### Kết luận:
+Tổng thể, hồ sơ của bạn thể hiện khả năng và động lực học tập rất cao. Bạn có thể cân nhắc các ngành học như **Công nghệ Thông tin**, **Khoa học Dữ liệu**, hoặc **Trí tuệ Nhân tạo** tại VinUni, nơi bạn có thể phát triển mạnh mẽ các kỹ năng và kinh nghiệm đã có.
+
+Nếu bạn cần thêm thông tin hoặc có câu hỏi khác về chương trình học, hãy cho mình biết nhé!
+2026-05-16 09:17:11 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=crm pass=True latency=16726ms
+2026-05-16 09:17:13 [-] main INFO — Chat response {'response': 'Chào bạn Zenggg! Dựa trên hồ sơ của bạn, mình có thể thấy bạn là một ứng viên rất tiềm năng cho các chương trình tại VinUni, đặc biệt là trong lĩnh vực trí tuệ nhân tạo và phát triển phần mềm.\n\n### Phân tích hồ sơ của bạn:\n1. **Trình độ học vấn**:\n   - Bạn đang theo học cử nhân ngành Trí tuệ nhân tạo tại FPT University (2022 - 2025) và hiện tại tham gia chương trình phát triển tài năng thực hành AI tại VinUni (2025 - nay). Điều này cho thấy bạn đã có nền tảng kiến thức vững chắc về AI và đang trong quá trình mở rộng học hỏi.\n\n2. **Kinh nghiệm**:\n   - Kinh nghiệm thực tập tại FPT Software với vai trò Java Backend Intern là một điểm cộng lớn. Bạn đã phát triển ứng dụng Java và làm việc trên các tính năng backend, cho thấy bạn có khả năng lập trình và làm việc mạch lạc trong môi trường công việc thực tế.\n\n3. **Kỹ năng**:\n   - Bạn sở hữu bộ kỹ năng rất đa dạng, bao gồm Python, Java, JavaScript, SQL, và nhiều công nghệ khác liên quan đến AI, phân tích dữ liệu, và phát triển phần mềm. Điều này cho thấy bạn có thể đóng góp và phát triển trong nhiều dự án khác nhau.\n\n4. **Dự án và chứng chỉ**:\n   - Bạn đã tham gia vào nhiều dự án phát triển AI thực tế, như HOSPITAL FEEDBACK ASSISTANT và ONLINE CHILDREN PROTECTION SYSTEM. Những trải nghiệm này không chỉ giúp bạn phát triển kỹ năng mà còn làm phong phú thêm hồ sơ của bạn.\n   - Các chứng chỉ từ Coursera cũng chứng tỏ bạn luôn nỗ lực nâng cao kiến thức và kỹ năng trong lĩnh vực AI.\n\n5. **Khả năng ngôn ngữ**:\n   - Bạn có điểm IELTS 6.0, cho thấy bạn có khả năng sử dụng tiếng Anh đủ để giao tiếp trong môi trường học tập quốc tế.\n\n### Kết luận:\nTổng thể, hồ sơ của bạn thể hiện khả năng và động lực học tập rất cao. Bạn có thể cân nhắc các ngành học như **Công nghệ Thông tin**, **Khoa học Dữ liệu**, hoặc **Trí tuệ Nhân tạo** tại VinUni, nơi bạn có thể phát triển mạnh mẽ các kỹ năng và kinh nghiệm đã có.\n\nNếu bạn cần thêm thông tin hoặc có câu hỏi khác về chương trình học, hãy cho mình biết nhé!', 'intent': 'crm', 'status': 'success', 'major': None, 'sources': [], 'sessionId': '468438ea-5391-4dba-9443-05c00a23b3f6', 'sessionTitle': 'Phân tích hồ sơ', 'escalation_level': 'NONE', 'fallback_card': None, 'recovery_actions': [{'id': 'retry', 'label': 'Retry'}, {'id': 'edit_profile', 'label': 'Edit Profile'}, {'id': 'open_wizard', 'label': 'Update Wizard answers'}, {'id': 'open_resources', 'label': 'Open Resources'}], 'decision_trace': {'flow': 'chat', 'route': 'crm', 'status': 'success', 'judge_pass': True, 'escalation_level': 'NONE', 'escalation_reason': "The response offers a positive analysis of the user's profile based on the provided details, highlighting relevant academic background, experiences, skills, and potential future study paths. It does not contain harmful content, guarantees, or fabricated information. It is helpful and appropriate for a Vietnamese high school student considering university admissions.", 'context_received': False, 'source_count': 0}, 'suggested_resources': []}
+2026-05-16 09:19:44 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 468438ea-5391-4dba-9443-05c00a23b3f6
+2026-05-16 09:19:45 [-] services.db_service INFO — save_message args = cho tôi hỏi về học phí vinuni
+2026-05-16 09:19:45 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:19:45 [-] orchestrator.router INFO — Routing message: 'cho tôi hỏi về học phí vinuni...'
+2026-05-16 09:19:46 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 0.96s
+2026-05-16 09:19:46 [-] orchestrator.router INFO — [LLM] Routed to: rag
+2026-05-16 09:19:46 [-] agents.rag INFO — RAGAgent: Processing query for [EMAIL]
+2026-05-16 09:19:46 [-] agents.rag INFO — [USER_QUERY] cho tôi hỏi về học phí vinuni
+2026-05-16 09:19:48 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.22s
+2026-05-16 09:19:48 [-] services.cost_control INFO — [CostControl] RECORDED expand_query user=[EMAIL] tokens=963+9 cost=$0.00015 (daily_global=$0.0001)
+2026-05-16 09:19:48 [-] services.rag_service INFO — Query expanded: 'cho tôi hỏi về học phí vinuni' → 'Học phí tại VinUni.'
+2026-05-16 09:19:48 [-] services.rag_service INFO — [RETRIEVAL_QUERY] Học phí tại VinUni.
+2026-05-16 09:19:48 [-] services.rag_service INFO — [QUERY_INTENT] tuition
+2026-05-16 09:19:49 [-] agents.rag INFO — [SOURCE_METADATA] Question: Học phí tại VinUni là bao nhiêu?
+                Answer: Học phí niêm yết: Tất cả các ngành: ~ 815.850.000 VND (~ 35.000 USD) mỗi năm. Điều dưỡng: 349.650.000 VND (~ 15.000 USD) mỗi năm. Mọi ứng viên trúng tuyển đều được hưởng Hỗ trợ Phát triển Giáo dục 35%. Do đó, mức học phí còn lại khoảng 227 triệu VND mỗi năm cho chương trình Điều dưỡng và khoảng 530 triệu VND mỗi năm cho các chương trình khác. Cơ hội được phỏng vấn để nhận học bổng và hỗ trợ tài chính sẽ được cung cấp cho các thí sinh, do đó, mức học phí thực tế cần thanh toán sẽ được xác định sau khi được giảm trừ (xem chi tiết tại bảng học phí).””” {'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/', 'source': None, 'section': 'FAQ', 'type': 'faq'}
+2026-05-16 09:19:49 [-] agents.rag INFO — [SOURCE_METADATA] Question: Là sinh viên VinUni thì được hưởng những dịch vụ nào?
+                Answer: “Những dịch vụ được cung cấp cho sinh viên VinUni trong quá trình học tập tại trường: * Internet: SV được truy cập wifi tốc độ cao miễn phí. * Không gian làm việc/Không gian sáng tạo: Tại VinUni, có một số địa điểm làm việc mở như thư viện, phòng đọc xung quanh khuôn viên trường để sinh viên có thể làm việc. * Thư viện: SV có thể tận dụng tối đa thư viện trực tuyến miễn phí. * ATM: VinUni đã đặt một máy ATM của BIDV tại tầng 1 của tòa nhà chính. * Bi-a, bóng đá và giải trí: Bi-a, bóng đá và các trò chơi khác được sử dụng miễn phí trong khu vực chung của ký túc xá. * Câu lạc bộ sinh viên: Tại VinUni, các câu lạc bộ sinh viên sẽ có không gian riêng để sinh hoạt. * Bể bơi, phòng tập gym, sân vận động: Tất cả những tiện ích này đều được cung cấp miễn phí tại Khu liên hợp thể thao. * Phòng thu: Sinh viên có quyền sử dụng không hạn chế vào phòng thu âm cho mục đích học tập. Trước khi sinh viên nhập học, VinUni sẽ thông báo thời gian mở cửa của từng phòng thu âm.” {'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/cuoc-song-tai-ky-tuc-xa/', 'source': None, 'section': 'FAQ', 'type': 'faq'}
+2026-05-16 09:19:49 [-] agents.rag INFO — [SOURCE_METADATA] Question: Tôi có thể nộp học phí theo những hình thức nào?
+                Answer: Bạn có 02 hình thức đóng tiền: – Quẹt thẻ Visa trực tiếp tại phòng Kế toán – Tài chính VinUni. – Chuyển tiền online qua cổng Salesforce, sẽ có hướng dẫn chi tiết được gửi qua email. {'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/', 'source': None, 'section': 'FAQ', 'type': 'faq'}
+2026-05-16 09:19:49 [-] agents.rag INFO — [RAG_PROMPT_PREVIEW]
+
+Bạn là trợ lý tuyển sinh của VinUni. Hãy trả lời câu hỏi dựa trên ngữ cảnh được cung cấp bên dưới.
+QUY TẮC QUAN TRỌNG: Bạn phải luôn cung cấp đường link minh chứng (URL hoặc LIÊN KẾT LIÊN QUAN) từ ngữ cảnh cho mỗi thông tin bạn đưa ra.
+Nếu ngữ cảnh không chứa thông tin, hãy nói bạn không biết, tuyệt đối không tự bịa thông tin hoặc đường link.
+
+
+
+Thông tin người học:
+Dựa trên CV, tôi thấy bạn có kinh nghiệm dày dặn trong vai trò Engineer, sở hữu bộ kỹ năng ấn tượng về Python, R, Java, JavaScript, SQL, năng lực tiếng Anh IELTS 6.0. Đây là một nền tảng rất tốt để phát triển tại VinUni!
+
+Hãy điều chỉnh câu trả lời phù hợp
+với hồ sơ và mối quan tâm của người học.
+
+
+Conversation History:
+user: Phân tích hồ sơ
+assistant: Chào bạn Zenggg! Dựa trên hồ sơ của bạn, mình có thể thấy bạn là một ứng viên rất tiềm năng cho các chương trình tại VinUni, đặc biệt là trong lĩnh vực trí tuệ nhân tạo và phát triển phần mềm.
+
+### Phân tích hồ sơ của bạn:
+1. **Trình độ học vấn**:
+   - Bạn đang theo học cử n
+2026-05-16 09:19:53 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:19:55 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.74s
+2026-05-16 09:19:55 [-] agents.judge INFO — Judge Result: pass=False, score=40, reason=Includes specific fees without explicitly stating they are for reference only and may not be up to date. Also, it implies a certain level of financial aid that is not guaranteed, which could be misleading.
+2026-05-16 09:19:55 [-] orchestrator.pipeline WARNING — Judge REJECTED response for user [EMAIL] Reason: Includes specific fees without explicitly stating they are for reference only and may not be up to date. Also, it implies a certain level of financial aid that is not guaranteed, which could be misleading.
+2026-05-16 09:19:56 [-] services.db_service INFO — save_message args = Tôi xin lỗi, nhưng tôi không thể trả lời câu hỏi này vì lý do an toàn. Bạn có câu hỏi nào khác về VinUni không?
+2026-05-16 09:19:56 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=fallback pass=False latency=10736ms
+2026-05-16 09:19:58 [-] main INFO — Chat response {'response': 'Tôi xin lỗi, nhưng tôi không thể trả lời câu hỏi này vì lý do an toàn. Bạn có câu hỏi nào khác về VinUni không?', 'intent': 'fallback', 'status': 'rejected', 'major': None, 'sources': [{'title': 'FAQ', 'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/', 'source_type': 'official', 'snippet': 'Question: Học phí tại VinUni là bao nhiêu? Answer: Học phí niêm yết: Tất cả các ngành: ~ 815.850.000 VND (~ 35.000 USD) mỗi năm. Điều dưỡng: 349.650.000 VND (~ 15.000 USD) mỗi năm. Mọi ứng viên trúng tuyển đều được...'}, {'title': 'FAQ', 'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/cuoc-song-tai-ky-tuc-xa/', 'source_type': 'official', 'snippet': 'Question: Là sinh viên VinUni thì được hưởng những dịch vụ nào? Answer: “Những dịch vụ được cung cấp cho sinh viên VinUni trong quá trình học tập tại trường: * Internet: SV được truy cập wifi tốc độ cao miễn phí. *...'}], 'sessionId': '468438ea-5391-4dba-9443-05c00a23b3f6', 'sessionTitle': None, 'escalation_level': 'NONE', 'fallback_card': {'reason_code': 'human_handoff_required', 'reason': 'Includes specific fees without explicitly stating they are for reference only and may not be up to date. Also, it implies a certain level of financial aid that is not guaranteed, which could be misleading.', 'next_action': 'request_human_fallback', 'cta': {'label': 'Request human advisor', 'action': 'human_fallback'}}, 'recovery_actions': [{'id': 'retry', 'label': 'Retry'}, {'id': 'edit_profile', 'label': 'Edit Profile'}, {'id': 'open_wizard', 'label': 'Update Wizard answers'}, {'id': 'open_resources', 'label': 'Open Resources'}, {'id': 'request_human_fallback', 'label': 'Request human advisor'}], 'decision_trace': {'flow': 'chat', 'route': 'fallback', 'status': 'rejected', 'judge_pass': False, 'escalation_level': 'NONE', 'escalation_reason': 'Includes specific fees without explicitly stating they are for reference only and may not be up to date. Also, it implies a certain level of financial aid that is not guaranteed, which could be misleading.', 'context_received': False, 'source_count': 2}, 'suggested_resources': [{'id': 'human-fallback', 'title': 'Human advisor support', 'surface': 'staff_handoff'}]}
+2026-05-16 09:35:54 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:35:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:35:55 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:35:55 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:35:57 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:35:57 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:35:57 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:35:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:35:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:35:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:35:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:00 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:14 [-] main INFO — Database initialized at module level.
+2026-05-16 09:36:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:17 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:36:17 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:36:17 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:36:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:18 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:21 [-] main INFO — Running background task synchronization...
+2026-05-16 09:36:23 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:36:23 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:36:43 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:36:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:47 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:36:47 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:36:47 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:36:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:36:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:05 [-] main INFO — Database initialized at module level.
+2026-05-16 09:37:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:09 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:37:09 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:37:09 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:37:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:12 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:37:12 [-] main INFO — Running background task synchronization...
+2026-05-16 09:37:15 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:37:15 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:39:13 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 517491a2-34d4-41ff-a13b-4d733a4af395
+2026-05-16 09:39:15 [-] services.db_service INFO — save_message args = cho tôi biết về học phí của đại học fpt
+2026-05-16 09:39:15 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:39:15 [-] orchestrator.router INFO — Routing message: 'cho tôi biết về học phí của đại học fpt...'
+2026-05-16 09:39:18 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.56s
+2026-05-16 09:39:18 [-] orchestrator.router INFO — [LLM] Routed to: rag
+2026-05-16 09:39:18 [-] agents.rag INFO — RAGAgent: Processing query for [EMAIL]
+2026-05-16 09:39:18 [-] agents.rag INFO — [USER_QUERY] cho tôi biết về học phí của đại học fpt
+2026-05-16 09:39:19 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.05s
+2026-05-16 09:39:19 [-] services.cost_control INFO — [CostControl] RECORDED expand_query user=[EMAIL] tokens=95+12 cost=$0.00002 (daily_global=$0.0000)
+2026-05-16 09:39:19 [-] services.rag_service INFO — Query expanded: 'cho tôi biết về học phí của đại học fpt' → 'Học phí của đại học FPT.'
+2026-05-16 09:39:19 [-] services.rag_service INFO — [RETRIEVAL_QUERY] Học phí của đại học FPT.
+2026-05-16 09:39:19 [-] services.rag_service INFO — [QUERY_INTENT] tuition
+2026-05-16 09:39:20 [-] agents.rag INFO — [SOURCE_METADATA] Question: Sinh viên có cơ hội trao đổi trong mấy kỳ?
+                Answer: Tất cả sinh viên đều có cơ hội ứng tuyển chương trình trao đổi từ 1 đến 2 học kỳ tại các trường đối tác của VinUni. – Học phí: không phát sinh học phí với trường đối tác, chỉ đóng học phí tại VinUni. – Sinh viên tự túc: Sinh hoạt phí, vé máy bay và bảo hiểm. – Sinh viên có thể ứng tuyển các chương trình hỗ trợ tài chính từ 30-90 triệu VND/học kỳ – Kết quả học tập được chuyển đổi tín chỉ và trên bảng điểm ghi rõ đại học mà sinh viên đã đến học trao đổi. {'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/doi-tac-chien-luoc-va-trao-doi-quoc-te/', 'source': None, 'section': 'FAQ', 'type': 'faq'}
+2026-05-16 09:39:20 [-] agents.rag INFO — [SOURCE_METADATA] Question: Học 3+2 hoặc 4+1 có tốn thêm chi phí không?
+                Answer: Sinh viên Chương trình Cử nhân Điều dưỡng và các viện Kinh doanh Quản trị, Viện Kỹ thuật và Khoa học Máy tính đều có cơ hội ứng tuyển chương trình trao đổi từ 1 đến 2 học kỳ tại các trường đối tác của VinUni. – Có phát sinh học phí với trường đối tác – SV có thể ứng tuyển các chương trình học bổng (nếu có, ví dụ: Chương trình HB 1.100). – SV tự túc sinh hoạt phí, vé máy bay và bảo hiểm. – Kết thúc quá trình học, Sinh viên sẽ được nhận 2 văn bằng: văn bằng cử nhân VinUni và văn bằng cử nhân/thạc sĩ của trường đại học đối tác. {'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/doi-tac-chien-luoc-va-trao-doi-quoc-te/', 'source': None, 'section': 'FAQ', 'type': 'faq'}
+2026-05-16 09:39:20 [-] agents.rag INFO — [SOURCE_METADATA] Question: Học phí tại VinUni là bao nhiêu?
+                Answer: Học phí niêm yết: Tất cả các ngành: ~ 815.850.000 VND (~ 35.000 USD) mỗi năm. Điều dưỡng: 349.650.000 VND (~ 15.000 USD) mỗi năm. Mọi ứng viên trúng tuyển đều được hưởng Hỗ trợ Phát triển Giáo dục 35%. Do đó, mức học phí còn lại khoảng 227 triệu VND mỗi năm cho chương trình Điều dưỡng và khoảng 530 triệu VND mỗi năm cho các chương trình khác. Cơ hội được phỏng vấn để nhận học bổng và hỗ trợ tài chính sẽ được cung cấp cho các thí sinh, do đó, mức học phí thực tế cần thanh toán sẽ được xác định sau khi được giảm trừ (xem chi tiết tại bảng học phí).””” {'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/', 'source': None, 'section': 'FAQ', 'type': 'faq'}
+2026-05-16 09:39:20 [-] agents.rag INFO — [RAG_PROMPT_PREVIEW]
+
+Bạn là trợ lý tuyển sinh của VinUni. Hãy trả lời câu hỏi dựa trên ngữ cảnh được cung cấp bên dưới.
+QUY TẮC QUAN TRỌNG: Bạn phải luôn cung cấp đường link minh chứng (URL hoặc LIÊN KẾT LIÊN QUAN) từ ngữ cảnh cho mỗi thông tin bạn đưa ra.
+Nếu ngữ cảnh không chứa thông tin, hãy nói bạn không biết, tuyệt đối không tự bịa thông tin hoặc đường link.
+
+Chính sách cho thông tin tuyển sinh công khai:
+- Các câu hỏi về học phí, học bổng, hạn nộp, mốc thời gian, và tiêu chí tuyển sinh là thông tin công khai; hãy trả lời trực tiếp khi Context có nguồn chính thức.
+- Khi nêu số liệu hoặc ngày tháng từ nguồn chính thức, hãy nói rõ đây là thông tin từ nguồn chính thức và thêm một câu ngắn rằng thông tin có thể được cập nhật theo từng kỳ tuyển sinh.
+- Không biến cơ hội xem xét học bổng hoặc hỗ trợ tài chính thành cam kết chắc chắn nếu nguồn không nói như vậy.
+
+
+
+Conversation History:
+
+
+Context:
+Source 1: FAQ
+Source type: official
+Source URL: https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/
+2026-05-16 09:39:24 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:39:27 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.15s
+2026-05-16 09:39:27 [-] agents.judge INFO — Judge Result: pass=True, score=100, reason=The response provides specific tuition information for VinUni, cites a reputable source, and includes a disclaimer about the potential changes in tuition, making it appropriate for a Vietnamese high school student. It does not contain harmful or inaccurate content.
+2026-05-16 09:39:28 [-] services.db_service INFO — save_message args = Tôi không biết thông tin về học phí của Đại học FPT. Tuy nhiên, bạn có thể tham khảo thông tin về học phí tại VinUni: Học phí niêm yết cho tất cả các ngành là khoảng 815.850.000 VND (~ 35.000 USD) mỗi năm, và đối với ngành Điều dưỡng là 349.650.000 VND (~ 15.000 USD) mỗi năm. Mọi ứng viên trúng tuyển đều được hưởng Hỗ trợ Phát triển Giáo dục 35%. Thông tin chi tiết có thể được tìm thấy tại đây: [Học phí, học bổng và hỗ trợ tài chính](https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/).
+
+Lưu ý: Thông tin có thể được cập nhật theo từng kỳ tuyển sinh; bạn nên kiểm tra nguồn chính thức mới nhất.
+2026-05-16 09:39:28 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=rag pass=True latency=13403ms
+2026-05-16 09:39:29 [-] main INFO — Chat response {'response': 'Tôi không biết thông tin về học phí của Đại học FPT. Tuy nhiên, bạn có thể tham khảo thông tin về học phí tại VinUni: Học phí niêm yết cho tất cả các ngành là khoảng 815.850.000 VND (~ 35.000 USD) mỗi năm, và đối với ngành Điều dưỡng là 349.650.000 VND (~ 15.000 USD) mỗi năm. Mọi ứng viên trúng tuyển đều được hưởng Hỗ trợ Phát triển Giáo dục 35%. Thông tin chi tiết có thể được tìm thấy tại đây: [Học phí, học bổng và hỗ trợ tài chính](https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/).\n\nLưu ý: Thông tin có thể được cập nhật theo từng kỳ tuyển sinh; bạn nên kiểm tra nguồn chính thức mới nhất.', 'intent': 'rag', 'status': 'success', 'major': None, 'sources': [{'title': 'FAQ', 'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/doi-tac-chien-luoc-va-trao-doi-quoc-te/', 'source_type': 'official', 'snippet': 'Question: Sinh viên có cơ hội trao đổi trong mấy kỳ? Answer: Tất cả sinh viên đều có cơ hội ứng tuyển chương trình trao đổi từ 1 đến 2 học kỳ tại các trường đối tác của VinUni. – Học phí: không phát sinh học phí với...'}, {'title': 'FAQ', 'url': 'https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/hoc-phi-hoc-bong-va-ho-tro-tai-chinh/', 'source_type': 'official', 'snippet': 'Question: Học phí tại VinUni là bao nhiêu? Answer: Học phí niêm yết: Tất cả các ngành: ~ 815.850.000 VND (~ 35.000 USD) mỗi năm. Điều dưỡng: 349.650.000 VND (~ 15.000 USD) mỗi năm. Mọi ứng viên trúng tuyển đều được...'}], 'sessionId': '517491a2-34d4-41ff-a13b-4d733a4af395', 'sessionTitle': 'cho tôi biết về học phí của đại học fpt', 'escalation_level': 'NONE', 'fallback_card': None, 'recovery_actions': [{'id': 'retry', 'label': 'Retry'}, {'id': 'edit_profile', 'label': 'Edit Profile'}, {'id': 'open_wizard', 'label': 'Update Wizard answers'}, {'id': 'open_resources', 'label': 'Open Resources'}], 'decision_trace': {'flow': 'chat', 'route': 'rag', 'status': 'success', 'judge_pass': True, 'escalation_level': 'NONE', 'escalation_reason': 'The response provides specific tuition information for VinUni, cites a reputable source, and includes a disclaimer about the potential changes in tuition, making it appropriate for a Vietnamese high school student. It does not contain harmful or inaccurate content.', 'context_received': False, 'source_count': 2}, 'suggested_resources': [{'id': 'admissions', 'title': 'Admissions resources', 'surface': 'resources'}]}
+2026-05-16 09:41:14 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 517491a2-34d4-41ff-a13b-4d733a4af395
+2026-05-16 09:41:16 [-] services.db_service INFO — save_message args = Phân tích hồ sơ
+2026-05-16 09:41:16 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:41:16 [-] orchestrator.router INFO — Routing message: 'Phân tích hồ sơ...'
+2026-05-16 09:41:17 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 0.90s
+2026-05-16 09:41:17 [-] orchestrator.router INFO — [LLM] Routed to: crm
+2026-05-16 09:41:17 [-] agents.crm INFO — CRMAgent.run() — user: [EMAIL]
+2026-05-16 09:41:25 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 7.28s
+2026-05-16 09:41:25 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:41:27 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.42s
+2026-05-16 09:41:27 [-] agents.judge INFO — Judge Result: pass=False, score=0, reason=The response contains fabricated and overly specific details about the user's background, such as internship experience and educational background, which are unverifiable and not based on official data.
+2026-05-16 09:41:27 [-] orchestrator.pipeline WARNING — Judge REJECTED response for user [EMAIL] Reason: The response contains fabricated and overly specific details about the user's background, such as internship experience and educational background, which are unverifiable and not based on official data.
+2026-05-16 09:41:28 [-] services.db_service INFO — save_message args = Tôi xin lỗi, nhưng tôi không thể trả lời câu hỏi này vì lý do an toàn. Bạn có câu hỏi nào khác về VinUni không?
+2026-05-16 09:41:28 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=fallback pass=False latency=12499ms
+2026-05-16 09:41:30 [-] main INFO — Chat response {'response': 'Tôi xin lỗi, nhưng tôi không thể trả lời câu hỏi này vì lý do an toàn. Bạn có câu hỏi nào khác về VinUni không?', 'intent': 'fallback', 'status': 'rejected', 'major': None, 'sources': [], 'sessionId': '517491a2-34d4-41ff-a13b-4d733a4af395', 'sessionTitle': None, 'escalation_level': 'NONE', 'fallback_card': {'reason_code': 'human_handoff_required', 'reason': "The response contains fabricated and overly specific details about the user's background, such as internship experience and educational background, which are unverifiable and not based on official data.", 'next_action': 'request_human_fallback', 'cta': {'label': 'Request human advisor', 'action': 'human_fallback'}}, 'recovery_actions': [{'id': 'retry', 'label': 'Retry'}, {'id': 'edit_profile', 'label': 'Edit Profile'}, {'id': 'open_wizard', 'label': 'Update Wizard answers'}, {'id': 'open_resources', 'label': 'Open Resources'}, {'id': 'request_human_fallback', 'label': 'Request human advisor'}], 'decision_trace': {'flow': 'chat', 'route': 'fallback', 'status': 'rejected', 'judge_pass': False, 'escalation_level': 'NONE', 'escalation_reason': "The response contains fabricated and overly specific details about the user's background, such as internship experience and educational background, which are unverifiable and not based on official data.", 'context_received': False, 'source_count': 0}, 'suggested_resources': [{'id': 'human-fallback', 'title': 'Human advisor support', 'surface': 'staff_handoff'}]}
+2026-05-16 09:47:09 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:47:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:30 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:47:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:31 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:33 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:47:33 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:47:34 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:47:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:51 [-] main INFO — Database initialized at module level.
+2026-05-16 09:47:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:54 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:47:54 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:47:54 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:47:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:47:58 [-] main INFO — Running background task synchronization...
+2026-05-16 09:48:00 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:48:00 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:48:21 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 09:48:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:24 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:48:24 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:48:24 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:48:24 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:25 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:26 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:26 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:28 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:44 [-] main INFO — Database initialized at module level.
+2026-05-16 09:48:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:47 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 09:48:48 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 09:48:48 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 09:48:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 09:48:51 [-] main INFO — Running background task synchronization...
+2026-05-16 09:48:54 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 09:48:54 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 09:49:38 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: 2d6d91a3-9bc7-453c-b69d-d4239aa7bd29
+2026-05-16 09:49:40 [-] services.db_service INFO — save_message args = Phân tích hồ sơ
+2026-05-16 09:49:40 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 09:49:40 [-] orchestrator.router INFO — Routing message: 'Phân tích hồ sơ...'
+2026-05-16 09:49:41 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.33s
+2026-05-16 09:49:41 [-] orchestrator.router INFO — [LLM] Routed to: crm
+2026-05-16 09:49:41 [-] agents.crm INFO — CRMAgent.run() — user: [EMAIL]
+2026-05-16 09:50:14 [-] services.llm_client WARNING — LLM retry 1: Request timed out.
+2026-05-16 09:50:46 [-] services.llm_client WARNING — LLM retry 2: Request timed out.
+2026-05-16 09:51:07 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 19.56s
+2026-05-16 09:51:08 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 09:51:10 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.34s
+2026-05-16 09:51:10 [-] agents.judge INFO — Judge Result: pass=True, score=100, reason=Response accurately analyzes the student's profile based on provided evidence, highlighting skills, experience, and career goals without making unsupported claims or guarantees.
+2026-05-16 09:51:11 [-] services.db_service INFO — save_message args = Chào bạn Zenggg, 
+
+Dựa trên hồ sơ của bạn, mình xin phân tích một số điểm nổi bật sau:
+
+1. **Khả năng Ngôn Ngữ**: Bạn có chứng chỉ IELTS với điểm số 6.0, điều này cho thấy bạn có khả năng giao tiếp tiếng Anh tốt, rất quan trọng cho việc học tập và làm việc trong môi trường quốc tế.
+
+2. **Kiến Thức và Kỹ Năng**: Hồ sơ của bạn thể hiện bạn có kỹ năng vững vàng trong nhiều ngôn ngữ lập trình như Python, R, Java, JavaScript, và SQL. Bạn cũng đã có kinh nghiệm trong phân tích dữ liệu, machine learning, và các lĩnh vực liên quan đến trí tuệ nhân tạo (AI) như computer vision và xử lý ngôn ngữ tự nhiên (NLP).
+
+3. **Kinh Nghiệm Làm Việc**: Trong vai trò thực tập sinh backend tại FPT Software, bạn đã phát triển các ứng dụng Java theo thiết kế hướng đối tượng và thực hiện các tính năng backend quan trọng. Điều này cho thấy bạn đã có kinh nghiệm thực tế trong quá trình phát triển phần mềm.
+
+4. **Dự Án**: Bạn đã tham gia nhiều dự án, trong đó có các hệ thống phức tạp như "Hospital Feedback Assistant", "Online Children Protection System", và "EV Charging Route Planner". Những dự án này không chỉ giúp bạn củng cố kỹ năng kỹ thuật mà còn tạo ra giá trị thực cho cộng đồng.
+
+5. **Về mục tiêu nghề nghiệp**: Bạn có mục tiêu rõ ràng là phát triển chuyên môn trong lĩnh vực AI và các hệ thống backend, điều này rất phù hợp với chương trình mà bạn đang theo học tại VinUni.
+
+6. **Chứng Chỉ**: Bạn đã tham gia nhiều khóa học bổ sung và nhận chứng chỉ từ các tổ chức uy tín như IBM và Coursera, điều này cho thấy bạn luôn nỗ lực học hỏi và nâng cao trình độ của bản thân.
+
+Nhìn tổng thể, với nền tảng kiến thức và kinh nghiệm phong phú, bạn có tiềm năng lớn để phát triển trong lĩnh vực trí tuệ nhân tạo và công nghệ thông tin tại VinUni. Nếu bạn có bất kỳ câu hỏi nào khác hoặc muốn tìm hiểu sâu hơn về chương trình học, đừng ngần ngại chia sẻ với mình nhé!
+2026-05-16 09:51:11 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=crm pass=True latency=91893ms
+2026-05-16 09:51:13 [-] main INFO — Chat response {'response': 'Chào bạn Zenggg, \n\nDựa trên hồ sơ của bạn, mình xin phân tích một số điểm nổi bật sau:\n\n1. **Khả năng Ngôn Ngữ**: Bạn có chứng chỉ IELTS với điểm số 6.0, điều này cho thấy bạn có khả năng giao tiếp tiếng Anh tốt, rất quan trọng cho việc học tập và làm việc trong môi trường quốc tế.\n\n2. **Kiến Thức và Kỹ Năng**: Hồ sơ của bạn thể hiện bạn có kỹ năng vững vàng trong nhiều ngôn ngữ lập trình như Python, R, Java, JavaScript, và SQL. Bạn cũng đã có kinh nghiệm trong phân tích dữ liệu, machine learning, và các lĩnh vực liên quan đến trí tuệ nhân tạo (AI) như computer vision và xử lý ngôn ngữ tự nhiên (NLP).\n\n3. **Kinh Nghiệm Làm Việc**: Trong vai trò thực tập sinh backend tại FPT Software, bạn đã phát triển các ứng dụng Java theo thiết kế hướng đối tượng và thực hiện các tính năng backend quan trọng. Điều này cho thấy bạn đã có kinh nghiệm thực tế trong quá trình phát triển phần mềm.\n\n4. **Dự Án**: Bạn đã tham gia nhiều dự án, trong đó có các hệ thống phức tạp như "Hospital Feedback Assistant", "Online Children Protection System", và "EV Charging Route Planner". Những dự án này không chỉ giúp bạn củng cố kỹ năng kỹ thuật mà còn tạo ra giá trị thực cho cộng đồng.\n\n5. **Về mục tiêu nghề nghiệp**: Bạn có mục tiêu rõ ràng là phát triển chuyên môn trong lĩnh vực AI và các hệ thống backend, điều này rất phù hợp với chương trình mà bạn đang theo học tại VinUni.\n\n6. **Chứng Chỉ**: Bạn đã tham gia nhiều khóa học bổ sung và nhận chứng chỉ từ các tổ chức uy tín như IBM và Coursera, điều này cho thấy bạn luôn nỗ lực học hỏi và nâng cao trình độ của bản thân.\n\nNhìn tổng thể, với nền tảng kiến thức và kinh nghiệm phong phú, bạn có tiềm năng lớn để phát triển trong lĩnh vực trí tuệ nhân tạo và công nghệ thông tin tại VinUni. Nếu bạn có bất kỳ câu hỏi nào khác hoặc muốn tìm hiểu sâu hơn về chương trình học, đừng ngần ngại chia sẻ với mình nhé!', 'intent': 'crm', 'status': 'success', 'major': None, 'sources': [], 'sessionId': '2d6d91a3-9bc7-453c-b69d-d4239aa7bd29', 'sessionTitle': 'Phân tích hồ sơ', 'escalation_level': 'NONE', 'fallback_card': None, 'recovery_actions': [{'id': 'retry', 'label': 'Retry'}, {'id': 'edit_profile', 'label': 'Edit Profile'}, {'id': 'open_wizard', 'label': 'Update Wizard answers'}, {'id': 'open_resources', 'label': 'Open Resources'}], 'decision_trace': {'flow': 'chat', 'route': 'crm', 'status': 'success', 'judge_pass': True, 'escalation_level': 'NONE', 'escalation_reason': "Response accurately analyzes the student's profile based on provided evidence, highlighting skills, experience, and career goals without making unsupported claims or guarantees.", 'context_received': False, 'source_count': 0}, 'suggested_resources': []}
+2026-05-16 10:14:07 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 5933 characters.
+2026-05-16 10:14:07 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 10:14:47 [-] main INFO — Profile updated for user: [EMAIL]
+2026-05-16 10:15:13 [-] orchestrator.pipeline INFO — run_chat for user: [EMAIL], session: b3030b59-24f9-4f7e-b2b2-01066fa4dff7
+2026-05-16 10:15:13 [-] guards.rate_limiter INFO — RateLimiter: evicted 1 inactive users.
+2026-05-16 10:15:15 [-] services.db_service INFO — save_message args = Phân tích hồ sơ
+2026-05-16 10:15:15 [-] orchestrator.pipeline INFO — Pipeline operating in REAL mode
+2026-05-16 10:15:15 [-] orchestrator.router INFO — Routing message: 'Phân tích hồ sơ...'
+2026-05-16 10:15:16 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 0.90s
+2026-05-16 10:15:16 [-] orchestrator.router INFO — [LLM] Routed to: crm
+2026-05-16 10:15:16 [-] agents.crm INFO — CRMAgent.run() — user: [EMAIL]
+2026-05-16 10:15:36 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 19.40s
+2026-05-16 10:15:37 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 10:15:39 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.33s
+2026-05-16 10:15:39 [-] agents.judge INFO — Judge Result: pass=True, score=100, reason=The response provides a detailed analysis based on previously stored profile evidence, accurately reflecting the user's education, skills, experience, and career goals without making guarantees or stating unsupported claims.
+2026-05-16 10:15:40 [-] services.db_service INFO — save_message args = Chào bạn Zenggg! Dựa trên hồ sơ của bạn, mình có thể đưa ra những phân tích như sau:
+
+### 1. **Học vấn**
+- Bạn hiện đang theo học tại VinUniversity trong Chương trình Phát triển Tài năng AI, trước đó bạn đã có một nền tảng vững chắc từ Đại học FPT với GPA 3.76. Đây là thành tích học tập xuất sắc và chứng tỏ sự nỗ lực của bạn trong học tập.
+
+### 2. **Kỹ năng và Chứng chỉ**
+- Bạn có nhiều kỹ năng chuyên môn ấn tượng, bao gồm các ngôn ngữ lập trình như .NET (C#, VB.NET), HTML/CSS, PHP/Laravel, và công nghệ Cloud (AWS). Ngoài ra, bạn cũng đã có nhiều chứng chỉ như Microsoft Certified Professional và Cisco Certified Network Associate, điều này sẽ giúp bạn nổi bật hơn trong quá trình tuyển dụng.
+
+### 3. **Kinh nghiệm làm việc**
+- Với hơn 3 năm kinh nghiệm trong lĩnh vực phát triển phần mềm, bạn đã có khả năng đáp ứng nhiều yêu cầu kỹ thuật khác nhau. Bạn từng tham gia vào nhiều dự án, từ hệ thống đặt phòng cho đến hệ thống đánh giá thực phẩm, cho thấy sự đa dạng trong kinh nghiệm làm việc của bạn.
+
+### 4. **Dự án**
+- Các dự án mà bạn đã tham gia là minh chứng cho khả năng giải quyết vấn đề và phát triển sản phẩm thực tế. Bạn đã có kinh nghiệm trong việc xây dựng ứng dụng, từ frontend đến backend, cũng như tích hợp các hệ thống AI để nâng cao trải nghiệm người dùng.
+
+### 5. **Mục tiêu nghề nghiệp**
+- Bạn rất rõ ràng về mục tiêu của mình: Trở thành một lập trình viên full-stack cao cấp trong ba năm tới. Mục tiêu này hoàn toàn khả thi, đặc biệt là với những kỹ năng và kinh nghiệm mà bạn đã có.
+
+### 6. **Sở thích và Điểm mạnh**
+- Sở thích của bạn liên quan đến công nghệ, điều này sẽ giúp bạn thích ứng nhanh chóng với môi trường làm việc tại VinUni. Kỹ năng giao tiếp của bạn cũng sẽ là một lợi thế lớn trong việc làm việc nhóm và giao tiếp với khách hàng.
+
+### Tổng kết
+Nhìn chung, hồ sơ của bạn rất ấn tượng với nền tảng học vấn tốt, kỹ năng phong phú, và kinh nghiệm làm việc thực tế. Bạn có tiềm năng lớn để phát triển sự nghiệp trong lĩnh vực công nghệ thông tin, đặc biệt trong lĩnh vực AI mà bạn đang theo đuổi. Nếu bạn có câu hỏi cụ thể nào về chương trình học hoặc cơ hội nghề nghiệp tại VinUni, đừng ngần ngại chia sẻ nhé!
+2026-05-16 10:15:40 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=crm pass=True latency=25422ms
+2026-05-16 10:15:41 [-] main INFO — Chat response {'response': 'Chào bạn Zenggg! Dựa trên hồ sơ của bạn, mình có thể đưa ra những phân tích như sau:\n\n### 1. **Học vấn**\n- Bạn hiện đang theo học tại VinUniversity trong Chương trình Phát triển Tài năng AI, trước đó bạn đã có một nền tảng vững chắc từ Đại học FPT với GPA 3.76. Đây là thành tích học tập xuất sắc và chứng tỏ sự nỗ lực của bạn trong học tập.\n\n### 2. **Kỹ năng và Chứng chỉ**\n- Bạn có nhiều kỹ năng chuyên môn ấn tượng, bao gồm các ngôn ngữ lập trình như .NET (C#, VB.NET), HTML/CSS, PHP/Laravel, và công nghệ Cloud (AWS). Ngoài ra, bạn cũng đã có nhiều chứng chỉ như Microsoft Certified Professional và Cisco Certified Network Associate, điều này sẽ giúp bạn nổi bật hơn trong quá trình tuyển dụng.\n\n### 3. **Kinh nghiệm làm việc**\n- Với hơn 3 năm kinh nghiệm trong lĩnh vực phát triển phần mềm, bạn đã có khả năng đáp ứng nhiều yêu cầu kỹ thuật khác nhau. Bạn từng tham gia vào nhiều dự án, từ hệ thống đặt phòng cho đến hệ thống đánh giá thực phẩm, cho thấy sự đa dạng trong kinh nghiệm làm việc của bạn.\n\n### 4. **Dự án**\n- Các dự án mà bạn đã tham gia là minh chứng cho khả năng giải quyết vấn đề và phát triển sản phẩm thực tế. Bạn đã có kinh nghiệm trong việc xây dựng ứng dụng, từ frontend đến backend, cũng như tích hợp các hệ thống AI để nâng cao trải nghiệm người dùng.\n\n### 5. **Mục tiêu nghề nghiệp**\n- Bạn rất rõ ràng về mục tiêu của mình: Trở thành một lập trình viên full-stack cao cấp trong ba năm tới. Mục tiêu này hoàn toàn khả thi, đặc biệt là với những kỹ năng và kinh nghiệm mà bạn đã có.\n\n### 6. **Sở thích và Điểm mạnh**\n- Sở thích của bạn liên quan đến công nghệ, điều này sẽ giúp bạn thích ứng nhanh chóng với môi trường làm việc tại VinUni. Kỹ năng giao tiếp của bạn cũng sẽ là một lợi thế lớn trong việc làm việc nhóm và giao tiếp với khách hàng.\n\n### Tổng kết\nNhìn chung, hồ sơ của bạn rất ấn tượng với nền tảng học vấn tốt, kỹ năng phong phú, và kinh nghiệm làm việc thực tế. Bạn có tiềm năng lớn để phát triển sự nghiệp trong lĩnh vực công nghệ thông tin, đặc biệt trong lĩnh vực AI mà bạn đang theo đuổi. Nếu bạn có câu hỏi cụ thể nào về chương trình học hoặc cơ hội nghề nghiệp tại VinUni, đừng ngần ngại chia sẻ nhé!', 'intent': 'crm', 'status': 'success', 'major': None, 'sources': [], 'sessionId': 'b3030b59-24f9-4f7e-b2b2-01066fa4dff7', 'sessionTitle': 'Phân tích hồ sơ', 'escalation_level': 'NONE', 'fallback_card': None, 'recovery_actions': [{'id': 'retry', 'label': 'Retry'}, {'id': 'edit_profile', 'label': 'Edit Profile'}, {'id': 'open_wizard', 'label': 'Update Wizard answers'}, {'id': 'open_resources', 'label': 'Open Resources'}], 'decision_trace': {'flow': 'chat', 'route': 'crm', 'status': 'success', 'judge_pass': True, 'escalation_level': 'NONE', 'escalation_reason': "The response provides a detailed analysis based on previously stored profile evidence, accurately reflecting the user's education, skills, experience, and career goals without making guarantees or stating unsupported claims.", 'context_received': False, 'source_count': 0}, 'suggested_resources': []}
+2026-05-16 10:19:10 [-] orchestrator.pipeline INFO — run_match for user: [EMAIL]
+2026-05-16 10:19:10 [-] agents.advisor INFO — AdvisorAgent.match_majors() called
+2026-05-16 10:19:17 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 6.69s
+2026-05-16 10:19:18 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 10:19:19 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.75s
+2026-05-16 10:19:19 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=The response is helpful, honest, and relevant to the user's interests and strengths. It provides appropriate guidance on potential majors at VinUni, lists specific fields, and includes verified source links for further information.
+2026-05-16 10:19:19 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=9321ms
+2026-05-16 10:19:22 [-] main INFO — Student profile persisted to SQL for: [EMAIL]
+2026-05-16 10:19:22 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 10:19:22 [-] main INFO — Wizard answers indexed for user context: [EMAIL]
+2026-05-16 10:27:18 [-] services.db_service WARNING — DBService.authenticate_user: Password mismatch for user: [EMAIL]
+2026-05-16 13:22:38 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 13:22:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:42 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 13:22:42 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 13:22:43 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 13:22:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:22:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:02 [-] main INFO — Database initialized at module level.
+2026-05-16 13:23:02 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:03 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:03 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:05 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 13:23:05 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 13:23:05 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 13:23:05 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:06 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:08 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 13:23:09 [-] main INFO — Running background task synchronization...
+2026-05-16 13:23:11 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 13:23:11 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 13:25:37 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 5933 characters.
+2026-05-16 13:25:37 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 13:26:21 [-] orchestrator.pipeline INFO — run_match for user: [EMAIL]
+2026-05-16 13:26:21 [-] agents.advisor INFO — AdvisorAgent.match_majors() called
+2026-05-16 13:26:27 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 5.24s
+2026-05-16 13:26:28 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 13:26:29 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 1.49s
+2026-05-16 13:26:29 [-] agents.judge INFO — Judge Result: pass=True, score=100, reason=The response is supportive, provides relevant information about majors at VinUni, and is grounded in official sources. It matches the user's interests and strengths without making guarantees or presenting fabricated information.
+2026-05-16 13:26:29 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=7850ms
+2026-05-16 13:26:33 [-] main INFO — Student profile persisted to SQL for: [EMAIL]
+2026-05-16 13:26:33 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 13:26:33 [-] main INFO — Wizard answers indexed for user context: [EMAIL]
+2026-05-16 14:35:53 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 14:35:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:56 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 14:35:56 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 14:35:56 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 14:35:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:58 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:35:59 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:15 [-] main INFO — Database initialized at module level.
+2026-05-16 14:36:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:18 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 14:36:18 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 14:36:18 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 14:36:18 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:36:21 [-] main INFO — Running background task synchronization...
+2026-05-16 14:36:23 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 14:36:24 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 14:37:45 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 14:37:46 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:49 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 14:37:49 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 14:37:49 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 14:37:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:37:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:09 [-] main INFO — Database initialized at module level.
+2026-05-16 14:38:09 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:10 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:12 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 14:38:12 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 14:38:12 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 14:38:12 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:13 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:16 [-] main INFO — Running background task synchronization...
+2026-05-16 14:38:18 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 14:38:18 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 14:38:48 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 14:38:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:51 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 14:38:52 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 14:38:52 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 14:38:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:53 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:38:55 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:14 [-] main INFO — Database initialized at module level.
+2026-05-16 14:39:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:17 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 14:39:17 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 14:39:17 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 14:39:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:18 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 14:39:21 [-] main INFO — Running background task synchronization...
+2026-05-16 14:39:24 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 14:39:24 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 23:05:15 [-] __main__ INFO — Database initialized at module level.
+2026-05-16 23:05:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:18 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 23:05:19 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 23:05:19 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 23:05:19 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:22 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:41 [-] main INFO — Database initialized at module level.
+2026-05-16 23:05:41 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:43 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:45 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 23:05:45 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 23:05:45 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 23:05:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:46 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:05:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:11 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-16 23:06:11 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:12 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:12 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:14 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 23:06:14 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 23:06:14 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 23:06:14 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:15 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:16 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:17 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:35 [-] main INFO — Database initialized at module level.
+2026-05-16 23:06:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:36 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:38 [-] services.rag_service INFO — Initializing RAGService
+2026-05-16 23:06:38 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-16 23:06:38 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-16 23:06:38 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:39 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:40 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:40 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:41 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-16 23:06:41 [-] main INFO — Running background task synchronization...
+2026-05-16 23:06:43 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-16 23:06:43 [-] main INFO — Background sync thread started. Interval: 24h
+2026-05-16 23:14:29 [-] agents.cv_agent INFO — [CV_AGENT] Analyzing CV text. Received length: 4341 characters.
+2026-05-16 23:14:29 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 23:15:47 [-] orchestrator.pipeline INFO — run_match for user: [EMAIL]
+2026-05-16 23:15:47 [-] agents.advisor INFO — AdvisorAgent.match_majors() called
+2026-05-16 23:15:55 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 7.53s
+2026-05-16 23:15:57 [-] agents.judge INFO — JudgeAgent.evaluate() called
+2026-05-16 23:15:59 [-] services.llm_client INFO — LLM latency (gpt-4o-mini): 2.93s
+2026-05-16 23:15:59 [-] agents.judge INFO — Judge Result: pass=True, score=90, reason=The response is helpful, provides relevant information about suitable majors at VinUni based on the user's interests and strengths, and includes official sources for verification.
+2026-05-16 23:15:59 [-] orchestrator.pipeline INFO — AUDIT [[EMAIL]] route=advisor pass=True latency=12491ms
+2026-05-16 23:16:03 [-] main INFO — Student profile persisted to SQL for: [EMAIL]
+2026-05-16 23:16:03 [-] services.rag_service INFO — Ingesting CV for user gianggbgt2_gmail.com
+2026-05-16 23:16:03 [-] main INFO — Wizard answers indexed for user context: [EMAIL]
+2026-05-17 08:38:28 [-] __main__ INFO — Database initialized at module level.
+2026-05-17 08:38:28 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:29 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:29 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:31 [-] services.rag_service INFO — Initializing RAGService
+2026-05-17 08:38:32 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-17 08:38:32 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-17 08:38:32 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:33 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:34 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:35 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:51 [-] main INFO — Database initialized at module level.
+2026-05-17 08:38:51 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:52 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:54 [-] services.rag_service INFO — Initializing RAGService
+2026-05-17 08:38:54 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-17 08:38:54 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-17 08:38:54 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:55 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:56 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:38:57 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:19 [-] __mp_main__ INFO — Database initialized at module level.
+2026-05-17 08:39:20 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:21 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:23 [-] services.rag_service INFO — Initializing RAGService
+2026-05-17 08:39:23 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-17 08:39:23 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-17 08:39:23 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:24 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:25 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:25 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:26 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:44 [-] main INFO — Database initialized at module level.
+2026-05-17 08:39:44 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:45 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:47 [-] services.rag_service INFO — Initializing RAGService
+2026-05-17 08:39:47 [-] services.rag_service INFO — Building FAQ BM25 index...
+2026-05-17 08:39:47 [-] services.rag_service INFO — FAQ BM25 built with 50 docs
+2026-05-17 08:39:47 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:48 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:49 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:50 [-] services.db_service INFO — DBService initialised for PostgreSQL (SessionLocal accessed dynamically)
+2026-05-17 08:39:50 [-] main INFO — Running background task synchronization...
+2026-05-17 08:39:53 [-] services.db_service INFO — ✓ Database migrations completed.
+2026-05-17 08:39:53 [-] main INFO — Background sync thread started. Interval: 24h

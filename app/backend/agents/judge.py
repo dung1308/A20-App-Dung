@@ -44,6 +44,18 @@ If the response indicates the user's query is too vague or needs clarification, 
 Respond ONLY with JSON: {"pass": true/false/"clarify", "reason": "...", "score": 0-100}
 """
 
+PUBLIC_ADMISSIONS_JUDGE_POLICY = """
+Public admissions information is allowed and should not be rejected merely because it mentions tuition, scholarships, deadlines, dates, or admission requirements.
+Specific numbers or dates may pass when they are grounded in an official VinUni source and the response clearly says the information may change by admissions cycle or should be checked against the latest official source.
+Reject only when numbers or dates are unsupported, fabricated, stale without qualification, or when the answer overstates uncertain aid/admission outcomes as guarantees.
+"""
+
+PROFILE_GROUNDED_JUDGE_POLICY = """
+When profile evidence is provided, treat it as user-supplied or system-stored profile context for that same student.
+Do not require official admissions sources for claims that simply restate the student's own stored education, experience, projects, skills, scores, summary, or career goals.
+Reject profile-related claims only when they are absent from the provided profile evidence, expose sensitive personal data, or add unsupported conclusions/guarantees.
+"""
+
 
 class JudgeAgent:
     """
@@ -54,10 +66,20 @@ class JudgeAgent:
     def __init__(self, prompt_version: str = PROMPT_VERSION):
         self.llm = None if USE_MOCK else LLMClient()
         self.prompt_service = PromptService()
-        self.system_prompt = self.prompt_service.get_prompt("judge_safety", prompt_version) or JUDGE_SYSTEM_PROMPT
+        base_prompt = self.prompt_service.get_prompt("judge_safety", prompt_version) or JUDGE_SYSTEM_PROMPT
+        self.system_prompt = (
+            f"{base_prompt.strip()}\n\n"
+            f"{PUBLIC_ADMISSIONS_JUDGE_POLICY.strip()}\n\n"
+            f"{PROFILE_GROUNDED_JUDGE_POLICY.strip()}"
+        )
         self.escalation_detector = EscalationDetector()
 
-    def evaluate(self, input_text: str, output_text: str) -> Dict[str, Any]:
+    def evaluate(
+        self,
+        input_text: str,
+        output_text: str,
+        evidence_context: str = "",
+    ) -> Dict[str, Any]:
         """
         Evaluate whether an AI response is safe to send to the user.
 
@@ -100,7 +122,7 @@ class JudgeAgent:
             if not self.llm:
                 return self._fail_safe("llm_client_not_initialized")
 
-            prompt = self._build_judge_prompt(input_text, output_text)
+            prompt = self._build_judge_prompt(input_text, output_text, evidence_context)
             response = self.llm.generate(prompt)
             if not response or response == "I don't know":
                 return self._fail_safe("empty_llm_response")
@@ -185,7 +207,12 @@ class JudgeAgent:
             result["score"] = min(int(result.get("score", 0) or 0), 40)
         return result
 
-    def _build_judge_prompt(self, input_text: str, output_text: str) -> str:
+    def _build_judge_prompt(
+        self,
+        input_text: str,
+        output_text: str,
+        evidence_context: str = "",
+    ) -> str:
         """
         Build the evaluation prompt for Gemini.
 
@@ -199,8 +226,13 @@ class JudgeAgent:
         Input and output are truncated to 2000 characters each to stay within
         the context budget and avoid avoidable cost.
         """
+        evidence_block = ""
+        if evidence_context:
+            evidence_block = f"\n\nGrounding evidence:\n{evidence_context[:3000]}"
+
         return (
             f"{self.system_prompt}\n\n"
             f"User input:\n{input_text[:2000]}\n\n"
             f"AI response:\n{output_text[:2000]}"
+            f"{evidence_block}"
         )

@@ -327,7 +327,8 @@ class Pipeline:
             safe_response = self.output_guard.process(response_text)
             
             # 3. Safety check and escalation detection
-            judge_result = self.judge.evaluate(message, safe_response)
+            judge_evidence = self._build_judge_evidence(route, user_id)
+            judge_result = self.judge.evaluate(message, safe_response, evidence_context=judge_evidence)
             
             judge_pass = judge_result.get("pass", False)
             escalation_level = judge_result.get("escalation_level", "NONE")
@@ -369,6 +370,7 @@ class Pipeline:
                 ai_resolved = False
                 fallback = True
                 handoff_status = "pending"
+                sources = []
             elif route == "fallback":
                 status = "fallback"
                 ai_resolved = False
@@ -593,6 +595,41 @@ class Pipeline:
         if fallback:
             resources.append({"id": "human-fallback", "title": "Human advisor support", "surface": "staff_handoff"})
         return resources[:3]
+
+    def _build_judge_evidence(self, route: str, user_id: str) -> str:
+        """
+        Supply bounded, non-PII grounding context to JudgeAgent so profile-aware
+        answers are evaluated against the data they were allowed to use.
+        """
+        if route != "crm":
+            return ""
+
+        profile = self.crm.get_profile(user_id) or {}
+        safe_keys = (
+            "summary",
+            "career_goals",
+            "education",
+            "experience",
+            "projects",
+            "skills",
+            "certifications",
+            "gpa",
+            "test_scores",
+            "preferred_majors",
+        )
+        safe_profile = {
+            key: profile.get(key)
+            for key in safe_keys
+            if profile.get(key) not in (None, "", [], {})
+        }
+        if not safe_profile:
+            return ""
+
+        return "Stored student profile evidence: " + json.dumps(
+            safe_profile,
+            ensure_ascii=False,
+            default=str,
+        )
 
     def _enrich_match_explanations(
         self,

@@ -327,6 +327,7 @@ Hãy hỏi thêm 2-3 thông tin cụ thể để có thể tư vấn tốt hơn.
         enriched = []
         lookup = self._get_majors_lookup()
         valid_ids = self._get_valid_ids()
+        admissions_lookup = self.db.get_admissions_data_by_major()
 
         for item in top3:
             major_id = item.get("major_id")
@@ -334,6 +335,9 @@ Hãy hỏi thêm 2-3 thông tin cụ thể để có thể tư vấn tốt hơn.
                 raise ValueError(f"Invalid major_id returned by AI: {major_id}")
             
             info = lookup[major_id]
+            admissions_info = admissions_lookup.get(major_id, {})
+            fallback_link = OFFICIAL_MAJOR_LINKS.get(major_id, {})
+            source_url = admissions_info.get("official_url") or fallback_link.get("source_url")
             # Mapping keys to match MajorResult pydantic schema
             enriched.append({
                 "major_id": major_id,
@@ -341,8 +345,8 @@ Hãy hỏi thêm 2-3 thông tin cụ thể để có thể tư vấn tốt hơn.
                 "match_reason": item.get("match_reason", ""),
                 "match_score": item.get("match_score", 0),
                 "what_students_do": CANONICAL_MAJOR_DESCRIPTIONS.get(major_id, info["what_students_do"]),
-                "department": OFFICIAL_MAJOR_LINKS.get(major_id, {}).get("department"),
-                "source_url": OFFICIAL_MAJOR_LINKS.get(major_id, {}).get("source_url"),
-                "verified_source": bool(OFFICIAL_MAJOR_LINKS.get(major_id, {}).get("source_url")),
+                "department": fallback_link.get("department"),
+                "source_url": source_url,
+                "verified_source": bool(source_url),
             })
         return enriched

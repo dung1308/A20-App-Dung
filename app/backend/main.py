@@ -30,7 +30,7 @@ from utils.logger import get_logger
 from fastapi import UploadFile, File
 import database
 from services.pdf_loader import extract_text_from_pdf
-from services.cv_parser import parse_cv
+from services.cv_parser import parse_cv_with_llm
 from services.metric_service import MetricService
 from config import CORS_ORIGINS, ALLOW_PROMPT_DELETION
 from guards.rate_limiter import RateLimiter
@@ -1317,6 +1317,23 @@ async def get_my_profile_readiness(current_user: dict = Depends(get_current_user
         "readiness": _profile_readiness(profile, cv_documents),
     }
 
+@app.get("/api/profile/me/overview")
+async def get_my_profile_overview(current_user: dict = Depends(get_current_user)):
+    """Return the Profile page's initial data in one round-trip."""
+    user_id = current_user["email"]
+    profile = pipeline.db_service.get_student_profile(user_id)
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found")
+
+    cv_documents = pipeline.db_service.list_cv_documents(user_id)
+    return {
+        "status": "success",
+        "user_id": user_id,
+        "profile": profile,
+        "documents": cv_documents,
+        "readiness": _profile_readiness(profile, cv_documents),
+    }
+
 @app.get("/api/profile/me/cv-documents/{document_id}/merge-preview")
 async def preview_my_cv_document_merge(document_id: str, current_user: dict = Depends(get_current_user)):
     """Preview how a CV document would merge into Profile before confirmation."""
@@ -1668,6 +1685,7 @@ def _seed_major_rows() -> Dict[str, Any]:
 
     added = 0
     updated = 0
+    updated = 0
     with database.SessionLocal() as session:
         for entry in MAJORS_DATA:
             major = session.query(Major).filter(Major.id == entry["id"]).first()
@@ -1694,46 +1712,55 @@ def _seed_admissions_rows() -> Dict[str, Any]:
             "major_id": "cs",
             "requirements": "GPA >= 3.5, IELTS >= 6.5, Math score >= 8.0",
             "description": "Computer Science requires strong math foundations and programming readiness.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "ee",
             "requirements": "GPA >= 3.2, IELTS >= 6.0, Physics/Math score >= 7.5",
             "description": "Electrical and Computer Engineering fits students interested in circuits, embedded systems, and computing.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "me",
             "requirements": "GPA >= 3.2, IELTS >= 6.0, Math/Physics score >= 7.5",
             "description": "Mechanical Engineering fits students interested in design, robotics, and manufacturing.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "bme",
             "requirements": "GPA >= 3.5, IELTS >= 6.5, Biology/Math score >= 8.0",
             "description": "Biomedical Engineering combines medicine, life sciences, and engineering.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "ba",
             "requirements": "GPA >= 3.0, IELTS >= 6.5, Essay score >= 8.0",
             "description": "Business Administration develops leadership, strategy, and management capability.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "finance",
             "requirements": "GPA >= 3.2, IELTS >= 6.5, Math score >= 7.5",
             "description": "Finance focuses on markets, analysis, investment, and financial decision making.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "data_science",
             "requirements": "GPA >= 3.5, IELTS >= 6.5, Math/Statistics score >= 8.0",
             "description": "Data Science uses statistics, AI, and computation to solve data-rich problems.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "liberal_arts",
             "requirements": "GPA >= 3.0, IELTS >= 7.0, Essay score >= 8.5",
             "description": "Liberal Arts develops critical thinking, research, communication, and social analysis.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
         {
             "major_id": "architecture",
             "requirements": "GPA >= 3.2, IELTS >= 6.5, Portfolio required",
             "description": "Architecture requires design creativity, spatial thinking, and portfolio preparation.",
+            "official_url": "https://admissions.vinuni.edu.vn/vi/dai-hoc/cau-hoi-thuong-gap/tuyen-sinh/",
         },
     ]
 
@@ -1750,13 +1777,16 @@ def _seed_admissions_rows() -> Dict[str, Any]:
                 AdmissionsData.requirements == entry["requirements"],
             ).first()
             if exists:
+                if not exists.official_url:
+                    exists.official_url = entry["official_url"]
+                    updated += 1
                 skipped += 1
                 continue
             session.add(AdmissionsData(**entry))
             added += 1
         session.commit()
         total = session.query(AdmissionsData).count()
-    return {"table": "admissions_data", "added": added, "skipped": skipped, "total": total}
+    return {"table": "admissions_data", "added": added, "updated": updated, "skipped": skipped, "total": total}
 
 def _seed_prompt_rows(version: str = "v2") -> Dict[str, Any]:
     from services.seed_prompts import seed_prompts
@@ -2262,13 +2292,14 @@ async def upload_cv(file: UploadFile = File(...), current_user: dict = Depends(g
 
         try:
             text = extract_text_from_pdf(tmp_path)
-            structured_data = parse_cv(text)
-            
-            # EXTRACT CV SIGNALS: Extract structured attributes (majors, confidence, GPA)
-            # to provide immediate feedback to the student and aid prompt context.
+            profile_fields = parse_cv_with_llm(text)
+
+            # Keep raw extracted CV text as the canonical artifact. Any lightweight
+            # prompt hints are derived directly from text, not from a user-facing
+            # structured JSON review flow.
             cv_signals = {}
             if hasattr(pipeline, 'cv_agent') and pipeline.cv_agent:
-                cv_signals = pipeline.cv_agent.analyze(text, structured_data)
+                cv_signals = pipeline.cv_agent.analyze(text, profile_fields)
 
             pipeline.rag.rag_service.ingest_cv(sanitize_id(user_id), text)
             with open(saved_path, "wb") as saved_file:
@@ -2278,17 +2309,17 @@ async def upload_cv(file: UploadFile = File(...), current_user: dict = Depends(g
                 filename=file.filename,
                 file_path=saved_path,
                 raw_text=text,
-                structured_data=structured_data,
+                structured_data=None,
                 cv_signals=cv_signals,
             )
-            pipeline.db_service.upsert_student_profile(user_id, {
-                "cv_filename": file.filename,
-                "cv_url": f"/api/profile/{user_id}/cv",
-                "cv_uploaded_at": datetime.utcnow().isoformat(),
-                "cv_signals": cv_signals,
-                "active_cv_document_id": cv_document["id"],
-                "cv_structured_data": structured_data,
-            })
+            pipeline.db_service.merge_profile_from_cv(
+                user_id=user_id,
+                structured_data=profile_fields,
+                cv_signals=cv_signals,
+                document_id=cv_document["id"],
+                filename=file.filename,
+                store_structured_snapshot=False,
+            )
         except Exception as e:
             logger.error(f"Failed to process PDF: {e}")
             raise HTTPException(status_code=400, detail="Tệp tin PDF không hợp lệ hoặc bị lỗi cấu trúc.")
@@ -2298,8 +2329,6 @@ async def upload_cv(file: UploadFile = File(...), current_user: dict = Depends(g
             "filename": file.filename,
             "cv_url": f"/api/profile/{user_id}/cv",
             "cv_document_id": cv_document["id"],
-            "structured_data": structured_data,
-            "parse_metadata": structured_data.get("parse_metadata", {}),
             "cv_signals": cv_signals,
             "cv_text": text
         }

@@ -31,6 +31,7 @@ class AdmissionsData(Base):
     major_id = Column(String, ForeignKey("majors.id"), nullable=False)
     requirements = Column(Text, nullable=True)
     description = Column(Text, nullable=True)
+    official_url = Column(Text, nullable=True)
 
 class ChatMessage(Base):
     """Stores individual chat messages in the conversation history."""

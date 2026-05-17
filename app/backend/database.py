@@ -99,6 +99,21 @@ def _ensure_user_columns(db_engine) -> None:
         conn.commit()
     logger.info("Users schema updated with column: blacklisted")
 
+def _ensure_admissions_data_columns(db_engine) -> None:
+    """Add admissions-data columns used by report enrichment on older DBs."""
+    inspector = inspect(db_engine)
+    if "admissions_data" not in inspector.get_table_names():
+        return
+
+    existing = {column["name"] for column in inspector.get_columns("admissions_data")}
+    if "official_url" in existing:
+        return
+
+    with db_engine.connect() as conn:
+        conn.execute(text("ALTER TABLE admissions_data ADD COLUMN official_url TEXT"))
+        conn.commit()
+    logger.info("Admissions data schema updated with column: official_url")
+
 
 def init_database() -> None:
     """
@@ -151,6 +166,7 @@ def init_database() -> None:
         Base.metadata.create_all(bind=engine)
         _ensure_audit_log_columns(engine)
         _ensure_user_columns(engine)
+        _ensure_admissions_data_columns(engine)
         
         masked_url = db_url.split('@')[-1] if '@' in db_url else db_url
         logger.info(f"Database initialized successfully: {masked_url}")

@@ -24,17 +24,21 @@ class CVAgent:
 
         # Helper to extract content within specific sections
         def _extract_section(full_text: str, header_regex: str) -> str:
-            match = re.search(header_regex + r"\s*\n(.*?)(?=\n\s*[A-Z\s]{4,}:?|\Z)", (full_text if full_text is not None else ""), re.DOTALL | re.IGNORECASE)
+            match = re.search(
+                rf"^[ \t]*(?:{header_regex})[ \t]*:?[ \t]*\r?\n(?P<body>.*?)(?=^[ \t]*[A-Z][A-Z &/\-]{{3,}}[ \t]*:?[ \t]*(?:\r?\n|$)|\Z)",
+                (full_text if full_text is not None else ""),
+                re.DOTALL | re.IGNORECASE | re.MULTILINE,
+            )
             if match:
                 # Remove any sub-headers that might be caught
-                section_content = re.sub(r"^[A-Z\s]+:?\s*\n", "", (match.group(1) or ""), flags=re.MULTILINE).strip()
+                section_content = re.sub(r"^[A-Z\s]+:?\s*\n", "", (match.group("body") or ""), flags=re.MULTILINE).strip()
                 return section_content
             return ""
 
         # Extract content from key sections
         skills_section = _extract_section(text, r"KỸ NĂNG|KĨ NĂNG|KỸ NĂNG CHUYÊN MÔN|SKILLS")
         education_section = _extract_section(text, r"HỌC VẤN|GIÁO DỤC|EDUCATION")
-        experience_section = _extract_section(text, r"KINH NGHIỆM LÀM VIỆC|KINH NGHIỆM|EXPERIENCE")
+        experience_section = _extract_section(text, r"KINH NGHIỆM LÀM VIỆC|KINH NGHIỆM|WORK EXPERIENCE|EXPERIENCE")
         references_section = _extract_section(text, r"NGƯỜI THAM KHẢO|REFERENCES")
 
         # Enhanced Skill Extraction
@@ -63,6 +67,11 @@ class CVAgent:
                 gpa_estimate = float(gpa_raw.split('/')[0])
             else:
                 gpa_estimate = float(gpa_raw)
+
+        ielts_match = re.search(r"\bIELTS(?:\s+Academic)?[:\s]*(\d(?:\.\d)?)\b", text or "", re.IGNORECASE)
+        ielts_estimate = structured_data.get("ielts")
+        if ielts_match:
+            ielts_estimate = float(ielts_match.group(1))
 
         # Reusable title pattern for professional roles
         title_pattern = r"(?:(Senior|Lead|Junior|Manager|Specialist|Analyst|Technical|QC|Event)\s+)?(?:(Product|Software|Data|Marketing|Business|Operations|Team|Project)\s+)?(Manager|Engineer|Analyst|Consultant|Developer|Specialist|Owner|Leader|Lead)\b"
@@ -110,6 +119,8 @@ class CVAgent:
         # Highlight high academic achievement
         if gpa_estimate and (gpa_estimate >= 3.5 or gpa_estimate >= 8.5):
             persona_parts.append(f"thành tích học tập xuất sắc (GPA {gpa_estimate})")
+        if ielts_estimate:
+            persona_parts.append(f"năng lực tiếng Anh IELTS {ielts_estimate}")
 
         # Highlight degree/education background
         if education_section:
@@ -131,6 +142,7 @@ class CVAgent:
             "major_explanations": explanations,
             "persona_summary": persona_summary,
             "gpa_estimate": gpa_estimate,
+            "ielts_estimate": ielts_estimate,
             "extracted_job_titles": list(set(candidate_job_titles)), # Strictly the candidate's roles
             "referrer_titles": list(set(referrer_titles)) # Titles of people referring the candidate
         }

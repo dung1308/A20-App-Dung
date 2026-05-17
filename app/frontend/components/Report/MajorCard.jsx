@@ -43,7 +43,7 @@ const MajorCard = ({ major, onAsk }) => {
         </div>
 
         {(matchedSignals.length > 0 || tradeoffs.length > 0) && (
-          <div className="space-y-3">
+          <div className="grid gap-3">
             {matchedSignals.length > 0 && (
               <div>
                 <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400">{text.matchedSignals}</p>

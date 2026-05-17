@@ -20,7 +20,7 @@ from sqlalchemy import text, func, inspect
 import hashlib
 import secrets
 from config import USE_MOCK
-from models.schemas import User, ChatMessage, ChatSession, Major, Student, AuditLog, SecurityEvent, CVDocument, HandoffMessage
+from models.schemas import User, ChatMessage, ChatSession, Major, Student, AuditLog, SecurityEvent, CVDocument, HandoffMessage, AdmissionsData
 from utils.logger import get_logger, get_trace_id
 import database
 
@@ -590,7 +590,10 @@ class DBService:
                 if student:
                     if gpa is not None: student.gpa = gpa 
                     if pref is not None: student.preferred_majors = pref 
-                    if scores is not None: student.test_scores = scores 
+                    if scores is not None:
+                        merged_scores = (student.test_scores or {}).copy()
+                        merged_scores.update(scores)
+                        student.test_scores = merged_scores
                     
                     # Merge new profile fields into existing JSON blob
                     if student.profile_data:
@@ -643,10 +646,10 @@ class DBService:
         filename: str,
         file_path: str,
         raw_text: str,
-        structured_data: Dict[str, Any],
+        structured_data: Optional[Dict[str, Any]],
         cv_signals: Dict[str, Any],
     ) -> Dict[str, Any]:
-        """Persist an uploaded CV version and extracted data."""
+        """Persist an uploaded CV version and make the newest text active."""
         if self.use_mock:
             doc_id = secrets.token_hex(12)
             return {
@@ -654,10 +657,10 @@ class DBService:
                 "user_id": user_id,
                 "filename": filename,
                 "raw_text": raw_text,
-                "structured_data": structured_data,
+                "structured_data": structured_data or {},
                 "cv_signals": cv_signals,
                 "version": 1,
-                "is_active": False,
+                "is_active": True,
                 "created_at": datetime.utcnow().isoformat(),
             }
 
@@ -671,6 +674,7 @@ class DBService:
                 session.flush()
             resolved_user_id = existing_user.user_id
             version = (session.query(func.max(CVDocument.version)).filter(CVDocument.user_id == resolved_user_id).scalar() or 0) + 1
+            session.query(CVDocument).filter(CVDocument.user_id == resolved_user_id).update({"is_active": False})
             doc = CVDocument(
                 id=str(secrets.token_hex(16)),
                 user_id=resolved_user_id,
@@ -680,7 +684,7 @@ class DBService:
                 structured_data=structured_data or {},
                 cv_signals=cv_signals or {},
                 version=version,
-                is_active=False,
+                is_active=True,
             )
             session.add(doc)
             session.commit()
@@ -831,6 +835,7 @@ class DBService:
         cv_signals: Dict[str, Any],
         document_id: str,
         filename: str,
+        store_structured_snapshot: bool = True,
     ) -> Optional[str]:
         """Merge non-empty CV fields into the profile without erasing useful data."""
         personal = structured_data.get("personal_info") or {}
@@ -838,9 +843,10 @@ class DBService:
             "active_cv_document_id": document_id,
             "cv_filename": filename,
             "cv_signals": cv_signals or {},
-            "cv_structured_data": structured_data or {},
             "cv_uploaded_at": datetime.utcnow().isoformat(),
         }
+        if store_structured_snapshot:
+            profile_update["cv_structured_data"] = structured_data or {}
         for source_key, target_key in [("name", "full_name"), ("full_name", "full_name"), ("phone", "phone")]:
             value = personal.get(source_key)
             if value:
@@ -849,9 +855,16 @@ class DBService:
             value = structured_data.get(key)
             if value:
                 profile_update[key] = value
-        gpa = cv_signals.get("gpa_estimate")
+        gpa = structured_data.get("gpa")
+        if gpa is None:
+            gpa = cv_signals.get("gpa_estimate")
         if gpa is not None:
             profile_update["gpa"] = gpa
+        ielts = structured_data.get("ielts")
+        if ielts is None:
+            ielts = cv_signals.get("ielts_estimate")
+        if ielts is not None:
+            profile_update["test_scores"] = {"ielts": ielts}
         self.upsert_student_profile(user_id, profile_update)
 
     def _cv_document_to_dict(self, doc: CVDocument, include_text: bool = True) -> Dict[str, Any]:
@@ -1042,6 +1055,26 @@ class DBService:
         except Exception as e:
             logger.error(f"Failed to fetch majors from DB: {e}")
             return []
+
+    def get_admissions_data_by_major(self) -> Dict[str, Dict[str, Any]]:
+        """Fetch admissions metadata keyed by major id for report enrichment."""
+        if self.use_mock or database.SessionLocal is None:
+            return {}
+
+        try:
+            with database.SessionLocal() as session:
+                rows = session.query(AdmissionsData).all()
+                return {
+                    row.major_id: {
+                        "requirements": row.requirements,
+                        "description": row.description,
+                        "official_url": row.official_url,
+                    }
+                    for row in rows
+                }
+        except Exception as e:
+            logger.error(f"Failed to fetch admissions data from DB: {e}")
+            return {}
 
     # ------------------------------------------------------------------
     # Prompt management

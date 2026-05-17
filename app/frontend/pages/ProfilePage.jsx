@@ -19,7 +19,6 @@ const ProfilePage = () => {
   const [saving, setSaving] = useState(false);
   const [cvDocuments, setCvDocuments] = useState([]);
   const [readiness, setReadiness] = useState(null);
-  const [mergePreview, setMergePreview] = useState(null);
   const [formData, setFormData] = useState({
     full_name: '',
     phone: '',
@@ -43,7 +42,8 @@ const ProfilePage = () => {
   const fetchProfile = async () => {
     setLoading(true);
     try {
-      const data = await api.getProfile(userEmail);
+      const overview = await api.getProfileOverview();
+      const data = overview.profile || {};
       setProfile(data);
       setFormData({
         full_name: data.full_name || '',
@@ -57,10 +57,8 @@ const ProfilePage = () => {
         education: formatProfileList(data.education),
         experience: formatProfileList(data.experience)
       });
-      const docs = await api.getCVDocuments();
-      setCvDocuments(docs.documents || []);
-      const readinessData = await api.getProfileReadiness();
-      setReadiness(readinessData.readiness || null);
+      setCvDocuments(overview.documents || []);
+      setReadiness(overview.readiness || null);
     } catch (err) {
       toast.error('Không thể tải thông tin hồ sơ.');
     } finally {
@@ -470,31 +468,6 @@ const ProfilePage = () => {
                             {text.delete}
                           </button>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {mergePreview && (
-                <div className="border border-blue-100 bg-blue-50/40 rounded-xl p-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[10px] font-black text-blue-800 uppercase tracking-widest">CV merge preview</p>
-                    <button onClick={() => setMergePreview(null)} className="text-xs font-bold text-blue-700">Close</button>
-                  </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
-                    {Object.entries(mergePreview.summary || {}).map(([key, value]) => (
-                      <div key={key} className="bg-white border border-blue-100 rounded-lg p-2">
-                        <p className="text-[10px] uppercase font-black text-slate-400">{key}</p>
-                        <p className="text-lg font-black text-slate-900">{value}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-3 space-y-2 max-h-72 overflow-y-auto">
-                    {(mergePreview.changes || []).map((change) => (
-                      <div key={change.field} className="bg-white border border-blue-100 rounded-lg p-3 text-xs">
-                        <p className="font-black text-slate-800 uppercase">{change.action}: {change.field}</p>
-                        <p className="text-slate-500 mt-1">Current: {formatValue(change.current) || '-'}</p>
-                        <p className="text-slate-700 mt-1">Proposed: {formatValue(change.proposed) || '-'}</p>
                       </div>
                     ))}
                   </div>
