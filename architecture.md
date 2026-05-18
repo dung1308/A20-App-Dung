@@ -4,7 +4,7 @@ Tài liệu này mô tả kiến trúc sản phẩm VinUni Admission Assistant t
 
 ## Live System
 
-- Frontend: https://spirited-manifestation-production.up.railway.app/
+- Frontend: https://a20-app-124.up.railway.app/
 - Backend/API: https://a20-app-dung-production.up.railway.app/
 - Health check: https://a20-app-dung-production.up.railway.app/health
 - Database: Railway PostgreSQL, configured through `DATABASE_URL`

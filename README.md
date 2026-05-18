@@ -86,7 +86,9 @@ Pitch_deck.md              Submission pitch deck
 ```
 
 ## Local Setup
+## Local Setup
 
+### 1. Install AI logging hook
 ### 1. Install AI logging hook
 
 ```bash
@@ -96,8 +98,27 @@ bash scripts/setup_hooks.sh
 Prompts are logged automatically through configured hooks. Do not commit `.ai-log/*.jsonl`.
 
 ### 2. Backend
+Prompts are logged automatically through configured hooks. Do not commit `.ai-log/*.jsonl`.
+
+### 2. Backend
 
 ```bash
+cd app/backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Create `.env` from `.env.example` and configure:
+
+```env
+DATABASE_URL=postgresql://postgres:<password>@yamanote.proxy.rlwy.net:41557/railway
+USE_MOCK=false
+FRONTEND_URL=http://localhost:5173
+```
+
+### 3. Frontend
 cd app/backend
 python -m venv .venv
 .venv\Scripts\activate
@@ -131,8 +152,77 @@ For production frontend calls:
 
 ```env
 VITE_API_URL=https://a20-app-dung-production.up.railway.app
+cd app/frontend
+npm install
+npm run dev
 ```
 
+For local frontend calls:
+
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+For production frontend calls:
+
+```env
+VITE_API_URL=https://a20-app-dung-production.up.railway.app
+```
+
+## How To Use The Product
+
+1. Open the frontend live URL or local frontend dev server.
+2. Sign up or log in.
+3. Upload or update CV/profile in `/profile`.
+4. Complete the 4-step Wizard in `/wizard`.
+5. Review Top 3 major recommendations in `/report`.
+6. Ask follow-up admissions questions in `/consultant`.
+7. Request human counseling when the AI creates a fallback/handoff.
+8. Use `/staff`, `/admin`, `/system/tokens`, and `/system/database` with admin/editor roles for operations.
+
+## Key API Endpoints
+
+- `GET /health`
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `POST /api/auth/google`
+- `POST /api/match`
+- `POST /api/chat`
+- `POST /api/upload-cv`
+- `GET /api/profile/{user_id}`
+- `GET /api/metrics`
+- `GET /api/system/token-usage`
+- `GET /api/admin/audit-logs`
+- `GET /api/admin/pending-handoffs`
+- `POST /api/admin/rag-sync`
+
+## Testing And Evidence
+
+Primary evidence is tracked in [evaluation_evidence.md](./evaluation_evidence.md). Current coverage includes guardrails, judge escalation, handoff, PMF metrics, profile/CV behavior, chat sessions, CRM PII masking, and golden-answer evaluation.
+
+Useful commands:
+
+```bash
+cd app/backend
+pytest
+```
+
+```bash
+cd app/frontend
+npm run build
+```
+
+## Submission Checklist
+
+- Source code: frontend, backend, database integration, AI agents, API, config, and deploy resources are included.
+- README: project description, links, architecture, setup, run, and product usage are included.
+- Architecture: see [architecture.md](./architecture.md).
+- AI logs: see [AI-LOG_Manual/sessions.jsonl](./AI-LOG_Manual/sessions.jsonl).
+- Journal, worklog, pitch deck, and evaluation evidence are included.
+
+## Notes
+
+This project is a course build/demo. The AI assistant must not be treated as an official admissions decision-maker. High-stakes admissions, scholarship, or policy claims should be verified by VinUni admissions staff.
 ## How To Use The Product
 
 1. Open the frontend live URL or local frontend dev server.

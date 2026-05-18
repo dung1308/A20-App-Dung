@@ -6,7 +6,7 @@ Tài liệu này tổng hợp kết quả đánh giá, evidence từ toàn bộ 
 
 ## Live Deployment Evidence
 
-- Frontend production: `https://spirited-manifestation-production.up.railway.app/`
+- Frontend production: `https://a20-app-124.up.railway.app/`
 - Backend production: `https://a20-app-dung-production.up.railway.app/`
 - Backend health endpoint: `https://a20-app-dung-production.up.railway.app/health`
 - Database: Railway PostgreSQL, configured through `DATABASE_URL`.
