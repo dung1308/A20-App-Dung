@@ -1,0 +1,660 @@
+[
+  {
+    "section_index": 1,
+    "title": "Chương Trình Cử Nhân Khoa Học Dữ Liệu",
+    "paragraphs": [
+      "Mục tiêu chung của chương trình là nuôi dưỡng và phát triển các nhà lãnh đạo trẻ trong ngành khoa học dữ liệu với:",
+      "Điều này sẽ giúp sinh viên đóng góp với tư cách là các nhà khoa học dữ liệu, thể hiện sự sáng tạo, đổi mới, lãnh đạo và tính chuyên nghiệp.",
+      "Chương trình Đại học Khoa học Dữ liệu đặt ra các mục tiêu giáo dục như sau: trong vài năm kể từ khi tốt nghiệp, đa số sinh viên của chúng tôi sẽ thể hiện xuất sắc ở (i) các chương trình sau đại học hàng đầu; hoặc (ii) các vị trí lãnh đạo kỹ thuật hoặc quản lý trong các ngành công nghiệp hoặc lĩnh vực dựa trên công nghệ; hoặc (iii) theo đuổi các dự án khởi nghiệp. Trong các vai trò này, họ sẽ:",
+      "Sinh viên, trong vai trò những nhà khoa học dữ liệu, nên có khả năng:",
+      "Ngoài ra, với tư cách là những chuyên gia, sinh viên nên có:",
+      "STT",
+      "KHỐI KIẾN THỨC",
+      "* Sinh viên phải hoàn thành tối thiểu 120 tín chỉ để tốt nghiệp. Sinh viên được học tối đa 135 tín chỉ trong khung thời gian theo quy định mà không phải trả thêm học phí.",
+      "Data Science Course Flow (Main track)",
+      "Data Science Course Flow (Pathway)",
+      "Xem thêm thông tin chi tiết về chương trình đào tạo ngành Kỹ thuật Điện & Máy tính của VinUni tại đây .",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn lập trình",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm cấu trúc và tổ chức chương trình, lập trình mô-đun, các chủ đề nâng cao trong lập trình hướng đối tượng (kiểu dữ liệu trừu tượng, đa hình, giao diện, trình vòng lặp), bộ sưu tập, khái niệm cơ bản về giao diện người dùng đồ họa, đệ quy, cấu trúc dữ liệu (danh sách, cây, ngăn xếp, hàng đợi, heap, cây tìm kiếm, cây cân bằng, bảng băm, đồ thị) và các thuật toán đồ thị cơ bản. Java là ngôn ngữ lập trình chính.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết : Nhập môn lập trình",
+      "Mô tả môn học : Khóa học này cung cấp một cái nhìn tổng quan về khoa học dữ liệu và các quy trình cũng như chuỗi công việc liên quan đến khoa học dữ liệu – bao gồm các chủ đề cốt lõi từ việc thu thập và quản lý dữ liệu đến khám phá dữ liệu và ứng dụng trong kinh doanh. Ngoài ra, khóa học cũng đề cập đến các vấn đề quan trọng khác như bền vững, đạo đức, và phát triển kinh doanh linh hoạt và nhanh nhẹn. Khóa học này cũng nhấn mạnh tư duy đa ngành bằng cách giới thiệu một số nghiên cứu điển hình từ các lĩnh vực khác nhau và làm việc qua một dự án điển hình.",
+      "4 credits",
+      "Pre-requisites : Introduction to Data Science",
+      "Course Description :",
+      "This course covers the major programming tools used in Data Science. This includes libraries within Python and the R programming language. Python libraries include those used in data preprocessing, managing data tables and data pipelines, dataflow programming on GPUs, visualisation and scientific computing. Some R counterparts to these are covered. Major components of the R development environment are also taught including documentation and external integration. Some newer programming languages will be briefly introduced.",
+      "4 tỉn chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, thuật toán và cấu trúc dữ liệu",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về tổ chức máy tính, lập trình hệ thống và giao diện phần cứng/phần mềm. Các chủ đề bao gồm tập lệnh, số học máy tính, thiết kế đường dẫn dữ liệu, định dạng dữ liệu, chế độ đánh địa chỉ, phân cấp bộ nhớ bao gồm bộ nhớ đệm và bộ nhớ ảo, thiết bị I/O, hệ thống I/O dựa trên bus và kiến ​​trúc đa lõi. Học sinh sẽ được học lập trình hợp ngữ và thiết kế bộ xử lý RISC.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, thuật toán và cấu trúc dữ liệu",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các chủ đề về kiểu dữ liệu trừu tượng, hàm trừu tượng, giao diện, ôn tập lại đệ quy, biểu thức chính quy và ngữ pháp. Môn học này đề cập đến các trình tạo trình phân tích cú pháp, tính đồng thời, an toàn luồng, lập trình cho ổ cắm và kết nối mạng, hàng đợi và truyền tin nhắn, đa luồng, khóa và đồng bộ hóa, ánh xạ và bộ lọc, luồng và sự lười biếng. Khóa học giới thiệu lĩnh vực quản lý thông tin và dữ liệu cũng như cách thiết kế phần mềm để cải thiện việc quản lý dữ liệu. Nó bao gồm kiểm tra, đánh giá mã, kiểm soát phiên bản, thiết kế thông số kỹ thuật, gỡ lỗi và phát triển giao diện người dùng đồ họa phức tạp",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Tổ chức máy tính",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm lập trình hệ thống, thiết kế và triển khai hệ điều hành giới thiệu. Các vấn đề cơ bản của hệ điều hành, cụ thể là cấu trúc, đồng thời, lập lịch, đồng bộ hóa, quản lý bộ nhớ, hệ thống tập tin, bảo mật và kết nối mạng đều được đề cập. Khóa học giới thiệu tính toán song song và phân tán.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn lập trình, Xác suất thống kê",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm những hướng chính trong trí tuệ nhân tạo, bao gồm cách tiếp cận trí tuệ nhân tạo qua biểu tượng và kết nối, thuật toán tìm kiếm trạng thái vào tối ưu dựa trên sinh học, mạng Bayes, ứng dụng lập trình logic và thuật toán suy luận cho bài toán logic. Đi sâu vào khóa học, sinh viên sẽ học các cách tiếp cận khác nhau để biểu diễn sự không chắc chắn, làm quen với lý thuyết quyết định, lên kế hoạch và ra quyết định với sự không chắc chắn, và học cách ứng dụng trí tuệ nhân tạo vào các vấn đề khác nhau. Khóa học này cũng giới thiệu các vấn đề đạo đức xã hội của trí tuệ nhân tạo.",
+      "3 tín chỉ",
+      "Điều Kiện Tiên quyết : Lập Trình Khoa Học Dữ Liệu",
+      "Mô tả Khóa Học :",
+      "Khóa học này xem xét việc ứng dụng khoa học dữ liệu trong bối cảnh rộng lớn hơn liên quan đến các bên liên quan và xã hội, bao gồm các tiêu chuẩn hoặc hạn chế pháp lý, kinh tế, môi trường, văn hóa và đạo đức. Những điều này sẽ được khám phá qua các ví dụ nghiên cứu đáng chú ý đã hình thành sự đồng thuận hiện tại, cũng như đánh giá các luật pháp và tiêu chuẩn quốc gia và quốc tế. Các vấn đề về công bằng, quyền riêng tư và an ninh sẽ được điều tra thêm. Những vấn đề này sẽ được định nghĩa và giới thiệu phương pháp đánh giá và duy trì chúng. Các phát triển trong tương lai và phương pháp cho việc học liên tục cũng được trình bày.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Lý thuyết tính toán",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm bốn kỹ thuật thiết kế thuật toán chính (thuật toán tham lam, chia để trị, quy hoạch động và luồng mạng) và các kỹ thuật thuật toán cho các vấn đề khó giải quyết, bao gồm xác định các trường hợp đặc biệt có cấu trúc, thuật toán gần đúng và phương pháp phỏng đoán tìm kiếm cục bộ. Các ứng dụng được lấy từ các hệ thống và mạng, trí tuệ nhân tạo, thị giác máy tính, khai phá dữ liệu và sinh học tính toán",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Đại số tuyến tính, Xác suất thống kê, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các nguyên tắc và thuật toán để biến dữ liệu huấn luyện thành dự đoán tự động một cách hiệu quả. Trong đó bao gồm các chủ đề như biểu diễn, quá khớp, tính tổng quát, phân cụm, phân lớp, các vấn đề gợi ý, mô hình xác suất, học tăng cường; và các phương pháp như máy vectơ hỗ trợ và mạng lưới thần kinh/học sâu.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, Thuật toán và cấu trúc dữ liệu",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về các hệ thống cơ sở dữ liệu quan hệ và noSQL. Các chủ đề được đề cập bao gồm mô hình quan hệ, đại số quan hệ, mô hình mối quan hệ thực thể, thiết kế lược đồ, biểu mẫu thông thường, SQL, lập chỉ mục, sắp xếp, toán tử quan hệ, tối ưu hóa truy vấn, giao dịch, kiểm soát đồng thời, khôi phục, thiết kế cơ sở dữ liệu cũng như các khái niệm và thuật toán để xây dựng Hệ thống Quản lý Dữ liệu.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Học máy, Đại số tuyến tính, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật",
+      "Mô tả khóa học:",
+      "Khóa học này dạy giới thiệu về thị giác máy tính. Mục tiêu của thị giác máy tính là tính toán các thuộc tính của thế giới chúng ta – hình dạng 3D của môi trường, chuyển động của vật thể, tên người hoặc vật – thông qua phân tích hình ảnh hoặc video kỹ thuật số. Khóa học bao gồm nhiều chủ đề, bao gồm tái tạo 3D, phân vùng hình ảnh, nhận dạng đối tượng và thuật toán thị giác từ Internet, cũng như các kỹ thuật thuật toán, tối ưu hóa và học máy quan trọng, chẳng hạn như cắt đồ thị, bình phương tối thiểu phi tuyến và học sâu . Khóa học này nhấn mạnh kinh nghiệm thực hành về thị giác máy tính và một số dự án lập trình lớn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tổ chức máy tính",
+      "Mô tả khóa học:",
+      "Khóa học này dạy kiến thức mạng cơ bản với trọng tâm là Internet. Ví dụ về các chủ đề bao gồm: World Wide Web, Email và mạng ngang hàng, truyền dữ liệu và mã hóa dữ liệu, chuyển mạch kênh so với gói, công nghệ mạng cục bộ, định tuyến và chuyển mạch, kiểm soát tắc nghẽn, bảo mật mạng, mạng không dây và đa phương tiện. Mặc dù trọng tâm sẽ là Internet nhưng các mô-đun ứng dụng trên mạng di động 4G/5G, WiFi (802.11) và Bluetooth sẽ được trình bày.",
+      "Tối thiểu 1 tín chỉ",
+      "Điều kiện tiên quyết: Quyết định bởi giảng viên",
+      "Khóa học cho dự án: Tổ chức máy tính, Thiết kế thuật toán, Hệ điều hành, Trí tuệ  nhân tạo, Học máy, Tương tác người máy, Rô-bốt, An ninh mạng, Khai phá dữ liệu và dữ liệu lớn .",
+      "Mô tả khóa học:",
+      "Sinh viên làm việc với nhóm liên ngành trong một bài toán liên quan đến khóa học hướng dẫn bởi giảng viên.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn lập trình, Xác suất thống kê, Khai phá dữ liệu và phân tích dữ liệu lớn",
+      "Mô tả khóa học:",
+      "Khóa học này dạy các kỹ thuật và thuật toán để tạo trực quan hóa hiệu quả các bộ dữ liệu lớn và phân tích của chúng, dựa trên các nguyên tắc từ thiết kế đồ họa, nghệ thuật thị giác, tâm lý học nhận thức và khoa học nhận thức. Ngoài việc tham gia thảo luận trên lớp, sinh viên sẽ phải hoàn thành một số bài tập phân tích dữ liệu ngắn và thiết kế trực quan cũng như một dự án cuối cùng. Các công cụ trực quan hóa dữ liệu như Tableau được coi là bài tập trong phòng thí nghiệm.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Học máy, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật",
+      "Mô tả khóa học:",
+      "Khóa học này dạy giới thiệu về  xử lý ngôn ngữ tự nhiên, mục tiêu khóa học để giúp máy tính có thể sử dụng ngôn ngữ con người làm đầu vào, đầu ra hoặc cả hai. Thông tin khóa học bao gồm dịch máy, trợ lý hội thoại tự động và tìm kiếm Internet. Một số chủ để bao gồm tóm tắt văn bản, dịch máy, phân tích cảm xúc và trích xuất thông tin và các phương pháp để xử lý các hiện tượng như phân tích cú pháp, định hướng cảm giác từ, phân tích diễn ngôn, thiếu sót và giải pháp.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật, Toán rời rạc",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các chủ đề về hiểu biết kỹ thuật và xã hội về cách thức và lý do tại sao bảo mật và quyền riêng tư lại quan trọng, cách suy nghĩ đối kháng, cách nên (và không nên) thiết kế hệ thống và sản phẩm. Các chủ đề bao gồm xác thực người dùng, mật mã, phần mềm độc hại, kinh tế hành vi trong bảo mật, yếu tố con người trong bảo mật, quyền riêng tư và ẩn danh, kênh bên, mồi nhử và lừa dối cũng như mô hình đối kháng. Các hệ thống và cuộc tấn công trong thế giới thực, bao gồm Bitcoin, Stuxnet, vi phạm của nhà bán lẻ, thiết bị y tế cấy ghép và ứng dụng sức khỏe đều được bảo vệ. Khóa học thảo luận về các vấn đề xã hội và đạo đức trong an ninh mạng.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Đại số tuyến tính, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật, Học máy",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khía cạnh thống kê của khai phá dữ liệu, phân tích hiệu quả các bộ dữ liệu lớn. Trong đó bao gồm quá trình xây dựng và giải thích các mô hình thống kê khác nhau phù hợp với các vấn đề phát sinh trong các ứng dụng khoa học và kinh doanh. Các chủ đề bao gồm chuẩn bị dữ liệu để khai phá và diễn giải dữ liệu cũng như biểu diễn kiến thức từ phân tích dữ liệu lớn. Bài tập được thực hiện bằng cách sử dụng một hoặc nhiều khai phá dữ liệu.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Lý thuyết tính toán, Đại số tuyến tính",
+      "Mô tả khóa học:",
+      "Đây là khóa học giới thiệu về Mật mã học. Các chủ đề bao gồm hàm một chiều, mã hóa, chữ ký số, tạo số giả ngẫu nhiên, không tri thức và các giao thức cơ bản. Trọng tâm sẽ là các khái niệm cơ bản và xây dựng với chứng minh về bảo mật dựa trên các định nghĩa và giả định chính xác.",
+      "Không tính tín chỉ",
+      "Điều kiện tiên quyết: Quyết định bởi bộ môn và đại diện phía công ty thực tập",
+      "Mô tả khóa học:",
+      "Sinh viên giải quyết một vấn đề do giảng viên và công ty hoặc tổ chức cùng xác định. Các vấn đề cần phải ở cấp độ cao hơn và thiết kế các vấn đề yêu cầu sinh viên làm việc theo nhóm và tham gia vào các giai đoạn khác nhau của hoạt động công ty trong học kỳ thực tập.",
+      "6 tín chỉ",
+      "Điều kiện tiên quyết: Thực tập, Quyết định bởi giảng viên hướng dẫn",
+      "Mô tả khóa học:",
+      "Sinh viên giải quyết một vấn đề do giảng viên hướng dẫn xác định và áp dụng kiến thức từ quá trình thực tập và các khóa học mà sinh viên đã hoàn thành.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Không",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khái niệm, kỹ thuật và thuật toán của toán học rời rạc, chú trọng vào tập hợp và kỹ thuật chứng minh, hàm số và quan hệ, lý thuyết số, tổ hợp, xác suất, logic, lý thuyết đồ thị và bảo mật cơ bản.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Xác suất Thống kê",
+      "Mô tả khóa học:",
+      "Khóa học này dạy các chủ đề nâng cao về xác suất thống kê. Chủ đề bao gồm các quá trình ngẫu nhiên, sự hội tụ của các quá trình ngẫu nhiên, Chuỗi Markov, thống kê Bayes, hồi quy phi tuyến."
+    ],
+    "list_items": [
+      "Tổng quan chương trình đào tạo",
+      "Cấu trúc chương trình học",
+      "Mô tả khóa học",
+      "hiểu biết về các nguyên lý lý thuyết của máy tính, thống kê và quản lý dữ liệu để hỗ trợ xuyên suốt quá trình học tập,",
+      "kinh nghiệm với các kỹ thuật khoa học dữ liệu hiện tại và khả năng tạo ra giá trị từ dữ liệu,",
+      "hiểu về vai trò của họ trong tổ chức và trong xã hội rộng lớn về quản lý dữ liệu và sử dụng nó một cách có hiệu quả.",
+      "Thể hiện sự thành thạo với nguyên lý khoa học dữ liệu và kiến thức về các phương pháp máy tính hoặc thống kê cụ thể, cũng như là cơ sở xuyên suốt quá trình học;",
+      "Hình thành ý tưởng, thiết kế và hiện thực hóa các sản phẩm, hệ thống và dịch vụ, đồng thời tuân thủ các tiêu chuẩn hoặc ràng buộc về kinh tế, môi trường, văn hóa, an toàn và đạo đức;",
+      "Khám phá và áp dụng kiến thức mới, và phát triển các công cụ mới cho việc thực hành khoa học dữ liệu và phát triển đường quá trình lý dữ liệu;",
+      "Nhạy bén với bối cảnh chuyên nghiệp và xã hội, cam kết hành động đạo đức, luôn học suốt đời và sẵn sàng cho sự nghiệp học thuật trong tương lai, nếu họ muốn;",
+      "Trở thành những nhà lãnh đạo có tư duy kinh doanh, người giao tiếp hiệu quả và người ra quyết định sáng suốt với tư cách là thành viên của các nhóm đa ngành, hỗ trợ môi trường hợp tác và hòa nhập;",
+      "Tương tác với cộng đồng, nghề nghiệp, quốc gia và thế giới.",
+      "Thu thập, quản lý, khám phá và phân tích các bộ dữ liệu lớn hoặc phức tạp để cung cấp thông tin về các vấn đề cụ thể trong tổ chức hoặc lĩnh vực khoa học;",
+      "Thực hiện điều này bằng cách sử dụng phương pháp phát triển linh hoạt và tư duy khởi nghiệp;",
+      "Thiết kế, triển khai, đánh giá và duy trì một quy trình xử lý dữ liệu bằng cách sử dụng các công cụ tiêu chuẩn;",
+      "Áp dụng lý thuyết máy tính và thống kê phù hợp và các nguyên tắc phát triển phần mềm khi giải quyết vấn đề khoa học dữ liệu;",
+      "Sử dụng trực quan hóa và giao tiếp hiệu quả cho nhiều ngữ cảnh chuyên nghiệp khác nhau.",
+      "Nhận biết trách nhiệm chuyên nghiệp và đưa ra nhận định có kiến thức trong thực hành khoa học dữ liệu dựa trên các yếu tố pháp lý, đạo đức, quyền riêng tư và an ninh;",
+      "Hoạt động hiệu quả như một thành viên hoặc lãnh đạo của một nhóm tham gia vào các hoạt động phù hợp với chuyên ngành của chương trình."
+    ],
+    "links": [
+      {
+        "text": "Tổng quan chương trình đào tạo",
+        "href": "https://cecs.vinuni.edu.vn/vi/bac-dai-hoc/chuong-trinh-cu-nhan-khoa-hoc-du-lieu/#tabs-00"
+      },
+      {
+        "text": "Cấu trúc chương trình học",
+        "href": "https://cecs.vinuni.edu.vn/vi/bac-dai-hoc/chuong-trinh-cu-nhan-khoa-hoc-du-lieu/#tabs-01"
+      },
+      {
+        "text": "Mô tả khóa học",
+        "href": "https://cecs.vinuni.edu.vn/vi/bac-dai-hoc/chuong-trinh-cu-nhan-khoa-hoc-du-lieu/#tabs-02"
+      },
+      {
+        "text": "đây",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/03/20240905_Curriculum-Frameowork_BSDS_Cohort-5_AY24-25_vF.pdf"
+      }
+    ],
+    "images": [
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/DS-Main.jpg"
+      },
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/DS-Path.jpg"
+      }
+    ],
+    "tables": [
+      [
+        [
+          "T ên chương trình",
+          "Cử nhân Khoa học dữ liệu"
+        ],
+        [
+          "Thời gian đào tạo",
+          "Sẽ được hoàn thành trong 4 năm toàn thời gian"
+        ],
+        [
+          "Tổng số tín chỉ",
+          "Lựa chọn 1 – 1 Ngành chính: 120 tín chỉ Lựa chọn 2: Ngành chính về Khoa học dữ liệu + chuyên ngành phụ về Kinh doanh cơ bản, Tài chính, Tiếp thị, Truyền thông, Quản lý chăm sóc sức khỏe, Thông tin chăm sóc sức khỏe cho Kỹ sư hoặc các chuyên ngành phụ khác: 135 tín chỉ"
+        ]
+      ],
+      [
+        [
+          "STT",
+          "KHỐI KIẾN THỨC",
+          "SỐ TÍN CHỈ",
+          "PHÂN BỔ TÍN CHỈ (%)"
+        ],
+        [
+          "I",
+          "GIÁO DỤC ĐẠI CƯƠNG",
+          "31",
+          "25.8%"
+        ],
+        [
+          "I.1",
+          "Khởi nghiệp và Đổi mới sáng tạo",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.2",
+          "Tư duy lãnh đạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.3",
+          "Trách nhiệm công dân",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.4",
+          "Đạo đức",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.5",
+          "Học tập qua phục vụ cộng đồng",
+          "45 giờ",
+          ""
+        ],
+        [
+          "I.6",
+          "Làm việc với tư duy và trí tuệ",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.7",
+          "Làm việc với công nghệ",
+          "",
+          ""
+        ],
+        [
+          "I.8",
+          "Làm việc cùng người khác",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.9",
+          "Làm việc cùng bản thân",
+          "90 giờ",
+          ""
+        ],
+        [
+          "I.10",
+          "Khám phá Việt Nam",
+          "11",
+          "9.2%"
+        ],
+        [
+          "I.11",
+          "Phát triển bền vững và công dân toàn cầu",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.12",
+          "Nghệ thuật sáng tạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "II",
+          "GIÁO DỤC QUỐC PHÒNG",
+          "",
+          ""
+        ],
+        [
+          "III",
+          "GIÁO DỤC CHUYÊN NGHIỆP",
+          "89",
+          "74.2%"
+        ],
+        [
+          "III.1",
+          "Kiến thức cơ sở ngành",
+          "24",
+          "20.0%"
+        ],
+        [
+          "III.2",
+          "Khiến thức cơ sở chuyên ngành",
+          "29",
+          "24.2%"
+        ],
+        [
+          "III.3",
+          "Môn tự chọn ngành",
+          "21",
+          "17.5%"
+        ],
+        [
+          "III.4",
+          "Môn tự chọn tự do",
+          "7",
+          "5.8%"
+        ],
+        [
+          "III.5",
+          "Kiến thức chuyên ngành phụ (Tuỳ chọn)",
+          "15*",
+          ""
+        ],
+        [
+          "III.6",
+          "Đồ án môn học",
+          "2",
+          "1.7%"
+        ],
+        [
+          "III.7",
+          "Trao đổi học tập/Thực tập",
+          "640 giờ",
+          ""
+        ],
+        [
+          "III.8",
+          "Đồ án tốt nghiệp",
+          "6",
+          "5.0%"
+        ],
+        [
+          "",
+          "TỔNG",
+          "120 (135) *",
+          "100 %"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 2,
+    "title": "Thông tin chương trình đào tạo",
+    "paragraphs": [
+      "Mục tiêu chung của chương trình là nuôi dưỡng và phát triển các nhà lãnh đạo trẻ trong ngành khoa học dữ liệu với:",
+      "Điều này sẽ giúp sinh viên đóng góp với tư cách là các nhà khoa học dữ liệu, thể hiện sự sáng tạo, đổi mới, lãnh đạo và tính chuyên nghiệp.",
+      "Chương trình Đại học Khoa học Dữ liệu đặt ra các mục tiêu giáo dục như sau: trong vài năm kể từ khi tốt nghiệp, đa số sinh viên của chúng tôi sẽ thể hiện xuất sắc ở (i) các chương trình sau đại học hàng đầu; hoặc (ii) các vị trí lãnh đạo kỹ thuật hoặc quản lý trong các ngành công nghiệp hoặc lĩnh vực dựa trên công nghệ; hoặc (iii) theo đuổi các dự án khởi nghiệp. Trong các vai trò này, họ sẽ:",
+      "Sinh viên, trong vai trò những nhà khoa học dữ liệu, nên có khả năng:",
+      "Ngoài ra, với tư cách là những chuyên gia, sinh viên nên có:"
+    ],
+    "list_items": [
+      "hiểu biết về các nguyên lý lý thuyết của máy tính, thống kê và quản lý dữ liệu để hỗ trợ xuyên suốt quá trình học tập,",
+      "kinh nghiệm với các kỹ thuật khoa học dữ liệu hiện tại và khả năng tạo ra giá trị từ dữ liệu,",
+      "hiểu về vai trò của họ trong tổ chức và trong xã hội rộng lớn về quản lý dữ liệu và sử dụng nó một cách có hiệu quả.",
+      "Thể hiện sự thành thạo với nguyên lý khoa học dữ liệu và kiến thức về các phương pháp máy tính hoặc thống kê cụ thể, cũng như là cơ sở xuyên suốt quá trình học;",
+      "Hình thành ý tưởng, thiết kế và hiện thực hóa các sản phẩm, hệ thống và dịch vụ, đồng thời tuân thủ các tiêu chuẩn hoặc ràng buộc về kinh tế, môi trường, văn hóa, an toàn và đạo đức;",
+      "Khám phá và áp dụng kiến thức mới, và phát triển các công cụ mới cho việc thực hành khoa học dữ liệu và phát triển đường quá trình lý dữ liệu;",
+      "Nhạy bén với bối cảnh chuyên nghiệp và xã hội, cam kết hành động đạo đức, luôn học suốt đời và sẵn sàng cho sự nghiệp học thuật trong tương lai, nếu họ muốn;",
+      "Trở thành những nhà lãnh đạo có tư duy kinh doanh, người giao tiếp hiệu quả và người ra quyết định sáng suốt với tư cách là thành viên của các nhóm đa ngành, hỗ trợ môi trường hợp tác và hòa nhập;",
+      "Tương tác với cộng đồng, nghề nghiệp, quốc gia và thế giới.",
+      "Thu thập, quản lý, khám phá và phân tích các bộ dữ liệu lớn hoặc phức tạp để cung cấp thông tin về các vấn đề cụ thể trong tổ chức hoặc lĩnh vực khoa học;",
+      "Thực hiện điều này bằng cách sử dụng phương pháp phát triển linh hoạt và tư duy khởi nghiệp;",
+      "Thiết kế, triển khai, đánh giá và duy trì một quy trình xử lý dữ liệu bằng cách sử dụng các công cụ tiêu chuẩn;",
+      "Áp dụng lý thuyết máy tính và thống kê phù hợp và các nguyên tắc phát triển phần mềm khi giải quyết vấn đề khoa học dữ liệu;",
+      "Sử dụng trực quan hóa và giao tiếp hiệu quả cho nhiều ngữ cảnh chuyên nghiệp khác nhau.",
+      "Nhận biết trách nhiệm chuyên nghiệp và đưa ra nhận định có kiến thức trong thực hành khoa học dữ liệu dựa trên các yếu tố pháp lý, đạo đức, quyền riêng tư và an ninh;",
+      "Hoạt động hiệu quả như một thành viên hoặc lãnh đạo của một nhóm tham gia vào các hoạt động phù hợp với chuyên ngành của chương trình."
+    ],
+    "links": [],
+    "images": [],
+    "tables": [
+      [
+        [
+          "T ên chương trình",
+          "Cử nhân Khoa học dữ liệu"
+        ],
+        [
+          "Thời gian đào tạo",
+          "Sẽ được hoàn thành trong 4 năm toàn thời gian"
+        ],
+        [
+          "Tổng số tín chỉ",
+          "Lựa chọn 1 – 1 Ngành chính: 120 tín chỉ Lựa chọn 2: Ngành chính về Khoa học dữ liệu + chuyên ngành phụ về Kinh doanh cơ bản, Tài chính, Tiếp thị, Truyền thông, Quản lý chăm sóc sức khỏe, Thông tin chăm sóc sức khỏe cho Kỹ sư hoặc các chuyên ngành phụ khác: 135 tín chỉ"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 3,
+    "title": "Phân bổ chương trình",
+    "paragraphs": [
+      "STT",
+      "KHỐI KIẾN THỨC",
+      "* Sinh viên phải hoàn thành tối thiểu 120 tín chỉ để tốt nghiệp. Sinh viên được học tối đa 135 tín chỉ trong khung thời gian theo quy định mà không phải trả thêm học phí.",
+      "Data Science Course Flow (Main track)",
+      "Data Science Course Flow (Pathway)",
+      "Xem thêm thông tin chi tiết về chương trình đào tạo ngành Kỹ thuật Điện & Máy tính của VinUni tại đây ."
+    ],
+    "list_items": [],
+    "links": [
+      {
+        "text": "đây",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/03/20240905_Curriculum-Frameowork_BSDS_Cohort-5_AY24-25_vF.pdf"
+      }
+    ],
+    "images": [
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/DS-Main.jpg"
+      },
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/DS-Path.jpg"
+      }
+    ],
+    "tables": [
+      [
+        [
+          "STT",
+          "KHỐI KIẾN THỨC",
+          "SỐ TÍN CHỈ",
+          "PHÂN BỔ TÍN CHỈ (%)"
+        ],
+        [
+          "I",
+          "GIÁO DỤC ĐẠI CƯƠNG",
+          "31",
+          "25.8%"
+        ],
+        [
+          "I.1",
+          "Khởi nghiệp và Đổi mới sáng tạo",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.2",
+          "Tư duy lãnh đạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.3",
+          "Trách nhiệm công dân",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.4",
+          "Đạo đức",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.5",
+          "Học tập qua phục vụ cộng đồng",
+          "45 giờ",
+          ""
+        ],
+        [
+          "I.6",
+          "Làm việc với tư duy và trí tuệ",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.7",
+          "Làm việc với công nghệ",
+          "",
+          ""
+        ],
+        [
+          "I.8",
+          "Làm việc cùng người khác",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.9",
+          "Làm việc cùng bản thân",
+          "90 giờ",
+          ""
+        ],
+        [
+          "I.10",
+          "Khám phá Việt Nam",
+          "11",
+          "9.2%"
+        ],
+        [
+          "I.11",
+          "Phát triển bền vững và công dân toàn cầu",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.12",
+          "Nghệ thuật sáng tạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "II",
+          "GIÁO DỤC QUỐC PHÒNG",
+          "",
+          ""
+        ],
+        [
+          "III",
+          "GIÁO DỤC CHUYÊN NGHIỆP",
+          "89",
+          "74.2%"
+        ],
+        [
+          "III.1",
+          "Kiến thức cơ sở ngành",
+          "24",
+          "20.0%"
+        ],
+        [
+          "III.2",
+          "Khiến thức cơ sở chuyên ngành",
+          "29",
+          "24.2%"
+        ],
+        [
+          "III.3",
+          "Môn tự chọn ngành",
+          "21",
+          "17.5%"
+        ],
+        [
+          "III.4",
+          "Môn tự chọn tự do",
+          "7",
+          "5.8%"
+        ],
+        [
+          "III.5",
+          "Kiến thức chuyên ngành phụ (Tuỳ chọn)",
+          "15*",
+          ""
+        ],
+        [
+          "III.6",
+          "Đồ án môn học",
+          "2",
+          "1.7%"
+        ],
+        [
+          "III.7",
+          "Trao đổi học tập/Thực tập",
+          "640 giờ",
+          ""
+        ],
+        [
+          "III.8",
+          "Đồ án tốt nghiệp",
+          "6",
+          "5.0%"
+        ],
+        [
+          "",
+          "TỔNG",
+          "120 (135) *",
+          "100 %"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 4,
+    "title": "COMP1020 Lập trình hướng đối tượng và Cơ sở Dữ liệu",
+    "paragraphs": [
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn lập trình",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm cấu trúc và tổ chức chương trình, lập trình mô-đun, các chủ đề nâng cao trong lập trình hướng đối tượng (kiểu dữ liệu trừu tượng, đa hình, giao diện, trình vòng lặp), bộ sưu tập, khái niệm cơ bản về giao diện người dùng đồ họa, đệ quy, cấu trúc dữ liệu (danh sách, cây, ngăn xếp, hàng đợi, heap, cây tìm kiếm, cây cân bằng, bảng băm, đồ thị) và các thuật toán đồ thị cơ bản. Java là ngôn ngữ lập trình chính.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết : Nhập môn lập trình",
+      "Mô tả môn học : Khóa học này cung cấp một cái nhìn tổng quan về khoa học dữ liệu và các quy trình cũng như chuỗi công việc liên quan đến khoa học dữ liệu – bao gồm các chủ đề cốt lõi từ việc thu thập và quản lý dữ liệu đến khám phá dữ liệu và ứng dụng trong kinh doanh. Ngoài ra, khóa học cũng đề cập đến các vấn đề quan trọng khác như bền vững, đạo đức, và phát triển kinh doanh linh hoạt và nhanh nhẹn. Khóa học này cũng nhấn mạnh tư duy đa ngành bằng cách giới thiệu một số nghiên cứu điển hình từ các lĩnh vực khác nhau và làm việc qua một dự án điển hình.",
+      "4 credits",
+      "Pre-requisites : Introduction to Data Science",
+      "Course Description :",
+      "This course covers the major programming tools used in Data Science. This includes libraries within Python and the R programming language. Python libraries include those used in data preprocessing, managing data tables and data pipelines, dataflow programming on GPUs, visualisation and scientific computing. Some R counterparts to these are covered. Major components of the R development environment are also taught including documentation and external integration. Some newer programming languages will be briefly introduced.",
+      "4 tỉn chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, thuật toán và cấu trúc dữ liệu",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về tổ chức máy tính, lập trình hệ thống và giao diện phần cứng/phần mềm. Các chủ đề bao gồm tập lệnh, số học máy tính, thiết kế đường dẫn dữ liệu, định dạng dữ liệu, chế độ đánh địa chỉ, phân cấp bộ nhớ bao gồm bộ nhớ đệm và bộ nhớ ảo, thiết bị I/O, hệ thống I/O dựa trên bus và kiến ​​trúc đa lõi. Học sinh sẽ được học lập trình hợp ngữ và thiết kế bộ xử lý RISC.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, thuật toán và cấu trúc dữ liệu",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các chủ đề về kiểu dữ liệu trừu tượng, hàm trừu tượng, giao diện, ôn tập lại đệ quy, biểu thức chính quy và ngữ pháp. Môn học này đề cập đến các trình tạo trình phân tích cú pháp, tính đồng thời, an toàn luồng, lập trình cho ổ cắm và kết nối mạng, hàng đợi và truyền tin nhắn, đa luồng, khóa và đồng bộ hóa, ánh xạ và bộ lọc, luồng và sự lười biếng. Khóa học giới thiệu lĩnh vực quản lý thông tin và dữ liệu cũng như cách thiết kế phần mềm để cải thiện việc quản lý dữ liệu. Nó bao gồm kiểm tra, đánh giá mã, kiểm soát phiên bản, thiết kế thông số kỹ thuật, gỡ lỗi và phát triển giao diện người dùng đồ họa phức tạp",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Tổ chức máy tính",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm lập trình hệ thống, thiết kế và triển khai hệ điều hành giới thiệu. Các vấn đề cơ bản của hệ điều hành, cụ thể là cấu trúc, đồng thời, lập lịch, đồng bộ hóa, quản lý bộ nhớ, hệ thống tập tin, bảo mật và kết nối mạng đều được đề cập. Khóa học giới thiệu tính toán song song và phân tán.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn lập trình, Xác suất thống kê",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm những hướng chính trong trí tuệ nhân tạo, bao gồm cách tiếp cận trí tuệ nhân tạo qua biểu tượng và kết nối, thuật toán tìm kiếm trạng thái vào tối ưu dựa trên sinh học, mạng Bayes, ứng dụng lập trình logic và thuật toán suy luận cho bài toán logic. Đi sâu vào khóa học, sinh viên sẽ học các cách tiếp cận khác nhau để biểu diễn sự không chắc chắn, làm quen với lý thuyết quyết định, lên kế hoạch và ra quyết định với sự không chắc chắn, và học cách ứng dụng trí tuệ nhân tạo vào các vấn đề khác nhau. Khóa học này cũng giới thiệu các vấn đề đạo đức xã hội của trí tuệ nhân tạo.",
+      "3 tín chỉ",
+      "Điều Kiện Tiên quyết : Lập Trình Khoa Học Dữ Liệu",
+      "Mô tả Khóa Học :",
+      "Khóa học này xem xét việc ứng dụng khoa học dữ liệu trong bối cảnh rộng lớn hơn liên quan đến các bên liên quan và xã hội, bao gồm các tiêu chuẩn hoặc hạn chế pháp lý, kinh tế, môi trường, văn hóa và đạo đức. Những điều này sẽ được khám phá qua các ví dụ nghiên cứu đáng chú ý đã hình thành sự đồng thuận hiện tại, cũng như đánh giá các luật pháp và tiêu chuẩn quốc gia và quốc tế. Các vấn đề về công bằng, quyền riêng tư và an ninh sẽ được điều tra thêm. Những vấn đề này sẽ được định nghĩa và giới thiệu phương pháp đánh giá và duy trì chúng. Các phát triển trong tương lai và phương pháp cho việc học liên tục cũng được trình bày.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Lý thuyết tính toán",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm bốn kỹ thuật thiết kế thuật toán chính (thuật toán tham lam, chia để trị, quy hoạch động và luồng mạng) và các kỹ thuật thuật toán cho các vấn đề khó giải quyết, bao gồm xác định các trường hợp đặc biệt có cấu trúc, thuật toán gần đúng và phương pháp phỏng đoán tìm kiếm cục bộ. Các ứng dụng được lấy từ các hệ thống và mạng, trí tuệ nhân tạo, thị giác máy tính, khai phá dữ liệu và sinh học tính toán",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Đại số tuyến tính, Xác suất thống kê, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các nguyên tắc và thuật toán để biến dữ liệu huấn luyện thành dự đoán tự động một cách hiệu quả. Trong đó bao gồm các chủ đề như biểu diễn, quá khớp, tính tổng quát, phân cụm, phân lớp, các vấn đề gợi ý, mô hình xác suất, học tăng cường; và các phương pháp như máy vectơ hỗ trợ và mạng lưới thần kinh/học sâu.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, Thuật toán và cấu trúc dữ liệu",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về các hệ thống cơ sở dữ liệu quan hệ và noSQL. Các chủ đề được đề cập bao gồm mô hình quan hệ, đại số quan hệ, mô hình mối quan hệ thực thể, thiết kế lược đồ, biểu mẫu thông thường, SQL, lập chỉ mục, sắp xếp, toán tử quan hệ, tối ưu hóa truy vấn, giao dịch, kiểm soát đồng thời, khôi phục, thiết kế cơ sở dữ liệu cũng như các khái niệm và thuật toán để xây dựng Hệ thống Quản lý Dữ liệu.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Học máy, Đại số tuyến tính, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật",
+      "Mô tả khóa học:",
+      "Khóa học này dạy giới thiệu về thị giác máy tính. Mục tiêu của thị giác máy tính là tính toán các thuộc tính của thế giới chúng ta – hình dạng 3D của môi trường, chuyển động của vật thể, tên người hoặc vật – thông qua phân tích hình ảnh hoặc video kỹ thuật số. Khóa học bao gồm nhiều chủ đề, bao gồm tái tạo 3D, phân vùng hình ảnh, nhận dạng đối tượng và thuật toán thị giác từ Internet, cũng như các kỹ thuật thuật toán, tối ưu hóa và học máy quan trọng, chẳng hạn như cắt đồ thị, bình phương tối thiểu phi tuyến và học sâu . Khóa học này nhấn mạnh kinh nghiệm thực hành về thị giác máy tính và một số dự án lập trình lớn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tổ chức máy tính",
+      "Mô tả khóa học:",
+      "Khóa học này dạy kiến thức mạng cơ bản với trọng tâm là Internet. Ví dụ về các chủ đề bao gồm: World Wide Web, Email và mạng ngang hàng, truyền dữ liệu và mã hóa dữ liệu, chuyển mạch kênh so với gói, công nghệ mạng cục bộ, định tuyến và chuyển mạch, kiểm soát tắc nghẽn, bảo mật mạng, mạng không dây và đa phương tiện. Mặc dù trọng tâm sẽ là Internet nhưng các mô-đun ứng dụng trên mạng di động 4G/5G, WiFi (802.11) và Bluetooth sẽ được trình bày.",
+      "Tối thiểu 1 tín chỉ",
+      "Điều kiện tiên quyết: Quyết định bởi giảng viên",
+      "Khóa học cho dự án: Tổ chức máy tính, Thiết kế thuật toán, Hệ điều hành, Trí tuệ  nhân tạo, Học máy, Tương tác người máy, Rô-bốt, An ninh mạng, Khai phá dữ liệu và dữ liệu lớn .",
+      "Mô tả khóa học:",
+      "Sinh viên làm việc với nhóm liên ngành trong một bài toán liên quan đến khóa học hướng dẫn bởi giảng viên.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn lập trình, Xác suất thống kê, Khai phá dữ liệu và phân tích dữ liệu lớn",
+      "Mô tả khóa học:",
+      "Khóa học này dạy các kỹ thuật và thuật toán để tạo trực quan hóa hiệu quả các bộ dữ liệu lớn và phân tích của chúng, dựa trên các nguyên tắc từ thiết kế đồ họa, nghệ thuật thị giác, tâm lý học nhận thức và khoa học nhận thức. Ngoài việc tham gia thảo luận trên lớp, sinh viên sẽ phải hoàn thành một số bài tập phân tích dữ liệu ngắn và thiết kế trực quan cũng như một dự án cuối cùng. Các công cụ trực quan hóa dữ liệu như Tableau được coi là bài tập trong phòng thí nghiệm.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Học máy, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật",
+      "Mô tả khóa học:",
+      "Khóa học này dạy giới thiệu về  xử lý ngôn ngữ tự nhiên, mục tiêu khóa học để giúp máy tính có thể sử dụng ngôn ngữ con người làm đầu vào, đầu ra hoặc cả hai. Thông tin khóa học bao gồm dịch máy, trợ lý hội thoại tự động và tìm kiếm Internet. Một số chủ để bao gồm tóm tắt văn bản, dịch máy, phân tích cảm xúc và trích xuất thông tin và các phương pháp để xử lý các hiện tượng như phân tích cú pháp, định hướng cảm giác từ, phân tích diễn ngôn, thiếu sót và giải pháp.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật, Toán rời rạc",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các chủ đề về hiểu biết kỹ thuật và xã hội về cách thức và lý do tại sao bảo mật và quyền riêng tư lại quan trọng, cách suy nghĩ đối kháng, cách nên (và không nên) thiết kế hệ thống và sản phẩm. Các chủ đề bao gồm xác thực người dùng, mật mã, phần mềm độc hại, kinh tế hành vi trong bảo mật, yếu tố con người trong bảo mật, quyền riêng tư và ẩn danh, kênh bên, mồi nhử và lừa dối cũng như mô hình đối kháng. Các hệ thống và cuộc tấn công trong thế giới thực, bao gồm Bitcoin, Stuxnet, vi phạm của nhà bán lẻ, thiết bị y tế cấy ghép và ứng dụng sức khỏe đều được bảo vệ. Khóa học thảo luận về các vấn đề xã hội và đạo đức trong an ninh mạng.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Đại số tuyến tính, Lập trình hướng đối tượng, Cấu trúc dữ liệu và giải thuật, Học máy",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khía cạnh thống kê của khai phá dữ liệu, phân tích hiệu quả các bộ dữ liệu lớn. Trong đó bao gồm quá trình xây dựng và giải thích các mô hình thống kê khác nhau phù hợp với các vấn đề phát sinh trong các ứng dụng khoa học và kinh doanh. Các chủ đề bao gồm chuẩn bị dữ liệu để khai phá và diễn giải dữ liệu cũng như biểu diễn kiến thức từ phân tích dữ liệu lớn. Bài tập được thực hiện bằng cách sử dụng một hoặc nhiều khai phá dữ liệu.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Lý thuyết tính toán, Đại số tuyến tính",
+      "Mô tả khóa học:",
+      "Đây là khóa học giới thiệu về Mật mã học. Các chủ đề bao gồm hàm một chiều, mã hóa, chữ ký số, tạo số giả ngẫu nhiên, không tri thức và các giao thức cơ bản. Trọng tâm sẽ là các khái niệm cơ bản và xây dựng với chứng minh về bảo mật dựa trên các định nghĩa và giả định chính xác.",
+      "Không tính tín chỉ",
+      "Điều kiện tiên quyết: Quyết định bởi bộ môn và đại diện phía công ty thực tập",
+      "Mô tả khóa học:",
+      "Sinh viên giải quyết một vấn đề do giảng viên và công ty hoặc tổ chức cùng xác định. Các vấn đề cần phải ở cấp độ cao hơn và thiết kế các vấn đề yêu cầu sinh viên làm việc theo nhóm và tham gia vào các giai đoạn khác nhau của hoạt động công ty trong học kỳ thực tập.",
+      "6 tín chỉ",
+      "Điều kiện tiên quyết: Thực tập, Quyết định bởi giảng viên hướng dẫn",
+      "Mô tả khóa học:",
+      "Sinh viên giải quyết một vấn đề do giảng viên hướng dẫn xác định và áp dụng kiến thức từ quá trình thực tập và các khóa học mà sinh viên đã hoàn thành.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Không",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khái niệm, kỹ thuật và thuật toán của toán học rời rạc, chú trọng vào tập hợp và kỹ thuật chứng minh, hàm số và quan hệ, lý thuyết số, tổ hợp, xác suất, logic, lý thuyết đồ thị và bảo mật cơ bản.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Xác suất Thống kê",
+      "Mô tả khóa học:",
+      "Khóa học này dạy các chủ đề nâng cao về xác suất thống kê. Chủ đề bao gồm các quá trình ngẫu nhiên, sự hội tụ của các quá trình ngẫu nhiên, Chuỗi Markov, thống kê Bayes, hồi quy phi tuyến."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  }
+]

@@ -1,0 +1,650 @@
+[
+  {
+    "section_index": 1,
+    "title": "Chương Trình Cử nhân Kỹ thuật Cơ khí",
+    "paragraphs": [
+      "Thông tin chương trình đào tạo",
+      "Mục đích chung của chương trình là nuôi dưỡng và phát triển các nhà lãnh đạo trẻ trong ngành kỹ thuật cơ khí có định hướng và tầm nhìn rõ ràng, có tư duy sáng tạo và có giá trị cá nhân vững chắc; là người mở đường cho khoa học và công nghệ phát triển, nâng cao năng suất lao động, có ích cho xã hội.",
+      "Mục tiêu giáo dục của chương trình Cử nhân Kỹ thuật Cơ khí (BSME) là trong vòng vài năm sau khi tốt nghiệp, sinh viên sẽ có khả năng :",
+      "Các mục tiêu này được thiết kế nhằm giúp phần lớn sinh viên tốt nghiệp có khả năng thể hiện xuất sắc trong các chương trình sau đại học hàng đầu, đảm nhận các vị trí lãnh đạo kỹ thuật và quản lý trong các ngành công nghiệp dựa trên công nghệ hoặc các lĩnh vực khác, cũng như theo đuổi các sáng kiến khởi nghiệp. Trong những vai trò đó, họ sẽ có những đóng góp đáng kể cho Việt Nam, khu vực Đông Nam Á và toàn cầu.",
+      "* * Sinh viên phải hoàn thành tối thiểu 120 tín chỉ để tốt nghiệp. Sinh viên được học tối đa 135 tín chỉ trong khung thời gian theo quy định mà không phải trả thêm học phí.",
+      "Main Track – Mechanical Engineering",
+      "Pathway – Mechanical Engineering",
+      "Xem thêm thông tin chi tiết về chương trình đào tạo ngành Kỹ thuật Cơ khí của VinUni tại đây .",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Hóa học trung học phổ thông",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khái niệm hóa học cơ bản, chẳng hạn như khả năng phản ứng và liên kết của các phân tử, giới thiệu cơ học lượng tử và lực liên phân tử trong chất lỏng, chất rắn và chất khí. Sự quan tâm sẽ tập trung vào các khía cạnh và ứng dụng phù hợp nhất của hóa học với kỹ thuật.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giải tích II",
+      "Không nên học đồng thời với môn Đại số Tuyến tính.",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về các phương trình vi phân cơ bản và phương trình vi phân từng phần. Các chủ đề bao gồm phương trình bậc nhất (phương trình vi phân tách biến, phương trình vi phân tuyến tính, phương trình vi phân thuần nhất, phương trình vi phân hoàn chỉnh); mô hình toán học (ví dụ: tăng trưởng dân số, vận tốc cuối cùng); phương pháp định tính (độ dốc của miền, biểu đồ pha, trạng thái cân bằng và độ ổn định); phương pháp số; phương trình vi phân bậc hai (phương pháp hệ số không xác định, ứng dụng vào dao động và cộng hưởng, bài toán giá trị biên và giá trị riêng); và chuỗi Fourier. Một phần quan trọng của khóa học này liên quan đến các phương trình vi phân từng phần, chẳng hạn như phương trình nhiệt, phương trình sóng và phương trình Laplace.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý I, Giải tích II",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các nguyên tắc tĩnh học, hệ lực và trạng thái cân bằng trong kết cấu rắn. Các chủ đề bao gồm giản đồ lực ở hai và ba chiều; khung; cơ học vật rắn biến dạng; ứng suất và độ căng; lực dọc trục; lực cắt, mômen uốn và xoắn trong thanh, dầm; ứng suất nhiệt; bình áp lực; các vấn đề tĩnh không xác định; uốn dọc và đàn hồi.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý I, Giải tích II",
+      "Mô tả khóa học:",
+      "Khóa học này trình bày các định nghĩa, khái niệm và định luật nhiệt động lực học. Các chủ đề bao gồm định luật thứ nhất và thứ hai, các mối quan hệ đặc tính nhiệt động lực học và các ứng dụng cho hệ thống năng lượng hơi và khí, hệ thống làm lạnh và bơm nhiệt. Các ví dụ và vấn đề liên quan đến các khía cạnh hiện tại của việc sản xuất năng lượng và điện cũng như các vấn đề môi trường mở rộng.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và Cơ học Vật rắn, Phương trình Vi phân, Môn học song hành: Đại số Tuyến tính",
+      "Mô tả khóa học:",
+      "Khóa học này dạy động lực học Newton của hạt, hệ hạt, vật rắn, cơ học đơn giản và dao động điều hòa đơn giản. Xung lượng, động lượng, mô men động lượng, công và năng lượng. Động học hai chiều (phẳng) bao gồm chuyển động tương đối với hệ quy chiếu chuyển động. Động lực học vật rắn ba chiều cũng được giới thiệu. Thiết lập các phương trình vi phân của chuyển động và giải chúng bằng cả phương pháp giải tích và phương pháp bằng MATLAB. Bài giảng trong phòng thí nghiệm minh họa các nguyên tắc cơ bản.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và cơ học vật rắn, Môn học song hành: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này cung cấp phần giới thiệu thực tế về quy trình thiết kế cơ khí, từ việc lên ý tưởng cho đến xây dựng và thử nghiệm nguyên mẫu. Thiết kế dự án cung cấp kinh nghiệm về các kỹ năng cơ bản tạo nguyên mẫu bằng cách sử dụng máy công cụ, in 3D và cắt laser, nếu cần, cũng như hướng dẫn cơ bản về CAD và kỹ thuật phác thảo.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và Cơ học Vật rắn, Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các tính chất vật lý của chất lỏng, thủy tĩnh, các định luật bảo toàn sử dụng phân tích thể tích xét đến và sử dụng phân tích vi phân, phương trình Bernoulli, thế năng dòng, nhớt đơn giản (giải bằng phương trình Navier-Stokes), phân tích thứ nguyên, dòng chảy trong ống, các lớp biên. Giới thiệu về dòng chảy nén được.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý II, Phương trình Vi phân",
+      "Mô tả khóa học:",
+      "Sự giao thoa giữa Kỹ thuật Cơ khí và Điện tử, Cơ Điện tử liên quan đến các công nghệ cần thiết để tạo ra các hệ thống tự động. Khóa học này giới thiệu cho sinh viên các thành phần chức năng của hệ thống động lực điều khiển hiện đại. Các chủ đề bao gồm các mạch tương tự – cả thành phần thụ động và chủ động, thiết kế bộ lọc, điốt, bóng bán dẫn, MOSFET và khuếch đại công suất, điều chế độ xung lớn, truyền tải – các thiết bị cơ và cơ điện như hệ thống điện từ, bánh răng xe lửa, bộ mã hóa quang học, rời rạc hóa, khử răng cưa, bộ vi xử lý và lập trình. Các thí nghiệm trong phòng thí nghiệm đạt đến đỉnh cao trong việc thiết kế, chế tạo và lập trình một phương tiện robot điều khiển bằng bộ vi xử lý. Yêu cầu các nhóm trong phòng thí nghiệm tham gia vào một cuộc thi đối với toàn bộ lớp học.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và Cơ học Vật rắn",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về nhiều đặc tính và ứng xử của vật liệu kỹ thuật cũng như mối tương quan đến hiệu suất cơ học. Tập trung vào các trạng thái tổng quát của ứng suất và biến dạng, độ đàn hồi và các hiệu ứng tải trọng kết hợp. Các tiêu chí hư hỏng bao gồm độ dẻo, độ gãy và độ mỏi được phát triển. Phần giới thiệu chung về cách tiếp cận chức năng/ràng buộc/mục tiêu đối với việc lựa chọn vật liệu liên quan đến thiết kế cơ khí được cung cấp với các hệ thống vật liệu gồm kim loại, polyme, gốm sứ và/hoặc vật liệu tổng hợp. Tổng quan chung về xử lý vật liệu sẽ được trình bày tương ứng vật liệu được lựa chọn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn Kỹ thuật, Ngôn ngữ Lập trình",
+      "Mô tả khóa học:",
+      "Đây là khóa học dự án thiết kế liên ngành có sự tham gia của sinh viên từ các chương trình khoa học máy tính và kỹ thuật khác nhau. Trong khóa học này, sinh viên sẽ áp dụng phương pháp thiết kế tổng thể về Hệ thống Vật lý Thông minh có thể nhận thức, suy luận và hành động theo môi trường của mình. Khóa học này bao gồm các chủ đề về thuật toán, cảm biến, cơ cấu chấp hành, năng lượng và cơ học. Sinh viên sẽ tìm hiểu giá trị và sự tương quan giữa lý thuyết, mô phỏng và triển khai vật lý, đồng thời làm quen với các kỹ thuật tạo mẫu nhanh, gỡ lỗi hệ thống, làm việc nhóm, kỹ năng lãnh đạo, quản lý thời gian và cách phổ biến công việc tới nhiều đối tượng hơn thông qua các trang wiki .",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm việc phân tích và thiết kế các bộ phận và hệ thống thiết bị di chuyển. Tập trung vào ô tô. Động cơ, hộp số, hệ thống truyền động, phanh và khí động lực học sẽ được thảo luận. Khóa học sử dụng các tư duy nguyên bản và áp dụng chúng vào các hệ thống cụ thể. Khóa học mang tính định lượng cao, sử dụng các phương pháp thực nghiệm và phân tích.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết:",
+      "Mô tả khóa học:",
+      "Khóa học này cung cấp các cách để phân tích các hệ thống sản xuất về nguồn nguyên liệu và lưu trữ, luồng thông tin, khả năng cũng như thời gian và khoảng thời gian của các sự kiện. Các chủ đề bao gồm các mô hình xác suất, hàng tồn kho và xếp hàng, dự báo, tối ưu hóa, phân tích quy trình và các hệ thống tuyến tính và hệ thống động; lập kế hoạch theo luồng, đặc điểm tắc nghẽn, chiến thuật đệm và quy mô sản xuất hàng loạt, lập kế hoạch theo mùa và động lực hoạt động của hệ thống sản xuất. Khóa học này cũng bao gồm quá trình tự động hóa, CAD/CAM/CAE và CIMS",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các tính năng chính của chuyển đổi năng lượng bằng tua-bin gió. Nhấn mạnh vào đặc tính của lớp ranh khí quyển, động lực học của tuabin gió trục ngang và dự đoán hiệu suất. Tác động về mặt kết cấu, cân nhắc về hệ thống truyền lực, địa điểm và quy hoạch trang trại gió.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các chủ đề sau: sự ổn định và không ổn định trong quá trình dẫn nhiệt; đối lưu cưỡng bức và đối lưu tự do; dòng bên ngoài và bên trong; truyền nhiệt bức xạ; và các bộ trao đổi nhiệt.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Phương trình Vi phân, Đại số Tuyến tính, Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học dạy ứng xử động lực học của các hệ thống cơ khí: mô hình hóa, kỹ thuật phân tích và ứng dụng; dao động của hệ thống tự do bậc nhất và hệ thống tự do bậc cao; Hệ thống điều khiển phản hồi. Mô phỏng máy tính và nghiên cứu thực nghiệm về hệ thống rung và hệ thống điều khiển.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khái niệm hệ thống truyền động điện khí hóa, Năng lượng cho Giao thông vận tải; tác động môi trường, APU cho Xe điện Hybrid, Mô hình hóa các thiết bị phân chia công suất cho xe hybrid, Phân cấp điều khiển phương tiện và quản lý năng lượng, mô hình hóa và phân tích hệ thống truyền động hybrid điện nối tiếp, Thiết bị và động cơ điện tử công suất, mô hình hóa và phân tích hệ thống truyền động hybrid phân tách, các vấn đề về mô hình hóa và điều khiển pin, các vấn đề thiết kế chính và xem xét xe hybrid.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này tập trung vào cơ khí lốp và cung cấp hiểu biết cơ bản về kiểm soát phản hồi, xử lý phương tiện và hiệu suất lái xe thông qua việc phát triển, phân tích và giải thích quan trọng về các mô hình phương tiện/hệ thống.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Nhiệt động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này đề cập đến phương pháp phân tích bài toán kỹ thuật và phân tích hiệu suất của Động cơ Đốt trong. Các chủ đề bao gồm nhiệt động lực học, quá trình đốt cháy, Trao đổi nhiệt, ma sát và các yếu tố khác ảnh hưởng đến công suất, hiệu suất và khí thải của động cơ, đặc tính thiết kế và vận hành của các loại động cơ khác nhau.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết:",
+      "Mô tả khóa học:",
+      "Khóa học này kết hợp bài giảng và phòng thí nghiệm về chu trình phát triển sản phẩm mới: thiết kế vòng lặp dựa trên nguyên mẫu, thử nghiệm, phản hồi của người tiêu dùng và những hạn chế do sản xuất hàng loạt đặt ra. Khóa học hướng dẫn sinh viên các phương pháp xác định khái niệm sản phẩm cho các thiết kế máy có tiềm năng thương mại. Các nhóm thiết kế sẽ thực hiện phân tích thị trường và khám phá không gian sở hữu trí tuệ xung quanh ý tưởng của họ và nhanh chóng biến chúng thành nguyên mẫu cuối cùng thông qua sản xuất kỹ thuật số (ví dụ: tệp CAD 3D được thể hiện thông qua in hoặc gia công bằng robot); hướng dẫn nâng cao về các công cụ này được cung cấp và tiếp thị định lượng sẽ được sử dụng làm phản hồi. Nguyên mẫu ở giai đoạn đầu sẽ tiến triển thành các thiết kế phức tạp hơn. Các cân nhắc về việc tăng quy mô (chi phí, giá cả, công cụ) cho sản xuất hàng loạt sẽ được tính đến, cũng như phân tích định lượng các thiết kế máy móc cho tiện ích mong muốn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng",
+      "Mô tả khóa học:",
+      "Khóa học này dạy các phương pháp cơ bản về Sản xuất bồi bồi, các phương pháp in 3D, bao gồm lắng đọng dựa trên ép đùn, in thạch bản lập thể, nấu chảy trên nền bột và lắng đọng dựa trên phương pháp phun. Trau dồi bộ kỹ năng thiết kế-sản xuất bồi bồi bằng các phương pháp CAD và CAM để tạo ra các bản in 3D thành công.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Hệ thống Động lực học và Điều khiển",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm việc phân tích và thiết kế các hệ thống tuyến tính trong cả miền tần số và thời gian. Khóa học bao gồm một phòng thí nghiệm kiểm tra mô hình hóa và kiểm soát các quá trình động lực học tiêu biểu. Các khía cạnh miền tần số được phân tích thông qua các phép biến đổi Laplace, hàm truyền, quỹ tích nghiệm và các phương pháp tần số phản hồi. Các khía cạnh miền thời gian được phân tích thông qua các mô hình không gian trạng thái, tính ổn định, khả năng kiểm soát, khả năng quan sát, phản hồi trạng thái và người quan sát.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng, Trao đổi Nhiệt",
+      "Mô tả khóa học:",
+      "Khóa học này xem xét kỹ lưỡng công nghệ của các hệ thống năng lượng sẽ được chấp nhận trong một thế giới phải đối mặt với biến đổi khí hậu toàn cầu, ô nhiễm cục bộ và nguồn cung cấp dầu suy giảm. Trọng tâm là các nguồn năng lượng tái tạo (gió, mặt trời, sinh khối), nhưng các nguồn không phát thải carbon khác (hạt nhân) và các nguồn carbon thấp hơn (nhà máy kết hợp tua bin khí, pin nhiên liệu) cũng được nghiên cứu. Cả thiết bị và hệ thống tổng thể đều được phân tích",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng, Trao đổi Nhiệt",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về các quá trình đốt cháy và phát lửa, nhấn mạnh vào động lực học của chất lỏng cơ bản, sự truyền nhiệt và khối lượng cũng như các quá trình phản ứng-động học chi phối tốc độ đốt cháy. Các chủ đề bao gồm nhiệt hóa học, động học, cháy trong buồng đốt, nguyên liệu trộn sẵn theo tầng và khuếch tán cháy, và quá trình đốt cháy nhỏ giọt. Các chủ đề tùy chọn có thể bao gồm các hệ thống đốt phức tạp, dòng cháy hỗn loạn, pin nhiên liệu hoặc quá trình đốt cháy chất rắn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết:",
+      "Mô tả khóa học:",
+      "Khóa học này sẽ tập trung vào phân tích, thiết kế và sản xuất các hệ thống năng lượng tái tạo (mặt trời, gió, hạt nhân, thủy điện và địa nhiệt, v.v.), tập trung vào việc tìm hiểu những thách thức quan trọng về vật liệu cũng như những thách thức về thiết kế và sản xuất của Hệ thống Năng lượng Bền vững.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý I",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm tĩnh điện, ứng xử của vật liệu trong điện trường, mạch điện một chiều (DC), từ trường, định luật Faraday, mạch điện xoay chiều (AC) và sóng điện từ.",
+      "2 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý II (Điện từ), Giải tích II",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm vật lý của các hiện tượng dao động và sóng, bao gồm dao động cưỡng bức và cộng hưởng, sóng cơ, sóng âm, sóng điện từ, sóng dừng, hiệu ứng Doppler, phân cực, phản xạ và truyền sóng, giao thoa, nhiễu xạ, quang hình học và dụng cụ quang học, tính chất sóng của hạt, hạt trong hố thế năng, sự phát xạ và hấp thụ ánh sáng, và đường hầm lượng tử."
+    ],
+    "list_items": [
+      "Tổng quan chương trình đào tạo",
+      "Cấu trúc chương trình học",
+      "Mô tả khóa học",
+      "Vận dụng kiến thức nền tảng về kỹ thuật cơ khí, cùng với kiến thức chuyên sâu trong một lĩnh vực tập trung, để giải quyết toàn diện các vấn đề kỹ thuật và xã hội trong môi trường nghề nghiệp, công nghiệp hoặc học thuật nâng cao;",
+      "Hình thành ý tưởng, thiết kế và hiện thực hóa các sản phẩm, hệ thống và dịch vụ, đồng thời tuân thủ các tiêu chuẩn và ràng buộc về kinh tế, môi trường, văn hóa, an toàn và đạo đức trong môi trường nghề nghiệp hoặc nghiên cứu;",
+      "Trở thành những nhà lãnh đạo với tư duy khởi nghiệp, tư duy phản biện và sáng tạo, có khả năng giao tiếp hiệu quả và ra quyết định có cơ sở, đồng thời là thành viên tích cực trong các nhóm làm việc đa ngành, góp phần xây dựng môi trường làm việc cộng tác và hòa nhập;",
+      "Khám phá và ứng dụng tri thức mới, tích cực học tập suốt đời để phát triển chuyên môn trong lĩnh vực kỹ thuật cơ khí;",
+      "Chủ động kết nối và đóng góp cho cộng đồng, ngành nghề, quốc gia và toàn cầu.",
+      "Khả năng xác định, xây dựng và giải quyết các vấn đề kỹ thuật phức tạp bằng cách áp dụng các nguyên lý kỹ thuật, khoa học và toán học;",
+      "Khả năng áp dụng thiết kế kỹ thuật để tạo ra các giải pháp đáp ứng các nhu cầu cụ thể có xem xét đến các vấn đề sức khỏe cộng đồng, an toàn và phúc lợi, cũng như các yếu tố toàn cầu, văn hóa, xã hội, môi trường và kinh tế;",
+      "Khả năng giao tiếp hiệu quả với nhiều đối tượng khác nhau;",
+      "Khả năng nhận biết trách nhiệm đạo đức và nghề nghiệp trong các tình huống kỹ thuật và đưa ra các đánh giá sáng suốt, có xem xét tới tác động của các giải pháp kỹ thuật trong bối cảnh toàn cầu, kinh tế, môi trường và xã hội;",
+      "Khả năng hoạt động nhóm hiệu quả, khả năng lãnh đạo, tạo ra một môi trường hợp tác và hòa nhập, thiết lập các mục tiêu, lập kế hoạch nhiệm vụ và đáp ứng các mục tiêu;",
+      "Khả năng thực hiện và phát triển thí nghiệm theo yêu cầu, phân tích dữ liệu và đánh giá kỹ thuật về kết quả thực nghiệm để đưa ra kết luận phù hợp;",
+      "Khả năng tiếp thu và áp dụng kiến thức mới khi cần thiết, sử dụng các chiến lược học tập phù hợp;",
+      "Tư duy khởi nghiệp và nhận biết tầm quan trọng của các giá trị truyền thống, niềm tự hào dân tộc và nhận thức toàn cầu."
+    ],
+    "links": [
+      {
+        "text": "Tổng quan chương trình đào tạo",
+        "href": "https://cecs.vinuni.edu.vn/vi/bac-dai-hoc/chuong-trinh-cu-nhan-ky-thuat-co-khi/#tabs-00"
+      },
+      {
+        "text": "Cấu trúc chương trình học",
+        "href": "https://cecs.vinuni.edu.vn/vi/bac-dai-hoc/chuong-trinh-cu-nhan-ky-thuat-co-khi/#tabs-01"
+      },
+      {
+        "text": "Mô tả khóa học",
+        "href": "https://cecs.vinuni.edu.vn/vi/bac-dai-hoc/chuong-trinh-cu-nhan-ky-thuat-co-khi/#tabs-02"
+      },
+      {
+        "text": "đây",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/06/20240905_CurriculumFramework_BSME_Cohort-5_AY24-25_vF.pdf"
+      }
+    ],
+    "images": [
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/ME-Main.png"
+      },
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/ME-Path.png"
+      }
+    ],
+    "tables": [
+      [
+        [
+          "Tên chương trình",
+          "Cử nhân Khoa học Kỹ thuật Cơ khí"
+        ],
+        [
+          "Thời gian đào tạo",
+          "Hoàn thành trong 4 năm học toàn thời gian"
+        ],
+        [
+          "Tổng số tín chỉ",
+          "Lựa chọn 1: 1 Chuyên ngành chính với 120 tín chỉ Lựa chọn 2 Chuyên ngành chính + chuyên ngành phụ về Robotics/ Thiết kế sản phẩm/ Khởi nghiệp hoặc chuyên ngành phụ khác: 135 tín chỉ"
+        ]
+      ],
+      [
+        [
+          "STT",
+          "KHỐI KIẾN THỨC",
+          "SỐ TÍN CHỈ",
+          "PHÂN BỔ TÍN CHỈ (%)"
+        ],
+        [
+          "I",
+          "GIÁO DỤC ĐẠI CƯƠNG",
+          "31",
+          "25.4%"
+        ],
+        [
+          "I.1",
+          "Khởi nghiệp và Đổi mới sáng tạo",
+          "4",
+          "3.1%"
+        ],
+        [
+          "I.2",
+          "Tư duy lãnh đạo",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.3",
+          "Trách nhiệm công dân",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.4",
+          "Đạo đức",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.5",
+          "Học tập qua phục vụ cộng đồng",
+          "45 giờ",
+          ""
+        ],
+        [
+          "I.6",
+          "Làm việc với tư duy và trí tuệ",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.7",
+          "Làm việc với công nghệ",
+          "",
+          "1.6%"
+        ],
+        [
+          ".I8",
+          "Làm việc cùng người khác",
+          "4",
+          "3.1%"
+        ],
+        [
+          "I.9",
+          "Làm việc cùng bản thân",
+          "90 giờ",
+          ""
+        ],
+        [
+          "I.10",
+          "Khám phá Việt Nam",
+          "11",
+          "8.5%"
+        ],
+        [
+          "I.11",
+          "Phát triển bền vững và công dân toàn cầu",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.12",
+          "Nghệ thuật sáng tạo",
+          "2",
+          "1.6%"
+        ],
+        [
+          "II",
+          "GIÁO DỤC CHUYÊN NGHIỆP",
+          "89",
+          "74.4%"
+        ],
+        [
+          "II.1",
+          "Kiến thức cơ sở ngành",
+          "39",
+          "30.2%"
+        ],
+        [
+          "II.2",
+          "Kiến thức cơ sở chuyên ngành",
+          "17",
+          "13.2%"
+        ],
+        [
+          "II.3",
+          "Kiến thức chuyên ngành (bắt buộc)",
+          "15",
+          "11.6%"
+        ],
+        [
+          "II.4",
+          "Kiến thức chuyên ngành (tự chọn)",
+          "12",
+          "9.3%"
+        ],
+        [
+          "II.5",
+          "Kiến thức tự chọn tự do (Phụ*)",
+          "15*",
+          "5.4%"
+        ],
+        [
+          "II.6",
+          "Trao đổi học tập/Thực tập",
+          "640 giờ (Non-credit)",
+          ""
+        ],
+        [
+          "II.7",
+          "Đồ án tốt nghiệp",
+          "6",
+          "4.7%"
+        ],
+        [
+          "",
+          "Tổng",
+          "120 (135*)",
+          "100%"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 2,
+    "title": "",
+    "paragraphs": [
+      "Thông tin chương trình đào tạo",
+      "Mục đích chung của chương trình là nuôi dưỡng và phát triển các nhà lãnh đạo trẻ trong ngành kỹ thuật cơ khí có định hướng và tầm nhìn rõ ràng, có tư duy sáng tạo và có giá trị cá nhân vững chắc; là người mở đường cho khoa học và công nghệ phát triển, nâng cao năng suất lao động, có ích cho xã hội.",
+      "Mục tiêu giáo dục của chương trình Cử nhân Kỹ thuật Cơ khí (BSME) là trong vòng vài năm sau khi tốt nghiệp, sinh viên sẽ có khả năng :",
+      "Các mục tiêu này được thiết kế nhằm giúp phần lớn sinh viên tốt nghiệp có khả năng thể hiện xuất sắc trong các chương trình sau đại học hàng đầu, đảm nhận các vị trí lãnh đạo kỹ thuật và quản lý trong các ngành công nghiệp dựa trên công nghệ hoặc các lĩnh vực khác, cũng như theo đuổi các sáng kiến khởi nghiệp. Trong những vai trò đó, họ sẽ có những đóng góp đáng kể cho Việt Nam, khu vực Đông Nam Á và toàn cầu."
+    ],
+    "list_items": [
+      "Vận dụng kiến thức nền tảng về kỹ thuật cơ khí, cùng với kiến thức chuyên sâu trong một lĩnh vực tập trung, để giải quyết toàn diện các vấn đề kỹ thuật và xã hội trong môi trường nghề nghiệp, công nghiệp hoặc học thuật nâng cao;",
+      "Hình thành ý tưởng, thiết kế và hiện thực hóa các sản phẩm, hệ thống và dịch vụ, đồng thời tuân thủ các tiêu chuẩn và ràng buộc về kinh tế, môi trường, văn hóa, an toàn và đạo đức trong môi trường nghề nghiệp hoặc nghiên cứu;",
+      "Trở thành những nhà lãnh đạo với tư duy khởi nghiệp, tư duy phản biện và sáng tạo, có khả năng giao tiếp hiệu quả và ra quyết định có cơ sở, đồng thời là thành viên tích cực trong các nhóm làm việc đa ngành, góp phần xây dựng môi trường làm việc cộng tác và hòa nhập;",
+      "Khám phá và ứng dụng tri thức mới, tích cực học tập suốt đời để phát triển chuyên môn trong lĩnh vực kỹ thuật cơ khí;",
+      "Chủ động kết nối và đóng góp cho cộng đồng, ngành nghề, quốc gia và toàn cầu.",
+      "Khả năng xác định, xây dựng và giải quyết các vấn đề kỹ thuật phức tạp bằng cách áp dụng các nguyên lý kỹ thuật, khoa học và toán học;",
+      "Khả năng áp dụng thiết kế kỹ thuật để tạo ra các giải pháp đáp ứng các nhu cầu cụ thể có xem xét đến các vấn đề sức khỏe cộng đồng, an toàn và phúc lợi, cũng như các yếu tố toàn cầu, văn hóa, xã hội, môi trường và kinh tế;",
+      "Khả năng giao tiếp hiệu quả với nhiều đối tượng khác nhau;",
+      "Khả năng nhận biết trách nhiệm đạo đức và nghề nghiệp trong các tình huống kỹ thuật và đưa ra các đánh giá sáng suốt, có xem xét tới tác động của các giải pháp kỹ thuật trong bối cảnh toàn cầu, kinh tế, môi trường và xã hội;",
+      "Khả năng hoạt động nhóm hiệu quả, khả năng lãnh đạo, tạo ra một môi trường hợp tác và hòa nhập, thiết lập các mục tiêu, lập kế hoạch nhiệm vụ và đáp ứng các mục tiêu;",
+      "Khả năng thực hiện và phát triển thí nghiệm theo yêu cầu, phân tích dữ liệu và đánh giá kỹ thuật về kết quả thực nghiệm để đưa ra kết luận phù hợp;",
+      "Khả năng tiếp thu và áp dụng kiến thức mới khi cần thiết, sử dụng các chiến lược học tập phù hợp;",
+      "Tư duy khởi nghiệp và nhận biết tầm quan trọng của các giá trị truyền thống, niềm tự hào dân tộc và nhận thức toàn cầu."
+    ],
+    "links": [],
+    "images": [],
+    "tables": [
+      [
+        [
+          "Tên chương trình",
+          "Cử nhân Khoa học Kỹ thuật Cơ khí"
+        ],
+        [
+          "Thời gian đào tạo",
+          "Hoàn thành trong 4 năm học toàn thời gian"
+        ],
+        [
+          "Tổng số tín chỉ",
+          "Lựa chọn 1: 1 Chuyên ngành chính với 120 tín chỉ Lựa chọn 2 Chuyên ngành chính + chuyên ngành phụ về Robotics/ Thiết kế sản phẩm/ Khởi nghiệp hoặc chuyên ngành phụ khác: 135 tín chỉ"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 3,
+    "title": "",
+    "paragraphs": [
+      "* * Sinh viên phải hoàn thành tối thiểu 120 tín chỉ để tốt nghiệp. Sinh viên được học tối đa 135 tín chỉ trong khung thời gian theo quy định mà không phải trả thêm học phí.",
+      "Main Track – Mechanical Engineering",
+      "Pathway – Mechanical Engineering",
+      "Xem thêm thông tin chi tiết về chương trình đào tạo ngành Kỹ thuật Cơ khí của VinUni tại đây ."
+    ],
+    "list_items": [],
+    "links": [
+      {
+        "text": "đây",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/06/20240905_CurriculumFramework_BSME_Cohort-5_AY24-25_vF.pdf"
+      }
+    ],
+    "images": [
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/ME-Main.png"
+      },
+      {
+        "alt": "",
+        "src": "https://cecs.vinuni.edu.vn/wp-content/uploads/sites/5/2024/12/ME-Path.png"
+      }
+    ],
+    "tables": [
+      [
+        [
+          "STT",
+          "KHỐI KIẾN THỨC",
+          "SỐ TÍN CHỈ",
+          "PHÂN BỔ TÍN CHỈ (%)"
+        ],
+        [
+          "I",
+          "GIÁO DỤC ĐẠI CƯƠNG",
+          "31",
+          "25.4%"
+        ],
+        [
+          "I.1",
+          "Khởi nghiệp và Đổi mới sáng tạo",
+          "4",
+          "3.1%"
+        ],
+        [
+          "I.2",
+          "Tư duy lãnh đạo",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.3",
+          "Trách nhiệm công dân",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.4",
+          "Đạo đức",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.5",
+          "Học tập qua phục vụ cộng đồng",
+          "45 giờ",
+          ""
+        ],
+        [
+          "I.6",
+          "Làm việc với tư duy và trí tuệ",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.7",
+          "Làm việc với công nghệ",
+          "",
+          "1.6%"
+        ],
+        [
+          ".I8",
+          "Làm việc cùng người khác",
+          "4",
+          "3.1%"
+        ],
+        [
+          "I.9",
+          "Làm việc cùng bản thân",
+          "90 giờ",
+          ""
+        ],
+        [
+          "I.10",
+          "Khám phá Việt Nam",
+          "11",
+          "8.5%"
+        ],
+        [
+          "I.11",
+          "Phát triển bền vững và công dân toàn cầu",
+          "2",
+          "1.6%"
+        ],
+        [
+          "I.12",
+          "Nghệ thuật sáng tạo",
+          "2",
+          "1.6%"
+        ],
+        [
+          "II",
+          "GIÁO DỤC CHUYÊN NGHIỆP",
+          "89",
+          "74.4%"
+        ],
+        [
+          "II.1",
+          "Kiến thức cơ sở ngành",
+          "39",
+          "30.2%"
+        ],
+        [
+          "II.2",
+          "Kiến thức cơ sở chuyên ngành",
+          "17",
+          "13.2%"
+        ],
+        [
+          "II.3",
+          "Kiến thức chuyên ngành (bắt buộc)",
+          "15",
+          "11.6%"
+        ],
+        [
+          "II.4",
+          "Kiến thức chuyên ngành (tự chọn)",
+          "12",
+          "9.3%"
+        ],
+        [
+          "II.5",
+          "Kiến thức tự chọn tự do (Phụ*)",
+          "15*",
+          "5.4%"
+        ],
+        [
+          "II.6",
+          "Trao đổi học tập/Thực tập",
+          "640 giờ (Non-credit)",
+          ""
+        ],
+        [
+          "II.7",
+          "Đồ án tốt nghiệp",
+          "6",
+          "4.7%"
+        ],
+        [
+          "",
+          "Tổng",
+          "120 (135*)",
+          "100%"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 4,
+    "title": "CHEM2010 Hóa học",
+    "paragraphs": [
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Hóa học trung học phổ thông",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khái niệm hóa học cơ bản, chẳng hạn như khả năng phản ứng và liên kết của các phân tử, giới thiệu cơ học lượng tử và lực liên phân tử trong chất lỏng, chất rắn và chất khí. Sự quan tâm sẽ tập trung vào các khía cạnh và ứng dụng phù hợp nhất của hóa học với kỹ thuật.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giải tích II",
+      "Không nên học đồng thời với môn Đại số Tuyến tính.",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về các phương trình vi phân cơ bản và phương trình vi phân từng phần. Các chủ đề bao gồm phương trình bậc nhất (phương trình vi phân tách biến, phương trình vi phân tuyến tính, phương trình vi phân thuần nhất, phương trình vi phân hoàn chỉnh); mô hình toán học (ví dụ: tăng trưởng dân số, vận tốc cuối cùng); phương pháp định tính (độ dốc của miền, biểu đồ pha, trạng thái cân bằng và độ ổn định); phương pháp số; phương trình vi phân bậc hai (phương pháp hệ số không xác định, ứng dụng vào dao động và cộng hưởng, bài toán giá trị biên và giá trị riêng); và chuỗi Fourier. Một phần quan trọng của khóa học này liên quan đến các phương trình vi phân từng phần, chẳng hạn như phương trình nhiệt, phương trình sóng và phương trình Laplace.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý I, Giải tích II",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các nguyên tắc tĩnh học, hệ lực và trạng thái cân bằng trong kết cấu rắn. Các chủ đề bao gồm giản đồ lực ở hai và ba chiều; khung; cơ học vật rắn biến dạng; ứng suất và độ căng; lực dọc trục; lực cắt, mômen uốn và xoắn trong thanh, dầm; ứng suất nhiệt; bình áp lực; các vấn đề tĩnh không xác định; uốn dọc và đàn hồi.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý I, Giải tích II",
+      "Mô tả khóa học:",
+      "Khóa học này trình bày các định nghĩa, khái niệm và định luật nhiệt động lực học. Các chủ đề bao gồm định luật thứ nhất và thứ hai, các mối quan hệ đặc tính nhiệt động lực học và các ứng dụng cho hệ thống năng lượng hơi và khí, hệ thống làm lạnh và bơm nhiệt. Các ví dụ và vấn đề liên quan đến các khía cạnh hiện tại của việc sản xuất năng lượng và điện cũng như các vấn đề môi trường mở rộng.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và Cơ học Vật rắn, Phương trình Vi phân, Môn học song hành: Đại số Tuyến tính",
+      "Mô tả khóa học:",
+      "Khóa học này dạy động lực học Newton của hạt, hệ hạt, vật rắn, cơ học đơn giản và dao động điều hòa đơn giản. Xung lượng, động lượng, mô men động lượng, công và năng lượng. Động học hai chiều (phẳng) bao gồm chuyển động tương đối với hệ quy chiếu chuyển động. Động lực học vật rắn ba chiều cũng được giới thiệu. Thiết lập các phương trình vi phân của chuyển động và giải chúng bằng cả phương pháp giải tích và phương pháp bằng MATLAB. Bài giảng trong phòng thí nghiệm minh họa các nguyên tắc cơ bản.",
+      "4 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và cơ học vật rắn, Môn học song hành: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này cung cấp phần giới thiệu thực tế về quy trình thiết kế cơ khí, từ việc lên ý tưởng cho đến xây dựng và thử nghiệm nguyên mẫu. Thiết kế dự án cung cấp kinh nghiệm về các kỹ năng cơ bản tạo nguyên mẫu bằng cách sử dụng máy công cụ, in 3D và cắt laser, nếu cần, cũng như hướng dẫn cơ bản về CAD và kỹ thuật phác thảo.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và Cơ học Vật rắn, Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các tính chất vật lý của chất lỏng, thủy tĩnh, các định luật bảo toàn sử dụng phân tích thể tích xét đến và sử dụng phân tích vi phân, phương trình Bernoulli, thế năng dòng, nhớt đơn giản (giải bằng phương trình Navier-Stokes), phân tích thứ nguyên, dòng chảy trong ống, các lớp biên. Giới thiệu về dòng chảy nén được.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý II, Phương trình Vi phân",
+      "Mô tả khóa học:",
+      "Sự giao thoa giữa Kỹ thuật Cơ khí và Điện tử, Cơ Điện tử liên quan đến các công nghệ cần thiết để tạo ra các hệ thống tự động. Khóa học này giới thiệu cho sinh viên các thành phần chức năng của hệ thống động lực điều khiển hiện đại. Các chủ đề bao gồm các mạch tương tự – cả thành phần thụ động và chủ động, thiết kế bộ lọc, điốt, bóng bán dẫn, MOSFET và khuếch đại công suất, điều chế độ xung lớn, truyền tải – các thiết bị cơ và cơ điện như hệ thống điện từ, bánh răng xe lửa, bộ mã hóa quang học, rời rạc hóa, khử răng cưa, bộ vi xử lý và lập trình. Các thí nghiệm trong phòng thí nghiệm đạt đến đỉnh cao trong việc thiết kế, chế tạo và lập trình một phương tiện robot điều khiển bằng bộ vi xử lý. Yêu cầu các nhóm trong phòng thí nghiệm tham gia vào một cuộc thi đối với toàn bộ lớp học.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Tĩnh học và Cơ học Vật rắn",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về nhiều đặc tính và ứng xử của vật liệu kỹ thuật cũng như mối tương quan đến hiệu suất cơ học. Tập trung vào các trạng thái tổng quát của ứng suất và biến dạng, độ đàn hồi và các hiệu ứng tải trọng kết hợp. Các tiêu chí hư hỏng bao gồm độ dẻo, độ gãy và độ mỏi được phát triển. Phần giới thiệu chung về cách tiếp cận chức năng/ràng buộc/mục tiêu đối với việc lựa chọn vật liệu liên quan đến thiết kế cơ khí được cung cấp với các hệ thống vật liệu gồm kim loại, polyme, gốm sứ và/hoặc vật liệu tổng hợp. Tổng quan chung về xử lý vật liệu sẽ được trình bày tương ứng vật liệu được lựa chọn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Nhập môn Kỹ thuật, Ngôn ngữ Lập trình",
+      "Mô tả khóa học:",
+      "Đây là khóa học dự án thiết kế liên ngành có sự tham gia của sinh viên từ các chương trình khoa học máy tính và kỹ thuật khác nhau. Trong khóa học này, sinh viên sẽ áp dụng phương pháp thiết kế tổng thể về Hệ thống Vật lý Thông minh có thể nhận thức, suy luận và hành động theo môi trường của mình. Khóa học này bao gồm các chủ đề về thuật toán, cảm biến, cơ cấu chấp hành, năng lượng và cơ học. Sinh viên sẽ tìm hiểu giá trị và sự tương quan giữa lý thuyết, mô phỏng và triển khai vật lý, đồng thời làm quen với các kỹ thuật tạo mẫu nhanh, gỡ lỗi hệ thống, làm việc nhóm, kỹ năng lãnh đạo, quản lý thời gian và cách phổ biến công việc tới nhiều đối tượng hơn thông qua các trang wiki .",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm việc phân tích và thiết kế các bộ phận và hệ thống thiết bị di chuyển. Tập trung vào ô tô. Động cơ, hộp số, hệ thống truyền động, phanh và khí động lực học sẽ được thảo luận. Khóa học sử dụng các tư duy nguyên bản và áp dụng chúng vào các hệ thống cụ thể. Khóa học mang tính định lượng cao, sử dụng các phương pháp thực nghiệm và phân tích.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết:",
+      "Mô tả khóa học:",
+      "Khóa học này cung cấp các cách để phân tích các hệ thống sản xuất về nguồn nguyên liệu và lưu trữ, luồng thông tin, khả năng cũng như thời gian và khoảng thời gian của các sự kiện. Các chủ đề bao gồm các mô hình xác suất, hàng tồn kho và xếp hàng, dự báo, tối ưu hóa, phân tích quy trình và các hệ thống tuyến tính và hệ thống động; lập kế hoạch theo luồng, đặc điểm tắc nghẽn, chiến thuật đệm và quy mô sản xuất hàng loạt, lập kế hoạch theo mùa và động lực hoạt động của hệ thống sản xuất. Khóa học này cũng bao gồm quá trình tự động hóa, CAD/CAM/CAE và CIMS",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các tính năng chính của chuyển đổi năng lượng bằng tua-bin gió. Nhấn mạnh vào đặc tính của lớp ranh khí quyển, động lực học của tuabin gió trục ngang và dự đoán hiệu suất. Tác động về mặt kết cấu, cân nhắc về hệ thống truyền lực, địa điểm và quy hoạch trang trại gió.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các chủ đề sau: sự ổn định và không ổn định trong quá trình dẫn nhiệt; đối lưu cưỡng bức và đối lưu tự do; dòng bên ngoài và bên trong; truyền nhiệt bức xạ; và các bộ trao đổi nhiệt.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Phương trình Vi phân, Đại số Tuyến tính, Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học dạy ứng xử động lực học của các hệ thống cơ khí: mô hình hóa, kỹ thuật phân tích và ứng dụng; dao động của hệ thống tự do bậc nhất và hệ thống tự do bậc cao; Hệ thống điều khiển phản hồi. Mô phỏng máy tính và nghiên cứu thực nghiệm về hệ thống rung và hệ thống điều khiển.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm các khái niệm hệ thống truyền động điện khí hóa, Năng lượng cho Giao thông vận tải; tác động môi trường, APU cho Xe điện Hybrid, Mô hình hóa các thiết bị phân chia công suất cho xe hybrid, Phân cấp điều khiển phương tiện và quản lý năng lượng, mô hình hóa và phân tích hệ thống truyền động hybrid điện nối tiếp, Thiết bị và động cơ điện tử công suất, mô hình hóa và phân tích hệ thống truyền động hybrid phân tách, các vấn đề về mô hình hóa và điều khiển pin, các vấn đề thiết kế chính và xem xét xe hybrid.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này tập trung vào cơ khí lốp và cung cấp hiểu biết cơ bản về kiểm soát phản hồi, xử lý phương tiện và hiệu suất lái xe thông qua việc phát triển, phân tích và giải thích quan trọng về các mô hình phương tiện/hệ thống.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Nhiệt động lực học",
+      "Mô tả khóa học:",
+      "Khóa học này đề cập đến phương pháp phân tích bài toán kỹ thuật và phân tích hiệu suất của Động cơ Đốt trong. Các chủ đề bao gồm nhiệt động lực học, quá trình đốt cháy, Trao đổi nhiệt, ma sát và các yếu tố khác ảnh hưởng đến công suất, hiệu suất và khí thải của động cơ, đặc tính thiết kế và vận hành của các loại động cơ khác nhau.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết:",
+      "Mô tả khóa học:",
+      "Khóa học này kết hợp bài giảng và phòng thí nghiệm về chu trình phát triển sản phẩm mới: thiết kế vòng lặp dựa trên nguyên mẫu, thử nghiệm, phản hồi của người tiêu dùng và những hạn chế do sản xuất hàng loạt đặt ra. Khóa học hướng dẫn sinh viên các phương pháp xác định khái niệm sản phẩm cho các thiết kế máy có tiềm năng thương mại. Các nhóm thiết kế sẽ thực hiện phân tích thị trường và khám phá không gian sở hữu trí tuệ xung quanh ý tưởng của họ và nhanh chóng biến chúng thành nguyên mẫu cuối cùng thông qua sản xuất kỹ thuật số (ví dụ: tệp CAD 3D được thể hiện thông qua in hoặc gia công bằng robot); hướng dẫn nâng cao về các công cụ này được cung cấp và tiếp thị định lượng sẽ được sử dụng làm phản hồi. Nguyên mẫu ở giai đoạn đầu sẽ tiến triển thành các thiết kế phức tạp hơn. Các cân nhắc về việc tăng quy mô (chi phí, giá cả, công cụ) cho sản xuất hàng loạt sẽ được tính đến, cũng như phân tích định lượng các thiết kế máy móc cho tiện ích mong muốn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng",
+      "Mô tả khóa học:",
+      "Khóa học này dạy các phương pháp cơ bản về Sản xuất bồi bồi, các phương pháp in 3D, bao gồm lắng đọng dựa trên ép đùn, in thạch bản lập thể, nấu chảy trên nền bột và lắng đọng dựa trên phương pháp phun. Trau dồi bộ kỹ năng thiết kế-sản xuất bồi bồi bằng các phương pháp CAD và CAM để tạo ra các bản in 3D thành công.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Hệ thống Động lực học và Điều khiển",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm việc phân tích và thiết kế các hệ thống tuyến tính trong cả miền tần số và thời gian. Khóa học bao gồm một phòng thí nghiệm kiểm tra mô hình hóa và kiểm soát các quá trình động lực học tiêu biểu. Các khía cạnh miền tần số được phân tích thông qua các phép biến đổi Laplace, hàm truyền, quỹ tích nghiệm và các phương pháp tần số phản hồi. Các khía cạnh miền thời gian được phân tích thông qua các mô hình không gian trạng thái, tính ổn định, khả năng kiểm soát, khả năng quan sát, phản hồi trạng thái và người quan sát.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng, Trao đổi Nhiệt",
+      "Mô tả khóa học:",
+      "Khóa học này xem xét kỹ lưỡng công nghệ của các hệ thống năng lượng sẽ được chấp nhận trong một thế giới phải đối mặt với biến đổi khí hậu toàn cầu, ô nhiễm cục bộ và nguồn cung cấp dầu suy giảm. Trọng tâm là các nguồn năng lượng tái tạo (gió, mặt trời, sinh khối), nhưng các nguồn không phát thải carbon khác (hạt nhân) và các nguồn carbon thấp hơn (nhà máy kết hợp tua bin khí, pin nhiên liệu) cũng được nghiên cứu. Cả thiết bị và hệ thống tổng thể đều được phân tích",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Giới thiệu về Cơ học Chất lỏng, Trao đổi Nhiệt",
+      "Mô tả khóa học:",
+      "Khóa học này giới thiệu về các quá trình đốt cháy và phát lửa, nhấn mạnh vào động lực học của chất lỏng cơ bản, sự truyền nhiệt và khối lượng cũng như các quá trình phản ứng-động học chi phối tốc độ đốt cháy. Các chủ đề bao gồm nhiệt hóa học, động học, cháy trong buồng đốt, nguyên liệu trộn sẵn theo tầng và khuếch tán cháy, và quá trình đốt cháy nhỏ giọt. Các chủ đề tùy chọn có thể bao gồm các hệ thống đốt phức tạp, dòng cháy hỗn loạn, pin nhiên liệu hoặc quá trình đốt cháy chất rắn.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết:",
+      "Mô tả khóa học:",
+      "Khóa học này sẽ tập trung vào phân tích, thiết kế và sản xuất các hệ thống năng lượng tái tạo (mặt trời, gió, hạt nhân, thủy điện và địa nhiệt, v.v.), tập trung vào việc tìm hiểu những thách thức quan trọng về vật liệu cũng như những thách thức về thiết kế và sản xuất của Hệ thống Năng lượng Bền vững.",
+      "3 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý I",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm tĩnh điện, ứng xử của vật liệu trong điện trường, mạch điện một chiều (DC), từ trường, định luật Faraday, mạch điện xoay chiều (AC) và sóng điện từ.",
+      "2 tín chỉ",
+      "Điều kiện tiên quyết: Vật lý II (Điện từ), Giải tích II",
+      "Mô tả khóa học:",
+      "Khóa học này bao gồm vật lý của các hiện tượng dao động và sóng, bao gồm dao động cưỡng bức và cộng hưởng, sóng cơ, sóng âm, sóng điện từ, sóng dừng, hiệu ứng Doppler, phân cực, phản xạ và truyền sóng, giao thoa, nhiễu xạ, quang hình học và dụng cụ quang học, tính chất sóng của hạt, hạt trong hố thế năng, sự phát xạ và hấp thụ ánh sáng, và đường hầm lượng tử."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  }
+]

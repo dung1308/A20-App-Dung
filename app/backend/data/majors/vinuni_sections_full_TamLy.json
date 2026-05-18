@@ -1,0 +1,1554 @@
+[
+  {
+    "section_index": 1,
+    "title": "Cử nhân Tâm lý học",
+    "paragraphs": [
+      "Chương trình Cử nhân Tâm lý học được thiết kế để cung cấp cho sinh viên nền tảng kiến thức vững chắc về khoa học xã hội và nhân văn nói chung, và tâm lý học nói riêng, đặc biệt là trong các lĩnh vực tâm lý học xã hội, tâm lý học đường và tâm lý học tổ chức – kinh doanh. Sau khi hoàn thành chương trình, sinh viên sẽ được trang bị các kỹ năng mềm và kỹ năng chuyên môn cần thiết, tập trung vào hai lĩnh vực chính: giáo dục và kinh doanh – tổ chức.",
+      "Sinh viên có thể chọn theo một định hướng học tập cụ thể, hoặc linh hoạt học các môn từ cả hai định hướng, thay vì chỉ gắn với một định hướng duy nhất. – Tâm lý học Giáo dục – Tâm lý học Kinh doanh – Tổ chức",
+      "Phân tích tâm lý con người thông qua việc vận dụng các kiến thức và nguyên lý của Tâm lý học.",
+      "PI 2.2: Phân tích hành vi với mức độ phức tạp phù hợp, nhận diện sự tương tác giữa các yếu tố tâm lý, sinh học, xã hội và văn hóa.",
+      "PI 2.3: Phân tích sự hình thành và phát triển nhân cách dựa trên hiểu biết về tiến trình phát triển tâm lý của con người.",
+      "PI 3a.2: Vận dụng kiến thức về hệ thần kinh để đưa ra phương pháp tham vấn phù hợp với các vấn đề tâm lý – xã hội.",
+      "PI 3a.3: Thiết kế công cụ đo lường và kế hoạch tham vấn phù hợp cho các nhóm thân chủ đa dạng.",
+      "Vận dụng kiến thức Tâm lý học trong quản trị nhân sự, truyền thông, marketing và hoạt động kinh doanh. (E.X.C.E.L.)",
+      "PI 3b.2: Áp dụng kiến thức Tâm lý học để xây dựng chiến lược truyền thông và marketing trong môi trường tổ chức.",
+      "PI 3b.3: Vận dụng kiến thức Tâm lý học để nhận diện và giải quyết xung đột trong tổ chức.",
+      "Vận dụng kiến thức Tâm lý học để giải quyết các thách thức của thân chủ.",
+      "PI 3c.2: Đề xuất các giải pháp tâm lý phù hợp để hỗ trợ thân chủ vượt qua khó khăn.",
+      "PI 4a.2: Phân tích và diễn giải thông tin để xác định nhu cầu của thân chủ.",
+      "PI 4a.3: Lựa chọn và triển khai các quy trình tham vấn phù hợp, sử dụng hiệu quả các công cụ đo lường.",
+      "PI 4a.4: Đánh giá hiệu quả của các can thiệp tâm lý, không ngừng cải thiện chất lượng nhằm đạt kết quả tối ưu cho thân chủ trong môi trường giáo dục.",
+      "PLO 4b:Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học trong bối cảnh kinh doanh và tổ chức. (E.X.C.E.L.)",
+      "PI 4b.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ.",
+      "PI 4b.3: Lựa chọn và thực hiện các can thiệp tâm lý, sử dụng hiệu quả các công cụ đo lường.",
+      "PI 4b.4: Đánh giá hiệu quả của các can thiệp tâm lý, liên tục cải tiến để đạt kết quả tốt nhất cho thân chủ trong môi trường tổ chức.",
+      "PLO 4c: Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học để giải quyết thách thức của thân chủ.",
+      "PI 4c.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ.",
+      "PI 4c.3: Thực hiện các can thiệp tâm lý phù hợp và sử dụng hiệu quả các công cụ đo lường.",
+      "PI 4c.4: Đánh giá hiệu quả của các can thiệp, cải thiện chất lượng để tối ưu hóa kết quả cho thân chủ.",
+      "PLO 5: Thực hiện nghiên cứu để giải quyết vấn đề và khám phá tri thức mới trong lĩnh vực Tâm lý học.",
+      "PI 5.2: Thiết kế kế hoạch nghiên cứu với phương pháp phù hợp.",
+      "PI 5.3: Thực hiện đúng quy trình nghiên cứu bằng phương pháp khoa học.",
+      "PI 5.4: Thu thập dữ liệu và thông tin đáp ứng yêu cầu của nghiên cứu.",
+      "PI 5.5: Phân tích dữ liệu nghiên cứu một cách khoa học.",
+      "PI 5.6: Đưa ra kết luận và đề xuất các giải pháp sáng tạo để ứng dụng kết quả nghiên cứu vào thực tiễn.",
+      "PLO 6: Thể hiện khả năng tư duy phản biện, sáng tạo và giải quyết vấn đề.",
+      "PI 6.2: Đề xuất các can thiệp tâm lý sáng tạo trong bối cảnh hạn chế nguồn lực. (E.X.C.E.L.)",
+      "PI 6.3: Giải quyết có hệ thống các vấn đề thực tiễn trong lĩnh vực Tâm lý học ở cấp độ địa phương, khu vực và toàn cầu.",
+      "PLO 7: Phối hợp và dẫn dắt các nhóm đa dạng về chuyên môn và văn hóa.",
+      "PI 7.2: Thể hiện năng lực lãnh đạo và đổi mới trong môi trường nghề nghiệp. (E.X.C.E.L.)",
+      "PLO 8: Giao tiếp hiệu quả với nhiều nhóm đối tượng trong bối cảnh đa văn hóa.",
+      "PI 8.2: Thích ứng và làm việc hiệu quả trong môi trường toàn cầu hóa, tôn trọng các chuẩn mực chung và sự đa dạng văn hóa. (E.X.C.E.L.)",
+      "PLO 9: Thể hiện đạo đức nghề nghiệp và tinh thần trách nhiệm xã hội trong vai trò công dân và người làm nghề.",
+      "PI 9.2: Tuân thủ các chuẩn mực đạo đức trong thực hành Tâm lý học, nghiên cứu và hoạt động cộng đồng, thể hiện sự tôn trọng đa dạng và cam kết với trách nhiệm xã hội.",
+      "PLO 10: Liên tục tự đánh giá để nhận diện điểm mạnh, điểm cần cải thiện, chủ động đổi mới và tìm kiếm cơ hội phát triển nghề nghiệp; thể hiện tinh thần học hỏi suốt đời để thích ứng với môi trường chuyên môn không ngừng thay đổi.",
+      "PI 10.2: Chủ động tự học, lập kế hoạch làm việc và đặt mục tiêu phát triển bản thân.",
+      "PLO 11: Thể hiện tư duy khởi nghiệp, tinh thần đổi mới và chủ động tìm kiếm cơ hội phát triển.",
+      "PI 11.2: Phát triển và triển khai các giải pháp sáng tạo nhằm đáp ứng nhu cầu tâm lý mới, vận dụng kỹ năng khởi nghiệp để tạo ra tác động bền vững. (E.X.C.E.L.)",
+      "Lưu ý: Chương trình Vincore Curriculum được áp dụng cho khóa tuyển sinh từ năm 2024 trở đi, thay thế cho Chương trình Giáo dục Đại cương (GenEd Curriculum), theo Quyết định số 475/2024/QĐ-VUNI ngày 04 tháng 9 năm 2024 do Viện Khoa học và Giáo dục Khai phóng ban hành.",
+      "(**) Dành cho sinh viên quốc tế:",
+      "Các chuyên ngành thuộc chương trình Cử nhân Tâm lý học (BAP) và các học phần bắt buộc",
+      "Các danh mục dưới đây giới thiệu khung chương trình đào tạo, yêu cầu tốt nghiệp và các thông tin liên quan, áp dụng tại VinUniversity cho năm học tương ứng. Vui lòng truy cập đường linh dưới đây để xem chi tiết:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số giờ học : 165",
+      "Sau khi hoàn thành khóa học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ:",
+      "Thời lượng : 45 giờ Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Thời lượng : 45 giờ Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Thời lượng : 45 giờ Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : Tùy thuộc vào chương trình đào tạo của từng viện",
+      "Hoàn thành kỳ thực tập, sinh viên sẽ có thể:",
+      "Số tín chỉ : 3 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ: 2",
+      "Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Sau khi hoàn thành khóa học này, sinh viên có khả năng:",
+      "1. Mô tả và giải thích một “ý tưởng lớn”, có thể là một giải pháp mới cho một vấn đề, một công nghệ đột phá, hoặc một phương pháp hay cách làm việc sáng tạo.",
+      "2. Xác định những tác động của một “ý tưởng lớn” đối với cuộc sống hàng ngày hoặc môi trường chuyên nghiệp.",
+      "3. Phát triển chiến lược sử dụng “ý tưởng lớn” để cải thiện một phương pháp hiện có hoặc tạo ra phương pháp ứng dụng mới.",
+      "4. Đánh giá việc áp dụng một “ý tưởng lớn”, bao gồm đánh giá tác động tích cực, tác động tiêu cực và các chiến lược giảm thiểu cho chủ đề của năm.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khóa học này sẽ giới thiệu và giúp sinh viên khám phá nhiều góc nhìn toàn cầu về những vấn đề thời sự quan trọng. Mỗi tuần, một giảng viên hoặc diễn giả khách mời sẽ chủ trì buổi hội thảo, lựa chọn một chủ đề, giao bài đọc chuẩn bị trước và tổ chức các hoạt động trên lớp cùng sinh viên. Các vấn đề đương đại tiềm năng bao gồm: Chat GPT và AI, khủng hoảng già hóa dân số, nhập cư, toàn cầu hóa, cuộc chạy đua vào không gian mới, Công nghiệp 4.0, và nhiều vấn đề khác.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Sau khi hoàn thành khóa học này, sinh viên sẽ có khả năng:",
+      "1. Nhận diện và phân tích các vấn đề đạo đức trong nhiều lĩnh vực tương tác chuyên nghiệp và thực tế của con người.",
+      "2. Vận dụng các lý thuyết đạo đức và đưa ra lý giải hợp lý cho các tình huống khó xử về mặt đạo đức.",
+      "3. Hiểu rõ các bên liên quan về mặt đạo đức và các nghĩa vụ đạo đức theo yêu cầu của một số tiêu chuẩn/quy tắc chuyên nghiệp, cũng như cơ sở lý luận đằng sau chúng.",
+      "4. Vận dụng các lý thuyết đạo đức và đưa ra lý giải hợp lý cho các tình huống khó xử về mặt đạo đức, ngay cả khi không có tiêu chuẩn/quy tắc chuyên nghiệp nào được thiết lập.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khóa học này sẽ giới thiệu cho sinh viên những chủ đề nâng cao về lập luận, lôgic, và các vấn đề liên quan đến bằng chứng và kiểm định trong khoa học. Về lập luận diễn dịch, sinh viên sẽ được đào sâu kiến thức về tư duy phản biện, bao gồm phép tính vị từ bậc nhất (first-order predicate calculus) và lôgic modal (modal logic). Về lập luận thống kê, sinh viên sẽ được tìm hiểu các tiên đề của lý thuyết xác suất, lý thuyết xác nhận Bayesian, và các vấn đề trong việc xác nhận các lý thuyết khoa học, bao gồm các chủ đề nâng cao từ Phương pháp Giả thuyết – Diễn dịch và Thuyết Ngụy chứng.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khóa học này giới thiệu và đi sâu vào khái niệm phát triển và vai trò của tính bền vững. Khóa học sẽ tiếp cận các ý tưởng phát triển từ góc độ liên ngành và đa chiều. Nội dung khóa học nhằm mục đích trả lời các câu hỏi như: Phát triển là gì? Quá trình phát triển diễn ra như thế nào? Yếu tố nào đóng góp vào sự phát triển? Tại sao câu chuyện phát triển lại khác nhau ở cấp độ quốc gia, khu vực và toàn cầu? Bên cạnh những giải thích lý thuyết về phát triển, những hiểu biết thực tế sẽ được cung cấp thông qua việc tiếp xúc với thực tế, các nghiên cứu điển hình, tài liệu đọc đương đại và các dự án cuối khóa. Khóa học sẽ tập trung vào sự tương tác và mối quan hệ qua lại giữa môi trường và phát triển bằng cách khám phá vai trò của tính bền vững.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khi ngày càng có nhiều thông tin được số hóa, các nhà nghiên cứu có thể tận dụng sức mạnh của AI để phân tích và trực quan hóa dữ liệu một cách hiệu quả hơn, phục vụ cho việc truyền đạt thông tin. Khóa học này sẽ giới thiệu cho sinh viên những tiến bộ vượt bậc trong lĩnh vực nhân văn số, đồng thời hướng dẫn cách lập trình cho nghiên cứu cơ bản và học thuật, đặc biệt chú trọng đến khả năng ứng dụng trong các lĩnh vực như truyền thông, tâm lý học và kinh tế học.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Mục tiêu của khóa học là giới thiệu cho sinh viên về thế giới đầy thú vị của tâm lý học. Đây là một lĩnh vực vô cùng rộng lớn, bao gồm nhiều khía cạnh và chủ đề khác nhau, từ tâm lý học tiến hóa đến đạo đức con người. Mục tiêu của các chuyên nhành tâm lý học là tìm hiểu về cách tâm trí và não bộ tương tác với thế giới bên ngoài trong việc hình thành nên hành vi. Khóa học này được thiết kế để cung cấp cho sinh viên nền tảng tư duy về các vấn đề trong tâm lý học, và tổng quan về các lĩnh vực tâm lý mà sinh viên có thể lựa chọn nghiên cứu và theo đuổi sâu hơn trong tương lai.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 3",
+      "Khóa học này sẽ giới thiệu cho sinh viên những khái niệm và kỹ thuật cơ bản của phân tích thống kê. Trọng tâm của khóa học là phát triển các kỹ năng về thống kê mô tả và thống kê suy diễn, bao gồm thu thập và phân tích dữ liệu, lý thuyết xác suất, kiểm định giả thuyết và phân tích hồi quy. Sinh viên cũng sẽ được hướng dẫn sử dụng phần mềm thống kê để phân tích dữ liệu.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Khóa học này được thiết kế nhằm giới thiệu chung về các nguyên tắc và cơ chế sinh học nền tảng cho những hành vi phức tạp của con người. Những chủ đề của khóa học bao gồm: giải phẫu cấu trúc của của các tế bào thần kinh và cách chúng giao tiếp với nhau, đặc tính của tổ chức và chức năng não bộ, quá trình xử lý của hệ thống cảm giác, khoa học thần kinh nhận thức, và ảnh hưởng của thần kinh và các hormone đến sức khỏe và cảm xúc. Khóa học sẽ tập trung vào cách các phương pháp và cách tiếp cận mới đang giúp các nhà tâm lý, khoa học máy tính, nhà thống kê, kỹ sư và nhà sinh vật học đang đạt đến sự hiểu biết tích hợp về những hành vi phức tạp của con người.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Tâm lý học là ngành khoa học nghiên cứu về suy nghĩ, cảm xúc và hành vi. Trong khóa học này, sinh viên sẽ được trang bị những kỹ năng quan trọng để đánh giá các nghiên cứu trên thế giới và tự thực hiện một nghiên cứu thuộc lĩnh vực tâm lý học. Khóa học cũng giúp sinh viên tiếp cận và phân tích thông tin một cách khoa học và hiệu quả từ nhiều nguồn như các phương tiện truyền thông, chính phủ và các tổ chức. Đồng thời, khóa học cũng trang bị cho sinh viên những kiến thức cần thiết để có thể trở thành một nhà nghiên cứu hiệu quả trong lĩnh vực tâm lý học. Không chỉ dừng lại ở đó, khóa học cũng sẽ đi xa hơn trong việc hỗ trợ sinh viên có những kỹ năng tư duy phản biện và logic mang tính ứng dụng cao trong công việc và đời sống.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Tâm lý học xã hội hướng đến việc tìm hiểu cách suy nghĩ, cảm xúc và hành vi con người bị ảnh hưởng bởi sự hiện diện, dù là thật hay ngầm ẩn, của những người xung quanh. Tâm lý học xã hội cho rằng con người chịu tác động rất lớn từ các tình huống xã hội. Môn học này sẽ cung cấp cho sinh viên tổng quan những nghiên cứu và lý thuyết trong tâm lý học xã hội. Sinh viên sẽ không chỉ được học về những kết quả nghiên cứu thú vị và cấp thiết, mà còn được học về cách thức những nhà tâm lý đã khám phá ra những tri thức này. Điểm khác biệt giữa tâm lý học xã hội và những cách tiếp cận khác như triết học và lịch sử học nằm ở việc tâm lý học xã hội là một khoa học thực chứng. Nó áp dụng những phương pháp khoa học trong việc tìm hiểu về con người. Trong khóa học, sinh viên sẽ được đi sâu vào những chủ đề như thái độ, sự thuyết phục, sự tuân thủ, phục tùng, tri giác người khác, định khuôn và phân biệt đối xử, các mối quan hệ lãng mạn, sự gây hấn và những hành vi hỗ trợ xã hội. Khóa học nhấn mạnh vào sự hiểu biết của những phương pháp khoa học, kết quả nghiên cứu và những quy tắc quan trọng của lĩnh vực tâm lý học xã hội, từ đó có thể áp dụng vào đời sống cá nhân và xa hơn nữa là những vấn đề xã hội.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Khóa học này tập trung vào sự phát triển của con người qua từng giai đoạn cuộc đời. Một cách khái quát, khóa học sẽ xem xét những ảnh hưởng của yếu tố di truyền và sinh học đến sự phát triển cá nhân, những ảnh hưởng của xã hội và sự tương tác giữa hai nhóm yếu tố này. Các chủ đề cụ thể sẽ bao gồm những hành vi di truyền, khí chất, mối quan hệ cha mẹ – con cái, mối quan hệ giữa anh chị em, quan hệ bạn bè, cái tôi, trí thông minh, sự phát triển cảm xúc, và những vấn đề phát triển xã hội như hành vi chống đối xã hội, trầm cảm.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Tâm lý học nhận thức nghiên cứu cách chúng ta cảm nhận và diễn giải thông tin từ thế giới xung quanh, cách chúng ta kết hợp thông tin mới này với kinh nghiệm đã có, và cách chúng ta quyết định ứng xử với một môi trường luôn biến đổi. Mặc dù mục đích chính của khóa học là giới thiệu sinh viên đến với nghiên cứu khoa học về tâm trí, sinh viên cũng sẽ hiểu được vai trò trung tâm của nhận thức trong cuộc sống hàng ngày. Khóa học bao gồm ba mô-đun riêng biệt: Chú ý và Tri giác, Học tập và Trí nhớ, và Chức năng Nhận thức Cấp cao.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2010, PSYC2020, PSYC2030, PSYC2040, PSYC2050 Số tín chỉ: 3",
+      "Tâm lý học tư pháp là bộ môn vận dụng và thực hành tâm lý trong hệ thống luật pháp, có liên quan đến cảnh sát hoặc cơ quan thực thi pháp luật, tội phạm và hành vi phạm pháp, nghiên cứu về nạn nhân và các dịch vụ hỗ trợ, phòng xử án, các cơ sở giáo dục cải tạo hoặc trại giam. Khóa học này sẽ trải dài trên nhiều lĩnh vực khác nhau liên quan đến pháp luật và tâm lý học. Trong quá trình học, sinh viên có thể sẽ được tiếp cận với những tài liệu, hình ảnh trực quan để minh họa cho những loại hình phạm tội khác nhau mà một nhà tâm lý học/tâm thần học tư pháp sẽ làm việc cùng trong quá trình hành nghề.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2040, PSYC2050 Số tín chỉ: 3",
+      "Khóa học này sẽ cung cấp một cái nhìn tổng quan về những cột mốc quan trọng trong nghiên cứu xuyên văn hóa, đồng thời làm rõ ảnh hưởng của văn hóa đến con người và sự phát triển. Khóa học đặc biệt chú trọng đến các phương pháp tiếp cận thực nghiệm trong nghiên cứu xuyên văn hóa, đồng thời giải thích tầm quan trọng của văn hóa trong nhận thức, ngôn ngữ, cách nuôi dạy con cái, cũng như sự phát triển của trẻ em. Sinh viên sẽ hiểu được tính kết nối, sự khác biệt và đa dạng trong xã hội toàn cầu. Khóa học này cũng xem xét sự khác biệt về văn hóa xã hội trong quá trình phát triển của trẻ và những ảnh hưởng của nó khi làm việc với trẻ em và gia đình trong môi trường giáo dục và các môi trường ứng dụng khác. Sinh viên sẽ được khuyến khích áp dụng hiểu biết về các vấn đề toàn cầu để xem xét trách nhiệm của cá nhân và cộng đồng trong bối cảnh xã hội toàn cầu.Cuối cùng, sinh viên sẽ nhận ra rằng hành vi, suy nghĩ, cảm xúc, ngôn ngữ, sức khỏe và sự phát triển của chúng ta đều chịu ảnh hưởng sâu sắc từ văn hóa.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Khóa học này sẽ giới thiệu cho sinh viên những lý thuyết quan trọng nhất về nhân cách. Có rất nhiều quan điểm khác nhau về nhân cách, điều này cho thấy không có một lý thuyết thống nhất nào được công nhận rộng rãi trong lĩnh vực này. Mặc dù có nhiều quan điểm, nhưng mỗi lý thuyết đều có thể được đánh giá dựa trên các tiêu chí khoa học. Vì vậy, bên cạnh việc giúp sinh viên hiểu rõ hơn về cách các nhà lý thuyết đã hình dung và khái niệm hóa nhân cách con người, mục tiêu chính của khóa học là trang bị cho sinh viên khả năng đánh giá các lý thuyết này, từ đó xác định được những lý thuyết nào có giá trị và xứng đáng được tiếp tục nghiên cứu và phát triển.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2040, PSYC2050 Số tín chỉ: 3",
+      "Khóa học này được thiết kế để giới thiệu cho sinh viên về thực tiễn và nghề nghiệp trong lĩnh vực tâm lý học đường. Sinh viên sẽ được tìm hiểu về nền tảng của thực hành tâm lý học đường, bao gồm các khía cạnh lịch sử, pháp lý, đạo đức và đa văn hóa. Bên cạnh đó, sinh viên cũng sẽ khám phá các con đường sự nghiệp trong lĩnh vực này, đồng thời nắm vững kiến thức chuyên sâu về quá trình đào tạo, cấp chứng chỉ và bối cảnh làm việc.",
+      "Ngoài những kiến thức nền tảng, sinh viên còn được làm quen với các khái niệm về đánh giá và can thiệp trong các lĩnh vực học tập, xã hội, cảm xúc và hành vi. Khóa học kết thúc bằng phần thảo luận về những cải cách ở cấp độ hệ thống và các hướng phát triển trong tương lai của nghề. Nhìn chung, mục tiêu của khóa học là cung cấp cho sinh viên cái nhìn tổng quan về lịch sử và tình hình hiện tại của lĩnh vực tâm lý học đường.",
+      "Để hỗ trợ tối đa cho việc học tập của sinh viên, khóa học sẽ kết hợp nhiều hình thức giảng dạy đa dạng, bao gồm: bài giảng, thảo luận, thuyết trình video, hoạt động nhóm (lớn và nhỏ), và phân tích các trường hợp điển hình.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2010, PSYC2040 Số tín chỉ: 3",
+      "Khóa học này được thiết kế để cung cấp kiến thức nhập môn về tâm lý học dị thường ở trẻ em và thanh thiếu niên. Sinh viên sẽ được học về căn nguyên, yếu tố duy trì và cách thức trị liệu cho những hành vi lệch chuẩn và rối loạn cảm xúc xã hội, nhận thức ở trẻ từ góc độ phát triển. Điều này có nghĩa là chúng ta sẽ xem xét các rối loạn này trong suốt quá trình phát triển của trẻ, từ khi còn nhỏ đến thời điểm hiện tại, tập trung chú ý vào những yếu tố nguy cơ và bảo vệ, xem xét tâm bệnh học trẻ em trong bối cảnh phát triển bình thường của trẻ.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2010, PSYC2040 Số tín chỉ: 3",
+      "Khóa học này sẽ cung cấp cho sinh viên cái nhìn tổng quan về các lý thuyết chính trong tham vấn và trị liệu tâm lý. Mục tiêu của khóa học là giúp sinh viên nắm vững kiến thức về các lý thuyết và tiếp cận chủ đạo trong tham vấn, bao gồm các ý tưởng trung tâm, các kỹ thuật đi kèm và những ứng dụng của lý thuyết. Khóa học được thiết kế để giúp sinh viên đạt được hai mục tiêu học tập then chốt. Thứ nhất, sinh viên sẽ được trang bị kiến thức nền tảng về các lý thuyết tham vấn quan trọng. Thứ hai, sinh viên sẽ được học và thực hành áp dụng những kiến thức và kỹ năng trong việc định hình ca.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2040, PSYC3040 Số tín chỉ: 3",
+      "Trong khóa học này, sinh viên sẽ được trang bị kiến thức và kỹ năng để triển khai hệ thống đánh giá trẻ em một cách liên tục và hiệu quả. Sinh viên sẽ được tìm hiểu và thực hành các phương pháp đánh giá đa dạng nhằm mục đích nâng cao hiệu quả học tập của trẻ. Khóa học cũng bao gồm các nội dung về cách thức phối hợp với gia đình và đồng nghiệp trong các hoạt động đánh giá.",
+      "Đặc biệt, khóa học sẽ cung cấp thông tin và cơ hội trong việc cá nhân hóa các chiến lược đánh giá liên tục, phù hợp với từng đối tượng trẻ, bao gồm cả trẻ em song ngữ và trẻ đặc biệt. Sinh viên sẽ được làm quen với các công cụ sàng lọc và nắm vững quy trình giới thiệu đến các chuyên gia để có được những đánh giá chuyên sâu và toàn diện hơn.",
+      "Sinh viên sẽ học cách sử dụng thông tin thu thập được từ quá trình đánh giá để điều chỉnh phương pháp giảng dạy, giúp việc truyền đạt kiến thức hiệu quả hơn. Ngoài ra, sinh viên cũng sẽ được hướng dẫn cách sử dụng dữ liệu tổng hợp để đánh giá và cải thiện chất lượng giảng dạy cho từng nhóm trẻ.",
+      "Cuối cùng, sinh viên sẽ được trang bị các chiến lược để không ngừng nâng cao trình độ chuyên môn trong lĩnh vực đánh giá trẻ em. Cuối cùng, nhưng không kém phần quan trọng, sinh viên sẽ được trang bị các chiến lược để không ngừng nâng cao trình độ chuyên môn trong lĩnh vực đánh giá trẻ em.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2040, PSYC3040 Số tín chỉ: 3",
+      "Khóa học này cung cấp cái nhìn tổng quan về lĩnh vực khiếm khuyết học tập (KKHT). Trọng tâm của khóa học là tìm hiểu nguyên nhân, đặc điểm, cách đánh giá và nhu cầu học tập của học sinh có khiếm khuyết trong học tập. Khóa học sẽ đề cập đến các đặc điểm nhận thức giúp phân biệt học sinh KKHT trong các khía cạnh như sự chú ý, trí nhớ và khả năng tổ chức. Đồng thời, khóa học cũng sẽ xem xét nhu cầu học tập của học sinh trong các môn viết, đọc, toán và các kỹ năng xã hội. Nhu cầu của học sinh KKHT ở các cấp độ và hình thức giáo dục khác nhau cũng sẽ được phân tích. Khóa học cũng sẽ đề cập đến những phát triển mới nhất trong lĩnh vực, bao gồm những thay đổi trong cách hiểu về KKHT và các phương pháp xác định khác ngoài phương pháp truyền thống dựa trên sự khác biệt giữa IQ và thành tích (ví dụ: mô hình RTI).",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2040, PSYC3040 Số tín chỉ: 3",
+      "Khóa học này sẽ trang bị cho sinh viên những kiến thức và kỹ năng cần thiết về lý thuyết và thực hành tư vấn, một yếu tố then chốt trong việc cung cấp dịch vụ sức khỏe tâm thần tại trường học.",
+      "Trong suốt khóa học, sinh viên sẽ được giới thiệu các mô hình tư vấn hành vi và tư vấn hướng dẫn, không chỉ áp dụng trong môi trường trường học mà còn trong việc tương tác với gia đình học sinh. Các bài tập và hoạt động được thiết kế đặc biệt để hỗ trợ và củng cố sự hiểu biết của sinh viên về vai trò của tư vấn trong trường học.",
+      "Trọng tâm của khóa học là làm thế nào để làm việc hiệu quả và hợp tác theo nhóm, cách đánh giá và can thiệp vào các tình huống có vấn đề liên quan đến hành vi và hướng dẫn học tập.",
+      "Ngoài ra, các vấn đề liên quan đến chủng tộc, văn hóa, ngôn ngữ và sự đa dạng cũng sẽ được đề cập xuyên suốt khóa học, nhằm giúp sinh viên có cái nhìn toàn diện và nhạy bén về các yếu tố này trong quá trình tư vấn.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030 Số tín chỉ: 3",
+      "Khóa học này dành cho sinh viên sau đại học/cao học và sinh viên đại học nâng cao về các chủ đề liên quan đến lĩnh vực tâm lý học tổ chức (OP) và hành vi tổ chức (OB). Mục tiêu của khóa học là giúp sinh viên làm quen với các khái niệm, lý thuyết và vấn đề then chốt liên quan đến việc nghiên cứu và tìm hiểu OP/OB. Mặc dù khóa học chủ yếu xem xét từ góc độ tâm lý học, tức là, chúng ta giả định rằng các đơn vị hành vi cơ bản là các cá nhân, khóa học cũng kết hợp một góc nhìn đa chiều, xem xét các yếu tố ở nhiều cấp độ khác nhau. Điều này có nghĩa là khóa học không chỉ tập trung vào cá nhân mà còn xem xét các yếu tố khác như nhóm, đội ngũ, và cả tổ chức nói chung.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2050 Số tín chỉ: 3",
+      "Khóa học này tập trung vào các lý thuyết động cơ, các yếu tố bên trong và bên ngoài ảnh hưởng đến việc cá nhân đạt được mục tiêu trong công việc. Khóa học tập trung vào những quá trình nhận thức xã hội và những yếu tố môi trường kích thích những phản ứng khác nhau dẫn đến hành vi của con người. Khóa học sẽ đi sâu vào các lý thuyết về các yếu tố nhận thức ảnh hưởng đến động cơ (ví dụ: cách đặt mục tiêu, quan điểm cá nhân, niềm tin về sự kiểm soát), các quá trình cảm xúc (ví dụ: những cảm xúc phát sinh trong quá trình theo đuổi mục tiêu) và các cơ chế đánh giá (ví dụ: những giá trị ảnh hưởng đến động cơ thông qua quá trình theo đuổi mục tiêu và phát triển bản sắc). Đặc biệt, chúng ta sẽ xem xét động cơ ở cấp độ văn hóa xã hội. Điều này có nghĩa là chúng ta sẽ mở rộng khái niệm về động cơ, bao gồm cả các yếu tố thúc đẩy bên ngoài như kiến thức văn hóa và tương tác xã hội.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2050 Số tín chỉ: 3",
+      "Trong môi trường kinh doanh hiện đại, việc lấy người tiêu dùng làm trung tâm được xem là yếu tố then chốt. Cụ thể, marketing là một công cụ xoay quanh khách hàng, bắt đầu và kết thúc với người tiêu dùng – từ việc nhận diện nhu cầu đến đảm bảo mức độ hài lòng của khách hàng sau khi mua sắm. Khóa học này sẽ giúp sinh khám phá cách người tiêu dùng đưa ra quyết định mua sắm, sử dụng sản phẩm và đánh giá sản phẩm, dịch vụ. Mặc dù tất cả chúng ta đều là người tiêu dùng, nhưng cảm quan về bản thân và người khác thường không thực sự chính xác. Trong khóa học này, sinh viên sẽ sử dụng những lý thuyết trong marketing, tâm lý học và những khoa học hành vi khác để đưa ra những dự báo tốt hơn về phản ứng của người tiêu dùng với các hoạt động truyền thông khác nhau.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030 Số tín chỉ: 3",
+      "Khóa học này được thiết kế để cung cấp cho sinh viên sự hiểu biết sâu sắc về động lực nhóm và cách chúng tác động đến hành vi cá nhân và quá trình ra quyết định. Khóa học sẽ khám phá các khái niệm và lý thuyết cơ bản về động lực nhóm, bao gồm sự hình thành nhóm, mô hình giao tiếp, vai trò, chuẩn mực, sự gắn kết, xung đột và lãnh đạo. Sinh viên cũng sẽ xem xét các yếu tố khác nhau ảnh hưởng đến hành vi nhóm, chẳng hạn như văn hóa, sự đa dạng và động cơ quyền lực. Trong suốt khóa học, sinh viên sẽ tham gia vào một loạt các hoạt động học tập, bao gồm đọc tài liệu, thảo luận, nghiên cứu trường hợp và các bài tập trải nghiệm. Họ sẽ học cách áp dụng kiến thức về động lực nhóm vào các tình huống thực tế và phát triển các kỹ năng thực tế để tạo điều kiện cho các quá trình nhóm hiệu quả. Họ cũng sẽ học cách nhận biết và vượt qua các rào cản đối với giao tiếp và hợp tác hiệu quả trong các nhóm. Đến cuối khóa học, sinh viên sẽ có hiểu biết toàn diện về động lực nhóm và khả năng áp dụng kiến thức này để cải thiện hiệu suất và sự hợp tác của nhóm. Đồng thời, sinh viên cũng sẽ rèn luyện được tư duy phản biện và kỹ năng giải quyết vấn đề liên quan đến các hoạt động nhóm và quá trình ra quyết định.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030 Số tín chỉ: 3",
+      "Trong môi trường kinh doanh hiện đại, việc đảm bảo sức khỏe và an toàn cho nhân viên là yếu tố then chốt cho sự thành công của bất kỳ tổ chức nào. Sức khỏe và sự an toàn của nhân viên chịu ảnh hưởng bởi nhiều yếu tố, cả trong và ngoài công việc. Do đó, có rất nhiều cách tiếp cận khác nhau để nghiên cứu và giải quyết các vấn đề liên quan đến căng thẳng, phúc lợi và an toàn của nhân viên, ví dụ như: yếu tố con người, y tế cộng đồng, tư vấn tâm lý, luật pháp…",
+      "Tuy nhiên, trong khóa học này, chúng ta sẽ tập trung chủ yếu vào cách tiếp cận của “tâm lý học tổ chức”. Chúng ta sẽ đặc biệt chú trọng đến các yếu tố tâm lý xã hội quan trọng tại nơi làm việc, bởi vì chúng có ảnh hưởng rất lớn đến mức độ căng thẳng, phúc lợi và an toàn của nhân viên. Bằng cách tập trung vào yếu tố con người, khóa học cũng sẽ giúp sinh viên nhận thức được tầm quan trọng của việc quản lý nhân sự hiệu quả.",
+      "Sau khi hoàn thành khóa học này, sinh viên sẽ nắm vững những nguyên tắc cơ bản và kiến thức cập nhật về cách các tổ chức có thể ngăn ngừa và kiểm soát căng thẳng trong công việc, đồng thời nâng cao sức khỏe và an toàn cho đội ngũ nhân viên. Sinh viên cũng sẽ hiểu rõ hơn về các chiến lược phòng ngừa và can thiệp mà các nhà quản lý và chuyên gia nhân sự có thể sử dụng để giảm thiểu tác động tiêu cực của các yếu tố gây căng thẳng và xây dựng một môi trường làm việc lành mạnh và an toàn.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2050, PSYC3030 Số tín chỉ: 3",
+      "Khóa học này cung cấp cái nhìn tổng quan về đánh giá tâm lý, bao gồm nghiên cứu về các công cụ đo lường, xây dựng trắc nghiệm, xác minh hiệu lực thang đo, phỏng vấn lâm sàng và các loại trắc nghiệm tâm lý. Các loại trắc nghiệm cụ thể có thể được đề cập bao gồm trắc nghiệm trí thông minh, trắc nghiệm về thành tích, các bài kiểm tra tâm lý học thần kinh, các công cụ tâm lý xã hội và hành vi, các bảng kiểm kê nghề nghiệp, các công cụ tâm lý học tích cực, trắc nghiệm nhân cách, và các phương pháp phóng chiếu.",
+      "Việc theo học chương trình phụ (minor) là không bắt buộc. Tuy nhiên, lựa chọn một chương trình phụ sẽ giúp sinh viên tận dụng tối đa các khóa học đa dạng được cung cấp trên trường.",
+      "Khi cân nhắc đăng ký tham gia một chương trình phụ, sinh viên cần lưu ý một số quy định sau: Tương tự như chương trình chính (major), tất cả các khóa học nâng cao trong chương trình phụ phải được hoàn thành tại VinUni. Để tốt nghiệp trong vòng 4 năm, sinh viên cần tích lũy tối thiểu 120 tín chỉ. Nếu đăng ký thêm một chương trình phụ, tổng số tín chỉ sẽ tăng lên 135 (gồm 120 tín chỉ cho chương trình chính và 15 tín chỉ cho chương trình phụ). Sinh viên không được phép chọn hình thức Đạt/Không đạt (Pass/Fail) cho bất kỳ khóa học nào trong chương trình phụ. Đồng thời, điểm trung bình (GPA) của các môn học bắt buộc trong chương trình này phải đạt tối thiểu 2.0. Yêu cầu của hầu hết các chương trình phụ khá đơn giản. Tuy nhiên, một số chương trình phụ có thể yêu cầu học các môn học theo một trình tự nhất định, tương tự như chương trình học chính.",
+      "Sinh viên tốt nghiệp ngành Cử nhân Tâm lý học tại Viện Khoa học và Giáo dục Khai phóng- đại học VinUni sẽ được trang bị kiến thức chuyên sâu về tham vấn tâm lý trong cả lĩnh vực kinh doanh, tổ chức và học đường.",
+      "Với nền tảng kiến thức vững chắc và các kỹ năng cần thiết như kỹ năng nghiên cứu và viết, tư duy giải quyết vấn đề, cùng khả năng tư duy phản biện, tổng hợp và đánh giá thông tin, sinh viên tốt nghiệp ngành Tâm lý học có nhiều cơ hội nghề nghiệp đa dạng. Kiến thức về hành vi con người có thể ứng dụng trong nhiều lĩnh vực khác nhau.",
+      "Ngoài ra, chương trình học này cũng là một bước đệm tốt để sinh viên có thể tiếp tục học lên các bậc học cao hơn như Thạc sĩ và Tiến sĩ, không chỉ trong lĩnh vực Tâm lý học mà còn ở các ngành liên quan như Khoa học thần kinh, Y tế, Luật và Kinh doanh.",
+      "Một số định hướng nghề nghiệp phổ biến mà sinh viên có thể cân nhắc bao gồm:"
+    ],
+    "list_items": [
+      "Giới Thiệu Chung",
+      "Mục tiêu học tập",
+      "Khung Chương trình",
+      "Mô tả khóa học",
+      "Triển vọng Nghề Nghiệp",
+      "Sinh viên quốc tế bắt buộc phải học các học phần về lý luận chính trị, bao gồm: Lịch sử Đảng Cộng sản Việt Nam, Tư tưởng Hồ Chí Minh, Chủ nghĩa Xã hội Khoa học, Kinh tế Chính trị Mác – Lênin, Triết học Mác – Lênin (theo Quyết định số 494/QĐ-TTg ngày 24 tháng 6 năm 2002 của Thủ tướng Chính phủ).",
+      "Sinh viên quốc tế được miễn học phần Giáo dục Quốc phòng – An ninh, theo Thông tư số 30/2018/TT-BGDĐT do Bộ Giáo dục và Đào tạo ban hành ngày 24 tháng 12 năm 2018. Thay vào đó, sinh viên có thể lựa chọn các học phần khác thay thế như Việt Nam: Lịch sử và Văn hóa I/II, Tiếng Việt hoặc các học phần tự chọn khác để đảm bảo đủ tổng số tín chỉ yêu cầu cho tốt nghiệp — tối thiểu 120 tín chỉ đối với chương trình 4 năm và tối thiểu 180 tín chỉ đối với chương trình 6 năm.",
+      "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2023",
+      "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2024",
+      "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2025",
+      "Phân tích cách tư duy khởi nghiệp góp phần thúc đẩy đổi mới sáng tạo và tăng trưởng trong các bối cảnh doanh nghiệp, ngành công nghiệp và quốc gia.",
+      "Đánh giá vai trò đa chiều của khởi nghiệp tại Việt Nam và quốc tế, cũng như tác động của khởi nghiệp đối với kinh tế, xã hội và môi trường. Đồng thời, sinh viên sẽ được tiếp cận với các nguyên tắc quản trị của VinGroup (6 Hóa).",
+      "Đề xuất chiến lược nhằm đánh giá tư duy, giá trị và hành vi khi khởi nghiệp, qua đó phát triển tư duy khởi nghiệp ở cấp độ cá nhân cũng như tổ chức.",
+      "Phát triển các kỹ năng quan trọng như tìm kiếm và đánh giá cơ hội, chấp nhận rủi ro một cách có tính toán, giải quyết vấn đề sáng tạo, giao tiếp hiệu quả và xây dựng ảnh hưởng với các bên liên quan.",
+      "Thực hành làm việc nhóm, cùng nhau khám phá cơ hội, phát triển ý tưởng, tìm kiếm và trình bày giải pháp cho các thử thách thông qua hoạt động hackathon trong khóa học.",
+      "Nắm vững các khái niệm cơ bản về lãnh đạo, bao gồm đặc điểm, phong cách, giá trị và xu hướng lãnh đạo, đồng thời hiểu cách áp dụng những khái niệm này vào thực tế, đặc biệt là trong một bối cảnh thế giới đầy biến động như hiện nay.",
+      "Mô tả và phân tích sự khác biệt và tương đồng giữa quản lý và lãnh đạo, đồng thời đánh giá cách áp dụng chúng trong môi trường tổ chức.",
+      "Đánh giá các khía cạnh đa chiều của lãnh đạo ở Việt Nam cũng như ở môi trường quốc tế, cũng như tác động của lãnh đạo đối với môi trường làm việc, nhất l trong bối cảnh VUCA (biến động, không chắc chắn, phức tạp, mơ hồ). Sinh viên cũng sẽ được tìm hiểu sâu về sứ mệnh, tầm nhìn và giá trị cốt lõi của Vingroup.",
+      "Phát triển tư duy lãnh đạo cá nhân thông qua việc xây dựng tầm nhìn và nhận thức bản thân, hiểu quan điểm của người khác, nhận diện bối cảnh, giao tiếp hiệu quả và đưa ra quyết định sáng suốt. Ngoài ra, sinh viên cũng sẽ học cách chịu trách nhiệm, truyền cảm hứng, và xây dựng một môi trường hợp tác để hướng tới thành công chung.",
+      "Vận dụng các giá trị và kỹ năng lãnh đạo cơ bản thông qua các hoạt động trải nghiệm thực tế tại trại huấn luyện, tập trung vào việc phát triển kỹ năng lãnh đạo bản thân, làm việc nhóm và xây dựng mối quan hệ gắn kết.",
+      "Hiểu và trình bày các kiến thức cơ bản về chính sách quốc phòng và an ninh của Đảng Cộng sản Việt Nam.",
+      "Nắm vững các khái niệm cơ bản liên quan đến công tác quốc phòng và an ninh.",
+      "Thực hiện đúng các quy tắc cơ bản và kỷ luật trong tổ chức quân đội.",
+      "Thực hành các kỹ thuật và chiến thuật cơ bản trong tác chiến bộ binh.",
+      "Giải thích được lịch sử hình thành, bản chất hiện tại và mục tiêu của hệ thống pháp luật Việt Nam, bao gồm các cơ quan chủ chốt, học thuyết và nguyên tắc pháp lý nền tảng.",
+      "So sánh và phân tích sự khác biệt và tương đồng giữa quản lý hệ thống pháp luật ở Việt Nam và các quốc gia khác.",
+      "Hiểu rõ các cơ chế thực thi nghĩa vụ pháp lý, cơ sở của hình phạt và vai trò của tòa án, hội thẩm nhân dân trong hệ thống pháp luật.",
+      "Vận dụng các quy định và nguyên tắc pháp luật cơ bản để giải quyết các vấn đề pháp lý trong nhiều lĩnh vực khác nhau, đồng thời thể hiện khả năng tư duy phản biện và đánh giá đạo đức.",
+      "Xây dựng tư duy tuân thủ pháp luật, nhận thức được tầm quan trọng của việc chấp hành các chuẩn mực pháp lý trong công việc và đời sống cá nhân, qua đó nâng cao ý thức trách nhiệm pháp lý.",
+      "Hiểu rõ và giải thích các yếu tố quan trọng trong học tập qua phục vụ cộng đồng, bao gồm lợi ích, tác động, và những đặc điểm cốt lõi.",
+      "Suy ngẫm và đánh giá các vấn đề xã hội cũng như các Mục tiêu Phát triển Bền vững (SDGs) của UNESCO, gắn liền với dự án phục vụ cộng đồng được thiết kế.",
+      "Lên kế hoạch và triển khai một dự án phục vụ cộng đồng, đảm bảo tuân thủ pháp luật và quy định địa phương.",
+      "Đánh giá kết quả dự án và rút ra những bài học kinh nghiệm, đồng thời đề xuất hướng cải thiện cho những lần thực hiện tiếp theo.",
+      "Xây dựng sự đồng cảm với các thành viên trong cộng đồng địa phương, qua đó nâng cao ý thức trách nhiệm và tinh thần kết nối.",
+      "Hiểu được ý nghĩa và tầm quan trọng của tư duy sáng tạo và phản biện trong việc giải quyết vấn đề và đưa ra quyết định.",
+      "Xây dựng và phân tích các lập luận một cách logic và dựa trên bằng chứng khoa học, đồng thời biết cách nhìn nhận và đánh giá các quan điểm khác nhau.",
+      "Vận dụng tư duy sáng tạo và phản biện để tìm kiếm giải pháp mới, giải quyết các thách thức thực tế với sự hỗ trợ từ các công cụ và phương pháp hiện đại.",
+      "Kết hợp tư duy sáng tạo và phản biện vào việc phát triển ý tưởng trong môi trường làm việc để mang lại giá trị thiết thực và hiệu quả cho tổ chức.",
+      "Phát triển khả năng làm việc cá nhân cũng như làm việc nhóm, xây dựng nền tảng để nâng cao hiệu quả công việc và từ đó đóng góp cho sự phát triển chung.",
+      "Nhận biết và phân tích các vấn đề từ cuộc sống và công việc, từ đó tìm ra hướng giải quyết bằng các phương pháp thuật toán.",
+      "Phân tách vấn đề thành các bước logic và xác định các dữ liệu cần thiết để giải quyết vấn đề.",
+      "Áp dụng các cấu trúc dữ liệu và thuật toán cơ bản trong quá trình giải quyết vấn đề.",
+      "Thiết kế các thuật toán và mô hình cơ bản để giải quyết các bài toán cụ thể.",
+      "Thực hành lập trình để triển khai các giải pháp một cách hiệu quả và chính xác.",
+      "Đánh giá và tối ưu hóa các giải pháp để đạt được hiệu quả cao nhất.",
+      "Hiểu các giá trị, thái độ và nguyên tắc cơ bản của văn hóa học thuật, đồng thời nhận biết cách mà viết học thuật phản ánh những yếu tố này.",
+      "Phân biệt sự khác nhau giữa những bài viết học thuật và những bài viết  ý kiến cá nhân, từ đó áp dụng các kỹ năng như trích dẫn và diễn giải để hoàn thành bài luận học thuật đúng chuẩn.",
+      "Nhận biết sự khác biệt giữa viết học thuật và viết chuyên nghiệp về phong cách, mục đích, đối tượng độc giả, và cách trình bày.",
+      "Phát triển kỹ năng viết rõ ràng, súc tích và có cấu trúc, tập trung vào các tài liệu và tình huống quan trọng trong học thuật và công việc chuyên môn, bao gồm bài luận, bài báo, báo cáo kinh doanh, đề xuất, và bài phát biểu.",
+      "Sử dụng AI để hỗ trợ, cải thiện và chỉnh sửa bài viết trong cả môi trường học tập và công việc chuyên môn.",
+      "Rèn luyện kỹ năng tự lãnh đạo, xây dựng sự tự tin, lòng tự trọng, khả năng tự quyết và kiểm soát bản thân trong mọi tình huống.",
+      "Tự trang bị các kỹ năng thiết yếu để sẵn sàng bước vào môi trường đại học, học cách thích nghi với những thách thức từ học tập, xã hội và người khác, đồng thời phát triển tư duy học tập suốt đời.",
+      "Phát triển kỹ năng nghề nghiệp cần thiết, chuẩn bị vững vàng cho hành trình thành công trong cuộc sống và trong sự nghiệp sau này.",
+      "Tham gia tích cực vào các hoạt động cộng đồng, thể hiện tinh thần trách nhiệm xã hội, lan tỏa những giá trị tích cực và nuôi dưỡng tinh thần “trả ơn cuộc đời.”",
+      "Liên tục tự đánh giá và hoàn thiện bản thân, từ việc xây dựng CV khi nhập học, lập Kế hoạch Phát triển Cá Nhân (IDP), đến việc chuẩn bị CV trước khi tốt nghiệp, đảm bảo sự phát triển bền vững và sẵn sàng cho cuộc sống sau đại học.",
+      "Hiểu rõ các nguyên tắc cơ bản để sống khoẻ mạnh, bao gồm chế độ dinh dưỡng cân bằng, tập thể dục thường xuyên, và chăm sóc sức khoẻ tinh thần.",
+      "Xây dựng kế hoạch chăm sóc sức khoẻ cho bản thân, biết cách quản lý căng thẳng hiệu quả và duy trì sự cân bằng giữa học tập, công việc và cuộc sống.",
+      "Giữ kỷ luật với bản thân trong ăn uống, luyện tập và nghỉ ngơi, đồng thời tích cực tham gia các câu lạc bộ thể chất và tinh thần tại trường.",
+      "Nhận thức được tác động của lối sống đến sức khoẻ lâu dài, biết cách đưa ra những quyết định hợp lý để cải thiện chất lượng cuộc sống.",
+      "Lan toả tinh thần sống lành mạnh trong cộng đồng thông qua việc nghiên cứu, tổ chức chiến dịch nâng cao nhận thức, và tham gia các nhóm sinh hoạt về sức khoẻ.",
+      "Rèn luyện thói quen và kỹ năng làm việc chuyên nghiệp , giúp đạt hiệu quả cao trong công việc.",
+      "Hiểu rõ và thực hiện các mục tiêu công việc được thống nhất trước với nhà tuyển dụng hoặc người hướng dẫn.",
+      "Cải thiện kỹ năng giao tiếp, làm việc nhóm và các kỹ năng quan trọng khác , giúp sinh viên làm việc hiệu quả hơn.",
+      "Trau dồi kiến thức và kỹ năng chuyên môn theo ngành , nhằm đảm bảo đáp ứng tốt yêu cầu của vị trí thực tập và các vị trí tương tự trong tương lai.",
+      "Xây dựng mối quan hệ nghề nghiệp , mở ra cơ hội việc làm sau khi tốt nghiệp.",
+      "Hiểu rõ nền tảng triết học cơ bản của Chủ nghĩa Mác-Lênin , bao gồm chủ nghĩa duy vật biện chứng và chủ nghĩa duy vật lịch sử.",
+      "Giải thích ý nghĩa của triết học Mác-Lênin trong việc hình thành hệ tư tưởng của Nhà nước Việt Nam và vai trò của nó trong các lĩnh vực khác như lịch sử, chính trị và kinh tế.",
+      "Nhận biết đặc trưng giao thoa của triết học Việt Nam, bao gồm các yếu tố từ chủ nghĩa Mác-Lênin, Nho giáo, Phật giáo, Đạo giáo, và các dòng tư tưởng khác.",
+      "Mô tả, đánh giá và so sánh các câu trả lời khác nhau cho những câu hỏi triết học cơ bản như “Thực tại là gì?”, “Tri thức là gì?”, “Điều gì đúng và sai?”.",
+      "Hiểu và đánh giá các cách tiếp cận khác nhau về bản chất của khoa học và sự tiến bộ khoa học.",
+      "Hiểu cách thế giới kết nối và vận hành thông qua nền kinh tế chính trị toàn cầu.",
+      "Nắm được các khái niệm và lý thuyết cơ bản để phân tích nền kinh tế toàn cầu.",
+      "Hiểu sự chuyển đổi của Việt Nam trong bối cảnh kinh tế chính trị toàn cầu.",
+      "Nhận biết và đánh giá các xu hướng lớn trong kinh tế chính trị thế giới.",
+      "Hiểu tác động của sự trỗi dậy từ Trung Quốc và Ấn Độ đối với Việt Nam, ASEAN và thế giới.",
+      "Hiểu và giải thích các khái niệm cơ bản về chính trị và sự thay đổi xã hội ở Việt Nam và khu vực, đồng thời làm quen với các thuật ngữ chuyên ngành.",
+      "Hiểu vai trò quan trọng của chính trị và hệ thống chính trị trong sự phát triển kinh tế – xã hội, bao gồm cả các quan điểm của Chủ nghĩa Mác-Lênin.",
+      "Nhận thức được cách chính trị tác động đến việc quản lý kinh tế và ảnh hưởng đến sự thành công của một quốc gia.",
+      "So sánh sự phát triển của Việt Nam với các quốc gia khác trong khu vực châu Á để rút ra những bài học kinh nghiệm.",
+      "Hiểu rõ các sự kiện, nhân vật và điều kiện lịch sử dẫn đến sự hình thành và phát triển tư tưởng Hồ Chí Minh, đồng thời nhìn nhận tư tưởng này như một di sản lịch sử và một hệ thống tư tưởng sống động.",
+      "Phân tích quá trình chuyển biến của tư tưởng Hồ Chí Minh qua thời gian và ý nghĩa của nó đối với lịch sử cũng như tương lai của Việt Nam.",
+      "Đánh giá các tài liệu lịch sử như văn bản, nghệ thuật, văn học, khảo cổ học, và các ghi chép truyền miệng để hiểu các yếu tố và tiền đề lịch sử liên quan đến các vấn đề đương đại.",
+      "Vận dụng kiến thức lịch sử và văn hóa để phân tích và hiểu các vấn đề hiện nay.",
+      "Trình bày các lập luận dựa trên bằng chứng lịch sử và thảo luận sâu sắc về các chủ đề lịch sử phức tạp.",
+      "Khám phá nhiều góc nhìn khác nhau về quá khứ, đặc biệt từ quan điểm của những nhân vật lịch sử trong bối cảnh của họ.",
+      "Hiểu rõ các sự kiện, nhân vật và điều kiện lịch sử dẫn đến sự ra đời và phát triển của Đảng Cộng sản Việt Nam.",
+      "Phân tích các tài liệu lịch sử như văn bản, nghệ thuật, văn học, khảo cổ học và các ghi chép truyền miệng để có cái nhìn sâu sắc về lịch sử.",
+      "Nắm vững các yếu tố và tiền đề lịch sử liên quan đến các vấn đề đương đại, từ đó áp dụng kiến thức lịch sử và văn hóa để phân tích và hiểu các vấn đề hiện tại.",
+      "Trình bày các lập luận dựa trên bằng chứng lịch sử một cách chặt chẽ và thuyết phục.",
+      "Khám phá nhiều góc nhìn khác nhau về quá khứ, đặc biệt từ quan điểm của những nhân vật lịch sử trong bối cảnh thời đại của họ.",
+      "Hiểu rõ cách các yếu tố như bản sắc, giá trị, nhận thức và định kiến cá nhân được định hình bởi văn hóa và lối sống đa dạng.",
+      "Nắm vững lý thuyết và thực tiễn về tác động của văn hóa đối với đời sống hàng ngày, cả trong bối cảnh địa phương và toàn cầu.",
+      "Nhận diện và phân tích sự giao thoa giữa bản sắc văn hóa của bản thân và của người khác, từ đó nâng cao khả năng thấu hiểu và tôn trọng sự khác biệt.",
+      "Vận dụng kiến thức và kinh nghiệm về văn hóa để giải quyết các vấn đề đòi hỏi sự hợp tác hoặc phối hợp giữa cá nhân và tập thể đến từ các nền văn hóa khác nhau.",
+      "Hiểu rõ các yếu tố chính, cấu trúc, và quy trình trong quan hệ quốc tế.",
+      "Nắm được các nguyên tắc lý thuyết cơ bản và so sánh các cách tiếp cận khác nhau về con người và xã hội trong quan hệ quốc tế.",
+      "Nhận diện mục tiêu của các tổ chức quốc tế trong chính trị, hợp tác và phối hợp toàn cầu.",
+      "Phân tích tình huống thực tế hoặc nghiên cứu điển hình, đưa ra giải pháp dựa trên lý thuyết và lập luận chặt chẽ.",
+      "Đánh giá các chiến lược và quan điểm khác nhau, đặc biệt trong các tình huống phức tạp liên quan đến quan hệ quốc tế.",
+      "Hiểu và trân trọng nghệ thuật và nghệ thuật thị giác trong các bối cảnh lịch sử, văn hóa, xã hội và môi trường.",
+      "Nắm vững các nguyên tắc cơ bản của nghệ thuật, nghệ thuật thị giác và thiết kế, đồng thời phân tích một tác phẩm nghệ thuật dựa trên góc nhìn khách quan.",
+      "Hiểu cách tác phẩm nghệ thuật được sáng tạo và quá trình tạo ra chúng.",
+      "Liên hệ ý nghĩa và ứng dụng của nghệ thuật vào lĩnh vực học tập hoặc sở thích cá nhân.",
+      "Phân tích nghệ thuật Việt Nam và đặt nghệ thuật Việt Nam trong bối cảnh toàn cầu.",
+      "Nâng cao kỹ năng trong lĩnh vực nghệ thuật đã chọn (như âm nhạc, múa, kịch, hoặc nghệ thuật thị giác) và thể hiện sự sáng tạo, cá tính thông qua các buổi biểu diễn.",
+      "Đánh giá và thảo luận các hình thức biểu diễn nghệ thuật khác nhau, nhận diện các yếu tố và kỹ thuật chính, đồng thời viết bài đánh giá về sự phát triển nghệ thuật cá nhân.",
+      "Hợp tác hiệu quả với đồng đội để sáng tạo và biểu diễn các tác phẩm nghệ thuật, đồng thời biết cách đưa ra và tiếp nhận phản hồi mang tính xây dựng.",
+      "Truyền tải rõ ràng ý tưởng nghệ thuật đằng sau các buổi biểu diễn, cả bằng lời nói lẫn văn bản (nếu cần), đồng thời rèn luyện kỹ năng trình bày tác phẩm nghệ thuật trước khán giả, bao gồm kỹ năng sân khấu và tương tác.",
+      "Khám phá và trân trọng các truyền thống nghệ thuật đa dạng trên thế giới, đặc biệt là văn hoá nghệ thuật Việt Nam, và đặt tác phẩm cá nhân vào bối cảnh văn hoá và lịch sử rộng lớn hơn.",
+      "Lập kế hoạch và hoàn thành một dự án biểu diễn nghệ thuật từ đầu đến cuối, thể hiện khả năng quản lý thời gian và tổ chức tốt.",
+      "Hiểu và áp dụng các nguyên tắc đạo đức trong nghệ thuật, bao gồm tôn trọng sở hữu trí tuệ và nhạy cảm văn hoá, đồng thời giữ thái độ chuyên nghiệp trong quá trình tập luyện, biểu diễn, và hợp tác."
+    ],
+    "links": [
+      {
+        "text": "Giới Thiệu Chung",
+        "href": "https://cas.vinuni.edu.vn/vi/giao-duc-dai-hoc/cu-nhan-tam-ly-hoc/#tabs-00"
+      },
+      {
+        "text": "Mục tiêu học tập",
+        "href": "https://cas.vinuni.edu.vn/vi/giao-duc-dai-hoc/cu-nhan-tam-ly-hoc/#tabs-01"
+      },
+      {
+        "text": "Khung Chương trình",
+        "href": "https://cas.vinuni.edu.vn/vi/giao-duc-dai-hoc/cu-nhan-tam-ly-hoc/#tabs-02"
+      },
+      {
+        "text": "Mô tả khóa học",
+        "href": "https://cas.vinuni.edu.vn/vi/giao-duc-dai-hoc/cu-nhan-tam-ly-hoc/#tabs-03"
+      },
+      {
+        "text": "Triển vọng Nghề Nghiệp",
+        "href": "https://cas.vinuni.edu.vn/vi/giao-duc-dai-hoc/cu-nhan-tam-ly-hoc/#tabs-04"
+      },
+      {
+        "text": "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2023",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/vF.250812_BAP_23-27_Curriculum-Framework.pdf"
+      },
+      {
+        "text": "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2024",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/vF.250812_BAP_24-28_Curriculum-Framework.pdf"
+      },
+      {
+        "text": "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2025",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/vF.250812_BAP_25-29_Curriculum-Framework.pdf"
+      }
+    ],
+    "images": [],
+    "tables": [
+      [
+        [
+          "Tên chương trình",
+          "Chương trình Cử nhân Tâm lý học"
+        ],
+        [
+          "Thời lượng chương trình",
+          "Chương trình dự kiến hoàn thành trong thời gian 4 năm theo hình thức học toàn thời gian, gồm 8 học kỳ."
+        ],
+        [
+          "Tổng số tín chỉ tích lũy",
+          "Tối thiểu 120 tín chỉ, tối đa 130 tín chỉ"
+        ],
+        [
+          "Hình thức đào tạo",
+          "Đào tạo trực tiếp"
+        ],
+        [
+          "Mã ngành",
+          "7310401"
+        ],
+        [
+          "Ngôn ngữ sử dụng",
+          "Tiếng Anh"
+        ]
+      ],
+      [
+        [
+          "K-S-A",
+          "Chuẩn đầu ra chương trình (PLOs)",
+          "Tiêu chí đánh giá hiệu quả chương trình (PIs)"
+        ],
+        [
+          "Kiến thức",
+          "1. Kiến thức tổng quát – PLO 1 Vận dụng kiến thức về chính trị, pháp luật, phát triển bền vững, toàn cầu hóa, văn hóa, nghệ thuật và nhân văn trong lĩnh vực Tâm lý học.",
+          "PI 1.1: Đưa ra quan điểm và phản biện cá nhân về các vấn đề liên quan đến chính trị. PI 1.2: Áp dụng kiến thức về pháp luật và quy định vào lĩnh vực Tâm lý học. PI 1.3: Áp dụng hiểu biết về phát triển bền vững, đa văn hóa và toàn cầu hóa trong các hoạt động liên quan đến Tâm lý học. PI 1.4: Ứng dụng kiến thức nghệ thuật và nhân văn trong phân tích và thực hành Tâm lý học."
+        ],
+        [
+          "Kiến thức",
+          "2. Kiến thức nền tảng – PLO 2 Phân tích tâm lý con người thông qua việc vận dụng các kiến thức và nguyên lý của Tâm lý học.",
+          "PI 2.1: Phân tích các hiện tượng tâm lý dựa trên hiểu biết về cấu trúc và hoạt động của hệ thần kinh con người. PI 2.2: Phân tích hành vi với mức độ phức tạp phù hợp, nhận diện sự tương tác giữa các yếu tố tâm lý, sinh học, xã hội và văn hóa. PI 2.3: Phân tích sự hình thành và phát triển nhân cách dựa trên hiểu biết về tiến trình phát triển tâm lý của con người."
+        ],
+        [
+          "Kiến thức",
+          "3. Kiến thức chuyên ngành – Định hướng Tâm lý học Tham vấn và Giáo dục Vận dụng kiến thức Tâm lý học trong các tình huống cá nhân và nhóm thuộc bối cảnh tham vấn và giáo dục. (E.X.C.E.L.)",
+          "PI 3a.1: Nhận diện các vấn đề hành vi và sức khỏe tâm thần trong môi trường học tập. PI 3a.2: Vận dụng kiến thức về hệ thần kinh để đưa ra phương pháp tham vấn phù hợp với các vấn đề tâm lý – xã hội. PI 3a.3: Thiết kế công cụ đo lường và kế hoạch tham vấn phù hợp cho các nhóm thân chủ đa dạng."
+        ],
+        [
+          "Kiến thức",
+          "4. Kiến thức chuyên ngành – Định hướng Tâm lý học Kinh doanh và Tổ chức PLO 3b: Vận dụng kiến thức Tâm lý học trong quản trị nhân sự, truyền thông, marketing và hoạt động kinh doanh. (E.X.C.E.L.)",
+          "PI 3b.1: Ứng dụng kiến thức Tâm lý học trong quản lý nhân sự. PI 3b.2: Áp dụng kiến thức Tâm lý học để xây dựng chiến lược truyền thông và marketing trong môi trường tổ chức. PI 3b.3: Vận dụng kiến thức Tâm lý học để nhận diện và giải quyết xung đột trong tổ chức."
+        ],
+        [
+          "Kiến thức",
+          "5. Kiến thức chuyên ngành – Không theo định hướng cụ thể PLO 3c Vận dụng kiến thức Tâm lý học để giải quyết các thách thức của thân chủ.",
+          "PI 3c.1: Phân tích các vấn đề của thân chủ dựa trên kiến thức Tâm lý học. PI 3c.2: Đề xuất các giải pháp tâm lý phù hợp để hỗ trợ thân chủ vượt qua khó khăn."
+        ],
+        [
+          "Kỹ năng",
+          "1. Kỹ năng chuyên môn – Định hướng Tâm lý học Tham vấn và Giáo dục PLO 4a: Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học trong bối cảnh tham vấn và giáo dục. (E.X.C.E.L.)",
+          "PI 4a.1: Thu thập thông tin về vấn đề của thân chủ trong môi trường tham vấn và giáo dục bằng các phương pháp và công cụ phù hợp. PI 4a.2: Phân tích và diễn giải thông tin để xác định nhu cầu của thân chủ. PI 4a.3: Lựa chọn và triển khai các quy trình tham vấn phù hợp, sử dụng hiệu quả các công cụ đo lường. PI 4a.4: Đánh giá hiệu quả của các can thiệp tâm lý, không ngừng cải thiện chất lượng nhằm đạt kết quả tối ưu cho thân chủ trong môi trường giáo dục."
+        ],
+        [
+          "Kỹ năng",
+          "2. Kỹ năng chuyên môn – Định hướng Tâm lý học Kinh doanh và Tổ chức PLO 4b:Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học trong bối cảnh kinh doanh và tổ chức. (E.X.C.E.L.)",
+          "PI 4b.1: Thu thập thông tin về vấn đề của thân chủ trong môi trường doanh nghiệp bằng các phương pháp tâm lý học phù hợp. PI 4b.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ. PI 4b.3: Lựa chọn và thực hiện các can thiệp tâm lý, sử dụng hiệu quả các công cụ đo lường. PI 4b.4: Đánh giá hiệu quả của các can thiệp tâm lý, liên tục cải tiến để đạt kết quả tốt nhất cho thân chủ trong môi trường tổ chức."
+        ],
+        [
+          "Kỹ năng",
+          "3. Kỹ năng chuyên môn – Không theo định hướng cụ thể PLO 4c: Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học để giải quyết thách thức của thân chủ.",
+          "PI 4c.1: Thu thập thông tin về vấn đề của thân chủ bằng các phương pháp và công cụ phù hợp. PI 4c.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ. PI 4c.3: Thực hiện các can thiệp tâm lý phù hợp và sử dụng hiệu quả các công cụ đo lường. PI 4c.4: Đánh giá hiệu quả của các can thiệp, cải thiện chất lượng để tối ưu hóa kết quả cho thân chủ."
+        ],
+        [
+          "Kỹ năng",
+          "4. Kỹ năng nghiên cứu PLO 5: Thực hiện nghiên cứu để giải quyết vấn đề và khám phá tri thức mới trong lĩnh vực Tâm lý học.",
+          "PI 5.1: Xác định mục tiêu nghiên cứu đáp ứng nhu cầu xã hội hoặc đóng góp cho sự phát triển của ngành. PI 5.2: Thiết kế kế hoạch nghiên cứu với phương pháp phù hợp. PI 5.3: Thực hiện đúng quy trình nghiên cứu bằng phương pháp khoa học. PI 5.4: Thu thập dữ liệu và thông tin đáp ứng yêu cầu của nghiên cứu. PI 5.5: Phân tích dữ liệu nghiên cứu một cách khoa học. PI 5.6: Đưa ra kết luận và đề xuất các giải pháp sáng tạo để ứng dụng kết quả nghiên cứu vào thực tiễn."
+        ],
+        [
+          "Kỹ năng",
+          "5. Kỹ năng tư duy phản biện và sáng tạo PLO 6: Thể hiện khả năng tư duy phản biện, sáng tạo và giải quyết vấn đề.",
+          "PI 6.1: Xây dựng lập luận để hình thành và kiểm chứng các giải pháp dựa trên bằng chứng, nhằm giải quyết các vấn đề phức tạp trong lĩnh vực Tâm lý học. PI 6.2: Đề xuất các can thiệp tâm lý sáng tạo trong bối cảnh hạn chế nguồn lực. (E.X.C.E.L.) PI 6.3: Giải quyết có hệ thống các vấn đề thực tiễn trong lĩnh vực Tâm lý học ở cấp độ địa phương, khu vực và toàn cầu."
+        ],
+        [
+          "Kỹ năng",
+          "6. Kỹ năng làm việc nhóm và lãnh đạo PLO 7: Phối hợp và dẫn dắt các nhóm đa dạng về chuyên môn và văn hóa.",
+          "PI 7.1: Thể hiện tính tự chủ, khả năng phán đoán và thích ứng khi làm việc trong môi trường đa ngành, đa văn hóa. (E.X.C.E.L.) PI 7.2: Thể hiện năng lực lãnh đạo và đổi mới trong môi trường nghề nghiệp. (E.X.C.E.L.)"
+        ],
+        [
+          "",
+          "7. Kỹ năng giao tiếp và hội nhập toàn cầu PLO 8: Giao tiếp hiệu quả với nhiều nhóm đối tượng trong bối cảnh đa văn hóa.",
+          "PI 8.1: Giao tiếp hiệu quả bằng ngôn ngữ nói, viết và qua các hình thức truyền thông đa dạng. PI 8.2: Thích ứng và làm việc hiệu quả trong môi trường toàn cầu hóa, tôn trọng các chuẩn mực chung và sự đa dạng văn hóa. (E.X.C.E.L.)"
+        ],
+        [
+          "Thái độ",
+          "1. Đạo đức và trách nhiệm nghề nghiệp PLO 9: Thể hiện đạo đức nghề nghiệp và tinh thần trách nhiệm xã hội trong vai trò công dân và người làm nghề.",
+          "PI 9.1: Tiếp cận các vấn đề địa phương và toàn cầu trong nghiên cứu, nghề nghiệp và đời sống công dân với tinh thần chính trực và tư duy học thuật nghiêm túc. PI 9.2: Tuân thủ các chuẩn mực đạo đức trong thực hành Tâm lý học, nghiên cứu và hoạt động cộng đồng, thể hiện sự tôn trọng đa dạng và cam kết với trách nhiệm xã hội."
+        ],
+        [
+          "Thái độ",
+          "2. Tinh thần học tập suốt đời PLO 10: Liên tục tự đánh giá để nhận diện điểm mạnh, điểm cần cải thiện, chủ động đổi mới và tìm kiếm cơ hội phát triển nghề nghiệp; thể hiện tinh thần học hỏi suốt đời để thích ứng với môi trường chuyên môn không ngừng thay đổi.",
+          "PI 10.1: Liên tục phản tư để nhận diện điểm mạnh và điểm cần cải thiện, nuôi dưỡng cam kết học tập suốt đời. PI 10.2: Chủ động tự học, lập kế hoạch làm việc và đặt mục tiêu phát triển bản thân."
+        ],
+        [
+          "Thái độ",
+          "3. Tinh thần khởi nghiệp PLO 11: Thể hiện tư duy khởi nghiệp, tinh thần đổi mới và chủ động tìm kiếm cơ hội phát triển.",
+          "PI 11.1: Nhận diện cơ hội đổi mới trong hoạt động Tâm lý học thông qua việc áp dụng các nguyên tắc khởi nghiệp. PI 11.2: Phát triển và triển khai các giải pháp sáng tạo nhằm đáp ứng nhu cầu tâm lý mới, vận dụng kỹ năng khởi nghiệp để tạo ra tác động bền vững. (E.X.C.E.L.)"
+        ]
+      ],
+      [
+        [
+          "No.",
+          "Curriculum Components",
+          "Number of Credits",
+          "Credit Distribution (%/Total Credits)"
+        ],
+        [
+          "I",
+          "VINCORE",
+          "35",
+          "29.2%"
+        ],
+        [
+          "I.1",
+          "Doanh nghiệp và Đổi mới sáng tạo",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.2",
+          "Tư duy lãnh đạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.3",
+          "Trách nhiệm công dân",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.4",
+          "Đạo đức",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.5",
+          "Hoạt động phục vụ cộng đồng",
+          "45 giờ",
+          "—"
+        ],
+        [
+          "I.6",
+          "Làm việc với bộ não",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.7",
+          "Làm việc với công nghệ",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.8",
+          "Làm việc với người khác",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.9",
+          "Làm việc với bản thân",
+          "90 giờ",
+          "—"
+        ],
+        [
+          "I.10",
+          "Nghiên cứu Việt Nam tích hợp",
+          "11",
+          "9.2%"
+        ],
+        [
+          "I.11",
+          "Phát triển bền vững và Công dân toàn cầu",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.12",
+          "Nghệ thuật sáng tạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.13",
+          "Trải nghiệm toàn cầu",
+          "Không áp dụng",
+          "0.0%"
+        ],
+        [
+          "II",
+          "Giáo dục chuyên ngành",
+          "73",
+          "60.8%"
+        ],
+        [
+          "II.1",
+          "Học phần cốt lõi của Trường",
+          "13",
+          "10.8%"
+        ],
+        [
+          "II.2",
+          "Học phần cốt lõi của Ngành",
+          "26",
+          "21.7%"
+        ],
+        [
+          "II.3",
+          "Chuyên sâu theo lĩnh vực",
+          "18",
+          "15.0%"
+        ],
+        [
+          "II.4",
+          "Học phần tự chọn",
+          "16",
+          "13.3%"
+        ],
+        [
+          "II.5",
+          "Chuyên ngành phụ",
+          "15",
+          "—"
+        ],
+        [
+          "III",
+          "Thực hành / Thực tập",
+          "6",
+          "5.0%"
+        ],
+        [
+          "IV",
+          "Đồ án tốt nghiệp",
+          "6",
+          "5.0%"
+        ],
+        [
+          "",
+          "Tổng cộng (không bao gồm chuyên ngành phụ)",
+          "120",
+          "100%"
+        ],
+        [
+          "",
+          "Tổng cộng (bao gồm chuyên ngành phụ)",
+          "135",
+          "—"
+        ]
+      ],
+      [
+        [
+          "A.",
+          "",
+          "Tâm lý học Giáo dục",
+          "",
+          ""
+        ],
+        [
+          "STT",
+          "Mã học phần",
+          "Tên học phần",
+          "Số tín chỉ",
+          ""
+        ],
+        [
+          "1",
+          "PSYC3040",
+          "Nhập môn Tâm lý học học đường",
+          "3",
+          ""
+        ],
+        [
+          "2",
+          "PSYC3060",
+          "Rối loạn tâm lý ở trẻ em và thanh thiếu niên",
+          "3",
+          ""
+        ],
+        [
+          "3",
+          "PSYC3080",
+          "Các lý thuyết về tham vấn và trị liệu tâm lý",
+          "3",
+          ""
+        ],
+        [
+          "4",
+          "PSYC4010",
+          "Quan sát và đánh giá trẻ em",
+          "3",
+          ""
+        ],
+        [
+          "5",
+          "PSYC4030",
+          "Khó khăn trong học tập",
+          "3",
+          ""
+        ],
+        [
+          "6",
+          "PSYC4050",
+          "Tư vấn trong trường học",
+          "3",
+          ""
+        ]
+      ],
+      [
+        [
+          "B.",
+          "",
+          "Tâm lý học Kinh doanh và Tổ chức",
+          "",
+          ""
+        ],
+        [
+          "STT",
+          "Mã học phần",
+          "Tên học phần",
+          "Số tín chỉ",
+          ""
+        ],
+        [
+          "1",
+          "PSYC3050",
+          "Tâm lý học tổ chức",
+          "3",
+          ""
+        ],
+        [
+          "2",
+          "PSYC3070",
+          "Tâm lý học về động lực làm việc",
+          "3",
+          ""
+        ],
+        [
+          "3",
+          "MARK3010",
+          "Hành vi người tiêu dùng",
+          "3",
+          ""
+        ],
+        [
+          "4",
+          "PSYC4020",
+          "Động lực nhóm",
+          "3",
+          ""
+        ],
+        [
+          "5",
+          "PSYC4040",
+          "Căng thẳng, Sức khỏe tâm lý và An toàn lao động",
+          "3",
+          ""
+        ],
+        [
+          "6",
+          "PSYC4060",
+          "Đánh giá tâm lý trong môi trường làm việc",
+          "3",
+          ""
+        ]
+      ],
+      [
+        [
+          "Ngành/ Lĩnh vực",
+          "Vị trí công việc"
+        ],
+        [
+          "Chăm sóc sức khỏe",
+          "Nhà tham vấn tâm lý Nhà tâm lý học sức khỏe Nhà tâm lý học phục hồi chức năng"
+        ],
+        [
+          "Giáo dục",
+          "Người cố vấn Điều phối viên giáo dục Nhà tham vấn tâm lý học đường Nhà tâm lý học giáo dục"
+        ],
+        [
+          "Nghiên cứu",
+          "Nghiên cứu sinh (Tiến sĩ) Nhà khoa học hành vi Nhà nghiên cứu thị trường"
+        ],
+        [
+          "Nhân sự",
+          "Nhà tâm lý học nghề nghiệp Chuyên viên tuyển dụng nhân sự Huấn luyện viên"
+        ],
+        [
+          "Marketing/Sales",
+          "Chuyên viên marketing Quản lý chiến dịch Thiết kế sản phẩm Marketing tiêu dùng/Tiếp thị tiêu dùng"
+        ],
+        [
+          "Tư vấn",
+          "Cố vấn tổ chức Chuyên gia tư vấn về phân tích nghiệp vụ"
+        ],
+        [
+          "Tổ chức phi chính phủ",
+          "Nhà tâm lý học tư vấn dự án"
+        ],
+        [
+          "Công nghệ thông tin",
+          "Thiết kế trải nghiệm người dùng Thiết kế giao diện người dùng Kỹ sư kinh doanh"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 2,
+    "title": "Mô Tả Chung",
+    "paragraphs": [],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": [
+      [
+        [
+          "Tên chương trình",
+          "Chương trình Cử nhân Tâm lý học"
+        ],
+        [
+          "Thời lượng chương trình",
+          "Chương trình dự kiến hoàn thành trong thời gian 4 năm theo hình thức học toàn thời gian, gồm 8 học kỳ."
+        ],
+        [
+          "Tổng số tín chỉ tích lũy",
+          "Tối thiểu 120 tín chỉ, tối đa 130 tín chỉ"
+        ],
+        [
+          "Hình thức đào tạo",
+          "Đào tạo trực tiếp"
+        ],
+        [
+          "Mã ngành",
+          "7310401"
+        ],
+        [
+          "Ngôn ngữ sử dụng",
+          "Tiếng Anh"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 3,
+    "title": "Sứ Mệnh",
+    "paragraphs": [
+      "Chương trình Cử nhân Tâm lý học được thiết kế để cung cấp cho sinh viên nền tảng kiến thức vững chắc về khoa học xã hội và nhân văn nói chung, và tâm lý học nói riêng, đặc biệt là trong các lĩnh vực tâm lý học xã hội, tâm lý học đường và tâm lý học tổ chức – kinh doanh. Sau khi hoàn thành chương trình, sinh viên sẽ được trang bị các kỹ năng mềm và kỹ năng chuyên môn cần thiết, tập trung vào hai lĩnh vực chính: giáo dục và kinh doanh – tổ chức."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 4,
+    "title": "Chuyên Ngành",
+    "paragraphs": [
+      "Sinh viên có thể chọn theo một định hướng học tập cụ thể, hoặc linh hoạt học các môn từ cả hai định hướng, thay vì chỉ gắn với một định hướng duy nhất. – Tâm lý học Giáo dục – Tâm lý học Kinh doanh – Tổ chức"
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 5,
+    "title": "2. Kiến thức nền tảng – PLO 2",
+    "paragraphs": [
+      "Phân tích tâm lý con người thông qua việc vận dụng các kiến thức và nguyên lý của Tâm lý học.",
+      "PI 2.2: Phân tích hành vi với mức độ phức tạp phù hợp, nhận diện sự tương tác giữa các yếu tố tâm lý, sinh học, xã hội và văn hóa.",
+      "PI 2.3: Phân tích sự hình thành và phát triển nhân cách dựa trên hiểu biết về tiến trình phát triển tâm lý của con người.",
+      "PI 3a.2: Vận dụng kiến thức về hệ thần kinh để đưa ra phương pháp tham vấn phù hợp với các vấn đề tâm lý – xã hội.",
+      "PI 3a.3: Thiết kế công cụ đo lường và kế hoạch tham vấn phù hợp cho các nhóm thân chủ đa dạng.",
+      "Vận dụng kiến thức Tâm lý học trong quản trị nhân sự, truyền thông, marketing và hoạt động kinh doanh. (E.X.C.E.L.)",
+      "PI 3b.2: Áp dụng kiến thức Tâm lý học để xây dựng chiến lược truyền thông và marketing trong môi trường tổ chức.",
+      "PI 3b.3: Vận dụng kiến thức Tâm lý học để nhận diện và giải quyết xung đột trong tổ chức.",
+      "Vận dụng kiến thức Tâm lý học để giải quyết các thách thức của thân chủ.",
+      "PI 3c.2: Đề xuất các giải pháp tâm lý phù hợp để hỗ trợ thân chủ vượt qua khó khăn.",
+      "PI 4a.2: Phân tích và diễn giải thông tin để xác định nhu cầu của thân chủ.",
+      "PI 4a.3: Lựa chọn và triển khai các quy trình tham vấn phù hợp, sử dụng hiệu quả các công cụ đo lường.",
+      "PI 4a.4: Đánh giá hiệu quả của các can thiệp tâm lý, không ngừng cải thiện chất lượng nhằm đạt kết quả tối ưu cho thân chủ trong môi trường giáo dục.",
+      "PLO 4b:Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học trong bối cảnh kinh doanh và tổ chức. (E.X.C.E.L.)",
+      "PI 4b.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ.",
+      "PI 4b.3: Lựa chọn và thực hiện các can thiệp tâm lý, sử dụng hiệu quả các công cụ đo lường.",
+      "PI 4b.4: Đánh giá hiệu quả của các can thiệp tâm lý, liên tục cải tiến để đạt kết quả tốt nhất cho thân chủ trong môi trường tổ chức.",
+      "PLO 4c: Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học để giải quyết thách thức của thân chủ.",
+      "PI 4c.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ.",
+      "PI 4c.3: Thực hiện các can thiệp tâm lý phù hợp và sử dụng hiệu quả các công cụ đo lường.",
+      "PI 4c.4: Đánh giá hiệu quả của các can thiệp, cải thiện chất lượng để tối ưu hóa kết quả cho thân chủ.",
+      "PLO 5: Thực hiện nghiên cứu để giải quyết vấn đề và khám phá tri thức mới trong lĩnh vực Tâm lý học.",
+      "PI 5.2: Thiết kế kế hoạch nghiên cứu với phương pháp phù hợp.",
+      "PI 5.3: Thực hiện đúng quy trình nghiên cứu bằng phương pháp khoa học.",
+      "PI 5.4: Thu thập dữ liệu và thông tin đáp ứng yêu cầu của nghiên cứu.",
+      "PI 5.5: Phân tích dữ liệu nghiên cứu một cách khoa học.",
+      "PI 5.6: Đưa ra kết luận và đề xuất các giải pháp sáng tạo để ứng dụng kết quả nghiên cứu vào thực tiễn.",
+      "PLO 6: Thể hiện khả năng tư duy phản biện, sáng tạo và giải quyết vấn đề.",
+      "PI 6.2: Đề xuất các can thiệp tâm lý sáng tạo trong bối cảnh hạn chế nguồn lực. (E.X.C.E.L.)",
+      "PI 6.3: Giải quyết có hệ thống các vấn đề thực tiễn trong lĩnh vực Tâm lý học ở cấp độ địa phương, khu vực và toàn cầu.",
+      "PLO 7: Phối hợp và dẫn dắt các nhóm đa dạng về chuyên môn và văn hóa.",
+      "PI 7.2: Thể hiện năng lực lãnh đạo và đổi mới trong môi trường nghề nghiệp. (E.X.C.E.L.)",
+      "PLO 8: Giao tiếp hiệu quả với nhiều nhóm đối tượng trong bối cảnh đa văn hóa.",
+      "PI 8.2: Thích ứng và làm việc hiệu quả trong môi trường toàn cầu hóa, tôn trọng các chuẩn mực chung và sự đa dạng văn hóa. (E.X.C.E.L.)",
+      "PLO 9: Thể hiện đạo đức nghề nghiệp và tinh thần trách nhiệm xã hội trong vai trò công dân và người làm nghề.",
+      "PI 9.2: Tuân thủ các chuẩn mực đạo đức trong thực hành Tâm lý học, nghiên cứu và hoạt động cộng đồng, thể hiện sự tôn trọng đa dạng và cam kết với trách nhiệm xã hội.",
+      "PLO 10: Liên tục tự đánh giá để nhận diện điểm mạnh, điểm cần cải thiện, chủ động đổi mới và tìm kiếm cơ hội phát triển nghề nghiệp; thể hiện tinh thần học hỏi suốt đời để thích ứng với môi trường chuyên môn không ngừng thay đổi.",
+      "PI 10.2: Chủ động tự học, lập kế hoạch làm việc và đặt mục tiêu phát triển bản thân.",
+      "PLO 11: Thể hiện tư duy khởi nghiệp, tinh thần đổi mới và chủ động tìm kiếm cơ hội phát triển.",
+      "PI 11.2: Phát triển và triển khai các giải pháp sáng tạo nhằm đáp ứng nhu cầu tâm lý mới, vận dụng kỹ năng khởi nghiệp để tạo ra tác động bền vững. (E.X.C.E.L.)"
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": [
+      [
+        [
+          "K-S-A",
+          "Chuẩn đầu ra chương trình (PLOs)",
+          "Tiêu chí đánh giá hiệu quả chương trình (PIs)"
+        ],
+        [
+          "Kiến thức",
+          "1. Kiến thức tổng quát – PLO 1 Vận dụng kiến thức về chính trị, pháp luật, phát triển bền vững, toàn cầu hóa, văn hóa, nghệ thuật và nhân văn trong lĩnh vực Tâm lý học.",
+          "PI 1.1: Đưa ra quan điểm và phản biện cá nhân về các vấn đề liên quan đến chính trị. PI 1.2: Áp dụng kiến thức về pháp luật và quy định vào lĩnh vực Tâm lý học. PI 1.3: Áp dụng hiểu biết về phát triển bền vững, đa văn hóa và toàn cầu hóa trong các hoạt động liên quan đến Tâm lý học. PI 1.4: Ứng dụng kiến thức nghệ thuật và nhân văn trong phân tích và thực hành Tâm lý học."
+        ],
+        [
+          "Kiến thức",
+          "2. Kiến thức nền tảng – PLO 2 Phân tích tâm lý con người thông qua việc vận dụng các kiến thức và nguyên lý của Tâm lý học.",
+          "PI 2.1: Phân tích các hiện tượng tâm lý dựa trên hiểu biết về cấu trúc và hoạt động của hệ thần kinh con người. PI 2.2: Phân tích hành vi với mức độ phức tạp phù hợp, nhận diện sự tương tác giữa các yếu tố tâm lý, sinh học, xã hội và văn hóa. PI 2.3: Phân tích sự hình thành và phát triển nhân cách dựa trên hiểu biết về tiến trình phát triển tâm lý của con người."
+        ],
+        [
+          "Kiến thức",
+          "3. Kiến thức chuyên ngành – Định hướng Tâm lý học Tham vấn và Giáo dục Vận dụng kiến thức Tâm lý học trong các tình huống cá nhân và nhóm thuộc bối cảnh tham vấn và giáo dục. (E.X.C.E.L.)",
+          "PI 3a.1: Nhận diện các vấn đề hành vi và sức khỏe tâm thần trong môi trường học tập. PI 3a.2: Vận dụng kiến thức về hệ thần kinh để đưa ra phương pháp tham vấn phù hợp với các vấn đề tâm lý – xã hội. PI 3a.3: Thiết kế công cụ đo lường và kế hoạch tham vấn phù hợp cho các nhóm thân chủ đa dạng."
+        ],
+        [
+          "Kiến thức",
+          "4. Kiến thức chuyên ngành – Định hướng Tâm lý học Kinh doanh và Tổ chức PLO 3b: Vận dụng kiến thức Tâm lý học trong quản trị nhân sự, truyền thông, marketing và hoạt động kinh doanh. (E.X.C.E.L.)",
+          "PI 3b.1: Ứng dụng kiến thức Tâm lý học trong quản lý nhân sự. PI 3b.2: Áp dụng kiến thức Tâm lý học để xây dựng chiến lược truyền thông và marketing trong môi trường tổ chức. PI 3b.3: Vận dụng kiến thức Tâm lý học để nhận diện và giải quyết xung đột trong tổ chức."
+        ],
+        [
+          "Kiến thức",
+          "5. Kiến thức chuyên ngành – Không theo định hướng cụ thể PLO 3c Vận dụng kiến thức Tâm lý học để giải quyết các thách thức của thân chủ.",
+          "PI 3c.1: Phân tích các vấn đề của thân chủ dựa trên kiến thức Tâm lý học. PI 3c.2: Đề xuất các giải pháp tâm lý phù hợp để hỗ trợ thân chủ vượt qua khó khăn."
+        ],
+        [
+          "Kỹ năng",
+          "1. Kỹ năng chuyên môn – Định hướng Tâm lý học Tham vấn và Giáo dục PLO 4a: Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học trong bối cảnh tham vấn và giáo dục. (E.X.C.E.L.)",
+          "PI 4a.1: Thu thập thông tin về vấn đề của thân chủ trong môi trường tham vấn và giáo dục bằng các phương pháp và công cụ phù hợp. PI 4a.2: Phân tích và diễn giải thông tin để xác định nhu cầu của thân chủ. PI 4a.3: Lựa chọn và triển khai các quy trình tham vấn phù hợp, sử dụng hiệu quả các công cụ đo lường. PI 4a.4: Đánh giá hiệu quả của các can thiệp tâm lý, không ngừng cải thiện chất lượng nhằm đạt kết quả tối ưu cho thân chủ trong môi trường giáo dục."
+        ],
+        [
+          "Kỹ năng",
+          "2. Kỹ năng chuyên môn – Định hướng Tâm lý học Kinh doanh và Tổ chức PLO 4b:Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học trong bối cảnh kinh doanh và tổ chức. (E.X.C.E.L.)",
+          "PI 4b.1: Thu thập thông tin về vấn đề của thân chủ trong môi trường doanh nghiệp bằng các phương pháp tâm lý học phù hợp. PI 4b.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ. PI 4b.3: Lựa chọn và thực hiện các can thiệp tâm lý, sử dụng hiệu quả các công cụ đo lường. PI 4b.4: Đánh giá hiệu quả của các can thiệp tâm lý, liên tục cải tiến để đạt kết quả tốt nhất cho thân chủ trong môi trường tổ chức."
+        ],
+        [
+          "Kỹ năng",
+          "3. Kỹ năng chuyên môn – Không theo định hướng cụ thể PLO 4c: Vận dụng hiệu quả các nguyên tắc và kỹ năng Tâm lý học để giải quyết thách thức của thân chủ.",
+          "PI 4c.1: Thu thập thông tin về vấn đề của thân chủ bằng các phương pháp và công cụ phù hợp. PI 4c.2: Phân tích và diễn giải thông tin để xác định vấn đề của thân chủ. PI 4c.3: Thực hiện các can thiệp tâm lý phù hợp và sử dụng hiệu quả các công cụ đo lường. PI 4c.4: Đánh giá hiệu quả của các can thiệp, cải thiện chất lượng để tối ưu hóa kết quả cho thân chủ."
+        ],
+        [
+          "Kỹ năng",
+          "4. Kỹ năng nghiên cứu PLO 5: Thực hiện nghiên cứu để giải quyết vấn đề và khám phá tri thức mới trong lĩnh vực Tâm lý học.",
+          "PI 5.1: Xác định mục tiêu nghiên cứu đáp ứng nhu cầu xã hội hoặc đóng góp cho sự phát triển của ngành. PI 5.2: Thiết kế kế hoạch nghiên cứu với phương pháp phù hợp. PI 5.3: Thực hiện đúng quy trình nghiên cứu bằng phương pháp khoa học. PI 5.4: Thu thập dữ liệu và thông tin đáp ứng yêu cầu của nghiên cứu. PI 5.5: Phân tích dữ liệu nghiên cứu một cách khoa học. PI 5.6: Đưa ra kết luận và đề xuất các giải pháp sáng tạo để ứng dụng kết quả nghiên cứu vào thực tiễn."
+        ],
+        [
+          "Kỹ năng",
+          "5. Kỹ năng tư duy phản biện và sáng tạo PLO 6: Thể hiện khả năng tư duy phản biện, sáng tạo và giải quyết vấn đề.",
+          "PI 6.1: Xây dựng lập luận để hình thành và kiểm chứng các giải pháp dựa trên bằng chứng, nhằm giải quyết các vấn đề phức tạp trong lĩnh vực Tâm lý học. PI 6.2: Đề xuất các can thiệp tâm lý sáng tạo trong bối cảnh hạn chế nguồn lực. (E.X.C.E.L.) PI 6.3: Giải quyết có hệ thống các vấn đề thực tiễn trong lĩnh vực Tâm lý học ở cấp độ địa phương, khu vực và toàn cầu."
+        ],
+        [
+          "Kỹ năng",
+          "6. Kỹ năng làm việc nhóm và lãnh đạo PLO 7: Phối hợp và dẫn dắt các nhóm đa dạng về chuyên môn và văn hóa.",
+          "PI 7.1: Thể hiện tính tự chủ, khả năng phán đoán và thích ứng khi làm việc trong môi trường đa ngành, đa văn hóa. (E.X.C.E.L.) PI 7.2: Thể hiện năng lực lãnh đạo và đổi mới trong môi trường nghề nghiệp. (E.X.C.E.L.)"
+        ],
+        [
+          "",
+          "7. Kỹ năng giao tiếp và hội nhập toàn cầu PLO 8: Giao tiếp hiệu quả với nhiều nhóm đối tượng trong bối cảnh đa văn hóa.",
+          "PI 8.1: Giao tiếp hiệu quả bằng ngôn ngữ nói, viết và qua các hình thức truyền thông đa dạng. PI 8.2: Thích ứng và làm việc hiệu quả trong môi trường toàn cầu hóa, tôn trọng các chuẩn mực chung và sự đa dạng văn hóa. (E.X.C.E.L.)"
+        ],
+        [
+          "Thái độ",
+          "1. Đạo đức và trách nhiệm nghề nghiệp PLO 9: Thể hiện đạo đức nghề nghiệp và tinh thần trách nhiệm xã hội trong vai trò công dân và người làm nghề.",
+          "PI 9.1: Tiếp cận các vấn đề địa phương và toàn cầu trong nghiên cứu, nghề nghiệp và đời sống công dân với tinh thần chính trực và tư duy học thuật nghiêm túc. PI 9.2: Tuân thủ các chuẩn mực đạo đức trong thực hành Tâm lý học, nghiên cứu và hoạt động cộng đồng, thể hiện sự tôn trọng đa dạng và cam kết với trách nhiệm xã hội."
+        ],
+        [
+          "Thái độ",
+          "2. Tinh thần học tập suốt đời PLO 10: Liên tục tự đánh giá để nhận diện điểm mạnh, điểm cần cải thiện, chủ động đổi mới và tìm kiếm cơ hội phát triển nghề nghiệp; thể hiện tinh thần học hỏi suốt đời để thích ứng với môi trường chuyên môn không ngừng thay đổi.",
+          "PI 10.1: Liên tục phản tư để nhận diện điểm mạnh và điểm cần cải thiện, nuôi dưỡng cam kết học tập suốt đời. PI 10.2: Chủ động tự học, lập kế hoạch làm việc và đặt mục tiêu phát triển bản thân."
+        ],
+        [
+          "Thái độ",
+          "3. Tinh thần khởi nghiệp PLO 11: Thể hiện tư duy khởi nghiệp, tinh thần đổi mới và chủ động tìm kiếm cơ hội phát triển.",
+          "PI 11.1: Nhận diện cơ hội đổi mới trong hoạt động Tâm lý học thông qua việc áp dụng các nguyên tắc khởi nghiệp. PI 11.2: Phát triển và triển khai các giải pháp sáng tạo nhằm đáp ứng nhu cầu tâm lý mới, vận dụng kỹ năng khởi nghiệp để tạo ra tác động bền vững. (E.X.C.E.L.)"
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 6,
+    "title": "Section 6",
+    "paragraphs": [
+      "Lưu ý: Chương trình Vincore Curriculum được áp dụng cho khóa tuyển sinh từ năm 2024 trở đi, thay thế cho Chương trình Giáo dục Đại cương (GenEd Curriculum), theo Quyết định số 475/2024/QĐ-VUNI ngày 04 tháng 9 năm 2024 do Viện Khoa học và Giáo dục Khai phóng ban hành.",
+      "(**) Dành cho sinh viên quốc tế:",
+      "Các chuyên ngành thuộc chương trình Cử nhân Tâm lý học (BAP) và các học phần bắt buộc",
+      "Các danh mục dưới đây giới thiệu khung chương trình đào tạo, yêu cầu tốt nghiệp và các thông tin liên quan, áp dụng tại VinUniversity cho năm học tương ứng. Vui lòng truy cập đường linh dưới đây để xem chi tiết:"
+    ],
+    "list_items": [
+      "Sinh viên quốc tế bắt buộc phải học các học phần về lý luận chính trị, bao gồm: Lịch sử Đảng Cộng sản Việt Nam, Tư tưởng Hồ Chí Minh, Chủ nghĩa Xã hội Khoa học, Kinh tế Chính trị Mác – Lênin, Triết học Mác – Lênin (theo Quyết định số 494/QĐ-TTg ngày 24 tháng 6 năm 2002 của Thủ tướng Chính phủ).",
+      "Sinh viên quốc tế được miễn học phần Giáo dục Quốc phòng – An ninh, theo Thông tư số 30/2018/TT-BGDĐT do Bộ Giáo dục và Đào tạo ban hành ngày 24 tháng 12 năm 2018. Thay vào đó, sinh viên có thể lựa chọn các học phần khác thay thế như Việt Nam: Lịch sử và Văn hóa I/II, Tiếng Việt hoặc các học phần tự chọn khác để đảm bảo đủ tổng số tín chỉ yêu cầu cho tốt nghiệp — tối thiểu 120 tín chỉ đối với chương trình 4 năm và tối thiểu 180 tín chỉ đối với chương trình 6 năm.",
+      "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2023",
+      "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2024",
+      "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2025"
+    ],
+    "links": [
+      {
+        "text": "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2023",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/vF.250812_BAP_23-27_Curriculum-Framework.pdf"
+      },
+      {
+        "text": "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2024",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/vF.250812_BAP_24-28_Curriculum-Framework.pdf"
+      },
+      {
+        "text": "Khung Chương trình Đào tạo – Khóa Tuyển Sinh 2025",
+        "href": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/vF.250812_BAP_25-29_Curriculum-Framework.pdf"
+      }
+    ],
+    "images": [],
+    "tables": [
+      [
+        [
+          "No.",
+          "Curriculum Components",
+          "Number of Credits",
+          "Credit Distribution (%/Total Credits)"
+        ],
+        [
+          "I",
+          "VINCORE",
+          "35",
+          "29.2%"
+        ],
+        [
+          "I.1",
+          "Doanh nghiệp và Đổi mới sáng tạo",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.2",
+          "Tư duy lãnh đạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.3",
+          "Trách nhiệm công dân",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.4",
+          "Đạo đức",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.5",
+          "Hoạt động phục vụ cộng đồng",
+          "45 giờ",
+          "—"
+        ],
+        [
+          "I.6",
+          "Làm việc với bộ não",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.7",
+          "Làm việc với công nghệ",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.8",
+          "Làm việc với người khác",
+          "4",
+          "3.3%"
+        ],
+        [
+          "I.9",
+          "Làm việc với bản thân",
+          "90 giờ",
+          "—"
+        ],
+        [
+          "I.10",
+          "Nghiên cứu Việt Nam tích hợp",
+          "11",
+          "9.2%"
+        ],
+        [
+          "I.11",
+          "Phát triển bền vững và Công dân toàn cầu",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.12",
+          "Nghệ thuật sáng tạo",
+          "2",
+          "1.7%"
+        ],
+        [
+          "I.13",
+          "Trải nghiệm toàn cầu",
+          "Không áp dụng",
+          "0.0%"
+        ],
+        [
+          "II",
+          "Giáo dục chuyên ngành",
+          "73",
+          "60.8%"
+        ],
+        [
+          "II.1",
+          "Học phần cốt lõi của Trường",
+          "13",
+          "10.8%"
+        ],
+        [
+          "II.2",
+          "Học phần cốt lõi của Ngành",
+          "26",
+          "21.7%"
+        ],
+        [
+          "II.3",
+          "Chuyên sâu theo lĩnh vực",
+          "18",
+          "15.0%"
+        ],
+        [
+          "II.4",
+          "Học phần tự chọn",
+          "16",
+          "13.3%"
+        ],
+        [
+          "II.5",
+          "Chuyên ngành phụ",
+          "15",
+          "—"
+        ],
+        [
+          "III",
+          "Thực hành / Thực tập",
+          "6",
+          "5.0%"
+        ],
+        [
+          "IV",
+          "Đồ án tốt nghiệp",
+          "6",
+          "5.0%"
+        ],
+        [
+          "",
+          "Tổng cộng (không bao gồm chuyên ngành phụ)",
+          "120",
+          "100%"
+        ],
+        [
+          "",
+          "Tổng cộng (bao gồm chuyên ngành phụ)",
+          "135",
+          "—"
+        ]
+      ],
+      [
+        [
+          "A.",
+          "",
+          "Tâm lý học Giáo dục",
+          "",
+          ""
+        ],
+        [
+          "STT",
+          "Mã học phần",
+          "Tên học phần",
+          "Số tín chỉ",
+          ""
+        ],
+        [
+          "1",
+          "PSYC3040",
+          "Nhập môn Tâm lý học học đường",
+          "3",
+          ""
+        ],
+        [
+          "2",
+          "PSYC3060",
+          "Rối loạn tâm lý ở trẻ em và thanh thiếu niên",
+          "3",
+          ""
+        ],
+        [
+          "3",
+          "PSYC3080",
+          "Các lý thuyết về tham vấn và trị liệu tâm lý",
+          "3",
+          ""
+        ],
+        [
+          "4",
+          "PSYC4010",
+          "Quan sát và đánh giá trẻ em",
+          "3",
+          ""
+        ],
+        [
+          "5",
+          "PSYC4030",
+          "Khó khăn trong học tập",
+          "3",
+          ""
+        ],
+        [
+          "6",
+          "PSYC4050",
+          "Tư vấn trong trường học",
+          "3",
+          ""
+        ]
+      ],
+      [
+        [
+          "B.",
+          "",
+          "Tâm lý học Kinh doanh và Tổ chức",
+          "",
+          ""
+        ],
+        [
+          "STT",
+          "Mã học phần",
+          "Tên học phần",
+          "Số tín chỉ",
+          ""
+        ],
+        [
+          "1",
+          "PSYC3050",
+          "Tâm lý học tổ chức",
+          "3",
+          ""
+        ],
+        [
+          "2",
+          "PSYC3070",
+          "Tâm lý học về động lực làm việc",
+          "3",
+          ""
+        ],
+        [
+          "3",
+          "MARK3010",
+          "Hành vi người tiêu dùng",
+          "3",
+          ""
+        ],
+        [
+          "4",
+          "PSYC4020",
+          "Động lực nhóm",
+          "3",
+          ""
+        ],
+        [
+          "5",
+          "PSYC4040",
+          "Căng thẳng, Sức khỏe tâm lý và An toàn lao động",
+          "3",
+          ""
+        ],
+        [
+          "6",
+          "PSYC4060",
+          "Đánh giá tâm lý trong môi trường làm việc",
+          "3",
+          ""
+        ]
+      ]
+    ]
+  },
+  {
+    "section_index": 7,
+    "title": "VINCORE",
+    "paragraphs": [
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số giờ học : 165",
+      "Sau khi hoàn thành khóa học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ:",
+      "Thời lượng : 45 giờ Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Thời lượng : 45 giờ Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Thời lượng : 45 giờ Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : Tùy thuộc vào chương trình đào tạo của từng viện",
+      "Hoàn thành kỳ thực tập, sinh viên sẽ có thể:",
+      "Số tín chỉ : 3 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ: 2",
+      "Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2",
+      "Hoàn thành môn học này, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:",
+      "Số tín chỉ : 2 Điều kiện tiên quyết : Không yêu cầu",
+      "Hoàn thành môn học, sinh viên sẽ có thể:"
+    ],
+    "list_items": [
+      "Phân tích cách tư duy khởi nghiệp góp phần thúc đẩy đổi mới sáng tạo và tăng trưởng trong các bối cảnh doanh nghiệp, ngành công nghiệp và quốc gia.",
+      "Đánh giá vai trò đa chiều của khởi nghiệp tại Việt Nam và quốc tế, cũng như tác động của khởi nghiệp đối với kinh tế, xã hội và môi trường. Đồng thời, sinh viên sẽ được tiếp cận với các nguyên tắc quản trị của VinGroup (6 Hóa).",
+      "Đề xuất chiến lược nhằm đánh giá tư duy, giá trị và hành vi khi khởi nghiệp, qua đó phát triển tư duy khởi nghiệp ở cấp độ cá nhân cũng như tổ chức.",
+      "Phát triển các kỹ năng quan trọng như tìm kiếm và đánh giá cơ hội, chấp nhận rủi ro một cách có tính toán, giải quyết vấn đề sáng tạo, giao tiếp hiệu quả và xây dựng ảnh hưởng với các bên liên quan.",
+      "Thực hành làm việc nhóm, cùng nhau khám phá cơ hội, phát triển ý tưởng, tìm kiếm và trình bày giải pháp cho các thử thách thông qua hoạt động hackathon trong khóa học.",
+      "Nắm vững các khái niệm cơ bản về lãnh đạo, bao gồm đặc điểm, phong cách, giá trị và xu hướng lãnh đạo, đồng thời hiểu cách áp dụng những khái niệm này vào thực tế, đặc biệt là trong một bối cảnh thế giới đầy biến động như hiện nay.",
+      "Mô tả và phân tích sự khác biệt và tương đồng giữa quản lý và lãnh đạo, đồng thời đánh giá cách áp dụng chúng trong môi trường tổ chức.",
+      "Đánh giá các khía cạnh đa chiều của lãnh đạo ở Việt Nam cũng như ở môi trường quốc tế, cũng như tác động của lãnh đạo đối với môi trường làm việc, nhất l trong bối cảnh VUCA (biến động, không chắc chắn, phức tạp, mơ hồ). Sinh viên cũng sẽ được tìm hiểu sâu về sứ mệnh, tầm nhìn và giá trị cốt lõi của Vingroup.",
+      "Phát triển tư duy lãnh đạo cá nhân thông qua việc xây dựng tầm nhìn và nhận thức bản thân, hiểu quan điểm của người khác, nhận diện bối cảnh, giao tiếp hiệu quả và đưa ra quyết định sáng suốt. Ngoài ra, sinh viên cũng sẽ học cách chịu trách nhiệm, truyền cảm hứng, và xây dựng một môi trường hợp tác để hướng tới thành công chung.",
+      "Vận dụng các giá trị và kỹ năng lãnh đạo cơ bản thông qua các hoạt động trải nghiệm thực tế tại trại huấn luyện, tập trung vào việc phát triển kỹ năng lãnh đạo bản thân, làm việc nhóm và xây dựng mối quan hệ gắn kết.",
+      "Hiểu và trình bày các kiến thức cơ bản về chính sách quốc phòng và an ninh của Đảng Cộng sản Việt Nam.",
+      "Nắm vững các khái niệm cơ bản liên quan đến công tác quốc phòng và an ninh.",
+      "Thực hiện đúng các quy tắc cơ bản và kỷ luật trong tổ chức quân đội.",
+      "Thực hành các kỹ thuật và chiến thuật cơ bản trong tác chiến bộ binh.",
+      "Giải thích được lịch sử hình thành, bản chất hiện tại và mục tiêu của hệ thống pháp luật Việt Nam, bao gồm các cơ quan chủ chốt, học thuyết và nguyên tắc pháp lý nền tảng.",
+      "So sánh và phân tích sự khác biệt và tương đồng giữa quản lý hệ thống pháp luật ở Việt Nam và các quốc gia khác.",
+      "Hiểu rõ các cơ chế thực thi nghĩa vụ pháp lý, cơ sở của hình phạt và vai trò của tòa án, hội thẩm nhân dân trong hệ thống pháp luật.",
+      "Vận dụng các quy định và nguyên tắc pháp luật cơ bản để giải quyết các vấn đề pháp lý trong nhiều lĩnh vực khác nhau, đồng thời thể hiện khả năng tư duy phản biện và đánh giá đạo đức.",
+      "Xây dựng tư duy tuân thủ pháp luật, nhận thức được tầm quan trọng của việc chấp hành các chuẩn mực pháp lý trong công việc và đời sống cá nhân, qua đó nâng cao ý thức trách nhiệm pháp lý.",
+      "Hiểu rõ và giải thích các yếu tố quan trọng trong học tập qua phục vụ cộng đồng, bao gồm lợi ích, tác động, và những đặc điểm cốt lõi.",
+      "Suy ngẫm và đánh giá các vấn đề xã hội cũng như các Mục tiêu Phát triển Bền vững (SDGs) của UNESCO, gắn liền với dự án phục vụ cộng đồng được thiết kế.",
+      "Lên kế hoạch và triển khai một dự án phục vụ cộng đồng, đảm bảo tuân thủ pháp luật và quy định địa phương.",
+      "Đánh giá kết quả dự án và rút ra những bài học kinh nghiệm, đồng thời đề xuất hướng cải thiện cho những lần thực hiện tiếp theo.",
+      "Xây dựng sự đồng cảm với các thành viên trong cộng đồng địa phương, qua đó nâng cao ý thức trách nhiệm và tinh thần kết nối.",
+      "Hiểu được ý nghĩa và tầm quan trọng của tư duy sáng tạo và phản biện trong việc giải quyết vấn đề và đưa ra quyết định.",
+      "Xây dựng và phân tích các lập luận một cách logic và dựa trên bằng chứng khoa học, đồng thời biết cách nhìn nhận và đánh giá các quan điểm khác nhau.",
+      "Vận dụng tư duy sáng tạo và phản biện để tìm kiếm giải pháp mới, giải quyết các thách thức thực tế với sự hỗ trợ từ các công cụ và phương pháp hiện đại.",
+      "Kết hợp tư duy sáng tạo và phản biện vào việc phát triển ý tưởng trong môi trường làm việc để mang lại giá trị thiết thực và hiệu quả cho tổ chức.",
+      "Phát triển khả năng làm việc cá nhân cũng như làm việc nhóm, xây dựng nền tảng để nâng cao hiệu quả công việc và từ đó đóng góp cho sự phát triển chung.",
+      "Nhận biết và phân tích các vấn đề từ cuộc sống và công việc, từ đó tìm ra hướng giải quyết bằng các phương pháp thuật toán.",
+      "Phân tách vấn đề thành các bước logic và xác định các dữ liệu cần thiết để giải quyết vấn đề.",
+      "Áp dụng các cấu trúc dữ liệu và thuật toán cơ bản trong quá trình giải quyết vấn đề.",
+      "Thiết kế các thuật toán và mô hình cơ bản để giải quyết các bài toán cụ thể.",
+      "Thực hành lập trình để triển khai các giải pháp một cách hiệu quả và chính xác.",
+      "Đánh giá và tối ưu hóa các giải pháp để đạt được hiệu quả cao nhất.",
+      "Hiểu các giá trị, thái độ và nguyên tắc cơ bản của văn hóa học thuật, đồng thời nhận biết cách mà viết học thuật phản ánh những yếu tố này.",
+      "Phân biệt sự khác nhau giữa những bài viết học thuật và những bài viết  ý kiến cá nhân, từ đó áp dụng các kỹ năng như trích dẫn và diễn giải để hoàn thành bài luận học thuật đúng chuẩn.",
+      "Nhận biết sự khác biệt giữa viết học thuật và viết chuyên nghiệp về phong cách, mục đích, đối tượng độc giả, và cách trình bày.",
+      "Phát triển kỹ năng viết rõ ràng, súc tích và có cấu trúc, tập trung vào các tài liệu và tình huống quan trọng trong học thuật và công việc chuyên môn, bao gồm bài luận, bài báo, báo cáo kinh doanh, đề xuất, và bài phát biểu.",
+      "Sử dụng AI để hỗ trợ, cải thiện và chỉnh sửa bài viết trong cả môi trường học tập và công việc chuyên môn.",
+      "Rèn luyện kỹ năng tự lãnh đạo, xây dựng sự tự tin, lòng tự trọng, khả năng tự quyết và kiểm soát bản thân trong mọi tình huống.",
+      "Tự trang bị các kỹ năng thiết yếu để sẵn sàng bước vào môi trường đại học, học cách thích nghi với những thách thức từ học tập, xã hội và người khác, đồng thời phát triển tư duy học tập suốt đời.",
+      "Phát triển kỹ năng nghề nghiệp cần thiết, chuẩn bị vững vàng cho hành trình thành công trong cuộc sống và trong sự nghiệp sau này.",
+      "Tham gia tích cực vào các hoạt động cộng đồng, thể hiện tinh thần trách nhiệm xã hội, lan tỏa những giá trị tích cực và nuôi dưỡng tinh thần “trả ơn cuộc đời.”",
+      "Liên tục tự đánh giá và hoàn thiện bản thân, từ việc xây dựng CV khi nhập học, lập Kế hoạch Phát triển Cá Nhân (IDP), đến việc chuẩn bị CV trước khi tốt nghiệp, đảm bảo sự phát triển bền vững và sẵn sàng cho cuộc sống sau đại học.",
+      "Hiểu rõ các nguyên tắc cơ bản để sống khoẻ mạnh, bao gồm chế độ dinh dưỡng cân bằng, tập thể dục thường xuyên, và chăm sóc sức khoẻ tinh thần.",
+      "Xây dựng kế hoạch chăm sóc sức khoẻ cho bản thân, biết cách quản lý căng thẳng hiệu quả và duy trì sự cân bằng giữa học tập, công việc và cuộc sống.",
+      "Giữ kỷ luật với bản thân trong ăn uống, luyện tập và nghỉ ngơi, đồng thời tích cực tham gia các câu lạc bộ thể chất và tinh thần tại trường.",
+      "Nhận thức được tác động của lối sống đến sức khoẻ lâu dài, biết cách đưa ra những quyết định hợp lý để cải thiện chất lượng cuộc sống.",
+      "Lan toả tinh thần sống lành mạnh trong cộng đồng thông qua việc nghiên cứu, tổ chức chiến dịch nâng cao nhận thức, và tham gia các nhóm sinh hoạt về sức khoẻ.",
+      "Rèn luyện thói quen và kỹ năng làm việc chuyên nghiệp , giúp đạt hiệu quả cao trong công việc.",
+      "Hiểu rõ và thực hiện các mục tiêu công việc được thống nhất trước với nhà tuyển dụng hoặc người hướng dẫn.",
+      "Cải thiện kỹ năng giao tiếp, làm việc nhóm và các kỹ năng quan trọng khác , giúp sinh viên làm việc hiệu quả hơn.",
+      "Trau dồi kiến thức và kỹ năng chuyên môn theo ngành , nhằm đảm bảo đáp ứng tốt yêu cầu của vị trí thực tập và các vị trí tương tự trong tương lai.",
+      "Xây dựng mối quan hệ nghề nghiệp , mở ra cơ hội việc làm sau khi tốt nghiệp.",
+      "Hiểu rõ nền tảng triết học cơ bản của Chủ nghĩa Mác-Lênin , bao gồm chủ nghĩa duy vật biện chứng và chủ nghĩa duy vật lịch sử.",
+      "Giải thích ý nghĩa của triết học Mác-Lênin trong việc hình thành hệ tư tưởng của Nhà nước Việt Nam và vai trò của nó trong các lĩnh vực khác như lịch sử, chính trị và kinh tế.",
+      "Nhận biết đặc trưng giao thoa của triết học Việt Nam, bao gồm các yếu tố từ chủ nghĩa Mác-Lênin, Nho giáo, Phật giáo, Đạo giáo, và các dòng tư tưởng khác.",
+      "Mô tả, đánh giá và so sánh các câu trả lời khác nhau cho những câu hỏi triết học cơ bản như “Thực tại là gì?”, “Tri thức là gì?”, “Điều gì đúng và sai?”.",
+      "Hiểu và đánh giá các cách tiếp cận khác nhau về bản chất của khoa học và sự tiến bộ khoa học.",
+      "Hiểu cách thế giới kết nối và vận hành thông qua nền kinh tế chính trị toàn cầu.",
+      "Nắm được các khái niệm và lý thuyết cơ bản để phân tích nền kinh tế toàn cầu.",
+      "Hiểu sự chuyển đổi của Việt Nam trong bối cảnh kinh tế chính trị toàn cầu.",
+      "Nhận biết và đánh giá các xu hướng lớn trong kinh tế chính trị thế giới.",
+      "Hiểu tác động của sự trỗi dậy từ Trung Quốc và Ấn Độ đối với Việt Nam, ASEAN và thế giới.",
+      "Hiểu và giải thích các khái niệm cơ bản về chính trị và sự thay đổi xã hội ở Việt Nam và khu vực, đồng thời làm quen với các thuật ngữ chuyên ngành.",
+      "Hiểu vai trò quan trọng của chính trị và hệ thống chính trị trong sự phát triển kinh tế – xã hội, bao gồm cả các quan điểm của Chủ nghĩa Mác-Lênin.",
+      "Nhận thức được cách chính trị tác động đến việc quản lý kinh tế và ảnh hưởng đến sự thành công của một quốc gia.",
+      "So sánh sự phát triển của Việt Nam với các quốc gia khác trong khu vực châu Á để rút ra những bài học kinh nghiệm.",
+      "Hiểu rõ các sự kiện, nhân vật và điều kiện lịch sử dẫn đến sự hình thành và phát triển tư tưởng Hồ Chí Minh, đồng thời nhìn nhận tư tưởng này như một di sản lịch sử và một hệ thống tư tưởng sống động.",
+      "Phân tích quá trình chuyển biến của tư tưởng Hồ Chí Minh qua thời gian và ý nghĩa của nó đối với lịch sử cũng như tương lai của Việt Nam.",
+      "Đánh giá các tài liệu lịch sử như văn bản, nghệ thuật, văn học, khảo cổ học, và các ghi chép truyền miệng để hiểu các yếu tố và tiền đề lịch sử liên quan đến các vấn đề đương đại.",
+      "Vận dụng kiến thức lịch sử và văn hóa để phân tích và hiểu các vấn đề hiện nay.",
+      "Trình bày các lập luận dựa trên bằng chứng lịch sử và thảo luận sâu sắc về các chủ đề lịch sử phức tạp.",
+      "Khám phá nhiều góc nhìn khác nhau về quá khứ, đặc biệt từ quan điểm của những nhân vật lịch sử trong bối cảnh của họ.",
+      "Hiểu rõ các sự kiện, nhân vật và điều kiện lịch sử dẫn đến sự ra đời và phát triển của Đảng Cộng sản Việt Nam.",
+      "Phân tích các tài liệu lịch sử như văn bản, nghệ thuật, văn học, khảo cổ học và các ghi chép truyền miệng để có cái nhìn sâu sắc về lịch sử.",
+      "Nắm vững các yếu tố và tiền đề lịch sử liên quan đến các vấn đề đương đại, từ đó áp dụng kiến thức lịch sử và văn hóa để phân tích và hiểu các vấn đề hiện tại.",
+      "Trình bày các lập luận dựa trên bằng chứng lịch sử một cách chặt chẽ và thuyết phục.",
+      "Khám phá nhiều góc nhìn khác nhau về quá khứ, đặc biệt từ quan điểm của những nhân vật lịch sử trong bối cảnh thời đại của họ.",
+      "Hiểu rõ cách các yếu tố như bản sắc, giá trị, nhận thức và định kiến cá nhân được định hình bởi văn hóa và lối sống đa dạng.",
+      "Nắm vững lý thuyết và thực tiễn về tác động của văn hóa đối với đời sống hàng ngày, cả trong bối cảnh địa phương và toàn cầu.",
+      "Nhận diện và phân tích sự giao thoa giữa bản sắc văn hóa của bản thân và của người khác, từ đó nâng cao khả năng thấu hiểu và tôn trọng sự khác biệt.",
+      "Vận dụng kiến thức và kinh nghiệm về văn hóa để giải quyết các vấn đề đòi hỏi sự hợp tác hoặc phối hợp giữa cá nhân và tập thể đến từ các nền văn hóa khác nhau.",
+      "Hiểu rõ các yếu tố chính, cấu trúc, và quy trình trong quan hệ quốc tế.",
+      "Nắm được các nguyên tắc lý thuyết cơ bản và so sánh các cách tiếp cận khác nhau về con người và xã hội trong quan hệ quốc tế.",
+      "Nhận diện mục tiêu của các tổ chức quốc tế trong chính trị, hợp tác và phối hợp toàn cầu.",
+      "Phân tích tình huống thực tế hoặc nghiên cứu điển hình, đưa ra giải pháp dựa trên lý thuyết và lập luận chặt chẽ.",
+      "Đánh giá các chiến lược và quan điểm khác nhau, đặc biệt trong các tình huống phức tạp liên quan đến quan hệ quốc tế.",
+      "Hiểu và trân trọng nghệ thuật và nghệ thuật thị giác trong các bối cảnh lịch sử, văn hóa, xã hội và môi trường.",
+      "Nắm vững các nguyên tắc cơ bản của nghệ thuật, nghệ thuật thị giác và thiết kế, đồng thời phân tích một tác phẩm nghệ thuật dựa trên góc nhìn khách quan.",
+      "Hiểu cách tác phẩm nghệ thuật được sáng tạo và quá trình tạo ra chúng.",
+      "Liên hệ ý nghĩa và ứng dụng của nghệ thuật vào lĩnh vực học tập hoặc sở thích cá nhân.",
+      "Phân tích nghệ thuật Việt Nam và đặt nghệ thuật Việt Nam trong bối cảnh toàn cầu.",
+      "Nâng cao kỹ năng trong lĩnh vực nghệ thuật đã chọn (như âm nhạc, múa, kịch, hoặc nghệ thuật thị giác) và thể hiện sự sáng tạo, cá tính thông qua các buổi biểu diễn.",
+      "Đánh giá và thảo luận các hình thức biểu diễn nghệ thuật khác nhau, nhận diện các yếu tố và kỹ thuật chính, đồng thời viết bài đánh giá về sự phát triển nghệ thuật cá nhân.",
+      "Hợp tác hiệu quả với đồng đội để sáng tạo và biểu diễn các tác phẩm nghệ thuật, đồng thời biết cách đưa ra và tiếp nhận phản hồi mang tính xây dựng.",
+      "Truyền tải rõ ràng ý tưởng nghệ thuật đằng sau các buổi biểu diễn, cả bằng lời nói lẫn văn bản (nếu cần), đồng thời rèn luyện kỹ năng trình bày tác phẩm nghệ thuật trước khán giả, bao gồm kỹ năng sân khấu và tương tác.",
+      "Khám phá và trân trọng các truyền thống nghệ thuật đa dạng trên thế giới, đặc biệt là văn hoá nghệ thuật Việt Nam, và đặt tác phẩm cá nhân vào bối cảnh văn hoá và lịch sử rộng lớn hơn.",
+      "Lập kế hoạch và hoàn thành một dự án biểu diễn nghệ thuật từ đầu đến cuối, thể hiện khả năng quản lý thời gian và tổ chức tốt.",
+      "Hiểu và áp dụng các nguyên tắc đạo đức trong nghệ thuật, bao gồm tôn trọng sở hữu trí tuệ và nhạy cảm văn hoá, đồng thời giữ thái độ chuyên nghiệp trong quá trình tập luyện, biểu diễn, và hợp tác."
+    ],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 8,
+    "title": "Các môn học chuyên ngành",
+    "paragraphs": [
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Sau khi hoàn thành khóa học này, sinh viên có khả năng:",
+      "1. Mô tả và giải thích một “ý tưởng lớn”, có thể là một giải pháp mới cho một vấn đề, một công nghệ đột phá, hoặc một phương pháp hay cách làm việc sáng tạo.",
+      "2. Xác định những tác động của một “ý tưởng lớn” đối với cuộc sống hàng ngày hoặc môi trường chuyên nghiệp.",
+      "3. Phát triển chiến lược sử dụng “ý tưởng lớn” để cải thiện một phương pháp hiện có hoặc tạo ra phương pháp ứng dụng mới.",
+      "4. Đánh giá việc áp dụng một “ý tưởng lớn”, bao gồm đánh giá tác động tích cực, tác động tiêu cực và các chiến lược giảm thiểu cho chủ đề của năm.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khóa học này sẽ giới thiệu và giúp sinh viên khám phá nhiều góc nhìn toàn cầu về những vấn đề thời sự quan trọng. Mỗi tuần, một giảng viên hoặc diễn giả khách mời sẽ chủ trì buổi hội thảo, lựa chọn một chủ đề, giao bài đọc chuẩn bị trước và tổ chức các hoạt động trên lớp cùng sinh viên. Các vấn đề đương đại tiềm năng bao gồm: Chat GPT và AI, khủng hoảng già hóa dân số, nhập cư, toàn cầu hóa, cuộc chạy đua vào không gian mới, Công nghiệp 4.0, và nhiều vấn đề khác.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Sau khi hoàn thành khóa học này, sinh viên sẽ có khả năng:",
+      "1. Nhận diện và phân tích các vấn đề đạo đức trong nhiều lĩnh vực tương tác chuyên nghiệp và thực tế của con người.",
+      "2. Vận dụng các lý thuyết đạo đức và đưa ra lý giải hợp lý cho các tình huống khó xử về mặt đạo đức.",
+      "3. Hiểu rõ các bên liên quan về mặt đạo đức và các nghĩa vụ đạo đức theo yêu cầu của một số tiêu chuẩn/quy tắc chuyên nghiệp, cũng như cơ sở lý luận đằng sau chúng.",
+      "4. Vận dụng các lý thuyết đạo đức và đưa ra lý giải hợp lý cho các tình huống khó xử về mặt đạo đức, ngay cả khi không có tiêu chuẩn/quy tắc chuyên nghiệp nào được thiết lập.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khóa học này sẽ giới thiệu cho sinh viên những chủ đề nâng cao về lập luận, lôgic, và các vấn đề liên quan đến bằng chứng và kiểm định trong khoa học. Về lập luận diễn dịch, sinh viên sẽ được đào sâu kiến thức về tư duy phản biện, bao gồm phép tính vị từ bậc nhất (first-order predicate calculus) và lôgic modal (modal logic). Về lập luận thống kê, sinh viên sẽ được tìm hiểu các tiên đề của lý thuyết xác suất, lý thuyết xác nhận Bayesian, và các vấn đề trong việc xác nhận các lý thuyết khoa học, bao gồm các chủ đề nâng cao từ Phương pháp Giả thuyết – Diễn dịch và Thuyết Ngụy chứng.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khóa học này giới thiệu và đi sâu vào khái niệm phát triển và vai trò của tính bền vững. Khóa học sẽ tiếp cận các ý tưởng phát triển từ góc độ liên ngành và đa chiều. Nội dung khóa học nhằm mục đích trả lời các câu hỏi như: Phát triển là gì? Quá trình phát triển diễn ra như thế nào? Yếu tố nào đóng góp vào sự phát triển? Tại sao câu chuyện phát triển lại khác nhau ở cấp độ quốc gia, khu vực và toàn cầu? Bên cạnh những giải thích lý thuyết về phát triển, những hiểu biết thực tế sẽ được cung cấp thông qua việc tiếp xúc với thực tế, các nghiên cứu điển hình, tài liệu đọc đương đại và các dự án cuối khóa. Khóa học sẽ tập trung vào sự tương tác và mối quan hệ qua lại giữa môi trường và phát triển bằng cách khám phá vai trò của tính bền vững.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Khi ngày càng có nhiều thông tin được số hóa, các nhà nghiên cứu có thể tận dụng sức mạnh của AI để phân tích và trực quan hóa dữ liệu một cách hiệu quả hơn, phục vụ cho việc truyền đạt thông tin. Khóa học này sẽ giới thiệu cho sinh viên những tiến bộ vượt bậc trong lĩnh vực nhân văn số, đồng thời hướng dẫn cách lập trình cho nghiên cứu cơ bản và học thuật, đặc biệt chú trọng đến khả năng ứng dụng trong các lĩnh vực như truyền thông, tâm lý học và kinh tế học.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 2",
+      "Mục tiêu của khóa học là giới thiệu cho sinh viên về thế giới đầy thú vị của tâm lý học. Đây là một lĩnh vực vô cùng rộng lớn, bao gồm nhiều khía cạnh và chủ đề khác nhau, từ tâm lý học tiến hóa đến đạo đức con người. Mục tiêu của các chuyên nhành tâm lý học là tìm hiểu về cách tâm trí và não bộ tương tác với thế giới bên ngoài trong việc hình thành nên hành vi. Khóa học này được thiết kế để cung cấp cho sinh viên nền tảng tư duy về các vấn đề trong tâm lý học, và tổng quan về các lĩnh vực tâm lý mà sinh viên có thể lựa chọn nghiên cứu và theo đuổi sâu hơn trong tương lai.",
+      "Điều kiện tiên quyết: Không Số tín chỉ: 3",
+      "Khóa học này sẽ giới thiệu cho sinh viên những khái niệm và kỹ thuật cơ bản của phân tích thống kê. Trọng tâm của khóa học là phát triển các kỹ năng về thống kê mô tả và thống kê suy diễn, bao gồm thu thập và phân tích dữ liệu, lý thuyết xác suất, kiểm định giả thuyết và phân tích hồi quy. Sinh viên cũng sẽ được hướng dẫn sử dụng phần mềm thống kê để phân tích dữ liệu.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Khóa học này được thiết kế nhằm giới thiệu chung về các nguyên tắc và cơ chế sinh học nền tảng cho những hành vi phức tạp của con người. Những chủ đề của khóa học bao gồm: giải phẫu cấu trúc của của các tế bào thần kinh và cách chúng giao tiếp với nhau, đặc tính của tổ chức và chức năng não bộ, quá trình xử lý của hệ thống cảm giác, khoa học thần kinh nhận thức, và ảnh hưởng của thần kinh và các hormone đến sức khỏe và cảm xúc. Khóa học sẽ tập trung vào cách các phương pháp và cách tiếp cận mới đang giúp các nhà tâm lý, khoa học máy tính, nhà thống kê, kỹ sư và nhà sinh vật học đang đạt đến sự hiểu biết tích hợp về những hành vi phức tạp của con người.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Tâm lý học là ngành khoa học nghiên cứu về suy nghĩ, cảm xúc và hành vi. Trong khóa học này, sinh viên sẽ được trang bị những kỹ năng quan trọng để đánh giá các nghiên cứu trên thế giới và tự thực hiện một nghiên cứu thuộc lĩnh vực tâm lý học. Khóa học cũng giúp sinh viên tiếp cận và phân tích thông tin một cách khoa học và hiệu quả từ nhiều nguồn như các phương tiện truyền thông, chính phủ và các tổ chức. Đồng thời, khóa học cũng trang bị cho sinh viên những kiến thức cần thiết để có thể trở thành một nhà nghiên cứu hiệu quả trong lĩnh vực tâm lý học. Không chỉ dừng lại ở đó, khóa học cũng sẽ đi xa hơn trong việc hỗ trợ sinh viên có những kỹ năng tư duy phản biện và logic mang tính ứng dụng cao trong công việc và đời sống.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Tâm lý học xã hội hướng đến việc tìm hiểu cách suy nghĩ, cảm xúc và hành vi con người bị ảnh hưởng bởi sự hiện diện, dù là thật hay ngầm ẩn, của những người xung quanh. Tâm lý học xã hội cho rằng con người chịu tác động rất lớn từ các tình huống xã hội. Môn học này sẽ cung cấp cho sinh viên tổng quan những nghiên cứu và lý thuyết trong tâm lý học xã hội. Sinh viên sẽ không chỉ được học về những kết quả nghiên cứu thú vị và cấp thiết, mà còn được học về cách thức những nhà tâm lý đã khám phá ra những tri thức này. Điểm khác biệt giữa tâm lý học xã hội và những cách tiếp cận khác như triết học và lịch sử học nằm ở việc tâm lý học xã hội là một khoa học thực chứng. Nó áp dụng những phương pháp khoa học trong việc tìm hiểu về con người. Trong khóa học, sinh viên sẽ được đi sâu vào những chủ đề như thái độ, sự thuyết phục, sự tuân thủ, phục tùng, tri giác người khác, định khuôn và phân biệt đối xử, các mối quan hệ lãng mạn, sự gây hấn và những hành vi hỗ trợ xã hội. Khóa học nhấn mạnh vào sự hiểu biết của những phương pháp khoa học, kết quả nghiên cứu và những quy tắc quan trọng của lĩnh vực tâm lý học xã hội, từ đó có thể áp dụng vào đời sống cá nhân và xa hơn nữa là những vấn đề xã hội.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Khóa học này tập trung vào sự phát triển của con người qua từng giai đoạn cuộc đời. Một cách khái quát, khóa học sẽ xem xét những ảnh hưởng của yếu tố di truyền và sinh học đến sự phát triển cá nhân, những ảnh hưởng của xã hội và sự tương tác giữa hai nhóm yếu tố này. Các chủ đề cụ thể sẽ bao gồm những hành vi di truyền, khí chất, mối quan hệ cha mẹ – con cái, mối quan hệ giữa anh chị em, quan hệ bạn bè, cái tôi, trí thông minh, sự phát triển cảm xúc, và những vấn đề phát triển xã hội như hành vi chống đối xã hội, trầm cảm.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Tâm lý học nhận thức nghiên cứu cách chúng ta cảm nhận và diễn giải thông tin từ thế giới xung quanh, cách chúng ta kết hợp thông tin mới này với kinh nghiệm đã có, và cách chúng ta quyết định ứng xử với một môi trường luôn biến đổi. Mặc dù mục đích chính của khóa học là giới thiệu sinh viên đến với nghiên cứu khoa học về tâm trí, sinh viên cũng sẽ hiểu được vai trò trung tâm của nhận thức trong cuộc sống hàng ngày. Khóa học bao gồm ba mô-đun riêng biệt: Chú ý và Tri giác, Học tập và Trí nhớ, và Chức năng Nhận thức Cấp cao.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2010, PSYC2020, PSYC2030, PSYC2040, PSYC2050 Số tín chỉ: 3",
+      "Tâm lý học tư pháp là bộ môn vận dụng và thực hành tâm lý trong hệ thống luật pháp, có liên quan đến cảnh sát hoặc cơ quan thực thi pháp luật, tội phạm và hành vi phạm pháp, nghiên cứu về nạn nhân và các dịch vụ hỗ trợ, phòng xử án, các cơ sở giáo dục cải tạo hoặc trại giam. Khóa học này sẽ trải dài trên nhiều lĩnh vực khác nhau liên quan đến pháp luật và tâm lý học. Trong quá trình học, sinh viên có thể sẽ được tiếp cận với những tài liệu, hình ảnh trực quan để minh họa cho những loại hình phạm tội khác nhau mà một nhà tâm lý học/tâm thần học tư pháp sẽ làm việc cùng trong quá trình hành nghề.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2040, PSYC2050 Số tín chỉ: 3",
+      "Khóa học này sẽ cung cấp một cái nhìn tổng quan về những cột mốc quan trọng trong nghiên cứu xuyên văn hóa, đồng thời làm rõ ảnh hưởng của văn hóa đến con người và sự phát triển. Khóa học đặc biệt chú trọng đến các phương pháp tiếp cận thực nghiệm trong nghiên cứu xuyên văn hóa, đồng thời giải thích tầm quan trọng của văn hóa trong nhận thức, ngôn ngữ, cách nuôi dạy con cái, cũng như sự phát triển của trẻ em. Sinh viên sẽ hiểu được tính kết nối, sự khác biệt và đa dạng trong xã hội toàn cầu. Khóa học này cũng xem xét sự khác biệt về văn hóa xã hội trong quá trình phát triển của trẻ và những ảnh hưởng của nó khi làm việc với trẻ em và gia đình trong môi trường giáo dục và các môi trường ứng dụng khác. Sinh viên sẽ được khuyến khích áp dụng hiểu biết về các vấn đề toàn cầu để xem xét trách nhiệm của cá nhân và cộng đồng trong bối cảnh xã hội toàn cầu.Cuối cùng, sinh viên sẽ nhận ra rằng hành vi, suy nghĩ, cảm xúc, ngôn ngữ, sức khỏe và sự phát triển của chúng ta đều chịu ảnh hưởng sâu sắc từ văn hóa.",
+      "Điều kiện tiên quyết: PSYC1010 Số tín chỉ: 3",
+      "Khóa học này sẽ giới thiệu cho sinh viên những lý thuyết quan trọng nhất về nhân cách. Có rất nhiều quan điểm khác nhau về nhân cách, điều này cho thấy không có một lý thuyết thống nhất nào được công nhận rộng rãi trong lĩnh vực này. Mặc dù có nhiều quan điểm, nhưng mỗi lý thuyết đều có thể được đánh giá dựa trên các tiêu chí khoa học. Vì vậy, bên cạnh việc giúp sinh viên hiểu rõ hơn về cách các nhà lý thuyết đã hình dung và khái niệm hóa nhân cách con người, mục tiêu chính của khóa học là trang bị cho sinh viên khả năng đánh giá các lý thuyết này, từ đó xác định được những lý thuyết nào có giá trị và xứng đáng được tiếp tục nghiên cứu và phát triển."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 9,
+    "title": "Tâm lý học Giáo dục",
+    "paragraphs": [
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2040, PSYC2050 Số tín chỉ: 3",
+      "Khóa học này được thiết kế để giới thiệu cho sinh viên về thực tiễn và nghề nghiệp trong lĩnh vực tâm lý học đường. Sinh viên sẽ được tìm hiểu về nền tảng của thực hành tâm lý học đường, bao gồm các khía cạnh lịch sử, pháp lý, đạo đức và đa văn hóa. Bên cạnh đó, sinh viên cũng sẽ khám phá các con đường sự nghiệp trong lĩnh vực này, đồng thời nắm vững kiến thức chuyên sâu về quá trình đào tạo, cấp chứng chỉ và bối cảnh làm việc.",
+      "Ngoài những kiến thức nền tảng, sinh viên còn được làm quen với các khái niệm về đánh giá và can thiệp trong các lĩnh vực học tập, xã hội, cảm xúc và hành vi. Khóa học kết thúc bằng phần thảo luận về những cải cách ở cấp độ hệ thống và các hướng phát triển trong tương lai của nghề. Nhìn chung, mục tiêu của khóa học là cung cấp cho sinh viên cái nhìn tổng quan về lịch sử và tình hình hiện tại của lĩnh vực tâm lý học đường.",
+      "Để hỗ trợ tối đa cho việc học tập của sinh viên, khóa học sẽ kết hợp nhiều hình thức giảng dạy đa dạng, bao gồm: bài giảng, thảo luận, thuyết trình video, hoạt động nhóm (lớn và nhỏ), và phân tích các trường hợp điển hình.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2010, PSYC2040 Số tín chỉ: 3",
+      "Khóa học này được thiết kế để cung cấp kiến thức nhập môn về tâm lý học dị thường ở trẻ em và thanh thiếu niên. Sinh viên sẽ được học về căn nguyên, yếu tố duy trì và cách thức trị liệu cho những hành vi lệch chuẩn và rối loạn cảm xúc xã hội, nhận thức ở trẻ từ góc độ phát triển. Điều này có nghĩa là chúng ta sẽ xem xét các rối loạn này trong suốt quá trình phát triển của trẻ, từ khi còn nhỏ đến thời điểm hiện tại, tập trung chú ý vào những yếu tố nguy cơ và bảo vệ, xem xét tâm bệnh học trẻ em trong bối cảnh phát triển bình thường của trẻ.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2010, PSYC2040 Số tín chỉ: 3",
+      "Khóa học này sẽ cung cấp cho sinh viên cái nhìn tổng quan về các lý thuyết chính trong tham vấn và trị liệu tâm lý. Mục tiêu của khóa học là giúp sinh viên nắm vững kiến thức về các lý thuyết và tiếp cận chủ đạo trong tham vấn, bao gồm các ý tưởng trung tâm, các kỹ thuật đi kèm và những ứng dụng của lý thuyết. Khóa học được thiết kế để giúp sinh viên đạt được hai mục tiêu học tập then chốt. Thứ nhất, sinh viên sẽ được trang bị kiến thức nền tảng về các lý thuyết tham vấn quan trọng. Thứ hai, sinh viên sẽ được học và thực hành áp dụng những kiến thức và kỹ năng trong việc định hình ca.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2040, PSYC3040 Số tín chỉ: 3",
+      "Trong khóa học này, sinh viên sẽ được trang bị kiến thức và kỹ năng để triển khai hệ thống đánh giá trẻ em một cách liên tục và hiệu quả. Sinh viên sẽ được tìm hiểu và thực hành các phương pháp đánh giá đa dạng nhằm mục đích nâng cao hiệu quả học tập của trẻ. Khóa học cũng bao gồm các nội dung về cách thức phối hợp với gia đình và đồng nghiệp trong các hoạt động đánh giá.",
+      "Đặc biệt, khóa học sẽ cung cấp thông tin và cơ hội trong việc cá nhân hóa các chiến lược đánh giá liên tục, phù hợp với từng đối tượng trẻ, bao gồm cả trẻ em song ngữ và trẻ đặc biệt. Sinh viên sẽ được làm quen với các công cụ sàng lọc và nắm vững quy trình giới thiệu đến các chuyên gia để có được những đánh giá chuyên sâu và toàn diện hơn.",
+      "Sinh viên sẽ học cách sử dụng thông tin thu thập được từ quá trình đánh giá để điều chỉnh phương pháp giảng dạy, giúp việc truyền đạt kiến thức hiệu quả hơn. Ngoài ra, sinh viên cũng sẽ được hướng dẫn cách sử dụng dữ liệu tổng hợp để đánh giá và cải thiện chất lượng giảng dạy cho từng nhóm trẻ.",
+      "Cuối cùng, sinh viên sẽ được trang bị các chiến lược để không ngừng nâng cao trình độ chuyên môn trong lĩnh vực đánh giá trẻ em. Cuối cùng, nhưng không kém phần quan trọng, sinh viên sẽ được trang bị các chiến lược để không ngừng nâng cao trình độ chuyên môn trong lĩnh vực đánh giá trẻ em.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2040, PSYC3040 Số tín chỉ: 3",
+      "Khóa học này cung cấp cái nhìn tổng quan về lĩnh vực khiếm khuyết học tập (KKHT). Trọng tâm của khóa học là tìm hiểu nguyên nhân, đặc điểm, cách đánh giá và nhu cầu học tập của học sinh có khiếm khuyết trong học tập. Khóa học sẽ đề cập đến các đặc điểm nhận thức giúp phân biệt học sinh KKHT trong các khía cạnh như sự chú ý, trí nhớ và khả năng tổ chức. Đồng thời, khóa học cũng sẽ xem xét nhu cầu học tập của học sinh trong các môn viết, đọc, toán và các kỹ năng xã hội. Nhu cầu của học sinh KKHT ở các cấp độ và hình thức giáo dục khác nhau cũng sẽ được phân tích. Khóa học cũng sẽ đề cập đến những phát triển mới nhất trong lĩnh vực, bao gồm những thay đổi trong cách hiểu về KKHT và các phương pháp xác định khác ngoài phương pháp truyền thống dựa trên sự khác biệt giữa IQ và thành tích (ví dụ: mô hình RTI).",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2040, PSYC3040 Số tín chỉ: 3",
+      "Khóa học này sẽ trang bị cho sinh viên những kiến thức và kỹ năng cần thiết về lý thuyết và thực hành tư vấn, một yếu tố then chốt trong việc cung cấp dịch vụ sức khỏe tâm thần tại trường học.",
+      "Trong suốt khóa học, sinh viên sẽ được giới thiệu các mô hình tư vấn hành vi và tư vấn hướng dẫn, không chỉ áp dụng trong môi trường trường học mà còn trong việc tương tác với gia đình học sinh. Các bài tập và hoạt động được thiết kế đặc biệt để hỗ trợ và củng cố sự hiểu biết của sinh viên về vai trò của tư vấn trong trường học.",
+      "Trọng tâm của khóa học là làm thế nào để làm việc hiệu quả và hợp tác theo nhóm, cách đánh giá và can thiệp vào các tình huống có vấn đề liên quan đến hành vi và hướng dẫn học tập.",
+      "Ngoài ra, các vấn đề liên quan đến chủng tộc, văn hóa, ngôn ngữ và sự đa dạng cũng sẽ được đề cập xuyên suốt khóa học, nhằm giúp sinh viên có cái nhìn toàn diện và nhạy bén về các yếu tố này trong quá trình tư vấn."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 10,
+    "title": "Tâm lý học Tổ chức - Kinh doanh",
+    "paragraphs": [
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030 Số tín chỉ: 3",
+      "Khóa học này dành cho sinh viên sau đại học/cao học và sinh viên đại học nâng cao về các chủ đề liên quan đến lĩnh vực tâm lý học tổ chức (OP) và hành vi tổ chức (OB). Mục tiêu của khóa học là giúp sinh viên làm quen với các khái niệm, lý thuyết và vấn đề then chốt liên quan đến việc nghiên cứu và tìm hiểu OP/OB. Mặc dù khóa học chủ yếu xem xét từ góc độ tâm lý học, tức là, chúng ta giả định rằng các đơn vị hành vi cơ bản là các cá nhân, khóa học cũng kết hợp một góc nhìn đa chiều, xem xét các yếu tố ở nhiều cấp độ khác nhau. Điều này có nghĩa là khóa học không chỉ tập trung vào cá nhân mà còn xem xét các yếu tố khác như nhóm, đội ngũ, và cả tổ chức nói chung.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2050 Số tín chỉ: 3",
+      "Khóa học này tập trung vào các lý thuyết động cơ, các yếu tố bên trong và bên ngoài ảnh hưởng đến việc cá nhân đạt được mục tiêu trong công việc. Khóa học tập trung vào những quá trình nhận thức xã hội và những yếu tố môi trường kích thích những phản ứng khác nhau dẫn đến hành vi của con người. Khóa học sẽ đi sâu vào các lý thuyết về các yếu tố nhận thức ảnh hưởng đến động cơ (ví dụ: cách đặt mục tiêu, quan điểm cá nhân, niềm tin về sự kiểm soát), các quá trình cảm xúc (ví dụ: những cảm xúc phát sinh trong quá trình theo đuổi mục tiêu) và các cơ chế đánh giá (ví dụ: những giá trị ảnh hưởng đến động cơ thông qua quá trình theo đuổi mục tiêu và phát triển bản sắc). Đặc biệt, chúng ta sẽ xem xét động cơ ở cấp độ văn hóa xã hội. Điều này có nghĩa là chúng ta sẽ mở rộng khái niệm về động cơ, bao gồm cả các yếu tố thúc đẩy bên ngoài như kiến thức văn hóa và tương tác xã hội.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030, PSYC2050 Số tín chỉ: 3",
+      "Trong môi trường kinh doanh hiện đại, việc lấy người tiêu dùng làm trung tâm được xem là yếu tố then chốt. Cụ thể, marketing là một công cụ xoay quanh khách hàng, bắt đầu và kết thúc với người tiêu dùng – từ việc nhận diện nhu cầu đến đảm bảo mức độ hài lòng của khách hàng sau khi mua sắm. Khóa học này sẽ giúp sinh khám phá cách người tiêu dùng đưa ra quyết định mua sắm, sử dụng sản phẩm và đánh giá sản phẩm, dịch vụ. Mặc dù tất cả chúng ta đều là người tiêu dùng, nhưng cảm quan về bản thân và người khác thường không thực sự chính xác. Trong khóa học này, sinh viên sẽ sử dụng những lý thuyết trong marketing, tâm lý học và những khoa học hành vi khác để đưa ra những dự báo tốt hơn về phản ứng của người tiêu dùng với các hoạt động truyền thông khác nhau.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030 Số tín chỉ: 3",
+      "Khóa học này được thiết kế để cung cấp cho sinh viên sự hiểu biết sâu sắc về động lực nhóm và cách chúng tác động đến hành vi cá nhân và quá trình ra quyết định. Khóa học sẽ khám phá các khái niệm và lý thuyết cơ bản về động lực nhóm, bao gồm sự hình thành nhóm, mô hình giao tiếp, vai trò, chuẩn mực, sự gắn kết, xung đột và lãnh đạo. Sinh viên cũng sẽ xem xét các yếu tố khác nhau ảnh hưởng đến hành vi nhóm, chẳng hạn như văn hóa, sự đa dạng và động cơ quyền lực. Trong suốt khóa học, sinh viên sẽ tham gia vào một loạt các hoạt động học tập, bao gồm đọc tài liệu, thảo luận, nghiên cứu trường hợp và các bài tập trải nghiệm. Họ sẽ học cách áp dụng kiến thức về động lực nhóm vào các tình huống thực tế và phát triển các kỹ năng thực tế để tạo điều kiện cho các quá trình nhóm hiệu quả. Họ cũng sẽ học cách nhận biết và vượt qua các rào cản đối với giao tiếp và hợp tác hiệu quả trong các nhóm. Đến cuối khóa học, sinh viên sẽ có hiểu biết toàn diện về động lực nhóm và khả năng áp dụng kiến thức này để cải thiện hiệu suất và sự hợp tác của nhóm. Đồng thời, sinh viên cũng sẽ rèn luyện được tư duy phản biện và kỹ năng giải quyết vấn đề liên quan đến các hoạt động nhóm và quá trình ra quyết định.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2030 Số tín chỉ: 3",
+      "Trong môi trường kinh doanh hiện đại, việc đảm bảo sức khỏe và an toàn cho nhân viên là yếu tố then chốt cho sự thành công của bất kỳ tổ chức nào. Sức khỏe và sự an toàn của nhân viên chịu ảnh hưởng bởi nhiều yếu tố, cả trong và ngoài công việc. Do đó, có rất nhiều cách tiếp cận khác nhau để nghiên cứu và giải quyết các vấn đề liên quan đến căng thẳng, phúc lợi và an toàn của nhân viên, ví dụ như: yếu tố con người, y tế cộng đồng, tư vấn tâm lý, luật pháp…",
+      "Tuy nhiên, trong khóa học này, chúng ta sẽ tập trung chủ yếu vào cách tiếp cận của “tâm lý học tổ chức”. Chúng ta sẽ đặc biệt chú trọng đến các yếu tố tâm lý xã hội quan trọng tại nơi làm việc, bởi vì chúng có ảnh hưởng rất lớn đến mức độ căng thẳng, phúc lợi và an toàn của nhân viên. Bằng cách tập trung vào yếu tố con người, khóa học cũng sẽ giúp sinh viên nhận thức được tầm quan trọng của việc quản lý nhân sự hiệu quả.",
+      "Sau khi hoàn thành khóa học này, sinh viên sẽ nắm vững những nguyên tắc cơ bản và kiến thức cập nhật về cách các tổ chức có thể ngăn ngừa và kiểm soát căng thẳng trong công việc, đồng thời nâng cao sức khỏe và an toàn cho đội ngũ nhân viên. Sinh viên cũng sẽ hiểu rõ hơn về các chiến lược phòng ngừa và can thiệp mà các nhà quản lý và chuyên gia nhân sự có thể sử dụng để giảm thiểu tác động tiêu cực của các yếu tố gây căng thẳng và xây dựng một môi trường làm việc lành mạnh và an toàn.",
+      "Điều kiện tiên quyết: PSYC1010, PSYC2050, PSYC3030 Số tín chỉ: 3",
+      "Khóa học này cung cấp cái nhìn tổng quan về đánh giá tâm lý, bao gồm nghiên cứu về các công cụ đo lường, xây dựng trắc nghiệm, xác minh hiệu lực thang đo, phỏng vấn lâm sàng và các loại trắc nghiệm tâm lý. Các loại trắc nghiệm cụ thể có thể được đề cập bao gồm trắc nghiệm trí thông minh, trắc nghiệm về thành tích, các bài kiểm tra tâm lý học thần kinh, các công cụ tâm lý xã hội và hành vi, các bảng kiểm kê nghề nghiệp, các công cụ tâm lý học tích cực, trắc nghiệm nhân cách, và các phương pháp phóng chiếu."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 11,
+    "title": "Chương trình phụ",
+    "paragraphs": [
+      "Việc theo học chương trình phụ (minor) là không bắt buộc. Tuy nhiên, lựa chọn một chương trình phụ sẽ giúp sinh viên tận dụng tối đa các khóa học đa dạng được cung cấp trên trường.",
+      "Khi cân nhắc đăng ký tham gia một chương trình phụ, sinh viên cần lưu ý một số quy định sau: Tương tự như chương trình chính (major), tất cả các khóa học nâng cao trong chương trình phụ phải được hoàn thành tại VinUni. Để tốt nghiệp trong vòng 4 năm, sinh viên cần tích lũy tối thiểu 120 tín chỉ. Nếu đăng ký thêm một chương trình phụ, tổng số tín chỉ sẽ tăng lên 135 (gồm 120 tín chỉ cho chương trình chính và 15 tín chỉ cho chương trình phụ). Sinh viên không được phép chọn hình thức Đạt/Không đạt (Pass/Fail) cho bất kỳ khóa học nào trong chương trình phụ. Đồng thời, điểm trung bình (GPA) của các môn học bắt buộc trong chương trình này phải đạt tối thiểu 2.0. Yêu cầu của hầu hết các chương trình phụ khá đơn giản. Tuy nhiên, một số chương trình phụ có thể yêu cầu học các môn học theo một trình tự nhất định, tương tự như chương trình học chính."
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": []
+  },
+  {
+    "section_index": 12,
+    "title": "Section 12",
+    "paragraphs": [
+      "Sinh viên tốt nghiệp ngành Cử nhân Tâm lý học tại Viện Khoa học và Giáo dục Khai phóng- đại học VinUni sẽ được trang bị kiến thức chuyên sâu về tham vấn tâm lý trong cả lĩnh vực kinh doanh, tổ chức và học đường.",
+      "Với nền tảng kiến thức vững chắc và các kỹ năng cần thiết như kỹ năng nghiên cứu và viết, tư duy giải quyết vấn đề, cùng khả năng tư duy phản biện, tổng hợp và đánh giá thông tin, sinh viên tốt nghiệp ngành Tâm lý học có nhiều cơ hội nghề nghiệp đa dạng. Kiến thức về hành vi con người có thể ứng dụng trong nhiều lĩnh vực khác nhau.",
+      "Ngoài ra, chương trình học này cũng là một bước đệm tốt để sinh viên có thể tiếp tục học lên các bậc học cao hơn như Thạc sĩ và Tiến sĩ, không chỉ trong lĩnh vực Tâm lý học mà còn ở các ngành liên quan như Khoa học thần kinh, Y tế, Luật và Kinh doanh.",
+      "Một số định hướng nghề nghiệp phổ biến mà sinh viên có thể cân nhắc bao gồm:"
+    ],
+    "list_items": [],
+    "links": [],
+    "images": [],
+    "tables": [
+      [
+        [
+          "Ngành/ Lĩnh vực",
+          "Vị trí công việc"
+        ],
+        [
+          "Chăm sóc sức khỏe",
+          "Nhà tham vấn tâm lý Nhà tâm lý học sức khỏe Nhà tâm lý học phục hồi chức năng"
+        ],
+        [
+          "Giáo dục",
+          "Người cố vấn Điều phối viên giáo dục Nhà tham vấn tâm lý học đường Nhà tâm lý học giáo dục"
+        ],
+        [
+          "Nghiên cứu",
+          "Nghiên cứu sinh (Tiến sĩ) Nhà khoa học hành vi Nhà nghiên cứu thị trường"
+        ],
+        [
+          "Nhân sự",
+          "Nhà tâm lý học nghề nghiệp Chuyên viên tuyển dụng nhân sự Huấn luyện viên"
+        ],
+        [
+          "Marketing/Sales",
+          "Chuyên viên marketing Quản lý chiến dịch Thiết kế sản phẩm Marketing tiêu dùng/Tiếp thị tiêu dùng"
+        ],
+        [
+          "Tư vấn",
+          "Cố vấn tổ chức Chuyên gia tư vấn về phân tích nghiệp vụ"
+        ],
+        [
+          "Tổ chức phi chính phủ",
+          "Nhà tâm lý học tư vấn dự án"
+        ],
+        [
+          "Công nghệ thông tin",
+          "Thiết kế trải nghiệm người dùng Thiết kế giao diện người dùng Kỹ sư kinh doanh"
+        ]
+      ]
+    ]
+  }
+]

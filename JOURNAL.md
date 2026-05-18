@@ -1,307 +1,310 @@
-# Weekly Journal
+# Nhật ký tuần - VinUni Admission Assistant
 
-Ghi lại hành trình xây dựng sản phẩm mỗi tuần — những gì đã làm, học được gì, AI giúp như thế nào.
+**Thành viên nhóm:** Nguyễn Tiến Dũng, Hoàng Đức Nghĩa, Hoàng Vĩnh Giang
 
-> **Cập nhật mỗi cuối tuần** (trước khi tạo PR). Không cần dài, chỉ cần thật.
+File này là báo cáo hàng tuần cho quá trình xây dựng sản phẩm VinUni Admission Assistant từ Chủ nhật 05/04/2026 đến Chủ nhật 17/05/2026. Mỗi tuần ghi lại mục tiêu, kết quả, khó khăn, cách nhóm dùng AI coding tools, bài học và kế hoạch tiếp theo.
 
 ---
 
-## Template
+## Tuần 1: 05/04/2026 - 11/04/2026
 
-```markdown
-## Tuần N — DD/MM/YYYY
+### Mục tiêu
+
+Khởi động dự án, chọn workflow dùng AI coding tools, so sánh các hướng sản phẩm khả thi và xác định MVP đầu tiên cho bài toán tư vấn chọn ngành.
 
 ### Đã làm
--
 
-### Khó nhất tuần này
--
+- Bắt đầu journal và thống nhất cách ghi lại quá trình làm sản phẩm.
+- So sánh GitHub Copilot, Gemini Code Assist và OpenAI Codex cho workflow của nhóm.
+- Quyết định dùng Copilot cho autocomplete/code nhỏ, Gemini cho brainstorm/debug/so sánh hướng làm, Codex cho thay đổi lớn cần hiểu repo và viết tài liệu.
+- So sánh các track sản phẩm: chấm tài liệu, theo dõi bằng camera, trợ lý gợi ý/chọn ngành.
+- Chọn hướng chính là Major Choosing/Admission Assistant vì giải quyết trực tiếp pain point của học sinh.
+- Định nghĩa MVP tối thiểu:
+  - Thu thập sở thích/thế mạnh/phong cách học sinh.
+  - Gợi ý ngành phù hợp.
+  - Giải thích lý do match.
+  - Có chat/advisor đơn giản.
+  - Có backend API ban đầu.
+- Bắt đầu tạo skeleton frontend/backend và các service gọi API đầu tiên.
 
-### AI tool đã dùng
+### Khó khăn
+
+Khó nhất là giữ phạm vi nhỏ. Nhóm có nhiều ý tưởng AI khác nhau, nhưng nếu làm quá rộng thì sản phẩm sẽ thiếu trọng tâm. Tuần này nhóm phải chọn một vấn đề đủ rõ: giúp học sinh chọn ngành VinUni có căn cứ.
+
+### AI tools đã dùng
+
 | Tool | Dùng để làm gì | Kết quả |
 |---|---|---|
-| Claude Code | | |
+| GitHub Copilot | Gợi ý code nhanh, component nhỏ, helper API | Tăng tốc các phần triển khai lặp lại |
+| Gemini Code Assist | So sánh track sản phẩm, brainstorm MVP | Giúp làm rõ pros/cons |
+| OpenAI Codex | Lập kế hoạch, chia MVP, viết tài liệu ban đầu | Giúp biến ý tưởng thành backlog có thứ tự |
 
-### Học được
--
+### Bài học
 
-### Nếu làm lại, sẽ làm khác
--
+- AI coding tools hữu ích nhất khi nhóm đã có mục tiêu rõ.
+- MVP cần chứng minh giá trị chính trước khi thêm admin, CV, RAG hoặc handoff.
+- Với sản phẩm tư vấn tuyển sinh, giải thích "vì sao" quan trọng không kém kết quả gợi ý.
 
-### Kế hoạch tuần tới
--
-```
+### Kế hoạch tuần sau
+
+- Xây dựng app shell, Wizard, Report và contract backend/frontend đầu tiên.
+- Bắt đầu nghĩ về dữ liệu profile và RAG để câu trả lời không chỉ dựa vào prompt.
 
 ---
 
-## Ví dụ
+## Tuần 2: 12/04/2026 - 18/04/2026
 
-### Tuần 1 — 31/03/2026
+### Mục tiêu
 
-**Thành viên:** Nguyễn Văn A, Trần Thị B, Lê Văn C
+Mở rộng MVP thành trải nghiệm dùng được: frontend app shell, Wizard flow, API contracts, recommendation đầu tiên, định hướng Advisor/RAG và profile data.
 
-#### Đã làm
-- Setup project TypeScript + cấu hình `.env`
-- Xây dựng agent loop cơ bản: nhận input → gọi Claude API → in output
-- Thêm tool `search_web` đầu tiên (dùng Brave Search API)
-- Viết README cho repo nhóm
+### Đã làm
 
-#### Khó nhất tuần này
-- Tool call response của Claude trả về sai format — mất 2 tiếng debug mới phát hiện ra thiếu `"type": "tool_result"` trong message history.
-- Lần đầu dùng TypeScript nên type error khá nhiều, phải học cách dùng `as` và generic.
+- Thiết kế dữ liệu profile học sinh nên lưu: GPA, IELTS/test scores, preferred majors, interests, strengths, profile data.
+- Xây app shell frontend với các route chính: dashboard, wizard, consultant, report, profile.
+- Tách API calls ra service layer để frontend dễ đồng bộ với backend.
+- Thiết kế contract cho `/api/match` và `/api/chat`.
+- Xử lý các lỗi UI/state ban đầu như form reset, loading spinner, map undefined khi majors chưa load.
+- Tạo recommendation flow đầu tiên cho Top 3 ngành.
+- Bắt đầu định hướng RAG/advisor: câu hỏi tuyển sinh nên có nguồn, câu hỏi chọn ngành nên dùng profile context.
+- Bắt đầu nghĩ theo framework Trust, Control, Recovery, Clarity, Safety để tránh app chỉ là chatbot chung chung.
 
-#### AI tool đã dùng
+### Khó khăn
+
+Frontend và backend thay đổi cùng lúc nên dễ lệch field response. Nhóm nhận ra cần có một API boundary ổn định thay vì để từng component tự parse response.
+
+### AI tools đã dùng
+
 | Tool | Dùng để làm gì | Kết quả |
 |---|---|---|
-| Claude Code | Giải thích Anthropic tool use API, debug message format | Giải quyết được bug trong 15 phút |
-| Cursor | Autocomplete TypeScript types | Tiết kiệm khoảng 30% thời gian gõ |
+| GitHub Copilot | Component UI, helper, validation, state fixes | Hoàn thành nhanh các phần nhỏ |
+| Gemini Code Assist | Brainstorm profile fields và RAG/advisor tradeoff | Giúp định hướng data model |
+| OpenAI Codex | API contract, frontend/backend alignment, docs | Giúp giảm lệch contract |
 
-#### Học được
-- Tool use trong Claude hoạt động theo vòng lặp: model gọi tool → app trả kết quả → model tiếp tục. Cần giữ đúng message history.
-- `zod` rất hữu ích để validate tool input schema.
-- Nên đặt timeout cho API call ngay từ đầu, không để sau mới thêm.
+### Bài học
 
-#### Nếu làm lại, sẽ làm khác
-- Setup TypeScript strict mode ngay từ đầu thay vì thêm sau (refactor mệt hơn).
-- Viết unit test cho `parseToolCall()` trước khi tích hợp vào agent loop.
+- Profile data là nền tảng để tư vấn ngành cá nhân hóa hơn.
+- Service layer frontend giúp giảm lỗi khi backend đổi contract.
+- Recommendation cần có match reason, không chỉ trả major name.
 
-#### Kế hoạch tuần tới
-- Thêm tool `read_file` và `write_file`
-- Implement memory: lưu conversation history vào file JSON
-- Thử chạy agent giải 1 bài tập thực tế
+### Kế hoạch tuần sau
+
+- Thiết kế CV parsing, RAG knowledge base, guardrails và human handoff.
+- Mở rộng app từ MVP thành hệ thống có safety/recovery.
 
 ---
 
-### Tuần 2 — 07/04/2026
+## Tuần 3: 19/04/2026 - 25/04/2026
 
-**Thành viên:** Nguyễn Văn A, Trần Thị B, Lê Văn C
+### Mục tiêu
 
-#### Đã làm
-- Thêm tool `read_file`, `write_file`, `list_dir`
-- Agent có thể tự đọc file trong repo và đề xuất refactor
-- Implement conversation memory: lưu 20 message gần nhất
-- Thử nghiệm: cho agent tự fix 3 bug đơn giản → thành công 2/3
+Thiết kế các lớp tin cậy: CV parsing, RAG, guardrails, staff handoff và admin operations.
 
-#### Khó nhất tuần này
-- Memory bị lỗi khi conversation quá dài (vượt context window). Phải implement sliding window: chỉ giữ system prompt + 20 message gần nhất.
-- Agent đôi khi loop vô hạn khi tool trả lỗi — chưa có stop condition tốt.
+### Đã làm
 
-#### AI tool đã dùng
+- Xác định CV upload cần parse an toàn, không ghi đè profile cũ một cách mù quáng.
+- Thiết kế RAG cho admissions data để câu trả lời tuyển sinh có nguồn và dễ cập nhật.
+- Thiết kế guardrails: blocked topics, prompt injection, fabricated claims, PII leakage, overcommitment.
+- Định nghĩa escalation/handoff: khi AI không chắc hoặc câu hỏi cần xác nhận, hệ thống chuyển sang tư vấn viên.
+- Thiết kế staff handoff flow: pending job, staff accept/busy, xem context, gửi human reply.
+- Định hướng admin operations: audit logs, metrics, token usage, prompt versioning, RAG sync.
+- Cải thiện text nút handoff và các trạng thái pending cho dễ hiểu hơn.
+
+### Khó khăn
+
+Bài toán tuyển sinh có rủi ro cao hơn chatbot thông thường. AI không được hứa chắc chắn đậu, học bổng hoặc chính sách chưa có nguồn. Nhóm phải ưu tiên "AI biết dừng lại" thay vì cố trả lời mọi thứ.
+
+### AI tools đã dùng
+
 | Tool | Dùng để làm gì | Kết quả |
 |---|---|---|
-| Claude Code | Thiết kế sliding window memory, review code agent loop | Phát hiện thêm edge case khi tool throw exception |
-| Gemini CLI | So sánh approach lưu memory: file JSON vs SQLite | Tư vấn dùng JSON cho prototype, SQLite khi cần query |
+| Gemini Code Assist | Guardrail strategy, RAG update flow, admin needs | Giúp so sánh các hướng safety |
+| GitHub Copilot | UI text, navigation icons, frontend helper | Tăng tốc chỉnh UI |
+| OpenAI Codex | Staff handoff design, audit/admin planning | Biến recovery flow thành thiết kế rõ ràng |
 
-#### Học được
-- Context window là resource có hạn — cần thiết kế memory strategy từ sớm.
-- Stop condition quan trọng không kém gì agent logic: `max_iterations`, `no_new_tool_calls`, `explicit_done`.
-- AI agent review code của mình rất có ích: Claude Code tìm ra 2 potential null pointer mà mình bỏ sót.
+### Bài học
 
-#### Nếu làm lại, sẽ làm khác
-- Viết interface `Memory` trước, rồi implement sau — thay vì hard-code array từ đầu.
-- Log tất cả tool call ra file ngay từ đầu để debug dễ hơn.
+- Với admissions, truthful uncertainty tốt hơn false confidence.
+- Human handoff không phải fallback thất bại, mà là một phần của thiết kế an toàn.
+- RAG cần có source labels để user biết thông tin đến từ đâu.
 
-#### Kế hoạch tuần tới
-- Fix vòng lặp vô hạn: thêm `max_iterations = 10`
-- Thêm tool `run_tests` để agent tự kiểm tra code sau khi sửa
-- Demo cho instructor cuối tuần
+### Kế hoạch tuần sau
 
-### Tuần 23 — 05/09/2026
-Thành viên: Nhóm A20-124
-#### Đã làm
-- Hoàn tất chuyển đổi LLM provider từ Google Gemini sang OpenAI (gpt-4o-mini).
-- Thay thế thư viện PyPDF2 đã lỗi thời bằng pdfplumber với chế độ layout=True, giúp trích xuất thông tin từ CV đa cột chính xác hơn đáng kể.
-- Cấu hình lại RAGService với 3 collection ChromaDB chuyên biệt: admissions, faq, và cvs.
-- Tối ưu hóa quy trình tìm kiếm với Query Expansion và LTR (Learning-to-Rank) reranker.
-- Loại bỏ triệt để các dependency không cần thiết và giải quyết lỗi nạp model mặc định của ChromaDB trên Railway.
-
-#### Khó nhất tuần này
-- Debug lỗi log 307 Temporary Redirect khi deploy lên Railway. Nguyên nhân do ChromaDB tự động cố gắng tải model từ HuggingFace dù đã cấu hình dùng OpenAI embeddings. Đã xử lý bằng cách set embedding_function=None khi khởi tạo collection.
-- Đảm bảo tính nhất quán của EMBEDDING_MODEL (text-embedding-3-small) trên toàn bộ hệ thống để tránh sai lệch vector.
-
-#### AI tool đã dùng
-| Tool | Dùng để làm gì | Kết quả |
-|---|---|---|
-| Gemini Code Assist | Phân tích log Railway, refactor logic RAG và tư vấn chuyển đổi thư viện PDF | Giải quyết lỗi startup và tối ưu hóa hiệu suất trích xuất dữ liệu |
-| OpenAI API | Cung cấp Embeddings và Generation | Phản hồi nhanh, giá rẻ và độ chính xác cao hơn model cũ |
-
-#### Học được
-- Khi sử dụng ChromaDB với manual embeddings, việc khai báo explicit embedding_function=None là bắt buộc để tránh server tự download model nặng hàng trăm MB.
-- Layout-aware parsing (pdfplumber) là chìa khóa để trích xuất dữ liệu từ các mẫu hồ sơ hiện đại.
-
-#### Nếu làm lại, sẽ làm khác
-- Sẽ đóng gói các hằng số cấu hình model (embedding vs chat) vào một file constants.py ngay từ đầu để tránh việc hard-code trong các service.
-
-#### Kế hoạch tuần tới
-- Triển khai UI theo pattern "Chat + Context Panel" để hiển thị Match Score và bằng chứng đi kèm.
- - Hoàn thiện hệ thống Guardrails để bảo vệ dữ liệu PII của sinh viên.
-
-### Cập nhật ngày 06/09/2026
-#### Đã làm
-- Triển khai trọn bộ Backend Session API: hỗ trợ lưu, đổi tên, xóa và tải xuống lịch sử hội thoại dưới dạng file .txt.
-- Xây dựng logic `migrate_db()` trong `DBService` giúp tự động cập nhật schema (thêm cột `title`) khi khởi chạy server.
-- Tối ưu hóa các Agent: Tách biệt `ADVISOR_CHAT_SYSTEM_PROMPT` cho hội thoại tự nhiên, cải tiến khả năng parse JSON bền bỉ cho Advisor và Judge Agent.
-- Bảo mật dữ liệu: Thực hiện PII Masking (ẩn Email, SĐT) trong `CRMAgent` và viết unit test xác thực tại `test_crm_pii.py`.
-- Cải tiến UI/UX: Thêm "Trust Badge" bảo mật tại trang Profile, cập nhật giao diện `MajorCard` và xử lý lỗi crash Google Login khi thiếu cấu hình Client ID.
-- Fix lỗi SyntaxError: Xử lý triệt để các lỗi docstring chưa đóng trong các file agent.
-
-#### Khó nhất tuần này
-- Đảm bảo tính nhất quán của dữ liệu khi thực hiện migration schema tự động trên SQLite và PostgreSQL mà không làm gián đoạn dịch vụ.
-
-#### AI tool đã dùng
-| Tool | Dùng để làm gì | Kết quả |
-|---|---|---|
-| Gemini Code Assist | Hỗ trợ refactor Agent prompts, viết code migration và unit test PII | Hệ thống hoạt động ổn định, bảo mật và chuyên nghiệp hơn |
-
-#### Học được
-- Việc tách biệt rõ ràng giữa prompt trả về dữ liệu (JSON) và prompt trò chuyện (Text) giúp hệ thống AI hoạt động tin cậy hơn, tránh được các lỗi hiển thị không mong muốn cho người dùng cuối.
-
-### Cập nhật ngày 11/05/2026
-#### Đã làm
-- **Hệ thống Audit & Security**: Triển khai `AdminAuditMiddleware` để tự động ghi lại mọi thao tác của Admin và Staff. Phát triển công cụ CLI `reset_admin.py` để quản lý tài khoản và quyền hạn trực tiếp từ Console (Railway/Terminal).
-- **PMF Metrics**: Hoàn thiện `MetricService` và API `/api/metrics` để tính toán tỷ lệ AI Resolution, Human Fallback, độ trễ hệ thống và biểu đồ hoạt động hàng ngày (Admin vs Guest).
-- **Staff Dashboard**: Xây dựng giao diện cho nhân viên tư vấn với khả năng xem danh sách Fallback, tra cứu bối cảnh học sinh (Handoff Summary) và chỉnh sửa trực tiếp hồ sơ học thuật (GPA, IELTS, Ngành quan tâm).
-- **Admin Dashboard**: Nâng cấp Tab Audit với bộ lọc lỗi/fallback, tìm kiếm theo email và Modal xem chi tiết log (hiển thị JSON Judge Result đẹp mắt).
-- **Độ tin cậy (Resilience)**: Fix các lỗi `NoneType` crash API khi gặp dữ liệu SQL Null và tự động hóa quy trình Migration Schema cho bảng `audit_logs`.
-- **Unit Testing**: Viết bộ test `test_pmf_handoff.py` kiểm tra phân quyền (RBAC) và logic Rate Limiting cho các endpoint nhạy cảm.
-
-#### Khó nhất tuần này
-- Đồng bộ hóa Schema Database: Việc cập nhật bảng `audit_logs` hiện có trên môi trường Production mà không làm mất dữ liệu cũ yêu cầu logic `migrate_db` phải cực kỳ cẩn thận với lệnh `ALTER TABLE`.
-- Xử lý bất đồng bộ state trong React: Đảm bảo dữ liệu tóm tắt học sinh hiển thị chính xác ngay lập tức khi Staff click vào danh sách Nhật ký (tránh lỗi Stale State).
-
-#### AI tool đã dùng
-| Tool | Dùng để làm gì | Kết quả |
-|---|---|---|
-| Gemini Code Assist | Refactor Middleware, viết Unit Test cho PMF và gỡ lỗi logic UI Dashboards | Rút ngắn thời gian phát triển các tính năng quản trị phức tạp và đảm bảo code sạch. |
-
-#### Học được
-- Middleware là công cụ mạnh mẽ để tách biệt logic nghiệp vụ và logic hệ thống (như ghi log hành vi).
-- Trong môi trường thực tế, dữ liệu người dùng thường không đầy đủ; luôn cần sử dụng pattern `(data or {})` để bảo vệ ứng dụng khỏi các lỗi crash không đáng có.
-- Việc hiển thị "Tại sao AI thất bại" (Judge Result) quan trọng hơn việc AI trả lời đúng, vì nó giúp đội ngũ nhân viên biết chính xác chỗ nào cần can thiệp.
-
-### Cập nhật ngày 13/05/2026
-#### Đã làm
-- **Backend TODO cleanup**: Cập nhật các TODO/comment trong backend để phản ánh đúng các feature đã implement, đặc biệt ở `AdvisorAgent`, `JudgeAgent`, `InputGuard`, `OutputGuard`, `RateLimiter` và `Pipeline`.
-- **Guardrails & TCR backend hardening**: Bắt buộc thực thi kết quả `InputGuard` trước khi route/RAG/LLM, thêm normalize homoglyph để giảm bypass prompt injection, dùng `OutputGuard.process()` cho response cuối cùng, và chỉ lưu assistant message sau khi Judge chấp nhận hoặc đã chuyển sang fallback an toàn.
-- **Security & audit reliability**: Thêm `save_security_event()` để ghi nhận guardrail/rate-limit event; tự động migrate các cột còn thiếu của `audit_logs` khi khởi tạo DB để tránh lỗi production kiểu `column input_text does not exist`.
-- **Frontend/backend alignment**: Hoàn thành các mục P0 trong `app/frontend/BACKEND_TODO.md`: bỏ các runtime `fetch("http://localhost:8000")`, đưa call backend về `services/api.js`, normalize response `/api/chat`, thêm xử lý 401/403, bảo vệ route `/wizard`, và chuyển RAG ingest streaming sang helper dùng `VITE_API_URL`.
-- **Staff/Admin transparency**: Hiển thị metadata `intent`, `status` và fallback reason cho staff/admin trong chat để debug các case rate limit, judge reject, guardrail block, backend fallback hoặc lỗi network/model.
-- **Railway deployment docs**: Cập nhật `Railway_QuickStart.md` với danh sách biến môi trường cần gửi lên Railway cho backend/frontend: `DATABASE_URL`, `OPENAI_API_KEY`, `SECRET_KEY`, `GOOGLE_CLIENT_ID`, `CORS_ORIGINS`, `VITE_API_URL`, `VITE_GOOGLE_CLIENT_ID`, rate limit, budget và webhook.
-- **Documentation tracking**: Cập nhật `frontend_dataFlow.md` và `BACKEND_TODO.md` để phân biệt phần đã hoàn thành và phần còn lại.
-
-#### Khó nhất tuần này
-- Đồng bộ contract frontend-backend vì backend trả nhiều alias khác nhau (`answer/response`, `major/top3`, `sources/references`). Giải pháp là normalize một lần ở API boundary thay vì xử lý lặp trong từng component.
-- Build/test bị ảnh hưởng bởi môi trường local Windows: `python` không khả dụng trong shell, còn `npm run build` ban đầu bị lỗi quyền `EPERM` với `C:\Users\Admin`. Sau khi chạy build ngoài sandbox, Vite build đã pass.
-
-#### AI tool đã dùng
-| Tool | Dùng để làm gì | Kết quả |
-|---|---|---|
-| OpenAI Codex | Review backend theo TCR, sửa guardrails/audit, refactor frontend API integration, cập nhật docs deploy/journal | Hoàn thành các thay đổi chính, build frontend pass; backend test chưa chạy được do thiếu Python trong shell |
-
-#### Học được
-- Guardrail chỉ có ý nghĩa khi verdict được enforce. Việc gọi `InputGuard.check()` mà không xử lý return value tạo cảm giác an toàn giả.
-- Nên normalize API response ở service layer để UI không bị phụ thuộc vào các biến thể contract của backend.
-- Với Railway/frontend browser, biến `VITE_API_URL` phải dùng public backend URL; `.railway.internal` chỉ phù hợp cho service-to-service trong Railway, không dùng được từ trình duyệt.
-
-#### Nếu làm lại, sẽ làm khác
-- Thiết kế API contract chuẩn cho `/api/chat` ngay từ đầu và tạo fixture test cho frontend để tránh phải hỗ trợ nhiều alias.
-- Thêm migration nhỏ, rõ ràng cho từng thay đổi DB thay vì phân tán giữa `database.py` và `DBService.migrate_db()`.
-
-#### Kế hoạch tiếp theo
-- Thêm validation phía frontend cho wizard answers, profile fields, chat length và CV upload để mirror backend rules.
-- Thêm contract tests cho `/api/match`, `/api/chat`, `/api/upload-cv`, metrics, audit logs và RAG admin controls.
-- Kiểm tra lại `/api/profile/{user_id}/cv` vì frontend service đang reference endpoint này nhưng backend route scan hiện chưa thấy route tương ứng.
-
-### Cập nhật ngày 14/05/2026
-#### Đã làm
-- **Hoàn thiện Multi-Agent Orchestration**: Đồng bộ hóa logic giữa Advisor (định hướng), RAG (tra cứu thông tin), và CRM (dữ liệu cá nhân) dưới sự giám sát của Judge Agent để đảm bảo tính chính xác và an toàn.
-- **CV Extraction & OCR Fallback**: Triển khai quy trình trích xuất CV hai giai đoạn (text-based -> OCR fallback với Tesseract). Tích hợp logic "fail-soft" để vẫn trả về dữ liệu cấu trúc khi LLM gặp sự cố.
-- **TCR Alignment (Final Push)**: 
-    - **Transparency**: Hiển thị minh bạch nguồn trích dẫn (citations) và lý do match ngành (match_reason) kèm label "AI-estimated".
-    - **Control**: Cho phép người dùng chỉnh sửa trực tiếp thông tin trích xuất từ CV trước khi lưu vào Profile.
-    - **Recovery**: Triển khai Escalation Workflow tự động chuyển sang tư vấn viên khi AI phát hiện dấu hiệu hứa hẹn quá mức (overcommitment).
-- **Hệ thống Quản trị**: Hoàn tất Dashboard dành cho Staff (xử lý Handoff) và Admin (quản lý Prompt Versioning và Ingestion).
-
-#### Khó nhất tuần này
-- Xử lý xung đột dữ liệu khi merge thông tin từ nhiều bản CV khác nhau vào Profile người dùng mà không làm mất dữ liệu cũ có giá trị.
-- Cấu hình OCR trên môi trường Cloud (Railway) yêu cầu cài đặt thêm các package hệ thống (libtesseract) thông qua Dockerfile.
-
-#### AI tool đã dùng
-| Tool | Dùng để làm gì | Kết quả |
-|---|---|---|
-| Gemini Code Assist | Refactor logic trích xuất CV, viết Escalation Detector và tối ưu hóa Dockerfile cho OCR | Hệ thống xử lý được các file PDF dạng ảnh và bảo vệ người dùng khỏi thông tin sai lệch. |
-
-#### Học được
-- Dữ liệu từ AI (trích xuất CV) luôn cần có con người (người dùng) xác nhận lại trước khi chính thức đưa vào cơ sở dữ liệu.
-- Việc thiết kế "Hinge Rule" (quản lý tập trung LLM config) giúp tiết kiệm cực kỳ nhiều thời gian khi cần thử nghiệm các model khác nhau (gpt-4o vs gemini-1.5).
-
-#### Kế hoạch tiếp theo
-- Chuẩn bị cho buổi Demo cuối kỳ với kịch bản: Student Wizard -> Profile Update via CV -> AI Advisor Chat -> Counselor Handoff.
-- Kiểm tra tải (load test) cho hệ thống RAG khi số lượng tài liệu tăng lên.
+- Bổ sung database/auth/roles, prompt architecture và các trang Profile/Resources/Report rõ hơn.
+- Chuẩn bị mở rộng backend từ mock logic sang persistence.
 
 ---
 
-### Cap nhat bo sung ngay 14/05/2026 - Codex
+## Tuần 4: 26/04/2026 - 02/05/2026
 
-#### Da hoan thanh
-- Tong hop lai `14_05_Summary.md` thanh ban ghi ro rang ve cac tinh nang da lam trong ngay.
-- Tao `app/guide/Guideline_v3.md` tu `Guideline_v2.md`, bo sung cach lam viec dua tren pain point.
-- Bo sung vao guideline cac nguyen tac Trust, Recovery, Clarity, Speed, Safety.
-- Chuyen noi dung tu `app/Pain_Point.md` va `app/Pain_Point_skills.md` thanh ban do uu tien tinh nang co the trien khai.
-- Ghi ro yeu cau cho CV document versions, OCR fallback, structured CV parsing, editable profile merge, Wizard `cv_document_id`, RAG/profile context usage, human fallback, prompt versioning, token dashboard, resources, va admin tools.
+### Mục tiêu
 
-#### Gia tri san pham
-- Guideline moi giup LLM/coding agent khong chi viet code dung ky thuat ma con biet tinh nang dang giai quyet dau dau nao cua nguoi dung.
-- Cac tinh nang AI phai co duong lui ro rang: retry, edit, confirm, continue later, hoac human fallback.
-- Admin/staff tooling duoc dinh huong thanh man hinh van hanh de dung, khong chi la developer utility.
+Chuyển từ prototype sang hệ thống có persistence, auth/roles, prompt/agent architecture và kế hoạch CV nhiều version.
 
-#### Verification
-- Thay doi lan nay la tai lieu, khong can build backend/frontend.
-- Cac file duoc cap nhat: `14_05_Summary.md`, `JOURNAL.md`, `app/guide/Guideline_v3.md`.
+### Đã làm
 
----
+- Định hướng Report page: hiển thị Top 3 ngành, match score, rationale, evidence và next actions.
+- Lên kiến trúc agent/prompt: Router, Advisor, RAG, CRM/Profile, Judge.
+- Thiết kế database và migration cho user, student profile, chat session, audit log, major/admissions data.
+- Thêm authentication/roles để phân biệt user, editor/staff và admin.
+- Lên kế hoạch OCR fallback cho CV scan.
+- Thiết kế lưu CV nhiều version để không mất dữ liệu profile cũ.
+- Bắt đầu review-before-merge cho dữ liệu CV: user xem và xác nhận trước khi merge vào Profile.
+- Thêm helper gọi profile readiness và các trạng thái liên quan.
 
-### Cap nhat bo sung ngay 14/05/2026 - Backend/Frontend API functions
+### Khó khăn
 
-#### Da hoan thanh
-- Backend them contract moi cho pain-point UX: `fallback_card`, `recovery_actions`, `decision_trace`, source labels, va `match_breakdown` cho ket qua goi y nganh.
-- Backend them API moi:
-  - `GET /api/profile/me/readiness`
-  - `GET /api/profile/me/cv-documents/{document_id}/merge-preview`
-  - `GET /api/resources/contextual`
-  - `GET /api/handoff-status`
-  - `GET /api/admin/system/health`
-- Frontend cap nhat `services/api.js` de normalize va dung cac field/API moi.
-- Report page hien thi ly do fallback, recovery actions, matched signals, tradeoffs, evidence labels, va nut "Ask about this major".
-- Chat UI gui context tu Report sang backend, hien fallback card, recovery buttons, suggested resources, source labels, va handoff status banner.
-- Profile page hien Profile readiness va CV merge preview truoc khi confirm CV version.
-- Resources page hien contextual resources va next-best actions dua tren readiness.
-- System/database page hien operational health badges cho database, token usage, prompt versions, handoffs, va RAG ingest.
-- Frontend contrast fix: cac secondary button nen trang duoc gan mau chu/icon ro rang de khong bi mat tren nen trang.
+CV extraction là phần dễ gây hỏng trust. Nếu AI parse sai rồi ghi thẳng vào profile, user sẽ mất kiểm soát. Vì vậy nhóm quyết định dữ liệu CV cần có review-before-merge và chỉ merge field không rỗng.
 
-#### Verification
-- Backend touched files da pass `py_compile` bang `.venv`.
-- Frontend da pass `npm run build`; van con warning chunk size lon cua Vite.
+### AI tools đã dùng
+
+| Tool | Dùng để làm gì | Kết quả |
+|---|---|---|
+| OpenAI Codex | Thiết kế CV versioning, review-before-merge, agent architecture | Tạo hướng implementation rõ ràng |
+| GitHub Copilot | UI/helper cho profile readiness và report | Giảm thời gian code lặp |
+| Gemini Code Assist | Kiểm tra hướng lưu CV nhiều version | Giúp phát hiện rủi ro mất profile cũ |
+
+### Bài học
+
+- Dữ liệu do AI trích xuất phải có bước xác nhận của người dùng.
+- Role-based access cần xuất hiện sớm vì staff/admin có workflow khác học sinh.
+- Audit log là nền để làm metrics và compliance sau này.
+
+### Kế hoạch tuần sau
+
+- Triển khai fallback card, recovery actions, staff dashboard, audit và metrics.
+- Tăng độ an toàn của pipeline.
 
 ---
 
-### Cap nhat bo sung ngay 15/05/2026 - Railway Docker readiness
+## Tuần 5: 03/05/2026 - 09/05/2026
 
-#### Da hoan thanh
-- Kiem tra `docker-compose.yml`, `app/backend/Dockerfile`, va `app/frontend/Dockerfile` theo mo hinh deploy Railway.
-- Xac nhan `docker-compose.yml` phu hop cho local dev/test, nhung Railway nen tach thanh 3 service rieng: PostgreSQL, backend, frontend.
-- Cap nhat backend Dockerfile de Uvicorn lang nghe `${PORT:-8000}`, phu hop voi dynamic port cua Railway.
-- Cap nhat frontend Dockerfile de build Vite production bundle va serve thu muc `dist/` tren `${PORT:-3000}` thay vi chay Vite dev server.
-- Them `.dockerignore` cho backend/frontend de tranh dua logs, uploads, cache, `node_modules`, va build output vao image context.
-- Cap nhat `Railway_QuickStart.md` voi phan Deployment Readiness Check, canh bao `DATABASE_URL @db` chi dung local Compose, va ghi chu `VITE_*` duoc embed luc build.
+### Mục tiêu
 
-#### Ket luan deploy
-- Backend co the deploy len Railway bang Dockerfile trong `app/backend`, voi Railway Postgres `DATABASE_URL` va cac bien production can thiet.
-- Frontend co the deploy len Railway bang Dockerfile trong `app/frontend`, nhung can redeploy sau khi thay doi `VITE_API_URL` hoac `VITE_GOOGLE_CLIENT_ID`.
-- Khong nen deploy ca repo nhu mot Docker Compose stack tren Railway; dung split services de phu hop voi Railway.
+Hoàn thiện recovery UX, human handoff, audit/metrics và kết nối các agent chính vào pipeline vận hành.
 
-#### Verification
-- `git diff --check` pass.
-- `npm run build` trong `app/frontend` pass; van con warning chunk size lon cua Vite.
-- Da thu `docker build` backend nhung khong verify duoc vi Docker daemon tren may local khong chay.
-- Cac file duoc cap nhat: `app/backend/Dockerfile`, `app/backend/.dockerignore`, `app/frontend/Dockerfile`, `app/frontend/.dockerignore`, `Railway_QuickStart.md`, `JOURNAL.md`.
+### Đã làm
+
+- Sửa các lỗi nhỏ trong CV upload và API response.
+- Triển khai fallback card và recovery actions cho ChatBox theo hướng TCR.
+- Đồng bộ frontend service với response backend để giảm lỗi lệch field.
+- Thiết kế staff handoff để tư vấn viên xem context học sinh và trả lời riêng.
+- Thêm nhãn tiếng Việt cho trạng thái pending handoff.
+- Cải thiện parse JSON fallback card.
+- Bắt đầu triển khai audit, metrics và staff dashboard cho admin/editor.
+- Tạo cấu trúc để AuditLog lưu route, fallback, ai_resolved, response time, judge result và handoff status.
+
+### Khó khăn
+
+Khó nhất là làm fallback không giống lỗi hệ thống. User cần thấy lý do, hành động tiếp theo và lựa chọn recovery rõ ràng. Staff cũng cần đủ context để xử lý handoff chứ không chỉ thấy một câu hỏi rời rạc.
+
+### AI tools đã dùng
+
+| Tool | Dùng để làm gì | Kết quả |
+|---|---|---|
+| OpenAI Codex | Fallback card, recovery actions, staff handoff, audit/metrics | Đẩy mạnh luồng recovery và vận hành |
+| GitHub Copilot | CSS/table, labels, JSON parsing fixes | Sửa nhanh các lỗi UI nhỏ |
+
+### Bài học
+
+- Recovery UX cần được thiết kế như một luồng chính, không phải text báo lỗi.
+- Metrics phải sinh ra từ audit log ngay trong pipeline thì mới đáng tin.
+- Staff dashboard cần context học sinh, session và lý do fallback.
+
+### Kế hoạch tuần sau
+
+- Harden guardrails, hoàn thiện multi-agent flow, CV extraction/OCR và chuẩn bị deploy Railway.
+
+---
+
+## Tuần 6: 10/05/2026 - 16/05/2026
+
+### Mục tiêu
+
+Final push: hoàn thiện multi-agent system, CV/Profile, guardrails, admin/staff operations, deployment readiness và bộ tài liệu nộp.
+
+### Đã làm
+
+- Hoàn thiện multi-agent orchestration giữa Advisor, RAG, CRM/Profile và Judge.
+- Harden guardrails: InputGuard trước route/RAG/LLM, homoglyph normalization, OutputGuard trước final response.
+- Thêm security events cho guardrail/rate-limit.
+- Tự động migrate các cột thiếu của `audit_logs`.
+- Normalize `/api/chat` response trong frontend service.
+- Bổ sung profile readiness, CV merge preview, contextual resources, handoff status, fallback card, recovery actions, source labels và system health.
+- Triển khai CV extraction với text-based parsing, OCR fallback và fail-soft behavior.
+- Hoàn thiện staff dashboard, admin metrics, prompt versioning, RAG ingestion và token usage visibility.
+- Cập nhật Dockerfile/backend/frontend cho Railway readiness.
+- Deploy production:
+  - Frontend: `https://spirited-manifestation-production.up.railway.app/`
+  - Backend: `https://a20-app-dung-production.up.railway.app/`
+  - Database: Railway PostgreSQL qua `DATABASE_URL`.
+- Thay README template bằng README sản phẩm thật.
+- Tạo `Diagrams_showcase.md`, `Pitch_deck.md`, cập nhật `evaluation_evidence.md`, `WORKLOG.md`, `JOURNAL.md`.
+- Cập nhật AI manual logs và mapping student của Giang/Zengggggg thành `fixnow2025@gmail.com`.
+
+### Khó khăn
+
+Tuần này khó nhất là integration. Nhiều feature đã tồn tại riêng lẻ, nhưng để demo tốt thì frontend, backend, database, RAG, guardrails, handoff và admin metrics phải nói cùng một contract. Ngoài ra, deployment cần tách frontend/backend/database trên Railway và không để lộ mật khẩu database trong tài liệu public.
+
+### AI tools đã dùng
+
+| Tool | Dùng để làm gì | Kết quả |
+|---|---|---|
+| OpenAI Codex | Multi-agent integration, guardrails, API contract, docs, README, diagrams, evidence | Hoàn thiện gói submission |
+| Gemini Code Assist | CV/OCR planning, QA checklist, safety review | Hỗ trợ kiểm tra rủi ro |
+| GitHub Copilot | UI text/CSS fixes và helper nhỏ | Tăng tốc polish frontend |
+
+### Bài học
+
+- Một sản phẩm AI tốt cần cả phần chạy được và phần giải thích được.
+- README phải có link live, setup, architecture và evidence ngay từ đầu.
+- Golden eval hiện cho thấy guardrail có lúc quá chặt; đây là tín hiệu tốt để cải thiện RAG/prompt sau submission.
+- Không nên commit database password thật vào README; chỉ ghi dạng masked và dùng Railway env/local `.env`.
+
+### Verification
+
+- Frontend `npm run build` đã pass trong quá trình Railway readiness, còn warning chunk-size lớn của Vite.
+- `AI-LOG_Manual/sessions.jsonl` validate JSONL 62 dòng hợp lệ.
+- Mapping `Zengggggg -> fixnow2025@gmail.com` đã cập nhật và không còn entry `student: "Zengggggg"`.
+- `eval_results_report.json` có 4 golden-eval cases, pass 0/4, average score 20.0. Đây là baseline cho cải thiện chất lượng sau này.
+- README đã có live frontend/backend links và link tới diagrams, pitch deck, evidence, worklog, journal, AI logs.
+
+### Kế hoạch tuần sau/ngày nộp
+
+- Kiểm tra lại live frontend/backend trước khi nộp form.
+- Mở quyền truy cập công khai cho các link ngoài repo nếu có video demo/slide.
+- Đảm bảo repo có README, architecture, AI logs, journal, worklog, evaluation evidence và pitch deck đúng yêu cầu.
+
+---
+
+## Chủ nhật 17/05/2026 - Submission Day
+
+### Mục tiêu
+
+Nộp dự án với đầy đủ link và minh chứng: source code, README, live URL, architecture, AI logs, journal, worklog, evaluation evidence và pitch deck.
+
+### Checklist trước khi nộp
+
+- Repository/source code đã có frontend, backend, database integration, AI agents, API, config và deploy resources.
+- README đặt ở root, có mô tả, mục tiêu, tính năng chính, công nghệ, cài đặt, chạy, sử dụng và link quan trọng.
+- Live URL đã ghi trong README:
+  - Frontend: `https://spirited-manifestation-production.up.railway.app/`
+  - Backend: `https://a20-app-dung-production.up.railway.app/`
+- Architecture đã có trong README và chi tiết hơn ở `Diagrams_showcase.md`.
+- AI logs nằm ở `AI-LOG_Manual/sessions.jsonl`.
+- Weekly journal là file này.
+- Worklog nằm ở `WORKLOG.md`.
+- Evaluation evidence nằm ở `evaluation_evidence.md`.
+- Pitch deck nằm ở `Pitch_deck.md`.
+
+### Ghi chú trung thực về chất lượng
+
+Sản phẩm đã có luồng end-to-end và deployment, nhưng vẫn còn điểm cần cải thiện:
+
+- Golden eval hiện tại cho thấy một số câu hỏi tuyển sinh bị từ chối quá mức vì guardrail còn chặt.
+- Cần tiếp tục cải thiện RAG corpus, prompt và expected-answer coverage.
+- Cần kiểm thử thêm với CV scan thật, nhiều profile thiếu dữ liệu và nhiều tình huống handoff đồng thời.
+
+### Bài học cuối
+
+Nhóm học được rằng xây một AI app không chỉ là gọi model. Một sản phẩm đáng tin cần có dữ liệu, nguồn, guardrails, recovery, human handoff, audit, metrics và tài liệu đủ rõ để người khác kiểm tra được.
